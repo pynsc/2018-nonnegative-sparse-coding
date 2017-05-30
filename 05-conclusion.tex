@@ -1,0 +1,55 @@
+\section{Concluding remarks and future directions}
+\label{sec:conclusion}
+
+In this article,
+we have argued that a variety of neuronal response properties can
+be understood not as an emergent property of efficient population coding
+based on dimensionality reduction and sparse coding.
+We offer three testable predictions of this theory:
+
+First, we predict that parts-based representations can explain
+\acp{RF} of neurons in a variety of brain regions,
+including but not limited to those brain areas discussed here (i.e., V1, MSTd and RSC). In agreement with the literature on basis function representations
+\citep{PougetSejnowski1997,PougetSnyder2000,Poggio1990},
+we expect parts-based representations
+to be prevalent in regions where neurons
+exhibit a range of tuning behaviors \citep{Beyeler2016},
+display mixed selectivity \citep{Fusi2016,Eichenbaum2017},
+or encode information in multiple reference frames \citep{AlexanderNitz2015,Rounds2016}.
+
+Second, where such representations occur, we expect the resulting
+neuronal population code to be sparse,
+in order to encode information both accurately and efficiently.
+Sparse codes are ideally suited for such an encoding, as they offer
+a trade-off between 
+dense codes (where every neuron is involved in every context,
+leading to great memory capacity but suffering from cross talk among neurons)
+and local codes (where there is no interference, 
+but also no capacity for generalization) \citep{Spanne2015417}.
+
+We also speculate that there may be an important relationship between sparse and distributed coding. Barnes et al. \citep{barnes1990chapter} observed that output from the hippocampus was expressed as a much more distributed code, while the coding scheme within the hippocampus proper was sparse. They suggested that sparse coding might be employed to increase the storage capacity of the region, consistent with our proposed framework. Sparse and distributed codes may represent two sides of the same coin, evidenced by anatomical bottlenecks, in which the brain utilizes synaptic expansion when transmitting information between brain regions and synaptic reduction and sparsification for information storage within regions. \emilyNote{moved reduction/expansion thing here, may or may not fit.}
+\mikeNote{Why not, don't know where else it'd fit. Maybe we should a ref for compressed sensing.}
+
+Third, we propose that \ac{STDPH} is carrying out a similar function to \ac{NMF},
+and may be attempting to approximate the linear \ac{RF} properties of
+neurons participating in sparse, parts-based representations
+throughout the brain. STDPH and NMF can effectively produce NSC.
+With the emergence of computational tools developed
+to understand the neural code 
+in high stimulus dimensions \citep{PillowSimoncelli2006},
+we expect to see qualitative similarities between empirically observed
+\acp{RF} and those recovered by \ac{NMF} and \ac{STDPH}.
+Such findings would be consistent with the idea that neurons
+can perform statistical inference on their inputs via
+Hebbian-like learning mechanisms
+\citep{Nessler2009,Carlson2013,MorenoBoteDrugowitsch2015,Oja1982}.
+
+
+
+In summary, we suggest that the evidence reviewed in this paper may indicate that dimensionality reduction through nonnegative sparse coding, implemented by synaptic plasticity rules, may be a canonical computation throughout the brain. Initial experiments using STDPH and \ac{NSC} indicate that they may be functionally equivalent, which is backed by computational evidence in which \ac{NSC} and \ac{STDPH} were applied to an experimentally recorded dataset. In summary, \ac{NSC} offers a promising theoretical framework to further our understanding of how high-dimensional data is encapsulated by the often complex and nonlocal nature of cortical computation.
+
+
+
+% First, we predict that the receptive fields for neurons that have historically been hard to study due to their location in the brain will prove to yield parts-based representations, consistent with the proposed framework. 
+% Second, we predict that in regions where such representations occur, there will be sparse representations of high-dimensional input spaces, especially where there are anatomical bottlenecks.
+% Our third prediction stems from the theoretical observation that a highly sparse (local) code, a neuron's response will encompass a highly specific and accurate representation of its inputs, but will not be generalizable to noisy, incomplete, or otherwise altered versions of those stimuli. On the other hand, a dense code (in which all neurons participate in the representation of a set of incoming stimuli), the representation is highly generalizable and accurate, but inefficient because it is not sparse. A sparse code is a compromise between these two extremes and determines the degree to which a representation is efficient and generalizable \cite{Spanne2015417}. Thus we predict that the sparsity of the code in a given brain region will predict the trade-off between the accuracy and efficiency of the code. Finally, we predict that, as our understanding of connectivity in hard-to-reach brain regions improve, there will be qualitative similarities between them and those matrices generated by computational learning methods such as \ac{STDP} and \ac{NMF}, rendering credibility to the idea that neuronal response properties represent the hidden coefficients associated with synaptic `basis functions.'

@@ -1,0 +1,147 @@
+% Boxes are to use reference like the main text, but the numbering should start after
+% the last reference of the main text.
+% Ergo, it makes sense in LaTeX to have the boxes after the main text...so we get
+% the numbering right
+
+%  Text Boxes
+% • Ideal for providing explanations of basic concepts or theories, giving detailed mechanisms, or discussing case studies.
+% • Please cite text boxes in the main text as: (Box 1).
+% • Boxes should have a single sentence title (no more than 8 words).
+% • Text boxes can occasionally contain small figures and tables. Please number figures or tables within a text box with Roman numerals (e.g. Figure I) and cite the element in the box text.
+% • 400 words max per box. 
+% • References should be listed in the main reference list, numbered to follow on from the end of the main text.
+% • No more than four text boxes per article. 
+
+\section{Box 1: Nonnegative sparse coding (NSC)}
+\label{box:NSC}
+
+% Need to keep it under 400 words
+
+\Acf{NSC} combines \acf{NMF},
+a linear dimensionality reduction technique from statistical learning,
+with sparse population coding from neural network theory
+\citep{Hoyer2002,EggertKorner2004}.
+\ac{NMF} belongs to a class of methods that can be used to decompose
+a multivariate data matrix \textbf{V}
+into an inner product of two reduced-rand matrices \textbf{W} and \textbf{H}.
+\ac{NMF} assumes that the observed data in \textbf{V} are caused by a collection
+of latent factors weighted by nonnegative numbers,
+representing both the presence and the intensity of the cause.
+
+In the context of \ac{NSC},
+\textbf{V} and \textbf{H} correspond to activation values
+of two distinct neuronal populations,
+which are connected to each other via synaptic weight values
+in \textbf{W}
+(Fig.~\ref{fig:NMF|reconstruction}).
+Consider a number of data samples $s \in [1, S]$, for example,
+in the form of observed firing rates of a population of $F$ neurons.
+If we arrange the observed values of the $s$-th observation 
+into a vector $\vec{v}_s$,
+and if we arrange all vectors into the columns of a data matrix \textbf{V},
+then linear decompositions describe these data as
+$\mathbf{V} \approx \mathbf{WH}$.
+Here, \textbf{W} is a matrix that contains as its columns
+a total of $B$ \emph{basis vectors} of the decomposition, 
+and \textbf{H} contains as its rows the \emph{hidden coefficients}
+that give the contribution of each basis vector in the input vectors.
+The difference between \textbf{V} and \textbf{WH} is termed
+the \emph{reconstruction error}.
+
+The goal of \ac{NSC} is then to find a linear decomposition of \textbf{V}
+that minimizes the reconstruction error,
+while guaranteeing that both \textbf{W} and \textbf{H} are sparse.
+This can be achieved by minimizing the following cost function
+\citep{Hoyer2002}:
+\begin{equation}
+\min_{\mathbf{W}, \mathbf{H}} \frac{1}{2} ||\mathbf{X} -\mathbf{WH}||^2 + \lambda \sum_{ij} f(H_{ij}),
+\end{equation}
+subject to the constraints
+$\forall ij: \mathbf{W}_{ij} \geq 0$, $\mathbf{H}_{ij} \geq 0$, and
+$||w^{(i)}|| = 1$, where $w^{(i)}$ denotes the $i$th column of \textbf{W}.
+Here, the left-hand term describes the reconstruction error, which can
+be minimized with \ac{NMF},
+and the right-hand term describes the sparseness of the decomposition.
+The trade-off between sparseness and accurate reconstruction
+is controlled by the parameter $\lambda$ ($\lambda \geq 0$), whereas
+the form of $f$ defines how sparseness is measured
+(a typical choice is the L1 norm on \textbf{H}).
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+
+\section{Box 2: Equivalence of NMF to STDPH and neural mechanisms of NSC}
+\label{Box:NMFvSTDPH}
+% ELR: CLEANED UP STDP BOX.
+% 398 WORDS TOTAL WHEN PASTED INTO WORD (INCLUDES CITATIONS, SO IS LIKELY SHORTER IN LATEX).
+
+% First paragraph - STDP  on a single synapse
+% Second paragraph - STDP on networks?
+\Acf{STDP} is a form of Hebbian learning in which synaptic weight changes
+\jeffNote{fix ref}
+depend on the relative timing between pre- and post-synaptic spikes (??? cite Bi \& Poo; Song \& Abbott). If pre-synaptic spike counts integrated over a critical window precede those of the post-synaptic neuron, then long-term potentiation (LTP) is induced, strengthening the weight. Otherwise, long-term depression (LTD) is induced, suppressing the weight. STDP is ubiquitous throughout the brain across the lifespan and can take on different forms \citep{Caporale2008STDP,Holtmaat2009STDP}. Simulations of \ac{STDP} can result in runaway feedforward excitation such that produces unrealistic firing rates. To obviate this problem in biology, the brain uses homeostatic mechanisms that modulate synaptic inputs and neuronal firing thresholds \citep{Watt2010}.
+
+\jeffNote{see my ??? above regarding the appropriate STDP references.}
+% One well-known homeostatic mechanism is synaptic scaling,
+% wherein synaptic efficacy is regulated by neuronal activity
+% to prevent runaway increases or decreases in synaptic strength.
+We focus on synaptic scaling, a particular form of homeostasis which
+multiplicatively scales weights up or down
+depending on the average firing rate of the postsynaptic neuron, which has
+been demonstrated to stabilize \ac{STDP} \citep{Carlson2013,Buonomano2005,VanRossum2000}.
+We refer to this combination of \ac{STDP} and homeostatic synaptic scaling
+as \ac{STDPH}.
+
+% \mikeNote{I guess this paragraph should be tied to the figure I'm supposed to make}
+% \krisNote{I referenced figure 2. It's tricky because I don't have room to describe why H and W are 1D (because we only have one output neuron).}
+
+We have shown that, given a network with fewer output than input neurons and full connectivity from the input layer to the output layer, \ac{STDPH} iteratively acts to preserve the information in the first layer with the output layer neurons. Given an input layer of neurons (represented by matrix \textbf{V}) connected to a single output layer neuron (represented by row vector $\mathbf{h^T}$) we have proven that the \ac{STDPH} rule iteratively updates the synaptic weights in \textbf{w} in such a way as to minimize the reconstruction error of $|\mathbf{V} - \mathbf{wh^T}|$, and that the \ac{NMF} update rule is mathematically equivalent to the \ac{STDPH} update rule \citep{Carlson2013}.
+
+% \mikeNote{Is $\mathbf{wh^T}$ an outer product or should it be a vector \textbf{v}?}
+% \krisNote{NMF Matrix question: $\mathbf{wh^T}$ is an outer product. Explanation:
+% Let n = number of input 
+% neurons, m = number of time steps, and r = number of output neurons. Let r = 1. Then, 
+% $V$ is of dimensionality nxm, $w$ is of dimensionality nx1 (column vector), and $h^T$
+% is of dimensionality 1xm (row vector). The problem is I was not consistent with what I
+% told you for conventions. I have used bold capital for matrix, bold lower case for column,
+% and bold columm transpose for row.}
+% \mikeNote{Don't tell me, lol, tell the reader!}
+
+
+% \mikeNote{I said this in the main text}
+% The equivalence of \ac{STDPH} to \ac{NMF} should not come as a particular surprise and in fact
+% their similarities were alluded to \citep{Masquelier2010} before the mathematical proof for the
+% single neuron case \citep{Carlson2013}.
+% The equivalence of \ac{STDPH} to \ac{NMF} can be viewed as analogous to the equivalence of Oja\textsc{\char13}s rule to \ac{PCA} in the following way.
+% Oja\textsc{\char13}s rule was developed to stabilize the rate-based Hebbian learning rule
+% by introducing multiplicative normalization
+% just as homeostatic synaptic scaling was added to \ac{STDP}
+% for stabilization \citep{Oja1982}.
+
+% Emily note to self: I already mention this a couple places so I can either work it in or replace it elsewhere
+% \krisNote{Although relevant, I'm not sure we'll have room for these two sentences}
+% As mentioned in Box 1, \ac{NSC} combines the dimensionality reduction of \ac{NMF}
+% with the concept of sparse population codes from neural network theory
+% \citep{Hoyer2002,EggertKorner2004}.
+% \ac{NSC} can be viewed as an additional constraint on \ac{NMF},
+% requiring sparsity in the neural firing, represented in the $\mathbf{h}$ vector.
+% Third paragraph can be WTA/lateral inhibition.
+
+To induce sparsity in networks of neurons, there must be a mechanism that causes each output layer to learn a different component of the total information represented by the input layer \citep{Foldiak1990}, which may be achieved by competition among units. Lateral or feedforward inhibition is often used to induce competition in SNNs, since it offers a biologically plausible mechanism to implement a \ac{WTA} architecture \citep{Coultrip1992}, although other groups have suggested that thresholding can also achieve sparse codes \citep{Rozell2008}. Therefore, \ac{NSC} can be attained in a two-layer network with \ac{STDPH} and a \ac{WTA} architecture via inhibitory connections within or between layers. Interestingly, popular implementations of \ac{NMF} (e.g., MATLAB, Scikit-Learn) include a constraint on the L1 norm of \textbf{H} that automatically lead to sparsity. Alternatively, an explicit sparsity level can be incorporated into models of \ac{NMF}, such as in Hoyer\textsc{\char13}s model \citep{Hoyer2004}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Methods for EA experiments of RSC. This is too long (~470 words).
+
+\section{Box 3: Evolutionary Algorithm and SNN Evaluation}
+\label{box:EA}
+Evolutionary algorithms are a class of optimization algorithms loosely based on concepts from evolution. A set of individuals (in this case, spiking neural networks, or SNNs) have a set of parameters to be evolved, which are initialized for the first generation with size $N$. The population undergoes a training and a testing phase followed by evaluation as determined through a user-defined function that measures how well individuals in the population meet the desired criteria. The resulting value is the individual’s level of \textbf{fitness}. A certain number of individuals are then chosen as parents for the next generation, and undergo \textbf{crossover} and/or \textbf{mutation} to produce the new population of individuals. This process continues until a good solution is found.
+In the experiments in which SNNs were evolved to match electrophysiological data, the population size was $N = 15$. The training phase used trials from the experimental dataset from retrosplenial cortex (RSC), recorded as rats ran along a W-shaped track. At each position along the track, behavioral metrics (linear velocity, angular velocity, allocentric position, and head direction) were recorded along with neuronal firing rates. The track could occupy different positions in the room (two locations in a single recording session, $\alpha$ and $\beta$) and each track position had an associated outbound (a sequence of left-right-left (LRL) turns) and inbound (right-left-right (RLR)) run. The rats completed each run $\sim$20 times ($\sim$20 trials per recording session, 71 in total) for each track position and route combination ($\alpha$LRL, $\alpha$RLR, $\beta$LRL, and $\beta$RLR). We randomly selected trials from half the trials in the dataset for training (the other half were reserved for the testing phase). The testing phase was the same as the training phase except STDPH was disabled. Following testing, we measured correlations between synthetic and electrophysiological activity patterns and chose synthetic neuronal matches for each experimentally observed firing pattern based on the best correlations between them. Following fitness evaluation, we used \textbf{binary tournament selection} to choose three new parents (each parent produced five children) for the next generation of individuals. Each new parent underwent mutation without crossover to produce a new child.
+To compare experimental neuronal responses with synthetic ones, we analyzed functional neuron types using methods described in Alexander and Nitz \citep{AlexanderNitz2015}. Activations averaged over trials for every neuron in the population were cross-correlated to reconstruct agent’s position within a route. To reconstruct position with respect to one route (such as in $\alpha$LRL), trials were divided into two sets, even and odd, to measure consistency of response. To reconstruct position between track positions (such as in $\alpha$$\beta$LRL), activations over trials associated with the $\alpha$ track position were averaged and cross-correated with averaged activations over trials associated with $\beta$. High correlations between same positions (e.g., bin 1 (row) and bin 1 (column)) indicate a good reconstruction of position from ensemble activity patterns. Within-position reconstructions (even vs. odd trials) yielded accurate positional reconstructions (low error), but between-position (i.e., $\alpha$ vs. $\beta$ trials) were associated with high error and did not yield accurate reconstructions of position, which suggests that the population differentiates routes situated in different parts of space.
+
+
+% This Drugowitsch paper seems highly relevant:
+% Causal Inference and Explaining Away in a Spiking Network
+% Rubén Moreno-Bote \& Jan Drugowitsch, Scientific Reports
+% \url{https://www.nature.com/articles/srep17531}
+
+% The spike-based implementation can be interpreted as a noisy
+% version of the rate-based network (can it?)

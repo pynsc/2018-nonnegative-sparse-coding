@@ -1,0 +1,232 @@
+\section{Notes}
+
+\subsection{RF overlap}
+
+Individual neurons in visual cortex respond selectively to only a small subset
+of stimulus features.
+However, certain subpopulations of neurons, such as in a cortical column, share substantial
+receptive field overlap.
+\url{http://www.jneurosci.org/content/19/10/4046}
+For example, across a cortical column, neurons may share stimulus dependence
+as a result of sampling the same location of visual space,
+having similar orientation preference,
+or receptive fields with shared sub-units.
+As a result, a substantial fraction of stimulus information can be redundant
+across neurons
+D. S. Reich, F. Mechler, and J. D. Victor, “Independent and redundant information in nearby cortical neurons,” Science, vol. 294, pp. 2566–2568, 2001
+
+
+\subsection{State space}
+Similarly, the spatial response property of a cell (e.g., the receptive field)
+can also be described in terms of locations in the state space that will produce
+a response.
+A population of neurons will occupy only a small subspace of the state space
+(sparse embedding). Together, however, they must be able to represent every incoming
+sensory pattern in the state space.
+% Every distinguishable receptive field profile is represented in terms of a unique
+% direction in the state space. Thus, an array of cells can be considered as an array
+% of vectors each pointing to unique locations in the state space.
+% Now, many studies have shown that 
+
+% receptive fields in \ac{V1} \citep{Barbieri2015},
+% and visual grouping \citep{Cocci2015}.
+
+% Somewhere mention that neurons and neuroscientists might face the same dilemma:
+% How to make sense of high-dimensional data.
+% Because there's an almost infinite amount of high-dimensional input data,
+% you have to come up with a way to extract relevant information.
+% Neurons might do this with STDPH, 
+
+
+
+
+
+
+The principle behind sparse coding is that the vision system has an over-complete set of basis functions.
+It tries to represent each image in terms of a small set of these functions. This over-completeness means
+that the the basis functions can be tuned to interesting features of the image. As mentioned above, the
+sparsity principle can also be used to learn receptive fields from natural images (refs!!).
+
+This sparsity criteria was developed by Olshausen and Field as a way to learn receptive fields of
+neurons \citep{OlshausenField1996}. It gives a reconstruction criteria that can be extended to multiple images and used to learn receptive fields.
+
+This results in receptive field models which are similar to those measured \citep{OlshausenField1996}. Note that similar
+receptive fields can be obtained by assuming a similar model for the image, see equation (7), but imposing
+different assumptions on the form of the si
+. In particular, independent component analysis (ICA) gives
+similar receptive field models \citep{vanHateren1998}.
+\cite{Hyvarinen2010} explained this by showing that both types of models –
+L1 sparsity and \ac{ICA} – both encourage that the $s_i$ are strongly peaked at 0, 
+but can occasionally have
+large non-zero values (this contrasts with the Gaussian model – e.g. pseudo-inverse – where the 
+$s_i$ are strongly discouraged from taking large values).
+
+The fact that features can ``cancel each other out'' using subtraction is contrary
+to the intuitive notion of combining parts to form a whole.
+Non-negativity ensures that elementary object features combine additively.
+
+However, there are at least two ways in which the standard sparse coding image model
+is unrealistic as a model of \ac{V1} simple-cell behavior.
+First, each unit $s_i$ in the model can,
+in addition to being effectively silent (close to zero),
+be either positively or negatively active.
+This means that every feature contributes to representing stimuli of opposing polarity;
+for example, a unit that codes for a dark bar on a bright background also codes
+for a bright bar on a dark background. This in in contrast to the behavior of simple cells
+in \ac{V1}, which can only represent one half of the output distribution of a signed
+feature $s_i$, as firing rates cannot go negative.
+Second, input data in the standard sparse model is double-sided (signed),
+whereas \ac{V1} receives the visual data from the \ac{LGN} in the form of separated
+ON- and OFF-channels.
+
+Thus, if we would like to transform sparse coding from a relatively abstract model
+of image representation in \ac{V1} to a concrete model of simple-cell recoding of
+\ac{LGN} inputs, the model must be changed.
+First, the input data should consist of hypothetical activities of ON and OFF channels
+in response to natural image patches.
+Second, all coefficients should be restricted to be non-negative.
+
+\url{https://arxiv.org/pdf/1509.03942v1.pdf}: Dimensionality reduction in V1: This can be interpreted as a principle of dimensionality reduction constrained to optimally independent representation of orientations, in the following sense. As previously observed, V1 does not have a sufficiently high topological dimension to implement all scales/frequencies and orientations over each point, so it has adopted compromises such as the one described by the coverage strategy. On the other hand, if we measure the independence of receptive profiles in terms of correlations, then the maximal independence with respect to orientations can be obtained equivalently by translations at a given distance. This distance can be estimated to grow with the shape index, as described by Figure 11, and reaches the characteristic length of the orientation preference maps at about the cutoff value for the shape index. At that distance, two receptive profiles can then be considered as collecting a sufficiently independent information that justifies a repetition of a new full set of orientations. Say it from another point of view, orientation preference maps may be a way to map a compact variable on the highly redundant sampling space of positions
+
+
+It is well known since the fundamental studies of Hubel and Wiesel [23, 22] that primary
+visual cortex (V1) is one of the first physiological layers along the visual pathway to
+carry out geometrical measurements on the visual stimulus, decomposing it in a series of
+local feature components. The development of suitable electrophysiological techniques
+[43] has made possible to reconstruct the linear filtering behavior of V1 simple and
+complex cells, i.e. their spatio-temporal receptive profiles (RPs).
+The RPs of orientation-selective cells in V1 have classically been modeled with twodimensional
+Gabor functions [24], which basically compute a local approximation of
+the directional derivative of the visual stimulus, minimizing the uncertainty between
+localization in position and spatial frequency [13]. On the other hand, spatio-temporal
+RPs of V1 simple cells can be modeled by 3-dimensional Gabor functions of the form
+[11]
+
+
+
+
+In this letter, we propose that sparse, parts-based dimensionality reduction might be a common mechanism to achieve representation of information in the brain. We first explain possible algorithms in the Methods, then list evidence of where this has been found in the brain, and close with our thoughts of how such an algorithm might be implemented in the brain.
+
+
+If we end up having to define what we mean by dimensionality (what space are we talking about?), this paper’s introduction mentions a bunch of references that talk about how people have defined the dimensionality of a neural system in past works: \url{http://journal.frontiersin.org/article/10.3389/fnsys.2016.00011/full}
+
+
+This paper (http://jn.physiology.org/content/jn/107/10/2594.full.pdf) discusses spectrotemporal response fields and how many filters are required to describe the stimulus preferences of a neuron in the auditory cortex. Apparently, the visual and auditory cortices are pretty different in this regard. Would be useful to  know more about this in other brain regions.
+
+
+
+However, ``dimensionality'' in the literature has been interpreted in a variety of ways.
+For example, \cite{DurbinMitchison1990} suggested that cortical maps can be understood
+as a dimension-reducing mapping from high-dimensional parameter spaces
+onto the surface of the cortex,
+such that local computations in parameter space can be performed locally in cortex.
+Others have applied the term dimensionality more directly to populations of neurons,
+describing the dimensionality of a neuronal population code
+[Churchland \& Sejnowski 1992, Field 1996].
+Then, the receptive fields of neurons could be understood as a lower-dimensional
+embedding of high-dimensional input parameter spaces - not unlike the set of basis functions
+retrieved by conventional dimensionality reduction techniques, such as \acf{PCA}.
+% words
+So what if the role of neurons in a neuronal population code was akin to the role of basis
+functions in a dimensionality reduction framework?
+What if known neuronal response properties were simply a by-product of neurons performing
+dimensionality reduction on their inputs?
+
+
+
+
+
+Pillow and Simoncelli
+\url{http://jov.arvojournals.org/article.aspx?articleid=2192994}
+
+
+However, the problem of measuring and finding statistical relationships between
+patterns becomes more difficult as their dimensionality increases
+(``the curse of dimensionality'').
+One approach to addressing this problem is to somehow reduce the number of variables
+required to describe the patterns in question, a process known as dimensionality
+reduction.
+
+The space of all natural images, for example, is a highly restricted subspace of
+all possible images, so that they can be described by many fewer variables than
+the number of pixels.
+
+
+\subsection{Non-negative matrix factorization}
+\label{sec:ldr|nmf}
+
+\ac{NMF}  is special.
+
+\subsubsection{Some notes about NMF and time}
+Conceptually, \ac{NMF} models each data point (e.g., image, audio spectrogram, etc.)
+as a linear combination of non-negative
+dictionary elements.
+However, \ac{NMF} provides no generative account of the temporal dynamics linking
+each point in time.
+Therefore, people have come up with different approaches.
+For example, Mysore et al. (2010) proposed a non-negative hidden Markov model (N-HMM),
+where every time frame of a spectrogram was modeled by a linear combination
+of the elements of any one of its many dictionaries.
+A Bayesian variant of this model was introduced by Mysore and Sahani (2012):
+\url{http://www.gatsby.ucl.ac.uk/~maneesh/papers/mysore-sahani-2012-icml.pdf}.
+
+
+
+
+
+TODO: Talk about all possible variations. Tie it to multinomial \ac{PCA}.
+
+Tie it to k-means clustering.
+Check out Wikipedia: NMF has a clustering property.
+Clustering is unsupervised learning, and so is STDP. Would be good to make that connection.
+
+
+Regarding \ac{NMF} vs. \ac{ICA} (from Ganguli \& Sompolinski 2012): First, compressed sensing (CS)
+results in signals that are truly sparse, i.e., most of the coefficients are zero,
+whereas ICA algorithms generally yield signals with many small values, 
+i.e., distributions with high kurtosis but no coefficients vanish
+(Olshausen et al. 1996, Bell \& Sejnowski 1997, Hyvarinen 2010).
+Second, ICA emphasizes the statistical independence of the unmixed sources (Barlow 2001).
+Sparseness is a special case; ICA can be applied to reconstruct dense sources as well.
+In contrast, signal extraction by CS relies only on the assumed approximate sparseness of the signal,
+and not on any statistical priors, and is similar in spirit to the seminal work of
+Olshausen et al. (1996).
+Indeed, a recent study suggests that sparseness may be a more useful notion than independence
+and that the success of ICA in some applications is due to its ability
+to generate sparse representations rather than to
+discover statistically independent features (Daubechies et al. 2009).
+
+One thing we might have to address is that NMF and family are linear techniques.
+Neurons are non-linear There are non-linear versions of these techniques, but not if we have to 
+discuss them or how they fit into our claims.
+Ganguli actually has something smart to say about non-linear embeddings, too:
+This might be more Discussion section though:
+The abundance of nonlinearities in neuronal signaling raises the question of the relevance
+of linear embeddings.
+One fundamental nonlinearity is the input-output relationship between synaptic potentials and
+action potential firing of individual neurons.
+This nonlinearity is often approximated by the linear-nonlinear (LN) model
+(Dayan \& Abbott 2001, Ostojic \& Brunel 2011).
+My (Mike's) current way of thinking is: We're saying NMF is implemented in synaptic learning,
+so it's in the synaptic weights. It's not outrageous to think about this as a linear computation,
+as this would fit with the traditional modeling approach of a linear-nonlinear (LN) model,
+where synaptic integration is linear, and a nonlinearity is provided by the neuronal activation
+function to transform the summed input into a firing rate.
+
+Theoretical studies have shown that neural networks can perform efficient dimensionality reduction using competitive Hebbian learning rules for inter-layer connectivity (Oja 1982) and anti-Hebbian rules for the lateral inhibitory intra-layer connectivity (Foldiak 1990, Diamantaras and Kung 1996).
+
+Notes from (Shah and Alexandre 2011): It has been known for a while that Hebbian learning will extract in the weight vector w a direction aligned with the first principal component of the input space (Diamantaras and Kung 1996, Oja 1982). Subsequent studies have shown the possibility to extract several principal components, by displaying several neurons in the output layer, endowed with an inhibitory lateral connectivity.
+
+
+\subsection{This could be useful}
+
+\url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4043224/}
+The example of the single neuron, a fundamental unit of information encoding, highlights the duality between a dynamical system and a feature-selecting coding model. Any choice of coding model “queries” the dynamical system in order to generate an input/output relationship with respect to a specific variable or set of variables. Despite the sophisticated methods available to guide the selection of this variable set [6], the result is necessarily an impoverishment of the full behavior of the nonlinear system. An example is that of contrast gain in single neurons. When stimulated by inputs that vary over a certain range, the input/output function of many sensory systems depends on the stimulus range: the dynamic range of the response is matched to the input range [13]. Some single neurons show the same effect, demonstrating that the property can arise from intrinsic neuronal nonlinearities [22]. Identifying a low-dimensional model that matches experimental data allows analysis of the dynamics that lead to this coding property.
+
+Extending such a multifaceted approach beyond single neurons is challenging; high-dimensional biophysical models will always be underspecified [23]. However, given that it is now possible to visually identify, record from and manipulate specific cell types, the motivation to incorporate this information in models is there. The appropriate mathematics to perform the necessary reduction of such high-dimensional systems is emerging [24,25]. Studies undertaken in this spirit are beginning to address important open problems, such as the role of diverse cell types [24,26,27], pharmaceuticals [28], neuromodulation [29,30,31] and the statistics of connectivity [32,24] in shaping circuit dynamics and computation. The goal of extracting computation from detailed modeling motivates the use of high-resolution imaging to determine not just a connectivity matrix but also the morphologies of dendritic arbors that influence small circuit computation [33,34,35].
+
+
+
+
+Make sure we include subcortical and mention different species.
+Look into Simon Laughlin, William Bialek, Sejnowski, Churchland, Pillow

@@ -1,0 +1,63 @@
+\section{Nonnegative sparse coding as a modern variant of the efficient coding hypothesis}
+
+Early theories of efficient coding
+\citep{Barlow1961,Attneave1954}
+were developed based on the visual system.
+Realizing that the set of natural scenes was much smaller
+than the set of all possible images,
+it was argued that the visual system should not 
+waste  resources on processing arbitrary images.
+Instead, the nervous system should use statistical knowledge
+about its environment to represent the relevant input space 
+as economically as possible.
+
+Modern renditions of this theory
+(such as sparse coding \citep{OlshausenField1996} and
+\ac{ICA} \citep{BellSejnowski1997})
+have refined the original hypotheses
+by tying neuronal response properties 
+to the statistics of the natural environment
+(for a review, see \cite{SimoncelliOlshausen2001}).
+These theories were shaped by two
+fundamental empirical observations
+about early visual cortex:
+1) a neuron's \textbf{\ac{RF}} resembled a decomposition of the visual
+stimulus into a series of local, largely independent feature components
+(e.g., a 2-D Gabor function is basically a local approximation of the
+directional spatial derivative of an image),
+and 2) any individual neuron responded only sparsely to a small subset of
+stimulus features (e.g., orientation or color at a particular spatial location).
+Thus a neuron's \ac{RF} could be understood as a
+sparse, low-dimensional embedding of high-dimensional input stimuli.
+Such a representation is desirable from an energy-expenditure point of view,
+since it allows the visual system to represent
+any visual stimulus by activating only a small set of neurons,
+while most neurons in the population remain silent.
+
+Olshausen and Field \citep{OlshausenField1996} found that
+linear sparse coding of natural images
+yielded features qualitatively similar to
+\acp{RF} of simple cells in \ac{V1},
+thus giving empirically observed \acp{RF} an information-theoretic explanation.
+However, as pointed out by Hoyer \citep{Hoyer2003}, sparse coding falls short
+of providing a literal interpretation for \ac{V1} simple-cell behavior
+for two reasons:
+1) every neuron could be either positively or negatively active,
+and 2) the input to the neural network was typically double-signed,
+whereas \ac{V1} neurons receive visual input from the \ac{LGN} in the form of
+separated, nonnegative ON and OFF channels.
+
+Hoyer \citep{Hoyer2002,Hoyer2003} proposed \ac{NSC} as a way 
+to transform Olshausen and Field's sparse coding 
+from a relatively abstract model of image representation 
+into a biologically plausible model of early visual cortex processing
+by enforcing both input signal and neuronal activation to be nonnegative.
+This seemingly simple change had remarkable consequences on the quality of the
+sensory representation:
+Whereas elementary image features in the standard sparse coding model could
+``cancel each other out'' through subtractive interactions,
+enforcing nonnegativity ensured that features combined additively,
+much like the intuitive notion of combining parts to form a whole. The representations resulting from this model closely resembled visualizations of receptive fields in V1 and other cortical areas, suggesting that parts-based representations are employed in cortex. Although inhibitory connections can possibly be interpreted as a way for parts to cancel, this does not equate to negative coding. In Hoyer's model, he interpreted some weights as E-E connections and others as I-E connections, but all were restricted to a nonnegative domain. \emilyNote{parts-based representations are "better" because they can more closely describe cortical representations}
+\emilyNote{from Mike: "- Inhibition is not negative coding. The negative sign of inhibitory weights is not part of W. So Hoyer interpreted the first half of weights in W as E->E and the second as I->E, but all the synaptic weights therein were nonnegative." There's probably a better way to work this into the paragraph}
+
+\jeffNote{Why is parts-based better or more plausible than lateral inhibition that could ``cancel each other out''?}

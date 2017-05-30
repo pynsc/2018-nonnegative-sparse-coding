@@ -1,0 +1,202 @@
+%% This is file `elsarticle-template-1-num.tex',
+%%
+%% Copyright 2009 Elsevier Ltd
+%%
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%%
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%%
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%%
+%% $Id: elsarticle-template-1-num.tex 149 2009-10-08 05:01:15Z rishi $
+%% $URL: http://lenova.river-valley.com/svn/elsbst/trunk/elsarticle-template-1-num.tex $
+%%
+\documentclass[review,12pt,sort&compress]{elsarticle}
+
+% http://www.cell.com/trends/neurosciences/authors#2
+
+%% The graphicx package provides the includegraphics command.
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{booktabs}
+
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{afterpage}
+\usepackage{rotating}
+
+% \usepackage{hyphenat}
+% \hyphenation{high-di-men-sion-al}
+
+%  Add  todonotes package for commenting (xargs enables newcommandx for making comments for each person)
+\usepackage{xargs}
+\usepackage[textsize=footnotesize]{todonotes}
+\setlength{\marginparwidth}{3.5cm}
+
+% Comment style for mike, blue background + border
+\newcommandx{\mikeNote}[2][1=]{\todo[linecolor=black,backgroundcolor=blue!25,bordercolor=blue,#1]{#2 ---Mike}}
+% Comment style for kris, red background + border.
+\newcommandx{\krisNote}[2][1=]{\todo[linecolor=black,backgroundcolor=red!25,bordercolor=red,#1]{#2 ---Kris}}
+% Comment style for emily, green background + border.
+\newcommandx{\emilyNote}[2][1=]{\todo[linecolor=black,backgroundcolor=green!25,bordercolor=green,#1]{#2 ---Emily}}
+% Comment style for jeff, orange background + border.
+\newcommandx{\jeffNote}[2][1=]{\todo[linecolor=black,backgroundcolor=orange!25,bordercolor=orange,#1]{#2 ---Jeff}}
+% Comment style for nik, orange background + border.
+\newcommandx{\nikNote}[2][1=]{\todo[linecolor=black,backgroundcolor=yellow!25,bordercolor=yellow,#1]{#2 ---Nik}}
+
+%% Get rid of these ugly boxes around links
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    linkcolor={black!50!black},
+    citecolor={black!50!black},
+    urlcolor={black!80!black}
+}
+
+%% where to find figures
+\graphicspath{ {artwork/} }
+
+%% display line numbers
+% \usepackage{lineno}
+
+%% use acronyms
+\usepackage[acronym,toc,shortcuts]{glossaries}
+
+%% Can't seem to get rid of this stupid footnote... If you don't specify
+%% the journal name, it will just say submitted to Elsevier.
+\journal{Trends in Neurosciences}
+% Don't include all these in the glossary: Instead pick the central ones by hand
+% and explain
+\newacronym{ICA}{ICA}{independent component analysis}
+\newacronym{LDR}{LDR}{linear dimensionality reduction}
+\newacronym{LGN}{LGN}{lateral geniculate nucleus}
+\newacronym{MST}{MST}{medial superior temporal area}
+\newacronym{MSTd}{MSTd}{dorsal subregion of the medial superior temporal area}
+\newacronym{MT}{MT}{middle temporal area}
+\newacronym{NMF}{NMF}{nonnegative matrix factorization}
+\newacronym{NSC}{NSC}{nonnegative sparse coding}
+\newacronym{PCA}{PCA}{principal component analysis}
+\newacronym{RF}{RF}{receptive field}
+\newacronym{RSC}{RSC}{retrosplenial cortex}
+\newacronym{SNN}{SNN}{spiking neural network}
+\newacronym{STDP}{STDP}{spike-timing dependent plasticity}
+\newacronym{STDPH}{STDPH}{spike-timing dependent plasticity and homeostatic synaptic scaling}
+\newacronym{V1}{V1}{primary visual cortex}
+\newacronym{WTA}{WTA}{winner-take-all}
+
+
+\begin{document}
+
+\begin{frontmatter}
+
+% 8 words max!
+\title{Sparse coding and dimensionality reduction in cortex}
+
+
+
+% More ideas
+% \title{Nonnegative sparse coding in the brain}
+% \title{Nonnegative sparse coding in the brain: an update}
+% \title{Nonnegative sparse coding is all over the brain}
+% \title{Nonnegative sparse coding: a ubiquitous neuronal computation?}
+% \title{Cortical representations: a consequence of nonnegative sparse coding}
+% \title{Cortical neurons are performing nonnegative sparse coding}
+% \title{How the brain performs nonnegative sparse coding}
+% \title{The how and where of nonnegative sparse coding in the brain}
+% \title{Neural basis of nonnegative sparse coding}
+
+% Too long
+% \title{Understanding neuronal information processing within the framework of nonnegative sparse coding}
+% \title{Finding efficient cortical representations of high-dimensional stimuli with nonnegative sparse coding}
+% \title{Nonnegative sparse coding: A common framework for understanding cortical representations of high-dimensional stimuli}
+% \title{Linear dimensionality reduction as a common mechanism for sparse, parts-based representation across the brain}
+
+\author[UCI,UW]{Michael Beyeler\corref{cor1}}
+\author[UCI]{Emily Rounds\corref{cor1}}
+\author[Sandia]{Kristofor D. Carlson}
+\author[UCI]{Nikil Dutt}
+\author[UCI]{Jeffrey L. Krichmar}
+%
+\address[UCI]{University of California, Irvine, Irvine, CA, USA}
+\address[UW]{University of Washington, Seattle, WA, USA}
+\address[Sandia]{Sandia National Laboratories, Albuquerque, NM, USA}
+\cortext[cor1]{These authors contributed equally to this work.}
+
+
+% ---------- Version 3 -----------------
+% must be between 100-120 words
+% Neural is the adjective for nerve and neuronal is the adjective for neuron.
+\begin{abstract}
+Supported by recent computational studies, sparse coding and dimensionality reduction is emerging as a ubiquitous coding strategy across brain regions and modalities. Sparse coding and dimensionality reduction allow neurons to efficiently encode high-dimensional stimulus spaces using a sparse and parts-based population code. Computationally, this can be realized by combining sparse coding with dimensionality reduction techniques, such as nonnegative matrix factorization (NMF), to achieve nonnegative sparse coding (NSC) in neural networks. Reducing the dimensionality of complex, multimodal sensory streams is particularly important for brain areas to represent the world. In this article, we provide an overview of NSC, summarize evidence for its role in neural computation in several disparate regions of the brain, and speculate that specific forms of synaptic plasticity and homeostatic modulation may underlie its implementation. We  suggest that NSC may be an organizing principle in the nervous system.
+\end{abstract}
+
+%% ----------- Version 2 ---------------
+% This needs to be reframed for NSC:
+% Recently, increasing evidence has shown that the classical receptive fields of cortical neurons can be derived from the application of \ac{NMF} or similar dimensionality reduction techniques. This leads us to propose that neurons in regions across the brain may be  performing linear dimensionality reduction on their inputs in order to represent relevant information about stimuli in a concise, compressed format. In the first part of the paper, we review the NMF algorithm and how it might be implemented by STDP, as well as other work that provides evidence for dimensionality reduction occurring in the brain. In the remainder of the paper, we present evidence to support the idea that STDP, under certain conditions, is a possible mechanism by which neurons can implement \ac{NMF}-like linear dimensionality reduction. We speculate that this process may be related to energy  conservation; since the brain consumes a great deal of the body's energy resources, it is imperative that neuronal representations be as efficient and sparse as possible. Linear dimensionality reduction is an excellent candidate solution that the brain may implement to make such representations possible. 
+
+
+
+% 2-6 keywords only
+\begin{keyword}
+efficient coding \sep
+sparse coding \sep
+dimensionality reduction \sep
+nonnegative matrix factorization \sep
+neural computation \sep
+spike-timing dependent plasticity
+\end{keyword}
+
+% 1) Trends in Neuroscience
+% 1b) Trends in Cognitive Neuro xD
+% 2) eLife or PNAS (not sure about PNAS)
+% 3) ?
+\end{frontmatter}
+\footnote{Sandia National Laboratories is a multiprogram laboratory managed and operated by National Technology and Engineering Solutions of Sandia, LLC, for the U.S. Department of Energy's National Nuclear Security Administration under contract DE-NA0003525.}
+
+%%
+%% Start line numbering here if you want
+%%
+% \linenumbers
+
+\setcounter{secnumdepth}{0} %% no section numbering
+
+%% main text
+\include{01-introduction}
+\include{02-nsc-background}
+\include{03-nsc-evidence-1}
+\include{03-nsc-evidence-2}
+\include{03-nsc-evidence-3}
+% \include{04-discussion}
+\include{05-conclusion}
+\include{06-method-boxes}
+\include{07-trends-box}
+\include{08-questions-box}
+\include{09-glossary}
+% \include{10-notes}
+
+% --- Apparently the glossary isn't just a list of acronyms...
+% % the glossary with all acronyms explained
+% % use brackets in acronym definition above to specify description
+% \printglossary[type=\acronymtype, title=Glossary, nonumberlist]
+
+
+
+\clearpage
+\section{References}
+% \bibliographystyle{bibstyle}\biboptions{authoryear}
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+
+\end{document}

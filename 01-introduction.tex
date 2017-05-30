@@ -1,0 +1,95 @@
+% From the Trends guide:
+%
+% Start with an accessible introduction outlining why the subject is
+% important and why you are writing about it now.
+% Please use a descriptive heading rather than "Introduction" for this
+% section, and be sure to state your opinion clearly.
+
+\section{A need for compressed representations of a high-dimensional world}
+\label{sec:introduction}
+
+\jeffNote{Major comment 1: NSC is not a framework. And it is not a principle.  It is a method. I've changed the text to reflect this in several places}
+\jeffNote{Major comment 2: NMF == NSC.  You seem to be using these interchangeably. How does NSC differ from NMF?  Or does it?  This needs to be defined clearly.  For example, we use NMF only in MSTd, but we sometimes call this NSC. I don't see anywhere we combine NMF with sparse coding. Or is that sparseness implied?}
+\jeffNote{Major comment 3: In our examples, RSC and MSTd, we do not report how much we reduced dimensionality or how sparse our representations are.  This needs to be addressed.}
+\jeffNote{Major comment 4: We need to make an argument why non-negative is biologically plausible. I could counter and say that there is more inhibition than excitation in the brain. Isn't inhibition negative coding?}
+\jeffNote{Major comment 5: Make the figures as big as possible. Fill the page if you can. We don't want to strain reviewers eyes.}
+\jeffNote{Major commen 6: Box 3 needs to be re-written @Kris and @Emily. This is about the evolutionary framework, not the RSC. Describe CARLsim, how it interfaces with ECJ and the method we have on various datasets. Please include a figure (reproducing from one of our papers (Carlson et al., CARLsim 3 paper, or Rounds paper is fine). All those RSC details should go in the "Understanding neuronal response properties" section when describing the maze experiments}
+
+
+Brains face the fundamental challenge of 
+processing, storing, and representing high-dimensional stimuli
+using patterns of neural activity.
+This challenge is complicated by strict constraints on metabolic cost
+\citep{Lennie2003}
+and the widespread existence of anatomical bottlenecks 
+\citep{Kempermann2002,BarGad2003_Review,Babinsky1993,GanguliSompolinsky2012},
+which often force the information stored in a large number of neurons
+to be compressed into a typically $10 - 10,000$ fold smaller
+population of downstream neurons. 
+\jeffNote{where did the 10 to 10,000 number come from?  Can you provide a reference?}
+% which force the information stored across a large number of neurons 
+% to be compressed into a small number of downstream neurons.
+
+One potential approach to addressing this challenge is to reduce the number
+of variables required to represent a particular stimulus space;
+a process known as \textbf{dimensionality reduction} (see Glossary).
+This idea features prominently in 
+efficient coding theories of brain function
+\citep{Barlow1961,Barlow2001,Atick1992,Linsker1990},
+which posit that the brain performs dimensionality reduction 
+% Mike: This sentence didn't make sense. The idea is that
+% anatomical bottlenecks in the brain (e.g., retina -> V1)
+% perform dimensionality reduction. Not "to reduce information
+% bottlenecks"
+% to reduce information bottlenecks
+by maximizing mutual information between the
+high-dimensional input and the low-dimensional output 
+of neuronal populations.
+Several modern variants of the efficient coding hypothesis,
+such as \ac{ICA} \citep{BellSejnowski1997}
+and \acf{NSC} \citep{Hoyer2002,Hoyer2004}, suggest that the role of cortical representations is to
+further reduce the redundancy of the sensory signal 
+by separating it into its underlying causes,
+a process known as \textbf{factor analysis}.
+
+Here we propose that a variety of neuronal responses
+can be understood by applying sparse coding and dimensionality reduction to a brain regions neuronal inputs.
+Using data analysis and computer simulations,
+we found that \ac{NSC},
+a combination of \acf{NMF} \citep{PaateroTapper1994,LeeSeung1999}
+and sparse population coding \citep{Field1994} (Box 1),
+\emilyNote{from Mike: "NSC = NMF + sparseness (Eq. 1). Then, if you use Matlab's NMF function, some constant sparseness level is implied"}
+\emilyNote{just moved stuff from box up here and added a couple things}
+generates low-dimensional embeddings of 
+high-dimensional stimulus spaces 
+that resemble neuronal population responses 
+in a variety of brain regions. 
+\ac{NSC} is adapted from NMF by imposing a sparsity constraint. The goal of \ac{NSC} is then to find a linear decomposition of \textbf{V}
+that minimizes the reconstruction error,
+while guaranteeing that both \textbf{W} and \textbf{H} are sparse.
+This can be achieved by minimizing the following cost function
+\citep{Hoyer2002}:
+\begin{equation}
+\min_{\mathbf{W}, \mathbf{H}} \frac{1}{2} ||\mathbf{X} -\mathbf{WH}||^2 + \lambda \sum_{ij} f(H_{ij}),
+\end{equation}
+subject to the constraints
+$\forall ij: \mathbf{W}_{ij} \geq 0$, $\mathbf{H}_{ij} \geq 0$, and
+$||w^{(i)}|| = 1$, where $w^{(i)}$ denotes the $i$th column of \textbf{W}.
+Here, the left-hand term describes the reconstruction error, which can
+be minimized with \ac{NMF},
+and the right-hand term describes the sparseness of the decomposition. Our experiments were conducted using a built-in function for \ac{NMF} in MATLAB, which incorporates some constant level of sparsity.
+
+Our observations suggest that 
+commonly reported neuronal response properties might simply be a 
+by-product of neurons performing a biological equivalent of 
+dimensionality reduction on their inputs 
+via Hebbian-like learning mechanisms.
+
+% \mikeNote{I feel like this needs some indication of the role of neurons/synapses in NSC. Some version of: In this framework, neurons perform the decomposition via STDPH, and local competition makes sure the embedding is sparse.}
+
+% Under certain conditions, STDPH might be formally equivalent to \ac{NMF} \citep{Carlson2013, PehlevanChklovskii2014} (Box 2), which decomposes input matrices into key components w (basis functions that are analogous to synaptic weights) and h (a matrix of hidden coefficients by which the basis vectors are weighted). It is known that networks of neurons are able to extract hidden causes in the input signal through STDP \citep{Nessler2009,MorenoBoteDrugowitsch2015}, equivalent to the h part of NMF's method of decomposition.
+
+% \emilyNote{I feel that bringing up STDP's extraction of hidden causes seems out of place without describing how it pertains to dimensionality reduction so I added some stuff about it but it could be worded better/might be too long now.}
+
+% \mikeNote{Therefore, I would just cut it all out... We have the Boxes to explain the math in detail, and we don't have enough space to say things twice.}
+
