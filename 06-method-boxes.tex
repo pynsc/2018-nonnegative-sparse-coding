@@ -67,6 +67,14 @@ is controlled by the parameter $\lambda$ ($\lambda \geq 0$), whereas
 the form of $f$ defines how sparseness is measured
 (a typical choice is the L1 norm on \textbf{H}).
 
+\jeffNote{I don't see anywhere we combine NMF with sparse coding. Or is that sparseness implied?}
+\mikeNote{Added the bit on sparsity in NMF}
+Note that several modern implementations of the \ac{NMF} algorithm,
+such as Matlab's \texttt{nnmf.m} function,
+already implement sparsity constraints,
+hence making \ac{NMF} indistinguishable form \ac{NSC}.
+
+
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
 
 \section{Box 2: Equivalence of NMF to STDPH and neural mechanisms of NSC}
@@ -77,10 +85,11 @@ the form of $f$ defines how sparseness is measured
 % First paragraph - STDP  on a single synapse
 % Second paragraph - STDP on networks?
 \Acf{STDP} is a form of Hebbian learning in which synaptic weight changes
-\jeffNote{fix ref}
-depend on the relative timing between pre- and post-synaptic spikes (??? cite Bi \& Poo; Song \& Abbott). If pre-synaptic spike counts integrated over a critical window precede those of the post-synaptic neuron, then long-term potentiation (LTP) is induced, strengthening the weight. Otherwise, long-term depression (LTD) is induced, suppressing the weight. STDP is ubiquitous throughout the brain across the lifespan and can take on different forms \citep{Caporale2008STDP,Holtmaat2009STDP}. Simulations of \ac{STDP} can result in runaway feedforward excitation such that produces unrealistic firing rates. To obviate this problem in biology, the brain uses homeostatic mechanisms that modulate synaptic inputs and neuronal firing thresholds \citep{Watt2010}.
+% \jeffNote{fix ref}
+depend on the relative timing between pre- and post-synaptic spikes \citep{BiPoo1998,SongAbbott2000}. If pre-synaptic spike counts integrated over a critical window precede those of the post-synaptic neuron, then long-term potentiation (LTP) is induced, strengthening the weight. Otherwise, long-term depression (LTD) is induced, suppressing the weight. STDP is ubiquitous throughout the brain across the lifespan and can take on different forms \citep{Caporale2008STDP,Holtmaat2009STDP}. Simulations of \ac{STDP} can result in runaway feedforward excitation such that produces unrealistic firing rates. To obviate this problem in biology, the brain uses homeostatic mechanisms that modulate synaptic inputs and neuronal firing thresholds \citep{Watt2010}.
 
 \jeffNote{see my ??? above regarding the appropriate STDP references.}
+\emilyNote{Not sure what this comment refers to since the rest of the paragraph is about homeostasis}
 % One well-known homeostatic mechanism is synaptic scaling,
 % wherein synaptic efficacy is regulated by neuronal activity
 % to prevent runaway increases or decreases in synaptic strength.
@@ -134,8 +143,14 @@ To induce sparsity in networks of neurons, there must be a mechanism that causes
 \section{Box 3: Evolutionary Algorithm and SNN Evaluation}
 \label{box:EA}
 Evolutionary algorithms are a class of optimization algorithms loosely based on concepts from evolution. A set of individuals (in this case, spiking neural networks, or SNNs) have a set of parameters to be evolved, which are initialized for the first generation with size $N$. The population undergoes a training and a testing phase followed by evaluation as determined through a user-defined function that measures how well individuals in the population meet the desired criteria. The resulting value is the individual’s level of \textbf{fitness}. A certain number of individuals are then chosen as parents for the next generation, and undergo \textbf{crossover} and/or \textbf{mutation} to produce the new population of individuals. This process continues until a good solution is found.
-In the experiments in which SNNs were evolved to match electrophysiological data, the population size was $N = 15$. The training phase used trials from the experimental dataset from retrosplenial cortex (RSC), recorded as rats ran along a W-shaped track. At each position along the track, behavioral metrics (linear velocity, angular velocity, allocentric position, and head direction) were recorded along with neuronal firing rates. The track could occupy different positions in the room (two locations in a single recording session, $\alpha$ and $\beta$) and each track position had an associated outbound (a sequence of left-right-left (LRL) turns) and inbound (right-left-right (RLR)) run. The rats completed each run $\sim$20 times ($\sim$20 trials per recording session, 71 in total) for each track position and route combination ($\alpha$LRL, $\alpha$RLR, $\beta$LRL, and $\beta$RLR). We randomly selected trials from half the trials in the dataset for training (the other half were reserved for the testing phase). The testing phase was the same as the training phase except STDPH was disabled. Following testing, we measured correlations between synthetic and electrophysiological activity patterns and chose synthetic neuronal matches for each experimentally observed firing pattern based on the best correlations between them. Following fitness evaluation, we used \textbf{binary tournament selection} to choose three new parents (each parent produced five children) for the next generation of individuals. Each new parent underwent mutation without crossover to produce a new child.
-To compare experimental neuronal responses with synthetic ones, we analyzed functional neuron types using methods described in Alexander and Nitz \citep{AlexanderNitz2015}. Activations averaged over trials for every neuron in the population were cross-correlated to reconstruct agent’s position within a route. To reconstruct position with respect to one route (such as in $\alpha$LRL), trials were divided into two sets, even and odd, to measure consistency of response. To reconstruct position between track positions (such as in $\alpha$$\beta$LRL), activations over trials associated with the $\alpha$ track position were averaged and cross-correated with averaged activations over trials associated with $\beta$. High correlations between same positions (e.g., bin 1 (row) and bin 1 (column)) indicate a good reconstruction of position from ensemble activity patterns. Within-position reconstructions (even vs. odd trials) yielded accurate positional reconstructions (low error), but between-position (i.e., $\alpha$ vs. $\beta$ trials) were associated with high error and did not yield accurate reconstructions of position, which suggests that the population differentiates routes situated in different parts of space.
+Carlson et al. \citep{Carlson2014} developed an automated tuning framework that incorporates a plugin to CARLsim for running an evolutionary algorithm using the ECJ library \citep{white2012}. The plugin utilizies a parameter tuning file that is edited by the user to specifiy parameters related to the evolutionary algorithm, including number of generations to run, parameters to be evolved and their ranges, mutation and crossover rates, selection method, and number of parents and children for each generation. The plugin is used to pass information about the population from CARLsim to  ECJ, which uses that information to instantiate a population of individuals. The networks in the population are created, trained, tested, and evaluated in CARLsim. Evaluation is performed using a fitness function that measures the criteria the user is optimizing. Following fitness evaluation, the scores for each individual in the population are handed off to ECJ, which uses the selection criteria defined in the parameter file to choose parents for the next generation. The chosen individuals then undergo crossover and/or mutation, depending on what the user has defined in the file, and then a new generation of individuals is instantiated by passing parameter values to CARLsim, where the SNNs are created. An overview of this process can be seen in Figure \ref{fig:CarlsimECJ}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=.8]{CarlsimECJ}
+    \caption{CARLsim-ECJ pipeline for evolving SNNs. General approach to evolving SNNs using ECJ. ECJ is used to initialize the parameters being tuned, which are passed to CARLsim and used to set the parameters of each network in the population of SNNs (red arrow). The SNNs are initialized, run, and evaluated using CARLsim. Following fitness evaluation using some user-defined criteria, the resulting fitness values for each individual in the population are sent to ECJ (black arrow). ECJ chooses parents from the population and performs selection, replication, and mutation on the parameters of the parent individuals in order to initialize the next generation of SNNs. This continues until an ideal solution is found or until a user-defined number of evolutionary runs are completed. Adapted from \citep{Carlson2014}.}
+	\label{fig:CarlsimECJ}
+\end{figure}
 
 
 % This Drugowitsch paper seems highly relevant:

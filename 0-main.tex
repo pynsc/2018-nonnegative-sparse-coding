@@ -30,7 +30,7 @@
 \usepackage{array}
 \usepackage{booktabs}
 
-\usepackage{caption}
+% \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{multirow}
 \usepackage{tabularx}
@@ -42,7 +42,7 @@
 
 %  Add  todonotes package for commenting (xargs enables newcommandx for making comments for each person)
 \usepackage{xargs}
-\usepackage[textsize=footnotesize]{todonotes}
+\usepackage[textsize=scriptsize]{todonotes}
 \setlength{\marginparwidth}{3.5cm}
 
 % Comment style for mike, blue background + border
@@ -75,10 +75,11 @@
 
 %% Can't seem to get rid of this stupid footnote... If you don't specify
 %% the journal name, it will just say submitted to Elsevier.
-\journal{Trends in Neurosciences}
+\journal{nobody in particular}
 % Don't include all these in the glossary: Instead pick the central ones by hand
 % and explain
 \newacronym{ICA}{ICA}{independent component analysis}
+\newacronym{IT}{IT}{inferotemporal cortex}
 \newacronym{LDR}{LDR}{linear dimensionality reduction}
 \newacronym{LGN}{LGN}{lateral geniculate nucleus}
 \newacronym{MST}{MST}{medial superior temporal area}
@@ -138,7 +139,10 @@
 % must be between 100-120 words
 % Neural is the adjective for nerve and neuronal is the adjective for neuron.
 \begin{abstract}
-Supported by recent computational studies, sparse coding and dimensionality reduction is emerging as a ubiquitous coding strategy across brain regions and modalities. Sparse coding and dimensionality reduction allow neurons to efficiently encode high-dimensional stimulus spaces using a sparse and parts-based population code. Computationally, this can be realized by combining sparse coding with dimensionality reduction techniques, such as nonnegative matrix factorization (NMF), to achieve nonnegative sparse coding (NSC) in neural networks. Reducing the dimensionality of complex, multimodal sensory streams is particularly important for brain areas to represent the world. In this article, we provide an overview of NSC, summarize evidence for its role in neural computation in several disparate regions of the brain, and speculate that specific forms of synaptic plasticity and homeostatic modulation may underlie its implementation. We  suggest that NSC may be an organizing principle in the nervous system.
+% MB These first sentences are so repetitive.
+Supported by recent computational studies, sparse coding and
+dimensionality reduction is emerging as a ubiquitous coding strategy across brain regions and modalities. Sparse coding and dimensionality reduction allow neurons to efficiently encode high-dimensional stimulus spaces using a sparse and parts-based population code.
+Computationally, this can be realized by combining sparse coding with dimensionality reduction techniques, such as nonnegative matrix factorization (NMF), to achieve nonnegative sparse coding (NSC) in neural networks. Reducing the dimensionality of complex, multimodal sensory streams is particularly important for brain areas to represent the world. In this article, we provide an overview of NSC, summarize evidence for its role in neural computation in several disparate regions of the brain, and speculate that specific forms of synaptic plasticity and homeostatic modulation may underlie its implementation. We  suggest that NSC may be an organizing principle in the nervous system.
 \end{abstract}
 
 %% ----------- Version 2 ---------------

@@ -8,14 +8,7 @@
 \section{A need for compressed representations of a high-dimensional world}
 \label{sec:introduction}
 
-\jeffNote{Major comment 1: NSC is not a framework. And it is not a principle.  It is a method. I've changed the text to reflect this in several places}
-\jeffNote{Major comment 2: NMF == NSC.  You seem to be using these interchangeably. How does NSC differ from NMF?  Or does it?  This needs to be defined clearly.  For example, we use NMF only in MSTd, but we sometimes call this NSC. I don't see anywhere we combine NMF with sparse coding. Or is that sparseness implied?}
-\jeffNote{Major comment 3: In our examples, RSC and MSTd, we do not report how much we reduced dimensionality or how sparse our representations are.  This needs to be addressed.}
-\jeffNote{Major comment 4: We need to make an argument why non-negative is biologically plausible. I could counter and say that there is more inhibition than excitation in the brain. Isn't inhibition negative coding?}
-\jeffNote{Major comment 5: Make the figures as big as possible. Fill the page if you can. We don't want to strain reviewers eyes.}
-\jeffNote{Major commen 6: Box 3 needs to be re-written @Kris and @Emily. This is about the evolutionary framework, not the RSC. Describe CARLsim, how it interfaces with ECJ and the method we have on various datasets. Please include a figure (reproducing from one of our papers (Carlson et al., CARLsim 3 paper, or Rounds paper is fine). All those RSC details should go in the "Understanding neuronal response properties" section when describing the maze experiments}
-
-
+\mikeNote{IMO the abstract used to make more sense. The latest edits have made the first half very repetitive and at times redundant: ``Computationally, this (meaning sparse coding and dimensionality reduction) can be realized by combining sparse coding with dimensionality reduction techniques''...etc.}
 Brains face the fundamental challenge of 
 processing, storing, and representing high-dimensional stimuli
 using patterns of neural activity.
@@ -24,9 +17,14 @@ This challenge is complicated by strict constraints on metabolic cost
 and the widespread existence of anatomical bottlenecks 
 \citep{Kempermann2002,BarGad2003_Review,Babinsky1993,GanguliSompolinsky2012},
 which often force the information stored in a large number of neurons
-to be compressed into a typically $10 - 10,000$ fold smaller
-population of downstream neurons. 
-\jeffNote{where did the 10 to 10,000 number come from?  Can you provide a reference?}
+to be compressed into an orders of magnitude smaller population
+of downstream neurons;
+\mikeNote{added concrete examples and ref}
+for example, storing information from 100 million photoreceptors 
+in 1 million optic nerve fibers,
+or resulting in a $10 - 10,000$ fold convergence from cortex to the basal ganglia
+\citep{GanguliSompolinsky2012}.
+% \jeffNote{where did the 10 to 10,000 number come from?  Can you provide a reference?}
 % which force the information stored across a large number of neurons 
 % to be compressed into a small number of downstream neurons.
 
@@ -47,45 +45,68 @@ high-dimensional input and the low-dimensional output
 of neuronal populations.
 Several modern variants of the efficient coding hypothesis,
 such as \ac{ICA} \citep{BellSejnowski1997}
-and \acf{NSC} \citep{Hoyer2002,Hoyer2004}, suggest that the role of cortical representations is to
+\jeffNote{MC1: NSC is not a framework. And it is not a principle.  It is a method. I've changed the text to reflect this in several places}
+\mikeNote{OK. In Hoyer's work (after 2002), NSC was a way to understand RFs and neuronal responses in the context of dimensionality reduction; i.e. ``this is why neurons do what they do''. But I guess ultimately it should be the same ``thing'' as sparse coding: a model, a theory, or a method.}
+and \ac{NSC} \citep{Hoyer2002,Hoyer2004}, suggest that the role of cortical representations is to
 further reduce the redundancy of the sensory signal 
 by separating it into its underlying causes,
 a process known as \textbf{factor analysis}.
 
 Here we propose that a variety of neuronal responses
-can be understood by applying sparse coding and dimensionality reduction to a brain regions neuronal inputs.
-Using data analysis and computer simulations,
-we found that \ac{NSC},
-a combination of \acf{NMF} \citep{PaateroTapper1994,LeeSeung1999}
+can be understood as an emergent property of efficient population coding
+based on dimensionality reduction and sparse coding.
+% can be understood by applying sparse coding and dimensionality reduction to a brain region's neuronal inputs.
+In specific, computational evidence from data analyses and computer simulations
+suggest that \ac{NSC},
+a combination of \ac{NMF} \citep{PaateroTapper1994,LeeSeung1999}
+\jeffNote{MC2: NMF == NSC.  You seem to be using these interchangeably. How does NSC differ from NMF?}
+% Or does it? This needs to be defined clearly.  For example, we use NMF only in MSTd, but we sometimes call this NSC. I don't see anywhere we combine NMF with sparse coding. Or is that sparseness implied?}
+\mikeNote{Here we are explicit: NSC = NMF + sparsity. Need to be consistent throughout. See Methods box, too.}
 and sparse population coding \citep{Field1994} (Box 1),
-\emilyNote{from Mike: "NSC = NMF + sparseness (Eq. 1). Then, if you use Matlab's NMF function, some constant sparseness level is implied"}
-\emilyNote{just moved stuff from box up here and added a couple things}
 generates low-dimensional embeddings of 
 high-dimensional stimulus spaces 
 that resemble neuronal population responses 
-in a variety of brain regions. 
-\ac{NSC} is adapted from NMF by imposing a sparsity constraint. The goal of \ac{NSC} is then to find a linear decomposition of \textbf{V}
-that minimizes the reconstruction error,
-while guaranteeing that both \textbf{W} and \textbf{H} are sparse.
-This can be achieved by minimizing the following cost function
-\citep{Hoyer2002}:
-\begin{equation}
-\min_{\mathbf{W}, \mathbf{H}} \frac{1}{2} ||\mathbf{X} -\mathbf{WH}||^2 + \lambda \sum_{ij} f(H_{ij}),
-\end{equation}
-subject to the constraints
-$\forall ij: \mathbf{W}_{ij} \geq 0$, $\mathbf{H}_{ij} \geq 0$, and
-$||w^{(i)}|| = 1$, where $w^{(i)}$ denotes the $i$th column of \textbf{W}.
-Here, the left-hand term describes the reconstruction error, which can
-be minimized with \ac{NMF},
-and the right-hand term describes the sparseness of the decomposition. Our experiments were conducted using a built-in function for \ac{NMF} in MATLAB, which incorporates some constant level of sparsity.
+\emilyNote{just moved stuff from box up here and added a couple things}
+\mikeNote{I don't think the new math paragraph makes sense here, at least not in its current form. So I commented it out. It duplicates what's in the Methods box, goes straight into math, uses terminology that has not been introduced (V, W, H, reconstruction error, etc.), and undermines the NMF intro from Section ``Empirical evidence...''.}
+in a variety of brain regions.
+\mikeNote{Added ``Reminiscent of...'' etc.}
+Reminiscent of basis function representations
+\citep{PougetSejnowski1997,PougetSnyder2000,Poggio1990},
+these embeddings are both sparse and parts-based,
+allowing for perceptual or behavioral variables of interest
+to be represented by taking a linear combination of neuronal responses.
+Furthermore, we suggest that these computations might be implemented in the brain
+through mechanisms of synaptic plasticity and homeostasis,
+which were previously shown to be capable of
+performing statistical inference on synaptic inputs
+\citep{Nessler2009,Carlson2013,MorenoBoteDrugowitsch2015,Oja1982}.
 
-Our observations suggest that 
+% The goal of \ac{NSC} is then to find a linear decomposition of \textbf{V}
+% that minimizes the reconstruction error,
+% while guaranteeing that both \textbf{W} and \textbf{H} are sparse.
+% This can be achieved by minimizing the following cost function
+% \citep{Hoyer2002}:
+% \begin{equation}
+% \min_{\mathbf{W}, \mathbf{H}} \frac{1}{2} ||\mathbf{X} -\mathbf{WH}||^2 + \lambda \sum_{ij} f(H_{ij}),
+% \end{equation}
+% subject to the constraints
+% $\forall ij: \mathbf{W}_{ij} \geq 0$, $\mathbf{H}_{ij} \geq 0$, and
+% $||w^{(i)}|| = 1$, where $w^{(i)}$ denotes the $i$th column of \textbf{W}.
+% Here, the left-hand term describes the reconstruction error, which can
+% be minimized with \ac{NMF},
+% and the right-hand term describes the sparseness of the decomposition.
+% \jeffNote{I don't see anywhere we combine NMF with sparse coding. Or is that sparseness implied?}
+% Our experiments were conducted using a built-in function for \ac{NMF} in MATLAB,
+% \mikeNote{This sentence will seem out of place to readers who are unaware that you're trying to address one of Jeff's comments. I added a note in the Methods box instead.}
+% which incorporates some constant level of sparsity.
+
+Overall, our observations suggest that 
 commonly reported neuronal response properties might simply be a 
 by-product of neurons performing a biological equivalent of 
 dimensionality reduction on their inputs 
 via Hebbian-like learning mechanisms.
 
-% \mikeNote{I feel like this needs some indication of the role of neurons/synapses in NSC. Some version of: In this framework, neurons perform the decomposition via STDPH, and local competition makes sure the embedding is sparse.}
+
 
 % Under certain conditions, STDPH might be formally equivalent to \ac{NMF} \citep{Carlson2013, PehlevanChklovskii2014} (Box 2), which decomposes input matrices into key components w (basis functions that are analogous to synaptic weights) and h (a matrix of hidden coefficients by which the basis vectors are weighted). It is known that networks of neurons are able to extract hidden causes in the input signal through STDP \citep{Nessler2009,MorenoBoteDrugowitsch2015}, equivalent to the h part of NMF's method of decomposition.
 

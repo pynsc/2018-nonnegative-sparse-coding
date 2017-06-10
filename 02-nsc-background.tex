@@ -42,10 +42,10 @@ thus giving empirically observed \acp{RF} an information-theoretic explanation.
 However, as pointed out by Hoyer \citep{Hoyer2003}, sparse coding falls short
 of providing a literal interpretation for \ac{V1} simple-cell behavior
 for two reasons:
-1) every neuron could be either positively or negatively active,
-and 2) the input to the neural network was typically double-signed,
-whereas \ac{V1} neurons receive visual input from the \ac{LGN} in the form of
-separated, nonnegative ON and OFF channels.
+1) every neuron could be either positively or negatively active, and
+2) the input to the neural network was typically double-signed,
+whereas \ac{V1} neurons receive visual input from the \ac{LGN} 
+in the form of separated, nonnegative ON and OFF channels.
 
 Hoyer \citep{Hoyer2002,Hoyer2003} proposed \ac{NSC} as a way 
 to transform Olshausen and Field's sparse coding 
@@ -55,9 +55,31 @@ by enforcing both input signal and neuronal activation to be nonnegative.
 This seemingly simple change had remarkable consequences on the quality of the
 sensory representation:
 Whereas elementary image features in the standard sparse coding model could
+\jeffNote{Why is parts-based better or more plausible than lateral inhibition that could ``cancel each other out''?}
+\emilyNote{parts-based representations are "better" because they can more closely describe cortical representations}
 ``cancel each other out'' through subtractive interactions,
 enforcing nonnegativity ensured that features combined additively,
-much like the intuitive notion of combining parts to form a whole. The representations resulting from this model closely resembled visualizations of receptive fields in V1 and other cortical areas, suggesting that parts-based representations are employed in cortex. Although inhibitory connections can possibly be interpreted as a way for parts to cancel, this does not equate to negative coding. In Hoyer's model, he interpreted some weights as E-E connections and others as I-E connections, but all were restricted to a nonnegative domain. \emilyNote{parts-based representations are "better" because they can more closely describe cortical representations}
-\emilyNote{from Mike: "- Inhibition is not negative coding. The negative sign of inhibitory weights is not part of W. So Hoyer interpreted the first half of weights in W as E->E and the second as I->E, but all the synaptic weights therein were nonnegative." There's probably a better way to work this into the paragraph}
+much like the intuitive notion of combining parts to form a whole.
+The resulting ``parts-based'' representations resembled \acp{RF} in \ac{V1} more closely
+than other ``holistic'' representations,
+and would later be shown to apply to other brain regions as well,
+suggesting that parts-based representations are employed throughout cortex.
 
-\jeffNote{Why is parts-based better or more plausible than lateral inhibition that could ``cancel each other out''?}
+\jeffNote{MC 4: We need to make an argument why non-negative is biologically plausible. I could counter and say that there is more inhibition than excitation in the brain. Isn't inhibition negative coding?}
+\mikeNote{I gave it a shot.}
+Inhibitory connections can be modeled in the same fashion,
+by interpreting inhibitory weights as nonnegative synaptic conductances.
+This is consistent with Dale's principle, which states that neuronal groups
+tend to exclusively release either excitatory or inhibitory neurotransmitters.
+Modeling all synaptic weights as nonnegative synaptic conductances does not only
+preserve the parts-based quality of the encoding,
+but also allows for more complicated connection types to be modeled
+(e.g., \ac{V1} neurons receiving input from both excitatory ON
+and inhibitory OFF cells in the \ac{LGN})
+\citep{Hoyer2003}.
+However, it is interesting to note that a more recent study has argued
+that the nonnegativity constraint on the
+synaptic weights might not be necessary to preserve the parts-based quality of
+the encoding \citep{Liu2017}.
+
+% Although inhibitory connections can possibly be interpreted as a way for parts to cancel, this does not equate to negative coding. In Hoyer's model, he interpreted some weights as E-E connections and others as I-E connections, but all were restricted to a nonnegative domain.

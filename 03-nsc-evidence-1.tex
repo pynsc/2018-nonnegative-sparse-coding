@@ -2,13 +2,10 @@
 
 \subsection{Reconstructing stimulus spaces using sparse, parts-based representations}
 
-An influential paper by Lee and Seung \citep{LeeSeung1999},
+An influential paper by Lee and Seung \citep{LeeSeung1999}
 found that applying a linear dimensionality reduction technique
 known as \ac{NMF} to a database of face images
-yielded sparse, localized features that resembled parts of a face \citep{Wachsmuth1994},
-which is a an area in the ventral visual ``what'' stream
-that responds to objects as a whole
-\citep{ungerleider1994and}.
+yielded sparse, localized features that resembled parts of a face.
 \ac{NMF} is a statistical matrix decomposition technique 
 that takes an $F \times S$ data matrix \textbf{V} 
 whose rows correspond to distinct features of the input 
@@ -18,11 +15,14 @@ observations of those features
 (e.g., $S$ different images). 
 Matrix \textbf{V} must be nonnegative, and \ac{NMF} decomposes the matrix into two reduced-rank matrices whose linear combination can be weighted such that the product of \textbf{W} and \textbf{H} provides an accurate reconstruction of \textbf{V} (Fig.~\ref{fig:NMF|reconstruction}).
 \jeffNote{The above paragraph does not agree with my understanding of area IT.  I thought IT responded to whole objects not parts. Also, Lee and Seung never mention IT in their paper. In fact, they never mention cortex! Be precise with your claims.}
+\mikeNote{Moved IT to the next para (and addressed your concerns). The face network in IT is complicated, has many different cells (indep. of viewpoint, symmetry, head position, etc.). Very few cells respond to faces as a whole.}
 
-On its surface, NMF would appear to be unrelated to the mechanisms underlying 
+On its surface, \ac{NMF} would appear to be unrelated to 
+the mechanisms underlying 
 artificial or biological neural networks;
 however, it was Lee and Seung's intuitive mapping of these variables onto
-a neural network that forms the cornerstone of our conception of the NSC framework:
+a neural network that forms the cornerstone 
+of our conception of the \ac{NSC} framework:
 A particular image, in this case encoded by $F = 19 \times 19 = 361$ 
 pixels $v_1, \ldots, v_F$
 (i.e., a column of \textbf{V}),
@@ -33,18 +33,26 @@ influences multiple image pixels,
 owing to the fan-out of the connections from the encoding variable.
 As a result, a particular image of a face (Fig.~\ref{fig:NMF|reconstruction}B1)
 could be accurately represented by a linear combination of 
-only $B = 49$ encoding variables or ``basis images''.
-Similar to the preferred stimuli of
-neurons in inferotemporal cortex \citep{Wachsmuth1994},
-these basis images resembled parts of faces,
-which could be additively combined to represent a whole face.
+a small number ($B = 49$) of encoding variables or ``basis images''.
+Such a representation is reminiscent to neural processing in \ac{IT},
+an area in the ventral visual ``what'' stream
+involved in encoding high-level object identity
+\citep{BrincatConnor2004,Majaj2015},
+where images of whole faces can be linearly reconstructed
+using responses of approximately $200$ neurons
+that each respond to certain sets of physical facial features
+% Similar to the preferred stimuli of
+% neurons in \ac{IT} \citep{ChangTsao2017},
+% these basis images resembled parts of faces,
+% which could be additively combined to represent a whole face.
 \jeffNote{Can you make sure what was found in 1994 still agrees with what we now know goes on in area IT?}
+\mikeNote{Even better: The most convincing evidence for our theory comes as part of a just-published Cell article (Chang \& Tsao 2017), now added.}
+\citep{ChangTsao2017}.
 
 % In this experiment, the network was trained on a database of  2,429 facial images, but the dimensionality of the resulting basis matrix \textbf{W} was 49.\emilyNote{added dimensionality reduction}
 % \jeffNote{somewhere around here you should say how much the dimensionality is reduced (size of W and H) for each example in figure 1}
 Remarkably, such a parts-based representation is not specific to
-% \mikeNote{I moved the bit about the what pathway up to where we first mention IT}
-information processing in inferotemporal cortex; 
+information processing in \ac{IT};
 the same principle can be extended to other areas of the visual system,
 such as the \ac{MSTd},
 which is part of the visual motion pathway \citep{Beyeler2016}.
@@ -70,19 +78,32 @@ in a subset of the visual field.
 % \mikeNote{What about this? Avoiding ``dimensionality of a matrix'' again, and highlighting the usefulness of such a representation}
 As a result, any flow field possibly to be encountered 
 during self-movement through a 3D environment
-could be represented by a linear combination
-of only $64$ basis flow fields.
-\jeffNote{64 means nothing to me unless you can say what it was reduced from. Also, you need to report the sparsity in the MSTd experiments.}
+could be represented by only $B = 64$ \ac{MSTd} neurons,
+\jeffNote{MC3: 64 means nothing to me unless you can say what it was reduced from. Also, you need to report the sparsity in the MSTd experiments.}
+\mikeNote{Now giving the MT numbers and describing the sparsity of the code.}
+as compared to $F = 9,000$ simulated \ac{MT} input neurons.
+This led to an efficient and sparse population code,
+where any given stimulus could be represented
+by only a small number of simulated \ac{MSTd} neurons (population sparsity),
+and any given model neuron was activated
+by only a small number of stimuli (lifetime sparsity)
+\citep{Beyeler2016}.
+
 % The dimensionality of the basis matrix \textbf{W} in this experiment was also dramatically reduced. The model was trained on a set of 6,000 flow fields, which was reduced to only 64 basis flow fields after the application of NMF.\emilyNote{added dimensionality reduction}
-\mikeNote{Figure 1: Kris is right, A should show the third column of H, same as W... Emily, do you still have the raw version of A?}
-\emilyNote{I have the powerpoint but I can't edit the schematic of A. I tried to ungroup it but it looks like whenever you sent to me it saved the panel as a whole image.}
-
-\jeffNote{fix caption in key figure}
+% \mikeNote{Figure 1: Kris is right, A should show the third column of H, same as W... Emily, do you still have the raw version of A?}
+% \emilyNote{I have the powerpoint but I can't edit the schematic of A. I tried to ungroup it but it looks like whenever you sent to me it saved the panel as a whole image.}
 
 
-\begin{figure}[h]
+
+\begin{figure*}[h]
 	\centering
-	\includegraphics[scale=0.17]{keyFig_fixed}
+	\includegraphics[height=\textheight]{keyFig_fixed}
+	\label{fig:NMF|reconstruction}
+\end{figure*}
+
+% MB: Hack! Display figure on next page
+\begin{figure}[t!]
+	\centering
     \caption{(Key Figure) \ac{NMF} can recover sparse, parts-based
          representations of high-dimensional input data.
          A)  A data matrix \textbf{V} ($F$ features x $S$ stimulus
@@ -116,6 +137,7 @@ of only $64$ basis flow fields.
 	\label{fig:NMF|reconstruction}
 \end{figure}
 
+
 % Schematic of matrix decomposition under NMF with representative examples. (A) An input vector or matrix V can be decomposed into components W and H, in which W corresponds to the parts-based basis functions that can be added up linearly to reconstruct the original input. W is a vector whose length is equal to the number of elements needed to reconstruct the input space. H represents the hidden coefficients used to weight the basis functions in H accordingly in order to reconstruct the input space.  In an artificial neural network, V again represents the inputs to the network, H corresponds to the hidden neurons that represent the features that correspond to the input to the network, and W represents the synaptic weights between the input neurons encoding the input V and the hidden neurons H. (B) Top, adapted from Lee \& Seung, 1999, shows the resulting decomposition of NMF when applied to images of faces. The weight matrix W is intuitively parts-based and seems to correspond to individual facial features. When multiplied by a particular column of H associated with a particular face, that face can be reconstructed. Middle, NMF was applied to MT-like input patterns and successfully produced a parts-based representation of retinal flow. Bottom, NMF was applied to idealized neural representations of certain behavioral features and produced a parts-based representation of space anchored to multiple spatial frames of reference, similar to neuronal responses in the biological brain area RSC.
 % Caption is at 240 words currently
 
@@ -131,10 +153,12 @@ of only $64$ basis flow fields.
 % might simply be a by-product of \ac{MSTd} neurons performing a biological equivalent
 % of dimensionality reduction on their inputs.
 
-
-Analogously, NSC can explain response properties
+\jeffNote{MC 5: Make the figures as big as possible. Fill the page if you can. We don't want to strain reviewers eyes.}
+\jeffNote{fix caption in key figure (see the ???)}
+\mikeNote{Also, even in full-page mode the labels in B3 are too small to be readable}
+Analogously, \ac{NSC} can explain response properties
 of neurons outside the visual system, 
-such as in the \ac{RSC}, an area important for navigation and spatial memory \cite{Miller2014,Nelson2015,VannAggleton2009}.
+such as in the \acf{RSC}, an area important for navigation and spatial memory \cite{Miller2014,Nelson2015,VannAggleton2009}.
 Neurons in the \ac{RSC} conjunctively encode multiple variables related to 
 the environment and one's position and movement within it,
 allowing the representation of spatial features of the environment 
@@ -147,7 +171,8 @@ due to the complexity of their response properties and because inputs to the reg
 Yet by applying \ac{NMF} to idealized input neurons that encoded 
 experimentally recorded behavioral variables 
 associated with rats running along a track, we were able to replicate
-functionality observed in the biological \ac{RSC} (Fig.~\ref{fig:NMF|reconstruction}B3). Once again, the dimensionality was massively reduced from a set of 1,017 input neurons to a set of 30 basis functions.
+functionality observed in the biological \ac{RSC} (Fig.~\ref{fig:NMF|reconstruction}B3).
+Once again, the dimensionality was massively reduced from a set of 1,017 input neurons to a set of 30 basis functions.
 % \mikeNote{Too soon?}
 % The same results were obtained when evolutionary algorithms 
 % were used to optimize the metaparameters associated with \ac{STDPH}
@@ -182,9 +207,9 @@ be a general principle to which neuronal computations adhere.
 	\begin{tabular}{r|rrr|rr}
 	 &  &  \textbf{Parts-} & \textbf{Experimental} & \textbf{Modeled} & \textbf{Computational} \\
 	\textbf{Area} & \textbf{Sparse} & 		\textbf{based} & \textbf{evidence} & \textbf{by NSC} & \textbf{ support} \\ \hline
-    Retina & X & X & \cite{Onken2016} & X & \cite{Onken2016} \\
+    Retina & X & X & \cite{Onken2016,Liu2017} & X & \cite{Onken2016,Liu2017} \\
     Early visual cortex & X & X & \cite{OlshausenField1996,HoyerHyvarinen2002,Hoyer2003,vanHateren1998} & X & \cite{OlshausenField1996,Hoyer2003,Carlson2013,Hyvarinen2001} \\
-    Ventral visual stream & X & X & \cite{Wachsmuth1994} & X & \cite{LeeSeung1999,Hosoda2009}  \\
+    Ventral visual stream & X & X & \cite{Wachsmuth1994,FreiwaldTsao2010,ChangTsao2017} & X & \cite{LeeSeung1999,Hosoda2009}  \\
     Dorsal visual stream & X & X & \cite{BenHamed2003,PougetSejnowski1997,PougetSnyder2000} & X & \cite{Beyeler2016} \\
     Auditory cortex & X & ? & \cite{Hromadka2008} & ? & ? \\
     Olfactory cortex & X & ? & \cite{Koulakov2011} & ? & \cite{MorenoBoteDrugowitsch2015}  \\
