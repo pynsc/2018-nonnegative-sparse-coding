@@ -3,14 +3,6 @@
 % Ergo, it makes sense in LaTeX to have the boxes after the main text...so we get
 % the numbering right
 
-%  Text Boxes
-% • Ideal for providing explanations of basic concepts or theories, giving detailed mechanisms, or discussing case studies.
-% • Please cite text boxes in the main text as: (Box 1).
-% • Boxes should have a single sentence title (no more than 8 words).
-% • Text boxes can occasionally contain small figures and tables. Please number figures or tables within a text box with Roman numerals (e.g. Figure I) and cite the element in the box text.
-% • 400 words max per box. 
-% • References should be listed in the main reference list, numbered to follow on from the end of the main text.
-% • No more than four text boxes per article. 
 
 \section{Box 1: Nonnegative sparse coding (NSC)}
 \label{box:NSC}
@@ -54,11 +46,11 @@ while guaranteeing that both \textbf{W} and \textbf{H} are sparse.
 This can be achieved by minimizing the following cost function
 \citep{Hoyer2002}:
 \begin{equation}
-\min_{\mathbf{W}, \mathbf{H}} \frac{1}{2} ||\mathbf{X} -\mathbf{WH}||^2 + \lambda \sum_{ij} f(H_{ij}),
+\min_{\mathbf{W}, \mathbf{H}} \frac{1}{2} ||\mathbf{X} -\mathbf{WH}||^2 + \lambda \sum_{ij} f(\mathbf{H}_{ij}),
 \end{equation}
 subject to the constraints
 $\forall ij: \mathbf{W}_{ij} \geq 0$, $\mathbf{H}_{ij} \geq 0$, and
-$||w^{(i)}|| = 1$, where $w^{(i)}$ denotes the $i$th column of \textbf{W}.
+$||\vec{w}_i|| = 1$, where $\vec{w}_i$ denotes the $i$th column of \textbf{W}.
 Here, the left-hand term describes the reconstruction error, which can
 be minimized with \ac{NMF},
 and the right-hand term describes the sparseness of the decomposition.
@@ -67,12 +59,10 @@ is controlled by the parameter $\lambda$ ($\lambda \geq 0$), whereas
 the form of $f$ defines how sparseness is measured
 (a typical choice is the L1 norm on \textbf{H}).
 
-\jeffNote{I don't see anywhere we combine NMF with sparse coding. Or is that sparseness implied?}
-\mikeNote{Added the bit on sparsity in NMF}
 Note that several modern implementations of the \ac{NMF} algorithm,
 such as Matlab's \texttt{nnmf.m} function,
 already implement sparsity constraints,
-hence making \ac{NMF} indistinguishable form \ac{NSC}.
+hence making \ac{NMF} indistinguishable from \ac{NSC}.
 
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
@@ -85,11 +75,8 @@ hence making \ac{NMF} indistinguishable form \ac{NSC}.
 % First paragraph - STDP  on a single synapse
 % Second paragraph - STDP on networks?
 \Acf{STDP} is a form of Hebbian learning in which synaptic weight changes
-% \jeffNote{fix ref}
 depend on the relative timing between pre- and post-synaptic spikes \citep{BiPoo1998,SongAbbott2000}. If pre-synaptic spike counts integrated over a critical window precede those of the post-synaptic neuron, then long-term potentiation (LTP) is induced, strengthening the weight. Otherwise, long-term depression (LTD) is induced, suppressing the weight. STDP is ubiquitous throughout the brain across the lifespan and can take on different forms \citep{Caporale2008STDP,Holtmaat2009STDP}. Simulations of \ac{STDP} can result in runaway feedforward excitation such that produces unrealistic firing rates. To obviate this problem in biology, the brain uses homeostatic mechanisms that modulate synaptic inputs and neuronal firing thresholds \citep{Watt2010}.
 
-\jeffNote{see my ??? above regarding the appropriate STDP references.}
-\emilyNote{Not sure what this comment refers to since the rest of the paragraph is about homeostasis}
 % One well-known homeostatic mechanism is synaptic scaling,
 % wherein synaptic efficacy is regulated by neuronal activity
 % to prevent runaway increases or decreases in synaptic strength.
@@ -103,7 +90,10 @@ as \ac{STDPH}.
 % \mikeNote{I guess this paragraph should be tied to the figure I'm supposed to make}
 % \krisNote{I referenced figure 2. It's tricky because I don't have room to describe why H and W are 1D (because we only have one output neuron).}
 
-We have shown that, given a network with fewer output than input neurons and full connectivity from the input layer to the output layer, \ac{STDPH} iteratively acts to preserve the information in the first layer with the output layer neurons. Given an input layer of neurons (represented by matrix \textbf{V}) connected to a single output layer neuron (represented by row vector $\mathbf{h^T}$) we have proven that the \ac{STDPH} rule iteratively updates the synaptic weights in \textbf{w} in such a way as to minimize the reconstruction error of $|\mathbf{V} - \mathbf{wh^T}|$, and that the \ac{NMF} update rule is mathematically equivalent to the \ac{STDPH} update rule \citep{Carlson2013}.
+We have shown that, given a network with fewer output than input neurons and full connectivity from the input layer to the output layer, \ac{STDPH} iteratively acts to preserve the information in the first layer with the output layer neurons.
+Given an input layer of neurons (represented by matrix \textbf{V}) connected to a single output layer neuron (represented by 
+% \mikeNote{fixed vector notation}
+row vector $\vec{h}^T$) we have proven that the \ac{STDPH} rule iteratively updates the synaptic weights in $\vec{w}$ in such a way as to minimize the reconstruction error of $|\mathbf{V} - \vec{w} \vec{h}^T|$, and that the \ac{NMF} update rule is mathematically equivalent to the \ac{STDPH} update rule \citep{Carlson2013}.
 
 % \mikeNote{Is $\mathbf{wh^T}$ an outer product or should it be a vector \textbf{v}?}
 % \krisNote{NMF Matrix question: $\mathbf{wh^T}$ is an outer product. Explanation:
@@ -113,7 +103,6 @@ We have shown that, given a network with fewer output than input neurons and ful
 % is of dimensionality 1xm (row vector). The problem is I was not consistent with what I
 % told you for conventions. I have used bold capital for matrix, bold lower case for column,
 % and bold columm transpose for row.}
-% \mikeNote{Don't tell me, lol, tell the reader!}
 
 
 % \mikeNote{I said this in the main text}
@@ -142,17 +131,45 @@ To induce sparsity in networks of neurons, there must be a mechanism that causes
 
 \section{Box 3: Evolutionary Algorithm and SNN Evaluation}
 \label{box:EA}
-Evolutionary algorithms are a class of optimization algorithms loosely based on concepts from evolution. A set of individuals (in this case, spiking neural networks, or SNNs) have a set of parameters to be evolved, which are initialized for the first generation with size $N$. The population undergoes a training and a testing phase followed by evaluation as determined through a user-defined function that measures how well individuals in the population meet the desired criteria. The resulting value is the individual’s level of \textbf{fitness}. A certain number of individuals are then chosen as parents for the next generation, and undergo \textbf{crossover} and/or \textbf{mutation} to produce the new population of individuals. This process continues until a good solution is found.
-Carlson et al. \citep{Carlson2014} developed an automated tuning framework that incorporates a plugin to CARLsim for running an evolutionary algorithm using the ECJ library \citep{white2012}. The plugin utilizies a parameter tuning file that is edited by the user to specifiy parameters related to the evolutionary algorithm, including number of generations to run, parameters to be evolved and their ranges, mutation and crossover rates, selection method, and number of parents and children for each generation. The plugin is used to pass information about the population from CARLsim to  ECJ, which uses that information to instantiate a population of individuals. The networks in the population are created, trained, tested, and evaluated in CARLsim. Evaluation is performed using a fitness function that measures the criteria the user is optimizing. Following fitness evaluation, the scores for each individual in the population are handed off to ECJ, which uses the selection criteria defined in the parameter file to choose parents for the next generation. The chosen individuals then undergo crossover and/or mutation, depending on what the user has defined in the file, and then a new generation of individuals is instantiated by passing parameter values to CARLsim, where the SNNs are created. An overview of this process can be seen in Figure \ref{fig:CarlsimECJ}.
+% \mikeNote{Slightly reworded things. This allowed removal of crossover and mutation from Glossary. Fitness is explained well here, too - might not need a Glossary entry either.}
+Evolutionary algorithms are a class of optimization algorithms loosely based on concepts from evolution. A set of individuals (in this case, \acp{SNN}) have a set of parameters to be evolved, which are initialized for the first generation with size $N$. The population undergoes a training and a testing phase followed by evaluation as determined through a user-defined function that measures how well individuals in the population meet the desired criteria. The resulting value is the individual's level of \emph{fitness}.
+A certain number of individuals are then chosen as parents for the next generation,
+which can undergo \emph{crossover}
+(i.e., where a child inherits parameters from its parents whose values
+have been swapped at random)
+and/or \emph{mutation}
+(i.e., where a child inherits parameters from its parents with values
+randomly chosen from a distribution of values)
+to produce a new generation of individuals.
+This process continues until the fitness of the population no longer improves.
+
+Carlson and colleagues \citep{Carlson2014}
+developed an automated tuning framework
+that incorporates a plugin to CARLsim \citep{BeyelerCarlsonChou2015}
+for running evolutionary algorithms using the ECJ library \citep{white2012}.
+The plugin is used to pass information about the \ac{SNN} population
+(e.g., number of generations to run, parameters to be evolved and their ranges,
+mutation and crossover rates)
+back and forth between CARLsim and ECJ (Fig.~\ref{fig:CarlsimECJ}).
+The networks in the population are created, trained, tested, and evaluated using CARLsim.
+The resulting fitness scores for each individual in the population 
+are then handed off to ECJ,
+which determines the parameters for the next generation according to
+the selection criteria defined in the parameter file,
+and the cycle repeats.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=.8]{CarlsimECJ}
-    \caption{CARLsim-ECJ pipeline for evolving SNNs. General approach to evolving SNNs using ECJ. ECJ is used to initialize the parameters being tuned, which are passed to CARLsim and used to set the parameters of each network in the population of SNNs (red arrow). The SNNs are initialized, run, and evaluated using CARLsim. Following fitness evaluation using some user-defined criteria, the resulting fitness values for each individual in the population are sent to ECJ (black arrow). ECJ chooses parents from the population and performs selection, replication, and mutation on the parameters of the parent individuals in order to initialize the next generation of SNNs. This continues until an ideal solution is found or until a user-defined number of evolutionary runs are completed. Adapted from \citep{Carlson2014}.}
+    \caption{CARLsim-ECJ pipeline for evolving \acp{SNN} using ECJ
+    (adapted from \citep{Carlson2014}).
+    ECJ is used to initialize the parameters being tuned, which are passed to CARLsim and used to set the parameters of each network in the population of \acp{SNN} (red arrow). The \acp{SNN} are initialized, run, and evaluated using CARLsim. Following fitness evaluation using some user-defined criteria, the resulting fitness values for each individual in the population are sent to ECJ (black arrow). ECJ chooses parents from the population and performs selection, replication, and mutation on the parameters of the parent individuals in order to initialize the next generation of \acp{SNN}. This continues for a user-defined number of runs or until convergence.}
 	\label{fig:CarlsimECJ}
 \end{figure}
 
-
+ In the experiments in which \acp{SNN} were used to replicate neurophysiological data, the evolutionary algorithm was used to optimize STDPH parameters in the model, corresponding to the temporal window over which spike times were integrated, the amount each synaptic weight increased or decreased, the initial weight range of each group of synaptic connections, and the target baseline firing rates of excitatory and inhibitory neurons. During each generation of the evolutionary run, models were trained on trials randomly selected from half of the available dataset, then tested on trials randomly selected from the latter half reserved for testing. At the end of each generation, synthetic neural activity was correlated with electrophysiologically recorded neural activity, which served as the fitness metric for the algorithm. After the model finished an evolutionary run, SNN activity closely matched the electrophysiological activity.
+ 
+ 
 % This Drugowitsch paper seems highly relevant:
 % Causal Inference and Explaining Away in a Spiking Network
 % Rubén Moreno-Bote \& Jan Drugowitsch, Scientific Reports

@@ -14,8 +14,6 @@ and whose columns correspond to different stimuli or
 observations of those features
 (e.g., $S$ different images). 
 Matrix \textbf{V} must be nonnegative, and \ac{NMF} decomposes the matrix into two reduced-rank matrices whose linear combination can be weighted such that the product of \textbf{W} and \textbf{H} provides an accurate reconstruction of \textbf{V} (Fig.~\ref{fig:NMF|reconstruction}).
-\jeffNote{The above paragraph does not agree with my understanding of area IT.  I thought IT responded to whole objects not parts. Also, Lee and Seung never mention IT in their paper. In fact, they never mention cortex! Be precise with your claims.}
-\mikeNote{Moved IT to the next para (and addressed your concerns). The face network in IT is complicated, has many different cells (indep. of viewpoint, symmetry, head position, etc.). Very few cells respond to faces as a whole.}
 
 On its surface, \ac{NMF} would appear to be unrelated to 
 the mechanisms underlying 
@@ -41,12 +39,6 @@ involved in encoding high-level object identity
 where images of whole faces can be linearly reconstructed
 using responses of approximately $200$ neurons
 that each respond to certain sets of physical facial features
-% Similar to the preferred stimuli of
-% neurons in \ac{IT} \citep{ChangTsao2017},
-% these basis images resembled parts of faces,
-% which could be additively combined to represent a whole face.
-\jeffNote{Can you make sure what was found in 1994 still agrees with what we now know goes on in area IT?}
-\mikeNote{Even better: The most convincing evidence for our theory comes as part of a just-published Cell article (Chang \& Tsao 2017), now added.}
 \citep{ChangTsao2017}.
 
 % In this experiment, the network was trained on a database of  2,429 facial images, but the dimensionality of the resulting basis matrix \textbf{W} was 49.\emilyNote{added dimensionality reduction}
@@ -75,12 +67,9 @@ The resulting ``basis flow fields'' showed a remarkable resemblance to receptive
 of \ac{MSTd} neurons, as they preferred an intricate mixture of
 3D translational and rotational flow components
 in a subset of the visual field.
-% \mikeNote{What about this? Avoiding ``dimensionality of a matrix'' again, and highlighting the usefulness of such a representation}
 As a result, any flow field possibly to be encountered 
 during self-movement through a 3D environment
 could be represented by only $B = 64$ \ac{MSTd} neurons,
-\jeffNote{MC3: 64 means nothing to me unless you can say what it was reduced from. Also, you need to report the sparsity in the MSTd experiments.}
-\mikeNote{Now giving the MT numbers and describing the sparsity of the code.}
 as compared to $F = 9,000$ simulated \ac{MT} input neurons.
 This led to an efficient and sparse population code,
 where any given stimulus could be represented
@@ -132,7 +121,7 @@ by only a small number of stimuli (lifetime sparsity)
              motion can be reconstructed from a sparse activation of
              model \ac{RSC} neurons that prefer an intricate combination of
              linear velocity (LV), angular velocity (AV), head direction (HD)
-             and position (Position). Only the ??? 4 most contributing hidden coefficients out of ??? are shown for the
+             and position (Position). Only the 4 most contributing hidden coefficients (those whose coefficients exceeded the mean of all coefficients) out of 30 are shown for the
              sake of clarity.}
 	\label{fig:NMF|reconstruction}
 \end{figure}
@@ -153,26 +142,24 @@ by only a small number of stimuli (lifetime sparsity)
 % might simply be a by-product of \ac{MSTd} neurons performing a biological equivalent
 % of dimensionality reduction on their inputs.
 
-\jeffNote{MC 5: Make the figures as big as possible. Fill the page if you can. We don't want to strain reviewers eyes.}
-\jeffNote{fix caption in key figure (see the ???)}
-\mikeNote{Also, even in full-page mode the labels in B3 are too small to be readable}
 Analogously, \ac{NSC} can explain response properties
 of neurons outside the visual system, 
 such as in the \acf{RSC}, an area important for navigation and spatial memory \cite{Miller2014,Nelson2015,VannAggleton2009}.
 Neurons in the \ac{RSC} conjunctively encode multiple variables related to 
 the environment and one's position and movement within it,
 allowing the representation of spatial features of the environment 
-with respect to multiple reference frames \cite{AlexanderNitz2015}.
-However, establishing a mechanistic link 
+with respect to multiple reference frames \cite{AlexanderNitz2015}, as determined by an experiment in which rats ran back and forth on a W-shaped track that occupied two different spatial locations within the room in each recording session to test sensitivity to the allocentric reference frame (i.e., track positions $\alpha$ and $\beta$). Outbound and inbound runs were made up of opposite turn sequences (left-right-left (LRL) and right-left-right (RLR), respectively) that corresponded to different sets of trials, which allowed assessment of sensitivity to the egocentric and route-based reference frames. However, establishing a mechanistic link 
 between physiological response properties of \ac{RSC} neurons 
 and their underlying representations of space
 has proved difficult,
 due to the complexity of their response properties and because inputs to the region are not easily isolated.
-Yet by applying \ac{NMF} to idealized input neurons that encoded 
-experimentally recorded behavioral variables 
-associated with rats running along a track, we were able to replicate
+
+We applied NMF to recorded data from the original \ac{RSC} experiment conducted by
+Alexander and Nitz \citep{AlexanderNitz2015}. During the experiment, activity from 228 \ac{RSC} neurons 
+was recorded along with four behavioral metrics: linear velocity, angular velocity, head direction, and allocentric position. Using Gaussian and cosine tuning curves, we created idealized input neurons that encoded these four variables. 
+By applying \ac{NMF} to the idealized neuronal output, we were able to replicate
 functionality observed in the biological \ac{RSC} (Fig.~\ref{fig:NMF|reconstruction}B3).
-Once again, the dimensionality was massively reduced from a set of 1,017 input neurons to a set of 30 basis functions.
+Once again, the dimensionality was reduced from a set of $F = 417$ input neurons to a set of $B = 30$ basis functions.
 % \mikeNote{Too soon?}
 % The same results were obtained when evolutionary algorithms 
 % were used to optimize the metaparameters associated with \ac{STDPH}
@@ -183,13 +170,13 @@ Although there seems to be a consensus that information-theoretic explanations a
 higher-order brain areas are often considered to be specialized for
 performing tasks
 (e.g., recognizing objects, making decisions, navigating an environment),
-rather than efficiently encoding of information.
+rather than the efficient encoding of information.
 However, the finding that \ac{NSC} could be used to explain
 neuronal responses in the visual and retrosplenial cortices
 introduces the possibility that it might apply elsewhere in the brain.
 In fact, sparse
 (and potentially parts-based)
-representations have been in 
+representations have been observed in 
 olfactory, auditory, somatosensory, 
 and motor cortices
 (Table \ref{table:listEvidence}). 

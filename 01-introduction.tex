@@ -8,7 +8,9 @@
 \section{A need for compressed representations of a high-dimensional world}
 \label{sec:introduction}
 
-\mikeNote{IMO the abstract used to make more sense. The latest edits have made the first half very repetitive and at times redundant: ``Computationally, this (meaning sparse coding and dimensionality reduction) can be realized by combining sparse coding with dimensionality reduction techniques''...etc.}
+% \mikeNote{The Sandia footnote now fits on the first page, but I can't seem to get rid of the empty page that follows... I think it's a Latex spacing thing.}
+% \emilyNote{Not sure why it caused the blank page, but it looks like the footnote was too long. I worked around it using the geometry package, which allows you to adjust the margins.}
+% \mikeNote{Nice job!}
 Brains face the fundamental challenge of 
 processing, storing, and representing high-dimensional stimuli
 using patterns of neural activity.
@@ -19,7 +21,6 @@ and the widespread existence of anatomical bottlenecks
 which often force the information stored in a large number of neurons
 to be compressed into an orders of magnitude smaller population
 of downstream neurons;
-\mikeNote{added concrete examples and ref}
 for example, storing information from 100 million photoreceptors 
 in 1 million optic nerve fibers,
 or resulting in a $10 - 10,000$ fold convergence from cortex to the basal ganglia
@@ -45,8 +46,6 @@ high-dimensional input and the low-dimensional output
 of neuronal populations.
 Several modern variants of the efficient coding hypothesis,
 such as \ac{ICA} \citep{BellSejnowski1997}
-\jeffNote{MC1: NSC is not a framework. And it is not a principle.  It is a method. I've changed the text to reflect this in several places}
-\mikeNote{OK. In Hoyer's work (after 2002), NSC was a way to understand RFs and neuronal responses in the context of dimensionality reduction; i.e. ``this is why neurons do what they do''. But I guess ultimately it should be the same ``thing'' as sparse coding: a model, a theory, or a method.}
 and \ac{NSC} \citep{Hoyer2002,Hoyer2004}, suggest that the role of cortical representations is to
 further reduce the redundancy of the sensory signal 
 by separating it into its underlying causes,
@@ -56,21 +55,15 @@ Here we propose that a variety of neuronal responses
 can be understood as an emergent property of efficient population coding
 based on dimensionality reduction and sparse coding.
 % can be understood by applying sparse coding and dimensionality reduction to a brain region's neuronal inputs.
-In specific, computational evidence from data analyses and computer simulations
+Specifically, computational evidence from data analyses and computer simulations
 suggest that \ac{NSC},
 a combination of \ac{NMF} \citep{PaateroTapper1994,LeeSeung1999}
-\jeffNote{MC2: NMF == NSC.  You seem to be using these interchangeably. How does NSC differ from NMF?}
-% Or does it? This needs to be defined clearly.  For example, we use NMF only in MSTd, but we sometimes call this NSC. I don't see anywhere we combine NMF with sparse coding. Or is that sparseness implied?}
-\mikeNote{Here we are explicit: NSC = NMF + sparsity. Need to be consistent throughout. See Methods box, too.}
 and sparse population coding \citep{Field1994} (Box 1),
 generates low-dimensional embeddings of 
 high-dimensional stimulus spaces 
 that resemble neuronal population responses 
-\emilyNote{just moved stuff from box up here and added a couple things}
-\mikeNote{I don't think the new math paragraph makes sense here, at least not in its current form. So I commented it out. It duplicates what's in the Methods box, goes straight into math, uses terminology that has not been introduced (V, W, H, reconstruction error, etc.), and undermines the NMF intro from Section ``Empirical evidence...''.}
 in a variety of brain regions.
-\mikeNote{Added ``Reminiscent of...'' etc.}
-Reminiscent of basis function representations
+Reminiscent of \textbf{basis function} representations
 \citep{PougetSejnowski1997,PougetSnyder2000,Poggio1990},
 these embeddings are both sparse and parts-based,
 allowing for perceptual or behavioral variables of interest
@@ -113,4 +106,3 @@ via Hebbian-like learning mechanisms.
 % \emilyNote{I feel that bringing up STDP's extraction of hidden causes seems out of place without describing how it pertains to dimensionality reduction so I added some stuff about it but it could be worded better/might be too long now.}
 
 % \mikeNote{Therefore, I would just cut it all out... We have the Boxes to explain the math in detail, and we don't have enough space to say things twice.}
-

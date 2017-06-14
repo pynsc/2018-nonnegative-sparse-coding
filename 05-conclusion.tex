@@ -18,26 +18,16 @@ display mixed selectivity \citep{Fusi2016,Eichenbaum2017},
 or encode information in multiple reference frames \citep{AlexanderNitz2015,Rounds2016}.
 
 Second, where such representations occur, we expect the resulting
-neuronal population code to be sparse,
+neuronal population activity to be sparse,
 in order to encode information both accurately and efficiently.
-Sparse codes are ideally suited for such an encoding, as they offer
-a trade-off between 
+Sparse codes offer a trade-off between 
 dense codes (where every neuron is involved in every context,
 leading to great memory capacity but suffering from cross talk among neurons)
 and local codes (where there is no interference, 
 but also no capacity for generalization) \citep{Spanne2015417}.
 
-\mikeNote{What do you mean by ``distributed code''? Aren't all population codes distributed?}
-We also speculate that there may be an important relationship between sparse and distributed coding. Barnes et al. \citep{barnes1990chapter} observed that output from the hippocampus was expressed as a much more
-\mikeNote{distributed across regions?}
-distributed code, while the coding scheme within the hippocampus proper was sparse.
-\mikeNote{I also disagree with the storage capacity comment. Sparse codes have lower storage capacity than dense codes (Spanne \& Jorntell, 2015). We just said this a paragraph ago.}
-They suggested that sparse coding might be employed to increase the storage capacity of the region, consistent with our proposed framework.
-Sparse and distributed codes may represent two sides of the same coin, evidenced by anatomical bottlenecks, in which the brain utilizes synaptic expansion when transmitting information between brain regions and synaptic reduction and sparsification for information storage within regions. 
-% \emilyNote{moved reduction/expansion thing here, may or may not fit.}
-
 Third, we propose that \ac{STDPH} is carrying out a similar function to \ac{NMF},
-and may be attempting to approximate the linear \ac{RF} properties of
+and may be attempting to approximate the linear \ac{RF} of
 neurons participating in sparse, parts-based representations
 throughout the brain. STDPH and NMF can effectively produce NSC.
 With the emergence of computational tools developed
@@ -50,11 +40,11 @@ can perform statistical inference on their inputs via
 Hebbian-like learning mechanisms
 \citep{Nessler2009,Carlson2013,MorenoBoteDrugowitsch2015,Oja1982}.
 
+In summary, we suggest that the evidence reviewed in this paper may indicate that dimensionality reduction through nonnegative sparse coding, implemented by synaptic plasticity rules, may be a canonical computation throughout the brain. 
 
-
-In summary, we suggest that the evidence reviewed in this paper may indicate that dimensionality reduction through nonnegative sparse coding, implemented by synaptic plasticity rules, may be a canonical computation throughout the brain. Initial experiments using STDPH and \ac{NSC} indicate that they may be functionally equivalent, which is backed by computational evidence in which \ac{NSC} and \ac{STDPH} were applied to an experimentally recorded dataset.
-\mikeNote{If NSC is not a framework, then we need a better closing sentence.}
-In summary, \ac{NSC} offers a promising theoretical framework to further our understanding of how high-dimensional data is encapsulated by the often complex and nonlocal nature of cortical computation.
+% Initial experiments using STDPH and \ac{NSC} indicate that they may be functionally equivalent, which is backed by computational evidence in which \ac{NSC} and \ac{STDPH} were applied to an experimentally recorded dataset.
+% \mikeNote{If NSC is not a framework, then we need a better closing sentence.}
+% In summary, \ac{NSC} offers a promising theoretical framework to further our understanding of how high-dimensional data is encapsulated by the often complex and nonlocal nature of cortical computation.
 
 
 

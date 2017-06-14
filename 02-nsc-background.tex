@@ -55,24 +55,26 @@ by enforcing both input signal and neuronal activation to be nonnegative.
 This seemingly simple change had remarkable consequences on the quality of the
 sensory representation:
 Whereas elementary image features in the standard sparse coding model could
-\jeffNote{Why is parts-based better or more plausible than lateral inhibition that could ``cancel each other out''?}
-\emilyNote{parts-based representations are "better" because they can more closely describe cortical representations}
 ``cancel each other out'' through subtractive interactions,
 enforcing nonnegativity ensured that features combined additively,
 much like the intuitive notion of combining parts to form a whole.
-The resulting ``parts-based'' representations resembled \acp{RF} in \ac{V1} more closely
-than other ``holistic'' representations,
+The resulting \emph{parts-based} representations resembled \acp{RF} in \ac{V1} more closely
+than other \emph{holistic} representations,
 and would later be shown to apply to other brain regions as well,
 suggesting that parts-based representations are employed throughout cortex.
 
-\jeffNote{MC 4: We need to make an argument why non-negative is biologically plausible. I could counter and say that there is more inhibition than excitation in the brain. Isn't inhibition negative coding?}
-\mikeNote{I gave it a shot.}
 Inhibitory connections can be modeled in the same fashion,
-by interpreting inhibitory weights as nonnegative synaptic conductances.
-This is consistent with Dale's principle, which states that neuronal groups
-tend to exclusively release either excitatory or inhibitory neurotransmitters.
-Modeling all synaptic weights as nonnegative synaptic conductances does not only
-preserve the parts-based quality of the encoding,
+by interpreting inhibitory weights as nonnegative synaptic conductances,
+which not only
+% Since neurons tend to release the same set of neurotransmitter at all of their
+% terminals (Dale's principle), one would rarely have to use both excitatory and inhibitory weights
+% Mixing of excitatory and inhibitory weights \emph{within a particular pre-post connection} 
+% is rare, since neurons tend to release a single kind or class of neurotransmitters
+% (Dale's principle).
+% This is consistent with Dale's principle, which states that neurons
+% tend to release a single kind or class of neurotransmitters.
+% Modeling all synaptic weights as nonnegative synaptic conductances not only
+preserves the parts-based quality of the encoding,
 but also allows for more complicated connection types to be modeled
 (e.g., \ac{V1} neurons receiving input from both excitatory ON
 and inhibitory OFF cells in the \ac{LGN})
