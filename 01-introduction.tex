@@ -24,7 +24,7 @@ of downstream neurons;
 for example, storing information from 100 million photoreceptors 
 in 1 million optic nerve fibers,
 or resulting in a $10 - 10,000$ fold convergence from cortex to the basal ganglia
-\citep{GanguliSompolinsky2012}.
+\citep{GanguliSompolinsky2012}. \textcolor{red}{Therefore, nervous systems must be tuned to maximize information processing while minimizing energy expenditure.}
 % \jeffNote{where did the 10 to 10,000 number come from?  Can you provide a reference?}
 % which force the information stored across a large number of neurons 
 % to be compressed into a small number of downstream neurons.
@@ -51,29 +51,27 @@ further reduce the redundancy of the sensory signal
 by separating it into its underlying causes,
 a process known as \textbf{factor analysis}.
 
-Here we propose that a variety of neuronal responses
+Here we \textcolor{red}{show} that a variety of neuronal responses
 can be understood as an emergent property of efficient population coding
-based on dimensionality reduction and sparse coding.
+based on dimensionality reduction and sparse coding. \textcolor{red}{Remarkably, responses from sensory systems to memory systems can be explained by \ac{NSC}}.
 % can be understood by applying sparse coding and dimensionality reduction to a brain region's neuronal inputs.
-Specifically, computational evidence from data analyses and computer simulations
-suggest that \ac{NSC},
-a combination of \ac{NMF} \citep{PaateroTapper1994,LeeSeung1999}
-and sparse population coding \citep{Field1994} (Box 1),
-generates low-dimensional embeddings of 
+\textcolor{red}{Such representations would be advantageous in a metabolically challenged biological system, as well as in an autonomous system operating under real-world constraints.}
+
+Specifically, computational evidence from data analyses and computer simulations suggest that \ac{NSC}, a combination of \ac{NMF} \citep{PaateroTapper1994,LeeSeung1999} and sparse population coding \citep{Field1994} (Box 1), generates low-dimensional embeddings of 
 high-dimensional stimulus spaces 
 that resemble neuronal population responses 
-in a variety of brain regions.
-Reminiscent of \textbf{basis function} representations
+in a variety of brain regions. Reminiscent of \textbf{basis function} representations
 \citep{PougetSejnowski1997,PougetSnyder2000,Poggio1990},
 these embeddings are both sparse and parts-based,
 allowing for perceptual or behavioral variables of interest
 to be represented by taking a linear combination of neuronal responses.
-Furthermore, we suggest that these computations might be implemented in the brain
-through mechanisms of synaptic plasticity and homeostasis,
-which were previously shown to be capable of
-performing statistical inference on synaptic inputs
-\citep{Nessler2009,Carlson2013,MorenoBoteDrugowitsch2015,Oja1982}.
-
+Furthermore, we \textcolor{red}{demonstrate} that these computations \textcolor{red}{can be implemented in the brain
+through mechanisms of synaptic plasticity and homeostasis}
+\citep{Nessler2009,Carlson2013,MorenoBoteDrugowitsch2015,Oja1982}. \textcolor{red}{Thus, we propose that} 
+commonly reported neuronal response properties \textcolor{red}{are a} 
+by-product of neurons performing a biological equivalent of 
+dimensionality reduction on their inputs 
+via Hebbian-like learning mechanisms.
 % The goal of \ac{NSC} is then to find a linear decomposition of \textbf{V}
 % that minimizes the reconstruction error,
 % while guaranteeing that both \textbf{W} and \textbf{H} are sparse.
@@ -92,13 +90,11 @@ performing statistical inference on synaptic inputs
 % Our experiments were conducted using a built-in function for \ac{NMF} in MATLAB,
 % \mikeNote{This sentence will seem out of place to readers who are unaware that you're trying to address one of Jeff's comments. I added a note in the Methods box instead.}
 % which incorporates some constant level of sparsity.
-
-Overall, our observations suggest that 
-commonly reported neuronal response properties might simply be a 
-by-product of neurons performing a biological equivalent of 
-dimensionality reduction on their inputs 
-via Hebbian-like learning mechanisms.
-
+%
+%
+\mikeNote{I'm not sure the machine learning paragraph will be relevant to the PLOS Comp Bio audience, so I commented it out for now.}
+% \textcolor{red}{These observations are not only important for understanding how the brain encodes information, but they also have implications for machine learning and neuromorphic computing in which sparse coding can result in efficient, low power computations}.
+% \textcolor{blue}{In the case of machine learning, dimensionality reduction plays an important role in allowing auto-encoders to create efficient encodings \cite{Bourlard1988} and learn robust feature detectors \cite{Du2017,hinton2006} in an unsupervised setting}. \jeffNote{Need some references for neuromorphic and machine learning} \emilyNote{Added some stuff, may need to be more cohesive} \textcolor{purple}{For example, mapping high-dimensional input data to a low-dimensional space dramatically improves the handling of motion capture data by machine learning algorithms since redundancies in the high-dimensional characteristics of the data are eliminated \cite{zheng2010}. Personal assistant robots that have high-dimensional action spaces may also benefit from using a combination of dimensionality reduction and reinforcement learning to learn appropriate manipulations through reduction of the action space \cite{curran2016}, and dimensionality reduction via PCA has been implemented using memristive arrays though online supervised learning. We expect that memristive arrays could also be used to implement \ac{NSC} through Spike Timing Dependent Plasticity (STDP), which would allow neuromorphic devices to perform dimensionality reduction without sacrificing the energy efficiency of spiking architectures and the flexibility of unsupervised STDP learning rules \cite{choi2017,serrano2013}. Interestingly, there is also some evidence to suggest that the success of deep learning is rooted in the stacking effects of dimensionality reduction in multi-layer auto-encoders \cite{wang2016}.}
 
 
 % Under certain conditions, STDPH might be formally equivalent to \ac{NMF} \citep{Carlson2013, PehlevanChklovskii2014} (Box 2), which decomposes input matrices into key components w (basis functions that are analogous to synaptic weights) and h (a matrix of hidden coefficients by which the basis vectors are weighted). It is known that networks of neurons are able to extract hidden causes in the input signal through STDP \citep{Nessler2009,MorenoBoteDrugowitsch2015}, equivalent to the h part of NMF's method of decomposition.

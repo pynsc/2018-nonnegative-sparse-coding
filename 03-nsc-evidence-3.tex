@@ -19,7 +19,13 @@ Homeostasis also facilitates synaptic competition by normalizing the inputs to a
 This evens the playing field for synapses that weaken due to imbalances in activity, 
 but might otherwise strengthen if left to their own devices \citep{chistiakova2015}.
 
-Experimental and theoretical evidence suggest that biological processes, such as synaptic plasticity and homeostatic mechanisms, may be reducing the dimensionality of inputs in a similar way to NMF. For example, Carlson and colleagues \citep{Carlson2013} delivered a mathematical proof
+Experimental and theoretical evidence suggest that biological processes, such as synaptic plasticity and homeostatic mechanisms, may be reducing the dimensionality of inputs in a similar way to NMF
+\textcolor{red}{\cite{Perrinet2010,Clopath2010,IzhikevichDesai2003}.}
+% \jeffNote{Add these references: Perrinet, L. U. (2010). Role of Homeostasis in Learning Sparse Representations. Neural Computation, 22(7), 1812-1836, 
+% Clopath, C., Busing, L., Vasilaki, E., Gerstner, W. (2010). Connectivity reflects coding: a model of voltage-based STDP with homeostasis. Nat Neurosci, 13(3), 344-352.
+% Izhikevich, E. M., Desai, N. S. (2003). Relating STDP to BCM. Neural Comput, 15(7), 1511-1523.}. 
+\mikeNote{Added Jeff's refs}
+For example, Carlson and colleagues \citep{Carlson2013} provided a mathematical proof
 that \ac{STDPH} can approximate the \ac{NMF} algorithm (see Box 2).
 Similar to Oja's rule \citep{Oja1982}, which was developed to stabilize 
 rate-based Hebbian learning
@@ -62,8 +68,9 @@ with remarkably similar population statistics to rat \ac{RSC}
    on the track (light gray);
 2) Turn-sensitive, route modulation neurons responded whenever the animal made a turn on a specific position along
    the route, independent of allocentric location (dark gray); and
-3) Turn-insensitive neurons that could not be classified according to the above,
-   but nonetheless exhibited complex and robust firing patterns (white). In addition, both \ac{NSC} and \ac{STDPH} model \ac{RSC} produced simulated neurons whose ensemble activity vectors could be used to predict the agent's location on a route with respect to the allocentric frame of reference. Ensemble activity patterns could also disambiguate the agent's location within routes that occupied different locations in the room, consistent with findings of population behavior in the biological RSC \citep{AlexanderNitz2015}.
+3) Turn-insensitive neurons that did not reflect turning behaviors or actions performed by the rats,
+%3) Turn-insensitive neurons that could not be classified according to the above,
+   but nonetheless exhibited complex and robust firing patterns (white). This set of neurons appear to encode information related to position in allocentric space with modulation by other variables. A small subset reliably encode progression along the route regardless of allocentric position, but whose firing patterns also differentiate between route trajectories (i.e., LRL or RLR). In addition, both \ac{NSC} and \ac{STDPH} model \ac{RSC} produced simulated neurons whose ensemble activity vectors could be used to predict the agent's location on a route with respect to the allocentric frame of reference. Ensemble activity patterns could also disambiguate the agent's location within routes that occupied different locations in the room, consistent with findings of population behavior in the biological RSC \citep{AlexanderNitz2015}.
 When even and odd trials on the same track locations were compared,
 ensemble prediction error was very low,
 but when the tracks were in two different locations

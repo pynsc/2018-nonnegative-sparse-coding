@@ -3,7 +3,7 @@
 %% Copyright 2009 Elsevier Ltd
 %%
 %% This file is part of the 'Elsarticle Bundle'.
-%% ---------------------------------------------
+%% ----------------------------------
 %%
 %% It may be distributed under the conditions of the LaTeX Project Public
 %% License, either version 1.2 of this license or (at your option) any
@@ -37,7 +37,7 @@
 \usepackage{tabularx}
 \usepackage{afterpage}
 \usepackage{rotating}
-\usepackage{lineno}
+\usepackage{setspace}
 
 % \usepackage{hyphenat}
 % \hyphenation{high-di-men-sion-al}
@@ -70,15 +70,11 @@
 \graphicspath{ {artwork/} }
 
 %% display line numbers
-% \usepackage{lineno}
+\usepackage{lineno}
 
 %% use acronyms
 \usepackage[acronym,toc,shortcuts]{glossaries}
 
-%% Can't seem to get rid of this stupid footnote... If you don't specify
-%% the journal name, it will just say submitted to Elsevier.
-% Possible journals: TiNS, Neuron, eLife, PLOS CompBio
-\journal{bioRxiv}
 
 % Don't include all these in the glossary:
 % Instead pick the central ones by hand and explain
@@ -127,22 +123,14 @@
 Supported by recent computational studies, sparse coding and
 dimensionality reduction are emerging as a ubiquitous coding strategy 
 across brain regions and modalities,
-allowing neurons to achieve nonnegative sparse coding (NSC)
+allowing neurons to achieve \ac{NSC}
 by efficiently encoding high-dimensional stimulus spaces
 using a sparse and parts-based population code.
 % Sparse coding and dimensionality reduction allow neurons to
 % efficiently encode high-dimensional stimulus spaces using a sparse and parts-based population code to achieve nonnegative sparse coding (NSC) in neural networks
 Reducing the dimensionality of complex, multimodal sensory streams 
 is critically important for metabolically constrained brain areas 
-to represent the world.
-In this article, we provide an overview of NSC,
-summarize evidence for its role in neural computation
-in disparate regions of the brain,
-ranging from visual processing to spatial navigation,
-and speculate that specific forms of synaptic plasticity 
-and homeostatic modulation 
-may underlie its implementation. 
-We  suggest that NSC may be an organizing principle in the nervous system.
+to represent the world. \textcolor{red}{In this article, we provide an overview of \ac{NSC} and summarize evidence for its role in neural computation in disparate regions of the brain. Remarkably, neural responses ranging from visual processing, to spatial navigation, to memory systems can be explained by \ac{NSC}. Furthermore, we show that specific forms of synaptic plasticity and homeostatic modulation may underlie its implementation. We  propose that NSC is an organizing principle in the nervous system and has implications for machine learning and sparse computation}.
 \end{abstract}
 
 %% ----------- Version 2 ---------------
