@@ -1,35 +1,137 @@
-%% This is file `elsarticle-template-1-num.tex',
-%%
-%% Copyright 2009 Elsevier Ltd
-%%
-%% This file is part of the 'Elsarticle Bundle'.
-%% ----------------------------------
-%%
-%% It may be distributed under the conditions of the LaTeX Project Public
-%% License, either version 1.2 of this license or (at your option) any
-%% later version.  The latest version of this license is in
-%%    http://www.latex-project.org/lppl.txt
-%% and version 1.2 or later is part of all distributions of LaTeX
-%% version 1999/12/01 or later.
-%%
-%% Template article for Elsevier's document class `elsarticle'
-%% with numbered style bibliographic references
-%%
-%% $Id: elsarticle-template-1-num.tex 149 2009-10-08 05:01:15Z rishi $
-%% $URL: http://lenova.river-valley.com/svn/elsbst/trunk/elsarticle-template-1-num.tex $
-%%
-\documentclass[review,12pt,sort&compress,openany,oneside]{elsarticle}
+% Template for PLoS
+% Version 3.4 January 2017
+%
+% % % % % % % % % % % % % % % % % % % % % %
+%
+% -- IMPORTANT NOTE
+%
+% This template contains comments intended 
+% to minimize problems and delays during our production 
+% process. Please follow the template instructions
+% whenever possible.
+%
+% % % % % % % % % % % % % % % % % % % % % % % 
+%
+% Once your paper is accepted for publication, 
+% PLEASE REMOVE ALL TRACKED CHANGES in this file 
+% and leave only the final text of your manuscript. 
+% PLOS recommends the use of latexdiff to track changes during review, as this will help to maintain a clean tex file.
+% Visit https://www.ctan.org/pkg/latexdiff?lang=en for info or contact us at latex@plos.org.
+%
+%
+% There are no restrictions on package use within the LaTeX files except that 
+% no packages listed in the template may be deleted.
+%
+% Please do not include colors or graphics in the text.
+%
+% The manuscript LaTeX source should be contained within a single file (do not use \input, \externaldocument, or similar commands).
+%
+% % % % % % % % % % % % % % % % % % % % % % %
+%
+% -- FIGURES AND TABLES
+%
+% Please include tables/figure captions directly after the paragraph where they are first cited in the text.
+%
+% DO NOT INCLUDE GRAPHICS IN YOUR MANUSCRIPT
+% - Figures should be uploaded separately from your manuscript file. 
+% - Figures generated using LaTeX should be extracted and removed from the PDF before submission. 
+% - Figures containing multiple panels/subfigures must be combined into one image file before submission.
+% For figure citations, please use "Fig" instead of "Figure".
+% See http://journals.plos.org/plosone/s/figures for PLOS figure guidelines.
+%
+% Tables should be cell-based and may not contain:
+% - spacing/line breaks within cells to alter layout or alignment
+% - do not nest tabular environments (no tabular environments within tabular environments)
+% - no graphics or colored text (cell background color/shading OK)
+% See http://journals.plos.org/plosone/s/tables for table guidelines.
+%
+% For tables that exceed the width of the text column, use the adjustwidth environment as illustrated in the example table in text below.
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
+%
+% -- EQUATIONS, MATH SYMBOLS, SUBSCRIPTS, AND SUPERSCRIPTS
+%
+% IMPORTANT
+% Below are a few tips to help format your equations and other special characters according to our specifications. For more tips to help reduce the possibility of formatting errors during conversion, please see our LaTeX guidelines at http://journals.plos.org/plosone/s/latex
+%
+% For inline equations, please be sure to include all portions of an equation in the math environment.  For example, x$^2$ is incorrect; this should be formatted as $x^2$ (or $\mathrm{x}^2$ if the romanized font is desired).
+%
+% Do not include text that is not math in the math environment. For example, CO2 should be written as CO\textsubscript{2} instead of CO$_2$.
+%
+% Please add line breaks to long display equations when possible in order to fit size of the column. 
+%
+% For inline equations, please do not include punctuation (commas, etc) within the math environment unless this is part of the equation.
+%
+% When adding superscript or subscripts outside of brackets/braces, please group using {}.  For example, change "[U(D,E,\gamma)]^2" to "{[U(D,E,\gamma)]}^2". 
+%
+% Do not use \cal for caligraphic font.  Instead, use \mathcal{}
+%
+% % % % % % % % % % % % % % % % % % % % % % % % 
+%
+% Please contact latex@plos.org with any questions.
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
 
-% http://www.cell.com/trends/neurosciences/authors#2
+\documentclass[10pt,letterpaper]{article}
+\usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
 
-%% The graphicx package provides the includegraphics command.
+% amsmath and amssymb packages, useful for mathematical formulas and symbols
+\usepackage{amsmath,amssymb}
+
+% Use adjustwidth environment to exceed column width (see example table in text)
+\usepackage{changepage}
+
+% Use Unicode characters when possible
+\usepackage[utf8x]{inputenc}
+
+% textcomp package and marvosym package for additional characters
+\usepackage{textcomp,marvosym}
+
+% cite package, to clean up citations in the main text. Do not remove.
+\usepackage{cite}
+% Use nameref to cite supporting information files (see Supporting Information section for more info)
+% \usepackage{nameref,hyperref}
+
+% line numbers
+\usepackage[right]{lineno}
+
+% ligatures disabled
+\usepackage{microtype}
+\DisableLigatures[f]{encoding = *, family = * }
+
+% color can be used to apply background shading to table cells only
+\usepackage[table]{xcolor}
+
+% array package and thick rules for tables
+\usepackage{array}
+
+% create "+" rule type for thick vertical lines
+\newcolumntype{+}{!{\vrule width 2pt}}
+
+% create \thickcline for thick horizontal lines of variable length
+\newlength\savedwidth
+\newcommand\thickcline[1]{%
+  \noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+  \cline{#1}%
+  \noalign{\vskip\arrayrulewidth}%
+  \noalign{\global\arrayrulewidth\savedwidth}%
+}
+
+% \thickhline command for thick horizontal lines that span the table
+\newcommand\thickhline{\noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+\hline
+\noalign{\global\arrayrulewidth\savedwidth}}
+
+%%%%%%%%%% Our stuff %%%%%%%%%%%%%%%%
+
+% \graphicspath{ {artwork/} }
+
+\usepackage{caption}
 \usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{amssymb}
+\graphicspath{ {artwork/} }
 \usepackage{amsthm}
 \usepackage{array}
 \usepackage{booktabs}
-\usepackage[margin=3cm]{geometry}
 
 % \usepackage{caption}
 \usepackage{subcaption}
@@ -38,41 +140,8 @@
 \usepackage{afterpage}
 \usepackage{rotating}
 \usepackage{setspace}
+\usepackage{soul}
 
-% \usepackage{hyphenat}
-% \hyphenation{high-di-men-sion-al}
-
-%  Add  todonotes package for commenting (xargs enables newcommandx for making comments for each person)
-\usepackage{xargs}
-\usepackage[textsize=scriptsize]{todonotes}
-\setlength{\marginparwidth}{2.5cm}
-
-% Comment style for mike, blue background + border
-\newcommandx{\mikeNote}[2][1=]{\todo[linecolor=black,backgroundcolor=blue!25,bordercolor=blue,#1]{#2 ---Mike}}
-% Comment style for kris, red background + border.
-\newcommandx{\krisNote}[2][1=]{\todo[linecolor=black,backgroundcolor=red!25,bordercolor=red,#1]{#2 ---Kris}}
-% Comment style for emily, green background + border.
-\newcommandx{\emilyNote}[2][1=]{\todo[linecolor=black,backgroundcolor=green!25,bordercolor=green,#1]{#2 ---Emily}}
-% Comment style for jeff, orange background + border.
-\newcommandx{\jeffNote}[2][1=]{\todo[linecolor=black,backgroundcolor=orange!25,bordercolor=orange,#1]{#2 ---Jeff}}
-% Comment style for nik, orange background + border.
-\newcommandx{\nikNote}[2][1=]{\todo[linecolor=black,backgroundcolor=yellow!25,bordercolor=yellow,#1]{#2 ---Nik}}
-
-%% Get rid of these ugly boxes around links
-\usepackage[hidelinks]{hyperref}
-\hypersetup{
-    linkcolor={black!50!black},
-    citecolor={black!50!black},
-    urlcolor={black!80!black}
-}
-
-%% where to find figures
-\graphicspath{ {artwork/} }
-
-%% display line numbers
-\usepackage{lineno}
-
-%% use acronyms
 \usepackage[acronym,toc,shortcuts]{glossaries}
 
 
@@ -96,101 +165,175 @@
 \newacronym{V1}{V1}{primary visual cortex}
 \newacronym{WTA}{WTA}{winner-take-all}
 
-\begin{document}
+\usepackage{hyphenat}
+\hyphenation{high-di-men-sion-al}
 
-\begin{frontmatter}
+%  Add  todonotes package for commenting (xargs enables newcommandx for making comments for each person)
+\usepackage{xargs}
+\usepackage[textsize=scriptsize]{todonotes}\reversemarginpar
+\setlength{\marginparwidth}{5cm}
+% Comment style for mike, blue background + border
+\newcommandx{\mikeNote}[2][1=]{\todo[linecolor=black,backgroundcolor=blue!25,bordercolor=blue,#1]{#2 ---Mike}}
+% Comment style for kris, red background + border.
+\newcommandx{\krisNote}[2][1=]{\todo[linecolor=black,backgroundcolor=red!25,bordercolor=red,#1]{#2 ---Kris}}
+% Comment style for emily, green background + border.
+\newcommandx{\emilyNote}[2][1=]{\todo[linecolor=black,backgroundcolor=green!25,bordercolor=green,#1]{#2 ---Emily}}
+% Comment style for jeff, orange background + border.
+\newcommandx{\jeffNote}[2][1=]{\todo[linecolor=black,backgroundcolor=orange!25,bordercolor=orange,#1]{#2 ---Jeff}}
+% Comment style for nik, orange background + border.
+\newcommandx{\nikNote}[2][1=]{\todo[linecolor=black,backgroundcolor=yellow!25,bordercolor=yellow,#1]{#2 ---Nik}}
 
-% 8 words max!
-\title{Sparse coding and dimensionality reduction in cortex}
 
-\author[UCI,UW]{Michael Beyeler\corref{cor1}}
-\author[UCI]{Emily Rounds\corref{cor1}}
-\author[Sandia]{Kristofor D. Carlson}
-\author[UCI]{Nikil Dutt}
-\author[UCI]{Jeffrey L. Krichmar}
-%
-\address[UCI]{University of California, Irvine, Irvine, CA, USA}
-\address[UW]{University of Washington, Seattle, WA, USA}
-\address[Sandia]{Sandia National Laboratories\footnote[**]{Sandia National Laboratories is a multiprogram laboratory managed and operated by National Technology and Engineering Solutions of Sandia, LLC, for the U.S. Department of Energy's National Nuclear Security Administration under contract DE-NA0003525.}, Albuquerque, NM, USA}
-\cortext[cor1]{These authors contributed equally to this work.}
+%% Get rid of these ugly boxes around links
+\usepackage[colorlinks=true, hidelinks]{hyperref}
+\hypersetup{
+    linkcolor={black!50!black},
+    citecolor={black!50!black},
+    urlcolor={black!80!black}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% ---------- Version 3 -----------------
-% must be between 100-120 words
-% Neural is the adjective for nerve and neuronal is the adjective for neuron.
-\begin{abstract}
-% MB These first sentences are so repetitive.
-Supported by recent computational studies, sparse coding and
-dimensionality reduction are emerging as a ubiquitous coding strategy 
-across brain regions and modalities,
-allowing neurons to achieve \ac{NSC}
-by efficiently encoding high-dimensional stimulus spaces
-using a sparse and parts-based population code.
-% Sparse coding and dimensionality reduction allow neurons to
-% efficiently encode high-dimensional stimulus spaces using a sparse and parts-based population code to achieve nonnegative sparse coding (NSC) in neural networks
-Reducing the dimensionality of complex, multimodal sensory streams 
-is critically important for metabolically constrained brain areas 
-to represent the world. \textcolor{red}{In this article, we provide an overview of \ac{NSC} and summarize evidence for its role in neural computation in disparate regions of the brain. Remarkably, neural responses ranging from visual processing, to spatial navigation, to memory systems can be explained by \ac{NSC}. Furthermore, we show that specific forms of synaptic plasticity and homeostatic modulation may underlie its implementation. We  propose that NSC is an organizing principle in the nervous system and has implications for machine learning and sparse computation}.
-\end{abstract}
 
-%% ----------- Version 2 ---------------
-% This needs to be reframed for NSC:
-% Recently, increasing evidence has shown that the classical receptive fields of cortical neurons can be derived from the application of \ac{NMF} or similar dimensionality reduction techniques. This leads us to propose that neurons in regions across the brain may be  performing linear dimensionality reduction on their inputs in order to represent relevant information about stimuli in a concise, compressed format. In the first part of the paper, we review the NMF algorithm and how it might be implemented by STDP, as well as other work that provides evidence for dimensionality reduction occurring in the brain. In the remainder of the paper, we present evidence to support the idea that STDP, under certain conditions, is a possible mechanism by which neurons can implement \ac{NMF}-like linear dimensionality reduction. We speculate that this process may be related to energy  conservation; since the brain consumes a great deal of the body's energy resources, it is imperative that neuronal representations be as efficient and sparse as possible. Linear dimensionality reduction is an excellent candidate solution that the brain may implement to make such representations possible. 
+% Remove comment for double spacing
+%\usepackage{setspace} 
+%\doublespacing
 
+% Text layout
+\raggedright
+\setlength{\parindent}{0.5cm}
+\textwidth 5.25in 
+\textheight 8.75in
+
+% Bold the 'Figure #' in the caption and separate it from the title/caption with a period
+% Captions will be left justified
+\usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}
+\renewcommand{\figurename}{Fig}
+
+
+% Use the PLoS provided BiBTeX style
+% \usepackage[authoryear]{natbib}
+\bibliographystyle{plos2015}
+
+
+% Remove brackets from numbering in List of References
 \makeatletter
-\def\@xfootnote[#1]{%
-  \protected@xdef\@thefnmark{#1}%
-  \@footnotemark\@footnotetext}
+\renewcommand{\@biblabel}[1]{\quad#1.}
 \makeatother
 
+% Leave date blank
+\date{}
 
-% 2-6 keywords only
-\begin{keyword}
-efficient coding \sep
-sparse coding \sep
-dimensionality reduction \sep
-nonnegative matrix factorization \sep
-neural computation \sep
-spike-timing dependent plasticity
-\end{keyword}
+% Header and Footer with logo
+\usepackage{lastpage,fancyhdr,graphicx}
+\usepackage{epstopdf}
+\pagestyle{myheadings}
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{27.023pt}
+\lhead{\includegraphics[width=2.0in]{PLOS-submission.eps}}
+\rfoot{\thepage/\pageref{LastPage}}
+\renewcommand{\footrule}{\hrule height 2pt \vspace{2mm}}
+\fancyheadoffset[L]{2.25in}
+\fancyfootoffset[L]{2.25in}
+\lfoot{\sf PLOS}
 
-\end{frontmatter}
+\usepackage{pbox,ragged2e}
+
+%% Include all macros below
+
+\newcommand{\revise}[1]{\textcolor{blue}{#1}}
+
+%% END MACROS SECTION
 
 
-\let\oldcleartorecto\cleartorecto % <--- new
-\let\cleartorecto\newpage         % <--- new
+\begin{document}
+\vspace*{0.2in}
 
-%%
-%% Start line numbering here if you want
-%%
-%\linenumbers
+% Title must be 250 characters or less.
+\begin{flushleft}
+{\Large
+\textbf\newline{Sparse coding and dimensionality reduction in the brain} % Please use "sentence case" for title and headings (capitalize only the first word in a title (or heading), the first word in a subtitle (or subheading), and any proper nouns).
+}
+\newline
+% Insert author names, affiliations and corresponding author email (do not include titles, positions, or degrees).
+\\
+Michael Beyeler\textsuperscript{1,2*\Yinyang},
+Emily L. Rounds\textsuperscript{1\Yinyang},
+Kristofor D. Carlson\textsuperscript{3},
+Nikil Dutt\textsuperscript{1},
+Jeffrey L. Krichmar\textsuperscript{1}
+\\
+\bigskip
+\textbf{1} University of California, Irvine, CA, USA
+\\
+\textbf{2} University of Washington, Seattle, WA, USA
+\\
+\textbf{3} Sandia National Laboratories\dag, Albuquerque, NM, USA
+\\
+\bigskip
 
-\setcounter{secnumdepth}{0} %% no section numbering
+% Insert additional author notes using the symbols described below. Insert symbol callouts after author names as necessary.
+% 
+% Remove or comment out the author notes below if they aren't used.
+%
+% Primary Equal Contribution Note
+\Yinyang These authors contributed equally to this work.
+
+% Additional Equal Contribution Note
+% Also use this double-dagger symbol for special authorship notes, such as senior authorship.
+% \ddag These authors also contributed equally to this work.
+
+% Current address notes
+% \textcurrency Current Address: Dept/Program/Center, Institution Name, City, State, Country % change symbol to "\textcurrency a" if more than one current address note
+% \textcurrency b Insert second current address 
+% \textcurrency c Insert third current address
+
+\dag Sandia National Laboratories is a multiprogram laboratory managed and operated by National Technology and Engineering Solutions of Sandia, LLC, for the U.S. Department of Energy's National Nuclear Security Administration under contract DE-NA0003525.
+
+% Group/Consortium Author Note
+% \textpilcrow Membership list can be found in the Acknowledgments section.
+
+% Use the asterisk to denote corresponding authorship and provide email address in note below.
+* mbeyeler@uw.edu
+
+\end{flushleft}
+% Please keep the abstract below 300 words
+\section*{Abstract}
+Supported by recent computational studies, sparse coding and dimensionality reduction are emerging as a ubiquitous coding strategy  across brain regions and modalities, allowing neurons to achieve \acf{NSC} by efficiently encoding high-dimensional stimulus spaces using a sparse and parts-based population code. Reducing the dimensionality of complex, multimodal sensory streams is critically important for metabolically constrained brain areas to represent the world. In this article, we provide an overview of \acs{NSC} and summarize evidence for its role in neural computation in disparate regions of the brain. Remarkably, neural responses ranging from visual processing, to spatial navigation, to memory systems can be explained by \acs{NSC}. Furthermore, we show that specific forms of synaptic plasticity and homeostatic modulation may underlie its implementation. We  propose that NSC is an organizing principle in the nervous system.
+% and has implications for machine learning
+% \mikeNote{We don't really talk about machine learning anymore, do we?}
+% and sparse computation.
 
 
-%% main text
+% Please keep the Author Summary between 150 and 200 words
+% Use first person. PLOS ONE authors please skip this step. 
+% Author Summary not valid for PLOS ONE submissions.   
+\section*{Author summary}
+Brains face the fundamental challenge of processing, storing, and representing high-dimensional stimuli using patterns of neural activity. One potential approach to addressing this challenge is to reduce the number of variables required to represent a particular stimulus space (i.e., dimensionality reduction).
+We review compelling evidence that a wide range of neuronal responses can be understood as an emergent property of \acf{NSC}---a form of efficient population coding due to dimensionality reduction and sparsity constraints. We propose that \acs{NSC} is an organizing principle for neuronal computation.
+Furthermore, we posit that biological synaptic plasticity and homeostasis mechanisms can carry out the same function as \acs{NSC}.
+
+\linenumbers
+
+
 \include{01-introduction}
 \include{02-nsc-background}
 \include{03-nsc-evidence-1}
 \include{03-nsc-evidence-2}
-\include{03-nsc-evidence-3}
-% \include{04-discussion}
-\include{05-conclusion}
-\include{06-method-boxes}
-% Jeff said don't include TiNS boxes in preprint
-% \include{07-trends-box}
-% \include{08-questions-box}
-\include{09-glossary}
-% \include{10-notes}
+\include{04-nsc-mechanisms}
+\include{05-nsc-limitations}
+\include{06-conclusion}
+\include{07-acknowledgments}
 
-% --- Apparently the glossary isn't just a list of acronyms...
-% % the glossary with all acronyms explained
-% % use brackets in acronym definition above to specify description
-% \printglossary[type=\acronymtype, title=Glossary, nonumberlist]
+\nolinenumbers
 
-\section{References}
-% \bibliographystyle{bibstyle}\biboptions{authoryear}
-\bibliographystyle{unsrtnat}
 \bibliography{references}
+
+\linenumbers
+
+\include{A-glossary}
+\include{B-supplementary}
 
 \end{document}

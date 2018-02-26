@@ -5,100 +5,203 @@
 % Please use a descriptive heading rather than "Introduction" for this
 % section, and be sure to state your opinion clearly.
 
-\section{A need for compressed representations of a high-dimensional world}
+\section*{Introduction}
 \label{sec:introduction}
-
-% \mikeNote{The Sandia footnote now fits on the first page, but I can't seem to get rid of the empty page that follows... I think it's a Latex spacing thing.}
-% \emilyNote{Not sure why it caused the blank page, but it looks like the footnote was too long. I worked around it using the geometry package, which allows you to adjust the margins.}
-% \mikeNote{Nice job!}
 Brains face the fundamental challenge of 
 processing, storing, and representing high-dimensional stimuli
 using patterns of neural activity.
-This challenge is complicated by strict constraints on metabolic cost
-\citep{Lennie2003}
+\revise{To generate complicated patterns of behavior,
+neurons implement a rich repertoire of linear and nonlinear
+operations that process information from up to $10^5$ synaptic inputs,
+and are able to vary their signaling properties based on context and experience
+\cite{Koch1999}.}
+
+\revise{However, neuronal information processing} is complicated
+by strict constraints on metabolic cost,
+\revise{where 50\% of the mammalian brain's energy consumption
+is believed to be associated with neuronal signaling \cite{Laughlin2001, Lennie2003}},
 and the widespread existence of anatomical bottlenecks 
-\citep{Kempermann2002,BarGad2003_Review,Babinsky1993,GanguliSompolinsky2012},
-which often force the information stored in a large number of neurons
+\cite{Kempermann2002,BarGad2003_Review,Babinsky1993}.
+\revise{These bottlenecks} often force the information
+stored in a large number of neurons
 to be compressed into an orders of magnitude smaller population
 of downstream neurons;
 for example, storing information from 100 million photoreceptors 
 in 1 million optic nerve fibers,
 or resulting in a $10 - 10,000$ fold convergence from cortex to the basal ganglia
-\citep{GanguliSompolinsky2012}. \textcolor{red}{Therefore, nervous systems must be tuned to maximize information processing while minimizing energy expenditure.}
-% \jeffNote{where did the 10 to 10,000 number come from?  Can you provide a reference?}
-% which force the information stored across a large number of neurons 
-% to be compressed into a small number of downstream neurons.
+\cite{GanguliSompolinsky2012}.
+\revise{To operate efficiently within these constraints,
+recent work suggests that the nervous system improves 
+efficiency by reducing (and in some cases minimizing) the resources
+required to implement a given task \cite{LaughlinSejnowski2003}.}
 
-One potential approach to addressing this challenge is to reduce the number
-of variables required to represent a particular stimulus space;
-a process known as \textbf{dimensionality reduction} (see Glossary).
-This idea features prominently in 
-efficient coding theories of brain function
-\citep{Barlow1961,Barlow2001,Atick1992,Linsker1990},
-which posit that the brain performs dimensionality reduction 
-% Mike: This sentence didn't make sense. The idea is that
-% anatomical bottlenecks in the brain (e.g., retina -> V1)
-% perform dimensionality reduction. Not "to reduce information
-% bottlenecks"
-% to reduce information bottlenecks
-by maximizing mutual information between the
-high-dimensional input and the low-dimensional output 
-of neuronal populations.
-Several modern variants of the efficient coding hypothesis,
-such as \ac{ICA} \citep{BellSejnowski1997}
-and \ac{NSC} \citep{Hoyer2002,Hoyer2004}, suggest that the role of cortical representations is to
-further reduce the redundancy of the sensory signal 
-by separating it into its underlying causes,
-a process known as \textbf{factor analysis}.
+One potential approach to addressing this challenge is to
+\revise{reduce the number of signals required to transmit information in the network.
+\textbf{Sparse coding} schemes (see Glossary),
+in which information is represented by the activity of a small
+proportion of neurons in a population,
+have been shown to greatly increase energy efficiency 
+\cite{Foldiak1990,Field1994,LevyBaxter1996}.
+An extreme example is the so-called local code
+(illustrated in the left column of Fig.~\ref{fig:sparse-parts}A),
+where each unique event or `context' is encoded by a single active neuron
+(also known as a grandmother cell) \cite{RollsTreves1990}.
+This leads to low energy expenditure, but also to low
+\textbf{representational capacity},
+because a population of $N$ neurons can encode at most $N$ contexts using a local code.
+On the other hand, a dense code
+(Fig.~\ref{fig:sparse-parts}A, right column) 
+represents each context by the combined activity
+of all neurons in the population, leading to high representational capacity
+but also suffering from neuronal cross talk
+(because every neuron is involved in every context).
+Alternatively, sparse codes
+(Fig.~\ref{fig:sparse-parts}A, center column)
+can be described as a trade-off between the benefits and
+drawbacks of dense and local codes 
+\cite{SpanneJorntell2015,Foldiak1990},
+leading to relatively low energy expenditure while maintaining a 
+relatively high representational capacity.
+The level of sparsity required to minimize energy expenditure can be determined
+by weighing the cost of maintaining a neuron at rest against the extra cost
+of sending a signal:
+when signals are relatively expensive, it is best to distribute a few of them
+among a large number of cells (local code); but
+when cells are expensive, it is more efficient to use few cells
+and have all of them participate in the encoding of the signal (dense code)
+\cite{RollsTreves1990,Laughlin2001}.}
 
-Here we \textcolor{red}{show} that a variety of neuronal responses
+\revise{Another approach is} to reduce the number of
+variables required to represent a particular stimulus space;
+a process known as \revise{\textbf{dimensionality reduction}}.
+\revise{The idea that the brain might implement dimensionality reduction
+is well established in vision neuroscience:
+the response of a neuron in \ac{V1}, for example,
+can be characterized as depending on only a small set of visual features
+(e.g., color, orientation) of an external stimulus.
+Deeper in the brain, neurons typically encode several stimulus parameters
+simultaneously \cite{Rigotti2013,Park2014,PaganRust2014,PougetSejnowski1997},
+allowing for multifaceted representations of high-dimensional stimulus spaces.
+For example, a population of neurons tasked with encoding human faces
+might opt to represent each individual face as a combination of a set of
+standard faces (Fig.~\ref{fig:sparse-parts}B, left column).
+In such a \emph{holistic} representation of faces,
+each individual neurons would itself respond to a face as a whole
+(also known as an `eigenface'),
+and an arbitrary face could be represented by combining the activity of
+different neurons in the population
+(e.g., adding 10\% of eigenface 1 to 25\% of eigenface 2
+and subtracting 5\% of eigenface 3).
+On the other hand, faces can also be represented as a combination
+of individual face components, such as eyes, noses, and mouth,
+in what is known as a \emph{parts-based} representation
+(Fig.~\ref{fig:sparse-parts}B, right column).
+Both approaches allow for representing arbitrary faces as a combination of
+neural activity, but have drastically different consequences on the
+set of stimulus features each neuron responds to.
+Although the relevant stimulus dimensions are often not known \emph{a priori},
+several sophisticated mathematical techniques exist that
+allow us to discover these representations directly from experimental data
+\cite{Brunton2016,CunninghamYu2014,PillowSimoncelli2006,Sharpee2014}.}
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{fig-rev1-sparse-parts}
+    \caption{\revise{\Acf{NSC} promotes population codes that are both sparse and parts-based.
+    	A) Adapted from Spanne \& Jorntell \cite{SpanneJorntell2015}:
+           Hypothetical activity in a population of neurons
+           during presentation of two different external stimuli (`contexts').
+           A sparse code is a trade-off between a local code
+           (where a context is represented by the activity of a single neuron,
+           and different contexts are represented by different neurons), and a
+           dense code (where all neurons are active and their combined activity is
+           used to encode each context).
+           Dense codes possess great memory capacity, but suffer from cross talk
+           among neurons, whereas local codes do not suffer from interference
+           but also have no capacity for generalization.
+        B) Adapted from Lee \& Seung \cite{LeeSeung1999}:
+           In a holistic representation of faces, individual neurons in the population
+           respond themselves to faces as a whole,
+           whereas in a parts-based representation
+           individual neurons encode different face components
+           (e.g., the eyes, nose, and mouth).}}
+	\label{fig:sparse-parts}
+\end{figure}
+
+
+% \revise{The idea that the brain might implement dimensionality reduction}
+% features prominently in 
+% efficient coding theories of brain function
+% \cite{Barlow1961,Barlow2001,Atick1992,Linsker1990}
+% \revise{and in basis function talk by Pouget and friends
+% \cite{PougetSejnowski1997,PougetSnyder2000,Poggio1990}.}
+% \revise{The goal is to change the representation of the stimulus space, so that
+% the same information can be represented with a smaller number of neurons.
+% This could be done by finding basis functions (elementary functions in a lower dimension)
+% that can be combined to represent a given input stimulus.
+% Much like every continuous signal can be represented by a series of sine and cosine
+% functions, any image can be represented by a series of Gabors.
+% However, many different decompositions are possible.
+% For example, the space of all faces could be decomposed into a set of Eigenfaces - this
+% is a holistic representation. Alternatively, faces could be decomposed into their
+% components, such as eyes, nose, mouths - this is a parts-based representation.}
+
+% which posit that the brain
+% \revise{maximizes} mutual information between the
+% \mikeNote{This paragraph has too much jargon and mentions too many concepts at once without explaining any of them really. What is mutual information? Even more fundamental: What is information? There are so many technical terms here...do we really need them all? rewrite}
+% high-dimensional input and the low-dimensional output 
+% of neuronal populations.
+% Several modern variants of the efficient coding hypothesis,
+% such as \ac{ICA} \cite{BellSejnowski1997}
+% and \ac{NSC} \cite{Hoyer2002,Hoyer2004}, suggest that the role of cortical representations is to
+% further reduce the redundancy of the sensory signal 
+% by separating it into its underlying causes,
+% a process known as \emph{factor analysis}.
+
+
+
+\revise{In this article, we demonstrate} that a variety of neuronal responses
 can be understood as an emergent property of efficient population coding
-based on dimensionality reduction and sparse coding. \textcolor{red}{Remarkably, responses from sensory systems to memory systems can be explained by \ac{NSC}}.
-% can be understood by applying sparse coding and dimensionality reduction to a brain region's neuronal inputs.
-\textcolor{red}{Such representations would be advantageous in a metabolically challenged biological system, as well as in an autonomous system operating under real-world constraints.}
+based on dimensionality reduction and sparse coding.
+Specifically, \revise{we review} computational evidence
+from data analyses and computer simulations \revise{suggesting} that \ac{NSC}, 
+a combination of \ac{NMF} \cite{PaateroTapper1994,LeeSeung1999} and sparse coding,
+\revise{can generate sparse and parts-based} embeddings of
+high-dimensional stimulus spaces \revise{(Fig.~\ref{fig:sparse-parts})}
+that resemble neuronal population responses in a variety of brain regions.
+\revise{Furthermore, we review potential mechanisms of \ac{NSC},
+which include synaptic plasticity and others.}
+\mikeNote{Need a more balanced statement about potential mechanisms.}
 
-Specifically, computational evidence from data analyses and computer simulations suggest that \ac{NSC}, a combination of \ac{NMF} \citep{PaateroTapper1994,LeeSeung1999} and sparse population coding \citep{Field1994} (Box 1), generates low-dimensional embeddings of 
-high-dimensional stimulus spaces 
-that resemble neuronal population responses 
-in a variety of brain regions. Reminiscent of \textbf{basis function} representations
-\citep{PougetSejnowski1997,PougetSnyder2000,Poggio1990},
-these embeddings are both sparse and parts-based,
-allowing for perceptual or behavioral variables of interest
-to be represented by taking a linear combination of neuronal responses.
-Furthermore, we \textcolor{red}{demonstrate} that these computations \textcolor{red}{can be implemented in the brain
-through mechanisms of synaptic plasticity and homeostasis}
-\citep{Nessler2009,Carlson2013,MorenoBoteDrugowitsch2015,Oja1982}. \textcolor{red}{Thus, we propose that} 
-commonly reported neuronal response properties \textcolor{red}{are a} 
-by-product of neurons performing a biological equivalent of 
-dimensionality reduction on their inputs 
-via Hebbian-like learning mechanisms.
-% The goal of \ac{NSC} is then to find a linear decomposition of \textbf{V}
-% that minimizes the reconstruction error,
-% while guaranteeing that both \textbf{W} and \textbf{H} are sparse.
-% This can be achieved by minimizing the following cost function
-% \citep{Hoyer2002}:
-% \begin{equation}
-% \min_{\mathbf{W}, \mathbf{H}} \frac{1}{2} ||\mathbf{X} -\mathbf{WH}||^2 + \lambda \sum_{ij} f(H_{ij}),
-% \end{equation}
-% subject to the constraints
-% $\forall ij: \mathbf{W}_{ij} \geq 0$, $\mathbf{H}_{ij} \geq 0$, and
-% $||w^{(i)}|| = 1$, where $w^{(i)}$ denotes the $i$th column of \textbf{W}.
-% Here, the left-hand term describes the reconstruction error, which can
-% be minimized with \ac{NMF},
-% and the right-hand term describes the sparseness of the decomposition.
-% \jeffNote{I don't see anywhere we combine NMF with sparse coding. Or is that sparseness implied?}
-% Our experiments were conducted using a built-in function for \ac{NMF} in MATLAB,
-% \mikeNote{This sentence will seem out of place to readers who are unaware that you're trying to address one of Jeff's comments. I added a note in the Methods box instead.}
-% which incorporates some constant level of sparsity.
+\revise{Remarkably, neural responses ranging from visual processing,
+to spatial navigation, to memory systems can be explained by \ac{NSC}.
+We thus propose that \ac{NSC} is an organizing principle for neuronal computation.}
+
+
 %
+% Remarkably, responses from sensory systems to memory systems can be explained by \ac{NSC}.
+% Such representations would be advantageous in a metabolically challenged biological system, as well as in an autonomous system operating under real-world constraints.
 %
-\mikeNote{I'm not sure the machine learning paragraph will be relevant to the PLOS Comp Bio audience, so I commented it out for now.}
+%  Reminiscent of \emph{basis function} representations
+% \cite{PougetSejnowski1997,PougetSnyder2000,Poggio1990},
+% these embeddings are both sparse and `parts-based'
+% \revise{(see Fig.~\ref{fig:population_code})}
+% (as opposed to `holistic'),
+% allowing for perceptual or behavioral variables of interest
+% to be represented by taking a linear combination of neuronal responses.
+% Furthermore, we demonstrate that these computations can be implemented in the brain
+% through mechanisms of synaptic plasticity and homeostasis
+% \cite{Nessler2009,Carlson2013,MorenoBoteDrugowitsch2015,Oja1982}. Thus, we propose that
+% commonly reported neuronal response properties are a 
+% by-product of neurons performing a biological equivalent of 
+% dimensionality reduction on their inputs 
+% via Hebbian-like learning mechanisms.
+
+
+% \mikeNote{I'm not sure the machine learning paragraph will be relevant to the PLOS Comp Bio audience, so I commented it out for now.}
 % \textcolor{red}{These observations are not only important for understanding how the brain encodes information, but they also have implications for machine learning and neuromorphic computing in which sparse coding can result in efficient, low power computations}.
 % \textcolor{blue}{In the case of machine learning, dimensionality reduction plays an important role in allowing auto-encoders to create efficient encodings \cite{Bourlard1988} and learn robust feature detectors \cite{Du2017,hinton2006} in an unsupervised setting}. \jeffNote{Need some references for neuromorphic and machine learning} \emilyNote{Added some stuff, may need to be more cohesive} \textcolor{purple}{For example, mapping high-dimensional input data to a low-dimensional space dramatically improves the handling of motion capture data by machine learning algorithms since redundancies in the high-dimensional characteristics of the data are eliminated \cite{zheng2010}. Personal assistant robots that have high-dimensional action spaces may also benefit from using a combination of dimensionality reduction and reinforcement learning to learn appropriate manipulations through reduction of the action space \cite{curran2016}, and dimensionality reduction via PCA has been implemented using memristive arrays though online supervised learning. We expect that memristive arrays could also be used to implement \ac{NSC} through Spike Timing Dependent Plasticity (STDP), which would allow neuromorphic devices to perform dimensionality reduction without sacrificing the energy efficiency of spiking architectures and the flexibility of unsupervised STDP learning rules \cite{choi2017,serrano2013}. Interestingly, there is also some evidence to suggest that the success of deep learning is rooted in the stacking effects of dimensionality reduction in multi-layer auto-encoders \cite{wang2016}.}
 
 
-% Under certain conditions, STDPH might be formally equivalent to \ac{NMF} \citep{Carlson2013, PehlevanChklovskii2014} (Box 2), which decomposes input matrices into key components w (basis functions that are analogous to synaptic weights) and h (a matrix of hidden coefficients by which the basis vectors are weighted). It is known that networks of neurons are able to extract hidden causes in the input signal through STDP \citep{Nessler2009,MorenoBoteDrugowitsch2015}, equivalent to the h part of NMF's method of decomposition.
-
-% \emilyNote{I feel that bringing up STDP's extraction of hidden causes seems out of place without describing how it pertains to dimensionality reduction so I added some stuff about it but it could be worded better/might be too long now.}
-
-% \mikeNote{Therefore, I would just cut it all out... We have the Boxes to explain the math in detail, and we don't have enough space to say things twice.}
+% Under certain conditions, STDPH might be formally equivalent to \ac{NMF} \citep{Carlson2013, PehlevanChklovskii2014}, which decomposes input matrices into key components w (basis functions that are analogous to synaptic weights) and h (a matrix of hidden coefficients by which the basis vectors are weighted). It is known that networks of neurons are able to extract hidden causes in the input signal through STDP \citep{Nessler2009,MorenoBoteDrugowitsch2015}, equivalent to the h part of NMF's method of decomposition.
