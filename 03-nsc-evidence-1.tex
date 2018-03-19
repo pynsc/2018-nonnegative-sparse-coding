@@ -1,6 +1,6 @@
 \section*{Empirical evidence for nonnegative sparse coding in the brain}
 
-\subsection*{Reconstructing stimulus spaces using sparse, parts-based representations}
+% \subsection*{Reconstructing stimulus spaces using sparse, parts-based representations}
 
 An influential paper by Lee and Seung \cite{LeeSeung1999}
 found that applying \ac{NMF} to a database of face images
@@ -15,27 +15,29 @@ observations of those features
 (e.g., $S$ different images).
 \ac{NMF} was used to decompose the matrix into two reduced-rank matrices
 (Fig.~\ref{fig:NMF|reconstruction}, \revise{inset})
-whose linear combination could be weighted such that the product of \textbf{W} and \textbf{H} provided an accurate reconstruction of \textbf{V}.
+whose linear combination could be weighted such that the product of \textbf{W} and \textbf{H} provided an accurate reconstruction of \textbf{V}
+\revise{(see Eq.~\ref{eqn:linear-decomposition}).}
 
-On its surface, \ac{NMF} would appear to be unrelated to 
-the mechanisms underlying 
-artificial or biological neural networks;
-however, it was Lee and Seung's intuitive mapping of these variables onto
-a neural network that forms the cornerstone 
-of our conception of the \ac{NSC} framework:
-In the context of \ac{NSC}, \textbf{V} and \textbf{H} correspond to activation values of two distinct neuronal populations, which are connected to each other via synaptic weight values in \textbf{W}.
-A particular image, in this case encoded by $F = 19 \times 19 = 361$ 
-pixels $v_1, \ldots, v_F$
-(i.e., a column of \textbf{V}),
-could be reconstructed by a linear mixing of a total of $B$ encoding variables
-$h_1, \ldots, h_B$ (i.e., a column of \textbf{H}).
-A single encoding variable $b \in 1, \ldots, B$ 
-influences multiple image pixels,
-owing to the fan-out of the connections from the encoding variable.
-As a result, a particular image of a face 
-(Fig.~\ref{fig:NMF|reconstruction}\revise{A})
+% On its surface, \ac{NMF} would appear to be unrelated to 
+% the mechanisms underlying 
+% artificial or biological neural networks;
+% however, it was Lee and Seung's intuitive mapping of these variables onto
+% a neural network that forms the cornerstone 
+% of our conception of the \ac{NSC} framework:
+% In the context of \ac{NSC}, \textbf{V} and \textbf{H} correspond to activation values of two distinct neuronal populations, which are connected to each other via synaptic weight values in \textbf{W}.
+A particular image, in this case encoded by $F = 19 \times 19 = 361$ pixels
+% pixels $v_1, \ldots, v_F$
+% (i.e., a column of \textbf{V}),
+% could be reconstructed by a linear mixing of a total of $B$ encoding variables
+% $h_1, \ldots, h_B$ (i.e., a column of \textbf{H}).
+% A single encoding variable $b \in 1, \ldots, B$ 
+% influences multiple image pixels,
+% owing to the fan-out of the connections from the encoding variable.
+% As a result, a particular image of a face 
+% (Fig.~\ref{fig:NMF|reconstruction}\revise{A})
 could be accurately represented by a linear combination of 
-a small number ($B = 49$) of encoding variables or `basis images'.
+a small number ($B = 49$) of encoding variables or `basis images'
+(Fig.~\ref{fig:NMF|reconstruction}\revise{A}).
 Such a representation is reminiscent to neural processing in \ac{IT},
 an area in the ventral visual `what' stream
 involved in encoding high-level object identity
@@ -53,33 +55,36 @@ that each respond to a certain set of physical facial features
              \Ac{NMF} (inset) can reconstruct a} data matrix \textbf{V}
              ($F$ features x $S$ stimuli)
              from two reduced-rank matrices \textbf{W}
-             (containing $B$ basis vectors) and \textbf{H}
+             (containing $B$ basis functions) and \textbf{H}
              (containing the hidden coefficients of the decomposition).
              Any individual input stimulus (i.e., column in \textbf{V}, \revise{red})
              can be reconstructed from a linear combination
              \revise{(i.e., column in \textbf{H}, blue)}
-             of a set of basis vectors (i.e., all columns in \textbf{W}, 
+             of a set of basis functions (i.e., all columns in \textbf{W}, 
              \revise{green}).
-             A) A facial image can be reconstructed from a sparse activation
-                of simulated \acs{IT} neurons that
-                preferentially respond to parts of faces
-                (adapted from \cite{LeeSeung1999}).
-             B) An optic flow field can be reconstructed from a sparse
-                activation of model \acs{MSTd} neurons that prefer various
-                directions of 3D self-translation and self-rotation
-                (adapted from \cite{Beyeler2016}).
-             C) A rat's 2D allocentric position and route-based direction of
-                motion can be reconstructed from a sparse activation of
-                model \acs{RSC} neurons that prefer an intricate combination of
-                linear velocity (LV), angular velocity (AV), head direction (HD)
-                and 2D position (P).
-                For the sake of clarity, only the 4 most contributing hidden
-                coefficients (out of 30) are shown.}
+         \textbf{\emph{A}},
+             A facial image can be reconstructed from a sparse activation
+             of simulated \acs{IT} neurons that
+             preferentially respond to parts of faces
+             (adapted from \cite{LeeSeung1999}).
+         \textbf{\emph{B}},
+             An optic flow field can be reconstructed from a sparse
+             activation of model \acs{MSTd} neurons that prefer various
+             directions of 3D self-translation and self-rotation
+             (adapted from \cite{Beyeler2016}).
+         \textbf{\emph{C}},
+             A rat's 2D allocentric position and route-based direction of
+             motion can be reconstructed from a sparse activation of
+             model \acs{RSC} neurons that prefer an intricate combination of
+             linear velocity (LV), angular velocity (AV), head direction (HD)
+             and 2D position (P).
+             For the sake of clarity, only the 4 most contributing hidden
+             coefficients (out of 30) are shown.}
 	\label{fig:NMF|reconstruction}
 \end{figure}
 
 
-Remarkably, such a parts-based representation is not specific to
+\revise{Interestingly}, such a parts-based representation is not specific to
 information processing in \ac{IT};
 the same principle can be extended to other areas of the visual system,
 such as the \ac{MSTd},
@@ -103,7 +108,7 @@ resembled that of experimentally recorded \ac{MT} neurons}
 similar to the parts-based representation of faces
 encountered by Lee and Seung \cite{LeeSeung1999}.
 The resulting `basis flow fields' showed a remarkable resemblance to receptive fields
-of \ac{MSTd} neurons, as they \revise{responded}
+of \ac{MSTd} neurons, as they \revise{responded to}
 an intricate mixture of
 3D translational and rotational flow components
 in a subset of the visual field.
@@ -113,12 +118,12 @@ could be represented by only $B = 64$ simulated \ac{MSTd} neurons,
 as compared to $F = 9,000$ simulated \ac{MT} input neurons.
 This led to an sparse \revise{and parts-based} population code,
 where any given stimulus could be represented
-by only a small number of simulated \ac{MSTd} neurons (population sparsity)
+by only a small number of simulated \ac{MSTd} neurons
 \cite{Beyeler2016}.
 
 Analogously, \ac{NSC} can explain response properties
 of neurons outside the visual system, 
-such as in the \acf{RSC}, an area important for navigation and spatial memory \cite{Miller2014,Nelson2015,VannAggleton2009}.
+such as in the \ac{RSC}, an area important for navigation and spatial memory \cite{Miller2014,Nelson2015,VannAggleton2009}.
 Neurons in the \ac{RSC} conjunctively encode multiple variables related to the environment and one's position and movement within it
 \revise{(e.g., position, head direction, linear velocity, and angular velocity)},
 allowing the representation of spatial features of the environment 
@@ -130,12 +135,16 @@ we again found a sparse and parts-based representation for behaviorally
 relevant variables such as the animal's position, head direction, 
 and movement direction (Fig.~\ref{fig:NMF|reconstruction}C).
 Interestingly, model \ac{RSC} neurons encoded these variables with respect
-to multiple frames of reference (e.g., head direction: allocentric,
-linear velocity: route-based).
-\mikeNote{Are these reference frames stated correctly?}
+to multiple frames of reference
+(e.g., head direction: \textbf{allocentric reference frame},
+linear velocity: \textbf{route-based reference frame}).
 Once again, the dimensionality of the stimulus space was drastically reduced
 from $F = 417$ input neurons to a set of $B = 30$ model \ac{RSC} neurons.}
 
+\revise{Due to its roots in efficient-coding theories of natural image processing,
+there is a large body of research highlighting the role of \ac{NSC} in
+visual cortex function
+(e.g., \cite{Barlow1961,OlshausenField1996,Hoyer2003,BenHamed2003}).}
 Although there seems to be a consensus that 
 information-theoretic explanations are relevant 
 when investigating the early visual system,
@@ -143,19 +152,38 @@ higher-order brain areas are often considered to be specialized for
 performing tasks
 (e.g., recognizing objects, making decisions, navigating an environment),
 rather than the efficient encoding of information.
-However, the finding that \ac{NSC} could be used to explain neuronal responses
-in the visual and retrosplenial cortices introduces the possibility that it might
-apply elsewhere in the brain.
-This introduces the possibility that \ac{NSC} might in fact
-be a general principle to which neuronal computations adhere.
 
+\revise{However, more recently, 
+\ac{NSC}-like computational models have found application outside visual cortex,
+where they have started to provide compelling evidence that a wide variety of
+neuronal response properties can be understood as an epiphenomenon
+of efficient population coding based on dimensionality reduction.
+Examples include elucidating the dimensions along which perceptual space
+is organized in the olfactory system
+\cite{MorenoBoteDrugowitsch2015,Castro2013},
+the ability of neurons to perform coordinate transformations 
+in posterior parietal cortex
+\cite{PougetSejnowski1997,PougetSnyder2000},
+and the combined representation of allocentric and route-based 
+spatial navigation cues
+in retrosplenial cortex \cite{Rounds2018}.}
+\revise{The success of these models suggests that \ac{NSC}}
+might apply elsewhere in the brain, 
+\revise{thus warranting further investigation.}
 In fact, sparse (and potentially parts-based) representations have been observed
-in olfactory, auditory, \revise{somatosensory, parietal,} and motor cortices
+in \revise{a wide variety of brain areas}
 (see Table~\ref{table:listEvidence}).
-\revise{In the following subsections, we will look at some examples, and explain
-why some of these refs are in the table. We will discuss how population codes
-differ in different brain areas, and what that means for sparse and parts-based.}
-\mikeNote{words}
+This introduces the \revise{intriguing} possibility that \ac{NSC} might
+be a general principle to which \revise{many} neuronal computations adhere.
+\revise{In addition, \ac{NSC} might provide a useful theoretical framework
+under which to understand the often complex and nonintuitive response properties
+of neurons in brain areas far removed from sensory inputs,
+including the selection and integration of various task-related variables
+in prefrontal cortex
+\cite{Mante2013}
+and the ability of premotor cortex to prepare movements without executing them
+\cite{Kaufman2014}.}
+
 
 
 \begin{table}[!ht]
@@ -163,28 +191,41 @@ differ in different brain areas, and what that means for sparse and parts-based.
 	\centering
 	\caption{Nonnegative sparse coding in the brain.
     We list a group of brain regions for which there is experimental evidence of certain features associated with NSC (`X': evidence exists, `?': has yet to be investigated).
-   For each brain region, the left-hand side of the table lists experimental evidence for sparse and/or parts-based representations, whereas the right-hand side lists computational support that NSC can describe receptive fields or response properties within that region.}
+   For each brain region, the left-hand side of the table lists experimental evidence for sparse \revise{population codes} and/or parts-based representations, whereas the right-hand side lists computational support that \revise{\ac{NSC}-like models} can describe receptive fields or response properties within that region.}
 %     \scriptsize
 	\begin{tabular}{r|rrr|rr}
-	 &  &  \textbf{Parts-} & \textbf{Experimental} & \textbf{Modeled} & \textbf{Computational} \\
-	\textbf{Area} & \textbf{Sparse} & \textbf{based} & \textbf{evidence} & \textbf{by NSC} & \textbf{ support} \\ \hline
+	 & \textbf{Sparse} &  \textbf{Parts-} & \textbf{Experimental} & \textbf{Modeled} & \textbf{Computational} \\
+	\textbf{Area} & \revise{\textbf{pop. code}} & \textbf{based} & \textbf{evidence} & \textbf{by NSC} & \textbf{ support} \\ \hline
     Retina & X & X & \cite{Onken2016,Liu2017} & X & \cite{Onken2016,Liu2017} \\
-    Early visual cortex & X & X & \pbox{5cm}{\cite{OlshausenField1996,HoyerHyvarinen2002,Hoyer2003,vanHateren1998}} & X & \pbox{5cm}{\cite{OlshausenField1996,Hoyer2003,Carlson2013,Hyvarinen2001}} \\
-    Ventral visual stream & X & X & \pbox{5cm}{\cite{Wachsmuth1994,FreiwaldTsao2010,ChangTsao2017}} & X & \pbox{5cm}{\cite{LeeSeung1999,Hosoda2009}}  \\
-    Dorsal visual stream & X & X & \pbox{5cm}{\cite{BenHamed2003,PougetSejnowski1997,PougetSnyder2000}} & X & \cite{Beyeler2016} \\
-    Auditory cortex & X & ? & \cite{Hromadka2008} & ? & ? \\
- 	\revise{Somatosensory} cortex & X  & ? & \cite{Kerr2007} & ? & ?  \\
- 	Olfactory cortex & X & ? & \cite{Koulakov2011} & ? & \cite{MorenoBoteDrugowitsch2015}  \\
-    \revise{WHAT ABOUT PARIETAL} & & &  &  &   \\
-    \revise{WHAT ABOUT FRONTAL} & & &  &  &   \\
-    Retrosplenial cortex & X & X & \cite{AlexanderNitz2015} & X & present paper \\
-    Motor cortex & X & ? & \pbox{5cm}{\cite{GrazianoAflalo2007,Turner2000}} & ? & \cite{Vargas2010decoding} \\
-    Basal ganglia & X & ? & \cite{BarGad2000, BarGad2003_Review}  & X & \pbox{5cm}{\cite{BarGad2003_Review}, advanced RDDR} \\
-    Hippocampus & X & ? & \cite{Poli2017} & ? & ? \\
+    \revise{Visual cortex} & X & X & \pbox{5cm}{\cite{OlshausenField1996,HoyerHyvarinen2002,Hoyer2003,vanHateren1998,Wachsmuth1994,FreiwaldTsao2010,ChangTsao2017,BenHamed2003,PougetSejnowski1997,PougetSnyder2000}} & X & \pbox{5cm}{\cite{OlshausenField1996,Hoyer2003,Carlson2013,Hyvarinen2001,LeeSeung1999,Hosoda2009,Beyeler2016}} \\
+
+% Early visual cortex & X & X & \pbox{5cm}{\cite{OlshausenField1996,HoyerHyvarinen2002,Hoyer2003,vanHateren1998}} & X & \pbox{5cm}{\cite{OlshausenField1996,Hoyer2003,Carlson2013,Hyvarinen2001}} \\
+%     Ventral visual stream & X & X & \pbox{5cm}{\cite{Wachsmuth1994,FreiwaldTsao2010,ChangTsao2017}} & X & \pbox{5cm}{\cite{LeeSeung1999,Hosoda2009}}  \\
+%     Dorsal visual stream & X & X & \pbox{5cm}{\cite{BenHamed2003,PougetSejnowski1997,PougetSnyder2000}} & X & \cite{Beyeler2016} \\
+    Auditory cortex & X & \revise{X} & \revise{\cite{Hromadka2008,rokem2006,bendor2008,Leaver2010,Terashima2013,SmithLewicki2006}} & \revise{X} & \revise{\cite{Martinez2015,David2007}} \\
+ 	Olfactory cortex & X & \revise{X} & \cite{Koulakov2011,poo2009,rinberg2006,Broome2006,Castro2013} & \revise{X} & \revise{\cite{MorenoBoteDrugowitsch2015,Castro2013}}  \\
+ 	\revise{Somatosensory} cortex & X  & \revise{X} & 			   \revise{\cite{hari1993,chadha2011,oconnor2010,gdalyahu2012,petersen2007,Kerr2007}} & ? & ?  \\
+    \revise{Parietal cortex} & \revise{?} & \revise{X} & \revise{\cite{Poggio1990,PougetSejnowski1997,andersen1997multimodal,PougetSnyder2000,louie2015adaptive}} & \revise{?} & \revise{?}  \\    
+%  	\revise{Gustatory cortex} & ? & X & \cite{smith2008central,lemon2007,carleton2010} & ? & ? \\    
+    Retrosplenial cortex & \revise{X} & X & \revise{\cite{AlexanderNitz2015,vedder2016,mao2017} }& X & \cite{Rounds2018} \\
+    \revise{Prefrontal cortex} & \revise{?} & \revise{?} & \revise{\cite{Mante2013,Rigotti2013,Fujisawa2008,Wei2015}} & \revise{?} & \revise{\cite{Wei2015}}  \\    
+    Motor cortex & \revise{?} & \revise{?} & \revise{\cite{penfield1937,GrazianoAflalo2007}} \pbox{5cm}
+    %{\cite{GrazianoAflalo2007,Turner2000}} 
+    & ? & \cite{GrazianoAflalo2007,Vargas2010decoding} \\       
+    Hippocampus & \revise{X} & \revise{X} & \revise{\cite{Bakker2008,komorowski2009,myers2011pattern,rolls2013,mckenzie2014,Poli2017}} & \revise{?} & \revise{?} \\        
+    Basal ganglia & X & ? & %\revise{?} \pbox{5cm}
+    \cite{BarGad2000}
+    & X & \pbox{5cm}{\cite{BarGad2000,BarGad2003_Review,Turner2000,schwab2015}} \\  
 	\end{tabular}
     \label{table:listEvidence}
 \end{adjustwidth}
 \end{table}
 
-
+\revise{In the following subsections,
+we review existing experimental evidence
+for sparse and parts-based representations 
+in various brain areas highlighted in Table~\ref{table:listEvidence}.
+Where available, we highlight \ac{NSC}-like computational models
+that  successfully explain response properties of individual neurons
+or have been instrumental in elucidating the dynamics at the population level.}
 

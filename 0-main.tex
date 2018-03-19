@@ -147,22 +147,29 @@
 
 % Don't include all these in the glossary:
 % Instead pick the central ones by hand and explain
+\newacronym{A1}{A1}{primary auditory cortex}
 \newacronym{ICA}{ICA}{independent component analysis}
 \newacronym{IT}{IT}{inferotemporal cortex}
 \newacronym{LDR}{LDR}{linear dimensionality reduction}
 \newacronym{LGN}{LGN}{lateral geniculate nucleus}
+\newacronym{mPFC}{mPFC}{medial prefrontal cortex}
 \newacronym{MST}{MST}{medial superior temporal area}
 \newacronym{MSTd}{MSTd}{dorsal subregion of the medial superior temporal area}
 \newacronym{MT}{MT}{middle temporal area}
 \newacronym{NMF}{NMF}{nonnegative matrix factorization}
 \newacronym{NSC}{NSC}{nonnegative sparse coding}
 \newacronym{PCA}{PCA}{principal component analysis}
+\newacronym{PFC}{PFC}{prefrontal cortex}
 \newacronym{RF}{RF}{receptive field}
 \newacronym{RSC}{RSC}{retrosplenial cortex}
 \newacronym{SNN}{SNN}{spiking neural network}
+\newacronym{STA}{STA}{spike-triggered average}
 \newacronym{STDP}{STDP}{spike-timing dependent plasticity}
 \newacronym{STDPH}{STDPH}{spike-timing dependent plasticity and homeostatic synaptic scaling}
+\newacronym{STNMF}{STNMF}{spike-triggered nonnegative matrix factorization}
 \newacronym{V1}{V1}{primary visual cortex}
+\newacronym{VIP}{VIP}{ventral intraparietal area}
+\newacronym{VPS}{VPS}{visual posterior sylvian area}
 \newacronym{WTA}{WTA}{winner-take-all}
 
 \usepackage{hyphenat}
@@ -208,7 +215,7 @@
 
 % Bold the 'Figure #' in the caption and separate it from the title/caption with a period
 % Captions will be left justified
-\usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}
+\usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off,font={small}]{caption}
 \renewcommand{\figurename}{Fig}
 
 
@@ -301,7 +308,23 @@ Jeffrey L. Krichmar\textsuperscript{1}
 \end{flushleft}
 % Please keep the abstract below 300 words
 \section*{Abstract}
-Supported by recent computational studies, sparse coding and dimensionality reduction are emerging as a ubiquitous coding strategy  across brain regions and modalities, allowing neurons to achieve \acf{NSC} by efficiently encoding high-dimensional stimulus spaces using a sparse and parts-based population code. Reducing the dimensionality of complex, multimodal sensory streams is critically important for metabolically constrained brain areas to represent the world. In this article, we provide an overview of \acs{NSC} and summarize evidence for its role in neural computation in disparate regions of the brain. Remarkably, neural responses ranging from visual processing, to spatial navigation, to memory systems can be explained by \acs{NSC}. Furthermore, we show that specific forms of synaptic plasticity and homeostatic modulation may underlie its implementation. We  propose that NSC is an organizing principle in the nervous system.
+Supported by recent computational studies, sparse coding and dimensionality reduction are emerging as a ubiquitous coding strategy  across brain regions and modalities, allowing neurons to achieve \acf{NSC} by efficiently encoding high-dimensional stimulus spaces using a sparse and parts-based population code. Reducing the dimensionality of complex, multimodal sensory streams is critically important for metabolically constrained brain areas to represent the world.
+\revise{In this article, we demonstrate that a wide variety of neuronal responses}
+ranging from visual processing, to spatial navigation, to memory systems
+\revise{can be understood as an emergent property of \acf{NSC},
+an efficient population coding scheme
+based on dimensionality reduction and sparse coding.}
+\revise{This finding suggests that \acs{NSC} might be a general principle
+to which many neuronal computations adhere.
+In addition, \acs{NSC} might provide a useful theoretical framework under which
+to understand the often complex and nonintuitive response properties
+of neurons in brain areas far removed from sensory input.}
+
+% Furthermore, 
+% \revise{we discuss potential biophysical mechanisms that}
+% % show that specific forms of synaptic plasticity and homeostatic modulation 
+% may underlie its implementation,
+% \revise{and} propose that \acs{NSC} is an organizing principle in the nervous system.
 % and has implications for machine learning
 % \mikeNote{We don't really talk about machine learning anymore, do we?}
 % and sparse computation.
@@ -312,8 +335,10 @@ Supported by recent computational studies, sparse coding and dimensionality redu
 % Author Summary not valid for PLOS ONE submissions.   
 \section*{Author summary}
 Brains face the fundamental challenge of processing, storing, and representing high-dimensional stimuli using patterns of neural activity. One potential approach to addressing this challenge is to reduce the number of variables required to represent a particular stimulus space (i.e., dimensionality reduction).
-We review compelling evidence that a wide range of neuronal responses can be understood as an emergent property of \acf{NSC}---a form of efficient population coding due to dimensionality reduction and sparsity constraints. We propose that \acs{NSC} is an organizing principle for neuronal computation.
-Furthermore, we posit that biological synaptic plasticity and homeostasis mechanisms can carry out the same function as \acs{NSC}.
+We review compelling evidence that a wide range of neuronal responses can be understood as an emergent property of \acf{NSC}---a form of efficient population coding due to dimensionality reduction and sparsity constraints.
+\revise{The success of these models warrants further investigation.
+In fact, we propose that \acs{NSC} is an organizing principle for neuronal computation.}
+% we posit that biological synaptic plasticity and homeostasis mechanisms can carry out the same function as \acs{NSC}.
 
 \linenumbers
 
@@ -322,9 +347,9 @@ Furthermore, we posit that biological synaptic plasticity and homeostasis mechan
 \include{02-nsc-background}
 \include{03-nsc-evidence-1}
 \include{03-nsc-evidence-2}
-\include{04-nsc-mechanisms}
-\include{05-nsc-limitations}
-\include{06-conclusion}
+% \include{04-nsc-mechanisms}
+\include{05-discussion}
+% \include{06-conclusion}
 \include{07-acknowledgments}
 
 \nolinenumbers

@@ -10,17 +10,17 @@
 Brains face the fundamental challenge of 
 processing, storing, and representing high-dimensional stimuli
 using patterns of neural activity.
-\revise{To generate complicated patterns of behavior,
-neurons implement a rich repertoire of linear and nonlinear
-operations that process information from up to $10^5$ synaptic inputs,
-and are able to vary their signaling properties based on context and experience
+\revise{To support complex patterns of behavior, 
+populations of interconnected neurons implement 
+a rich repertoire of linear and nonlinear operations on their synaptic inputs
+and vary their signaling properties based on context and experience
 \cite{Koch1999}.}
 
 \revise{However, neuronal information processing} is complicated
-by strict constraints on metabolic cost,
-\revise{where 50\% of the mammalian brain's energy consumption
-is believed to be associated with neuronal signaling \cite{Laughlin2001, Lennie2003}},
-and the widespread existence of anatomical bottlenecks 
+by strict constraints on metabolic cost---\revise{50\% of the 
+mammalian brain's energy consumption is believed to be associated with 
+neuronal signaling \cite{Laughlin2001, Lennie2003}}---and the 
+widespread existence of anatomical bottlenecks 
 \cite{Kempermann2002,BarGad2003_Review,Babinsky1993}.
 \revise{These bottlenecks} often force the information
 stored in a large number of neurons
@@ -31,9 +31,38 @@ in 1 million optic nerve fibers,
 or resulting in a $10 - 10,000$ fold convergence from cortex to the basal ganglia
 \cite{GanguliSompolinsky2012}.
 \revise{To operate efficiently within these constraints,
-recent work suggests that the nervous system improves 
+it has been suggested that the nervous system improves 
 efficiency by reducing (and in some cases minimizing) the resources
 required to implement a given task \cite{LaughlinSejnowski2003}.}
+
+\begin{figure}[!b]
+	\centering
+	\includegraphics[width=\textwidth]{fig-rev1-sparse}
+    \caption{\revise{\Acf{NSC} promotes population codes that are both sparse and parts-based.
+    \textbf{\emph{A}},
+    	   Hypothetical activity in a population of neurons
+           during presentation of two different external stimuli (`contexts').
+           A sparse code is a trade-off between a local code
+           (where a context is represented by the activity of a single neuron,
+           and different contexts are represented by different neurons), and a
+           dense code (where all neurons are active and their combined activity is
+           used to encode each context).
+           Dense codes possess great memory capacity, but suffer from cross talk
+           among neurons, whereas local codes do not suffer from interference
+           but also have no capacity for generalization
+           (adapted from \cite{SpanneJorntell2015}).
+     \textbf{\emph{B}},
+           In a holistic representation of faces, 
+           individual neurons in the population
+           respond themselves to faces as a whole \cite{TanakaFarah1993},
+           whereas in a parts-based representation
+           individual neurons explicitly encode individual face components
+           \cite{Palmer1977},
+           such as the eyes, nose, and mouth
+           (adapted from \cite{LeeSeung1999}).}}
+	\label{fig:sparse-parts}
+\end{figure}
+
 
 One potential approach to addressing this challenge is to
 \revise{reduce the number of signals required to transmit information in the network.
@@ -42,19 +71,21 @@ in which information is represented by the activity of a small
 proportion of neurons in a population,
 have been shown to greatly increase energy efficiency 
 \cite{Foldiak1990,Field1994,LevyBaxter1996}.
-An extreme example is the so-called local code
-(illustrated in the left column of Fig.~\ref{fig:sparse-parts}A),
+An extreme example is the so-called \emph{local code}
 where each unique event or `context' is encoded by a single active neuron
-(also known as a grandmother cell) \cite{RollsTreves1990}.
-This leads to low energy expenditure, but also to low
-\textbf{representational capacity},
-because a population of $N$ neurons can encode at most $N$ contexts using a local code.
-On the other hand, a dense code
-(Fig.~\ref{fig:sparse-parts}A, right column) 
+or `grandmother cell' \cite{RollsTreves1990}
+(illustrated in the left column of Fig.~\ref{fig:sparse-parts}A).
+Although local codes lead to low energy expenditure, 
+they also suffer from low \textbf{representational capacity},
+because they allow a population of $N$ neurons to encode at most $N$ contexts.
+On the other hand, a \emph{dense code}
 represents each context by the combined activity
-of all neurons in the population, leading to high representational capacity
-but also suffering from neuronal cross talk
-(because every neuron is involved in every context).
+of all neurons in the population
+(Fig.~\ref{fig:sparse-parts}A, right column).
+Dense codes lead to high representational capacity
+(at $M$ activity levels, allowing for $M^N$ contexts to be encoded),
+but also suffer from neuronal cross talk,
+because every neuron is involved in every context.
 Alternatively, sparse codes
 (Fig.~\ref{fig:sparse-parts}A, center column)
 can be described as a trade-off between the benefits and
@@ -71,93 +102,54 @@ when cells are expensive, it is more efficient to use few cells
 and have all of them participate in the encoding of the signal (dense code)
 \cite{RollsTreves1990,Laughlin2001}.}
 
+
 \revise{Another approach is} to reduce the number of
 variables required to represent a particular stimulus space;
-a process known as \revise{\textbf{dimensionality reduction}}.
-\revise{The idea that the brain might implement dimensionality reduction
-is well established in vision neuroscience:
-the response of a neuron in \ac{V1}, for example,
-can be characterized as depending on only a small set of visual features
-(e.g., color, orientation) of an external stimulus.
-Deeper in the brain, neurons typically encode several stimulus parameters
+a process known as
+\revise{\textbf{dimensionality reduction}.
+Dimensionality reduction methods have proved useful in elucidating neural mechanisms
+that depend on how the responses of multiple neurons covary,
+including odor discrimination in the olfactory system \cite{Broome2006,Koulakov2011},
+the selection and integration of sensory inputs 
+in the prefrontal cortex \cite{Mante2013},
+and the ability of premotor cortex 
+to prepare movements without executing them \cite{Kaufman2014}.}
+
+\revise{In brain areas far removed from sensory input,
+neurons typically encode several behaviorally relevant parameters
 simultaneously \cite{Rigotti2013,Park2014,PaganRust2014,PougetSejnowski1997},
 allowing for multifaceted representations of high-dimensional stimulus spaces.
 For example, a population of neurons tasked with encoding human faces
 might opt to represent each individual face as a combination of a set of
 standard faces (Fig.~\ref{fig:sparse-parts}B, left column).
-In such a \emph{holistic} representation of faces,
-each individual neurons would itself respond to a face as a whole
-(also known as an `eigenface'),
-and an arbitrary face could be represented by combining the activity of
-different neurons in the population
-(e.g., adding 10\% of eigenface 1 to 25\% of eigenface 2
-and subtracting 5\% of eigenface 3).
+In such a \textbf{holistic representation} of faces \cite{TanakaFarah1993},
+each individual neuron would itself respond to a face as a whole
+(i.e., a face `template')
+without explicitly representing individual face components,
+and an arbitrary face could be represented by 
+combining different face templates
+(e.g., by adding 10\% of template 1 to 20\% of template 2
+and subtracting 30\% of template 3).
 On the other hand, faces can also be represented as a combination
 of individual face components, such as eyes, noses, and mouth,
-in what is known as a \emph{parts-based} representation
-(Fig.~\ref{fig:sparse-parts}B, right column).
+in what is known as a \textbf{parts-based representation}
+(Fig.~\ref{fig:sparse-parts}B, right column) \cite{Palmer1977}.
 Both approaches allow for representing arbitrary faces as a combination of
 neural activity, but have drastically different consequences on the
 set of stimulus features each neuron responds to.
+Although visual information from the eyes, nose, and mouth would of course be
+included in a holistic face representation,
+that information would not be explicitly represented as structural units
+in their own right \cite{TanakaFarah1993}.
+Linear combinations of holistic components often involve complex cancellations
+between positive and negative contributions,
+and thus lack the intuitive meaning of adding parts to form a whole.
+In contrast, a parts-based representation allows for only nonsubtractive
+combinations of stimulus features \cite{Palmer1977}.
 Although the relevant stimulus dimensions are often not known \emph{a priori},
 several sophisticated mathematical techniques exist that
 allow us to discover these representations directly from experimental data
 \cite{Brunton2016,CunninghamYu2014,PillowSimoncelli2006,Sharpee2014}.}
-
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{fig-rev1-sparse-parts}
-    \caption{\revise{\Acf{NSC} promotes population codes that are both sparse and parts-based.
-    	A) Adapted from Spanne \& Jorntell \cite{SpanneJorntell2015}:
-           Hypothetical activity in a population of neurons
-           during presentation of two different external stimuli (`contexts').
-           A sparse code is a trade-off between a local code
-           (where a context is represented by the activity of a single neuron,
-           and different contexts are represented by different neurons), and a
-           dense code (where all neurons are active and their combined activity is
-           used to encode each context).
-           Dense codes possess great memory capacity, but suffer from cross talk
-           among neurons, whereas local codes do not suffer from interference
-           but also have no capacity for generalization.
-        B) Adapted from Lee \& Seung \cite{LeeSeung1999}:
-           In a holistic representation of faces, individual neurons in the population
-           respond themselves to faces as a whole,
-           whereas in a parts-based representation
-           individual neurons encode different face components
-           (e.g., the eyes, nose, and mouth).}}
-	\label{fig:sparse-parts}
-\end{figure}
-
-
-% \revise{The idea that the brain might implement dimensionality reduction}
-% features prominently in 
-% efficient coding theories of brain function
-% \cite{Barlow1961,Barlow2001,Atick1992,Linsker1990}
-% \revise{and in basis function talk by Pouget and friends
-% \cite{PougetSejnowski1997,PougetSnyder2000,Poggio1990}.}
-% \revise{The goal is to change the representation of the stimulus space, so that
-% the same information can be represented with a smaller number of neurons.
-% This could be done by finding basis functions (elementary functions in a lower dimension)
-% that can be combined to represent a given input stimulus.
-% Much like every continuous signal can be represented by a series of sine and cosine
-% functions, any image can be represented by a series of Gabors.
-% However, many different decompositions are possible.
-% For example, the space of all faces could be decomposed into a set of Eigenfaces - this
-% is a holistic representation. Alternatively, faces could be decomposed into their
-% components, such as eyes, nose, mouths - this is a parts-based representation.}
-
-% which posit that the brain
-% \revise{maximizes} mutual information between the
-% \mikeNote{This paragraph has too much jargon and mentions too many concepts at once without explaining any of them really. What is mutual information? Even more fundamental: What is information? There are so many technical terms here...do we really need them all? rewrite}
-% high-dimensional input and the low-dimensional output 
-% of neuronal populations.
-% Several modern variants of the efficient coding hypothesis,
-% such as \ac{ICA} \cite{BellSejnowski1997}
-% and \ac{NSC} \cite{Hoyer2002,Hoyer2004}, suggest that the role of cortical representations is to
-% further reduce the redundancy of the sensory signal 
-% by separating it into its underlying causes,
-% a process known as \emph{factor analysis}.
 
 
 
@@ -165,18 +157,19 @@ allow us to discover these representations directly from experimental data
 can be understood as an emergent property of efficient population coding
 based on dimensionality reduction and sparse coding.
 Specifically, \revise{we review} computational evidence
-from data analyses and computer simulations \revise{suggesting} that \ac{NSC}, 
+from data analyses and computer simulations \revise{arguing} that \ac{NSC}, 
 a combination of \ac{NMF} \cite{PaateroTapper1994,LeeSeung1999} and sparse coding,
 \revise{can generate sparse and parts-based} embeddings of
-high-dimensional stimulus spaces \revise{(Fig.~\ref{fig:sparse-parts})}
-that resemble neuronal population responses in a variety of brain regions.
-\revise{Furthermore, we review potential mechanisms of \ac{NSC},
-which include synaptic plasticity and others.}
-\mikeNote{Need a more balanced statement about potential mechanisms.}
+high-dimensional stimulus spaces
+% \revise{(Fig.~\ref{fig:sparse-parts})}
+that resemble neuronal population responses in a 
+\revise{wide} variety of brain regions.
+\revise{This introduces the possibility that \ac{NSC} might
+be a general principle to which many neuronal computations adhere.
+Furthermore, \ac{NSC} might provide a useful theoretical framework under which
+to understand the often complex and nonintuitive response properties of neurons
+in brain areas far removed from sensory input.}
 
-\revise{Remarkably, neural responses ranging from visual processing,
-to spatial navigation, to memory systems can be explained by \ac{NSC}.
-We thus propose that \ac{NSC} is an organizing principle for neuronal computation.}
 
 
 %
