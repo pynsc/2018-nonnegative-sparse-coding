@@ -123,7 +123,8 @@ by only a small number of simulated \ac{MSTd} neurons
 
 Analogously, \ac{NSC} can explain response properties
 of neurons outside the visual system, 
-such as in the \ac{RSC}, an area important for navigation and spatial memory \cite{Miller2014,Nelson2015,VannAggleton2009}.
+such as in the \ac{RSC}, an area in the posterior cingulate region
+important for navigation and spatial memory \cite{Miller2014,Nelson2015,VannAggleton2009}.
 Neurons in the \ac{RSC} conjunctively encode multiple variables related to the environment and one's position and movement within it
 \revise{(e.g., position, head direction, linear velocity, and angular velocity)},
 allowing the representation of spatial features of the environment 
@@ -161,9 +162,8 @@ of efficient population coding based on dimensionality reduction.
 Examples include elucidating the dimensions along which perceptual space
 is organized in the olfactory system
 \cite{MorenoBoteDrugowitsch2015,Castro2013},
-the ability of neurons to perform coordinate transformations 
-in posterior parietal cortex
-\cite{PougetSejnowski1997,PougetSnyder2000},
+the coordination of movement in the cortico-basal ganglia-thalamo-cortical loop
+\cite{BarGad2000,BarGad2003_Review},
 and the combined representation of allocentric and route-based 
 spatial navigation cues
 in retrosplenial cortex \cite{Rounds2018}.}
@@ -175,7 +175,7 @@ in \revise{a wide variety of brain areas}
 (see Table~\ref{table:listEvidence}).
 This introduces the \revise{intriguing} possibility that \ac{NSC} might
 be a general principle to which \revise{many} neuronal computations adhere.
-\revise{In addition, \ac{NSC} might provide a useful theoretical framework
+\revise{In the future, \ac{NSC} might provide a useful theoretical framework
 under which to understand the often complex and nonintuitive response properties
 of neurons in brain areas far removed from sensory inputs,
 including the selection and integration of various task-related variables
@@ -192,31 +192,25 @@ and the ability of premotor cortex to prepare movements without executing them
 	\caption{Nonnegative sparse coding in the brain.
     We list a group of brain regions for which there is experimental evidence of certain features associated with NSC (`X': evidence exists, `?': has yet to be investigated).
    For each brain region, the left-hand side of the table lists experimental evidence for sparse \revise{population codes} and/or parts-based representations, whereas the right-hand side lists computational support that \revise{\ac{NSC}-like models} can describe receptive fields or response properties within that region.}
-%     \scriptsize
-	\begin{tabular}{r|rrr|rr}
-	 & \textbf{Sparse} &  \textbf{Parts-} & \textbf{Experimental} & \textbf{Modeled} & \textbf{Computational} \\
-	\textbf{Area} & \revise{\textbf{pop. code}} & \textbf{based} & \textbf{evidence} & \textbf{by NSC} & \textbf{ support} \\ \hline
+    \def\arraystretch{1.1}
+    {\setlength{\tabcolsep}{1em}
+    \begin{tabular}{r|rrr|rr}
+	\revise{\textbf{Brain}} & \textbf{Sparse} &  \textbf{Parts-} & \textbf{Experimental} & \textbf{Modeled} & \textbf{Computational} \\
+	\textbf{Area} & \revise{\textbf{code}} & \textbf{based} & \textbf{evidence} & \textbf{by NSC} & \textbf{ support} \\ \hline
     Retina & X & X & \cite{Onken2016,Liu2017} & X & \cite{Onken2016,Liu2017} \\
-    \revise{Visual cortex} & X & X & \pbox{5cm}{\cite{OlshausenField1996,HoyerHyvarinen2002,Hoyer2003,vanHateren1998,Wachsmuth1994,FreiwaldTsao2010,ChangTsao2017,BenHamed2003,PougetSejnowski1997,PougetSnyder2000}} & X & \pbox{5cm}{\cite{OlshausenField1996,Hoyer2003,Carlson2013,Hyvarinen2001,LeeSeung1999,Hosoda2009,Beyeler2016}} \\
-
-% Early visual cortex & X & X & \pbox{5cm}{\cite{OlshausenField1996,HoyerHyvarinen2002,Hoyer2003,vanHateren1998}} & X & \pbox{5cm}{\cite{OlshausenField1996,Hoyer2003,Carlson2013,Hyvarinen2001}} \\
-%     Ventral visual stream & X & X & \pbox{5cm}{\cite{Wachsmuth1994,FreiwaldTsao2010,ChangTsao2017}} & X & \pbox{5cm}{\cite{LeeSeung1999,Hosoda2009}}  \\
-%     Dorsal visual stream & X & X & \pbox{5cm}{\cite{BenHamed2003,PougetSejnowski1997,PougetSnyder2000}} & X & \cite{Beyeler2016} \\
+    \revise{Visual cortex} & X & X & \pbox{5cm}{\cite{OlshausenField1996,HoyerHyvarinen2002,vanHateren1998,Wachsmuth1994,FreiwaldTsao2010,ChangTsao2017,BenHamed2003}} & X & \pbox{5cm}{\cite{OlshausenField1996,Hoyer2003,Carlson2013,Hyvarinen2001,LeeSeung1999,Hosoda2009,Beyeler2016}} \\
     Auditory cortex & X & \revise{X} & \revise{\cite{Hromadka2008,rokem2006,bendor2008,Leaver2010,Terashima2013,SmithLewicki2006}} & \revise{X} & \revise{\cite{Martinez2015,David2007}} \\
  	Olfactory cortex & X & \revise{X} & \cite{Koulakov2011,poo2009,rinberg2006,Broome2006,Castro2013} & \revise{X} & \revise{\cite{MorenoBoteDrugowitsch2015,Castro2013}}  \\
- 	\revise{Somatosensory} cortex & X  & \revise{X} & 			   \revise{\cite{hari1993,chadha2011,oconnor2010,gdalyahu2012,petersen2007,Kerr2007}} & ? & ?  \\
+ 	\revise{Somatosensory} cortex & X  & \revise{X} & 			   \revise{\cite{Jadhav2009,oconnor2010,Crochet2011,Ramirez2014,penfield1937,hari1993,petersen2007}} & \revise{X} & \revise{\cite{WhitewayButts2017,Hafner2004}}  \\
     \revise{Parietal cortex} & \revise{?} & \revise{X} & \revise{\cite{Poggio1990,PougetSejnowski1997,andersen1997multimodal,PougetSnyder2000,louie2015adaptive}} & \revise{?} & \revise{?}  \\    
 %  	\revise{Gustatory cortex} & ? & X & \cite{smith2008central,lemon2007,carleton2010} & ? & ? \\    
-    Retrosplenial cortex & \revise{X} & X & \revise{\cite{AlexanderNitz2015,vedder2016,mao2017} }& X & \cite{Rounds2018} \\
-    \revise{Prefrontal cortex} & \revise{?} & \revise{?} & \revise{\cite{Mante2013,Rigotti2013,Fujisawa2008,Wei2015}} & \revise{?} & \revise{\cite{Wei2015}}  \\    
-    Motor cortex & \revise{?} & \revise{?} & \revise{\cite{penfield1937,GrazianoAflalo2007}} \pbox{5cm}
-    %{\cite{GrazianoAflalo2007,Turner2000}} 
-    & ? & \cite{GrazianoAflalo2007,Vargas2010decoding} \\       
-    Hippocampus & \revise{X} & \revise{X} & \revise{\cite{Bakker2008,komorowski2009,myers2011pattern,rolls2013,mckenzie2014,Poli2017}} & \revise{?} & \revise{?} \\        
-    Basal ganglia & X & ? & %\revise{?} \pbox{5cm}
-    \cite{BarGad2000}
-    & X & \pbox{5cm}{\cite{BarGad2000,BarGad2003_Review,Turner2000,schwab2015}} \\  
-	\end{tabular}
+    Retrosplenial cortex & \revise{?} & X & \revise{\cite{AlexanderNitz2015,vedder2016,mao2017}} & X & \cite{Rounds2018} \\
+    \revise{Prefrontal cortex} & \revise{?} & \revise{?} & \revise{\cite{Mante2013,Rigotti2013,Fujisawa2008,Wei2015}} & \revise{?} & \revise{?}  \\    
+    Motor cortex & \revise{?} & \revise{?} & \revise{\cite{Beloozerova2003,penfield1937,GrazianoAflalo2007,Brecht2004}}
+    & ? & \revise{?} \\ % \cite{GrazianoAflalo2007,Vargas2010decoding}
+    Hippocampus & \revise{X} & \revise{?} & \revise{\cite{ThompsonBest1989,Bakker2008,myers2011pattern,rolls2013,Wixted2014,Poli2017}} & \revise{?} & \revise{?} \\        
+    Basal ganglia & X & ? & \cite{BarGad2003_Review,Turner2000,schwab2015} & X & \pbox{5cm}{\cite{BarGad2000,BarGad2003_Review}} \\  
+	\end{tabular}}
     \label{table:listEvidence}
 \end{adjustwidth}
 \end{table}

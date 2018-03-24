@@ -250,13 +250,12 @@ these learned patterns rather than according to the underlying actual relationsh
 and the model is said to \emph{overfit} the data,
 (right-hand side of Fig.~\ref{fig:nsc-bias-variance-dilemma}).
 Hence, the goal of a successful model is to find the ideal compromise
-in the bias-variance error trade-off
+in the bias-variance error trade-off \cite{Beyeler2017}
 (labeled `best model' in Fig.~\ref{fig:nsc-bias-variance-dilemma}).}
-\mikeNote{We could totally cite our patent here! Should we?}
 
 \begin{figure}[!t]
 	\centering
-	\includegraphics[width=0.6\textwidth]{fig-rev1-model-complexity}
+	\includegraphics[width=0.6\textwidth]{fig-rev1-bias-variance}
     \caption{\revise{The bias-variance dilemma.
     With increased model complexity 
     (i.e., with an increased number of basis functions), 
@@ -278,11 +277,11 @@ corresponds to the number of output neurons, \revise{and the}
 response of the $b$-th model output neuron
 ($b \in [1, ..., B]$)
 to a particular input stimulus $s$, \revise{termed} $r_{bs}$,
-can be computed by feeding the dot product of the neuron's 
-presynaptic \revise{connection weights}
-(i.e., the $s$-th column in \textbf{V}, $\vec{v}_s$)
-and the corresponding synaptic weights
+can be computed by feeding the dot product of
+\revise{that neuron's connection weights}
 (i.e., the $b$-th column in $\mathbf{W}$, $\vec{w}_b$)
+and a \revise{data vector}
+(i.e., the $s$-th column in \textbf{V}, $\vec{v}_s$)
 to an activation function $\Theta$:
 \begin{equation}
 \revise{r_{bs} = \Theta(\vec{w}_b \cdot \vec{v}_s),}
@@ -294,7 +293,7 @@ can be calculated by setting $\Theta$ to the identity function $\Theta(x)=x$.
 Note that the response of the model neuron to different stimuli 
 $s \in [1, \ldots, S]$
 involves different columns of \textbf{V},
-but always relies on the same weight matrix \textbf{W}.
+but always relies on \revise{$\vec{w}_b$}.
 
 Inhibitory connections can be modeled in the same fashion,
 by interpreting inhibitory \revise{connection} weights

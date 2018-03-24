@@ -160,7 +160,9 @@
 \newacronym{NSC}{NSC}{nonnegative sparse coding}
 \newacronym{PCA}{PCA}{principal component analysis}
 \newacronym{PFC}{PFC}{prefrontal cortex}
+\newacronym{RDDR}{RDDR}{reinforcement-driven dimensionality reduction}
 \newacronym{RF}{RF}{receptive field}
+\newacronym{RLVM}{RLVM}{rectified latent variable model}
 \newacronym{RSC}{RSC}{retrosplenial cortex}
 \newacronym{SNN}{SNN}{spiking neural network}
 \newacronym{STA}{STA}{spike-triggered average}
@@ -310,7 +312,7 @@ Jeffrey L. Krichmar\textsuperscript{1}
 \section*{Abstract}
 Supported by recent computational studies, sparse coding and dimensionality reduction are emerging as a ubiquitous coding strategy  across brain regions and modalities, allowing neurons to achieve \acf{NSC} by efficiently encoding high-dimensional stimulus spaces using a sparse and parts-based population code. Reducing the dimensionality of complex, multimodal sensory streams is critically important for metabolically constrained brain areas to represent the world.
 \revise{In this article, we demonstrate that a wide variety of neuronal responses}
-ranging from visual processing, to spatial navigation, to memory systems
+ranging from \revise{sensory} processing, to spatial navigation, to memory systems
 \revise{can be understood as an emergent property of \acf{NSC},
 an efficient population coding scheme
 based on dimensionality reduction and sparse coding.}
@@ -346,19 +348,16 @@ In fact, we propose that \acs{NSC} is an organizing principle for neuronal compu
 \include{01-introduction}
 \include{02-nsc-background}
 \include{03-nsc-evidence-1}
-\include{03-nsc-evidence-2}
-% \include{04-nsc-mechanisms}
+\include{04-nsc-evidence-2}
 \include{05-discussion}
-% \include{06-conclusion}
-\include{07-acknowledgments}
+\include{06-acknowledgments}
+\include{07-glossary}
 
 \nolinenumbers
-
 \bibliography{references}
 
-\linenumbers
-
-\include{A-glossary}
-\include{B-supplementary}
+% \appendix
+% \linenumbers
+% \include{S1-supplementary}
 
 \end{document}
