@@ -1,7 +1,5 @@
 \section*{Empirical evidence for nonnegative sparse coding in the brain}
 
-% \subsection*{Reconstructing stimulus spaces using sparse, parts-based representations}
-
 An influential paper by Lee and Seung \cite{LeeSeung1999}
 found that applying \ac{NMF} to a database of face images
 yielded sparse, localized features that resembled parts of a face
@@ -18,23 +16,7 @@ observations of those features
 whose linear combination could be weighted such that the product of \textbf{W} and \textbf{H} provided an accurate reconstruction of \textbf{V}
 \revise{(see Eq.~\ref{eqn:linear-decomposition}).}
 
-% On its surface, \ac{NMF} would appear to be unrelated to 
-% the mechanisms underlying 
-% artificial or biological neural networks;
-% however, it was Lee and Seung's intuitive mapping of these variables onto
-% a neural network that forms the cornerstone 
-% of our conception of the \ac{NSC} framework:
-% In the context of \ac{NSC}, \textbf{V} and \textbf{H} correspond to activation values of two distinct neuronal populations, which are connected to each other via synaptic weight values in \textbf{W}.
 A particular image, in this case encoded by $F = 19 \times 19 = 361$ pixels
-% pixels $v_1, \ldots, v_F$
-% (i.e., a column of \textbf{V}),
-% could be reconstructed by a linear mixing of a total of $B$ encoding variables
-% $h_1, \ldots, h_B$ (i.e., a column of \textbf{H}).
-% A single encoding variable $b \in 1, \ldots, B$ 
-% influences multiple image pixels,
-% owing to the fan-out of the connections from the encoding variable.
-% As a result, a particular image of a face 
-% (Fig.~\ref{fig:NMF|reconstruction}\revise{A})
 could be accurately represented by a linear combination of 
 a small number ($B = 49$) of encoding variables or `basis images'
 (Fig.~\ref{fig:NMF|reconstruction}\revise{A}).
@@ -47,9 +29,9 @@ using responses of approximately $200$ neurons
 that each respond to a certain set of physical facial features
 \cite{ChangTsao2017}.
 
-\begin{figure}[!h]
+\begin{figure}[ht]
 	\centering
-	\includegraphics[width=\textwidth]{fig-rev1-reconstruction}
+% 	\includegraphics[width=\textwidth]{fig4}
     \caption{\revise{Sparse and parts-based representations recovered by \ac{NMF}
              resemble receptive fields across brain regions.
              \Ac{NMF} (inset) can reconstruct a} data matrix \textbf{V}
@@ -186,7 +168,7 @@ and the ability of premotor cortex to prepare movements without executing them
 
 
 
-\begin{table}[!ht]
+\begin{table}[ht]
 \begin{adjustwidth}{-2.25in}{0in}
 	\centering
 	\caption{Nonnegative sparse coding in the brain.
@@ -202,12 +184,11 @@ and the ability of premotor cortex to prepare movements without executing them
     Auditory cortex & X & \revise{X} & \revise{\cite{Hromadka2008,rokem2006,bendor2008,Leaver2010,Terashima2013,SmithLewicki2006}} & \revise{X} & \revise{\cite{Martinez2015,David2007}} \\
  	Olfactory cortex & X & \revise{X} & \cite{Koulakov2011,poo2009,rinberg2006,Broome2006,Castro2013} & \revise{X} & \revise{\cite{MorenoBoteDrugowitsch2015,Castro2013}}  \\
  	\revise{Somatosensory} cortex & X  & \revise{X} & 			   \revise{\cite{Jadhav2009,oconnor2010,Crochet2011,Ramirez2014,penfield1937,hari1993,petersen2007}} & \revise{X} & \revise{\cite{WhitewayButts2017,Hafner2004}}  \\
-    \revise{Parietal cortex} & \revise{?} & \revise{X} & \revise{\cite{Poggio1990,PougetSejnowski1997,andersen1997multimodal,PougetSnyder2000,louie2015adaptive}} & \revise{?} & \revise{?}  \\    
-%  	\revise{Gustatory cortex} & ? & X & \cite{smith2008central,lemon2007,carleton2010} & ? & ? \\    
+    \revise{Parietal cortex} & \revise{?} & \revise{X} & \revise{\cite{Poggio1990,PougetSejnowski1997,andersen1997multimodal,PougetSnyder2000,louie2015adaptive}} & \revise{?} & \revise{?}  \\
     Retrosplenial cortex & \revise{?} & X & \revise{\cite{AlexanderNitz2015,vedder2016,mao2017}} & X & \cite{Rounds2018} \\
     \revise{Prefrontal cortex} & \revise{?} & \revise{?} & \revise{\cite{Mante2013,Rigotti2013,Fujisawa2008,Wei2015}} & \revise{?} & \revise{?}  \\    
     Motor cortex & \revise{?} & \revise{?} & \revise{\cite{Beloozerova2003,penfield1937,GrazianoAflalo2007,Brecht2004}}
-    & ? & \revise{?} \\ % \cite{GrazianoAflalo2007,Vargas2010decoding}
+    & ? & \revise{?} \\
     Hippocampus & \revise{X} & \revise{?} & \revise{\cite{ThompsonBest1989,Bakker2008,myers2011pattern,rolls2013,Wixted2014,Poli2017}} & \revise{?} & \revise{?} \\        
     Basal ganglia & X & ? & \cite{BarGad2003_Review,Turner2000,schwab2015} & X & \pbox{5cm}{\cite{BarGad2000,BarGad2003_Review}} \\  
 	\end{tabular}}

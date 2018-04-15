@@ -2,8 +2,6 @@
 
 \subsection*{\revise{Efficient coding}}
 
-% \revise{\Acf{NSC} can be understood as a modern rendition of
-% \textbf{efficient coding}.
 \revise{The fundamental principle of \textbf{efficient coding}
 is that a sensory system is
 adjusted to the specific statistics of the natural environment from which
@@ -33,7 +31,7 @@ as economically as possible.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{fig-rev1-ech}
+% 	\includegraphics[width=\textwidth]{fig2}
     \caption{\revise{Efficient coding hypothesis
     	 (reprinted from \cite{LouieGlimcher2012}).
     \textbf{\emph{A}},
@@ -66,7 +64,8 @@ directional spatial derivative of an image),
 and 2) any individual neuron responded only sparsely to a small subset of
 stimulus features (e.g., orientation or color at a particular spatial location).
 Thus a neuron's \ac{RF} could be understood as a
-sparse, low-dimensional embedding of high-dimensional input stimuli.
+sparse, low-dimensional embedding of high-dimensional input stimuli
+\cite{Barbieri2015}.
 
 \revise{At the level of single neurons, efficient coding requires
 that a neuron's input-output function be adjusted so that all
@@ -158,7 +157,7 @@ enforcing nonnegativity ensured that features combined additively,
 much like the intuitive notion of combining parts to form a whole.
 The resulting parts-based representations resembled \acp{RF} in \ac{V1} 
 much more closely than other holistic representations.
-\revise{These considerations led to the formulation of \ac{NSC} in its current form.}
+\revise{These considerations led to the formulation of nonnegative sparse coding (\ac{NSC}) in its current form.}
 
 
 \subsection*{\revise{Nonnegative sparse coding (NSC)}}
@@ -240,22 +239,24 @@ In this case, the error depends on the systematic bias of the model,
 and the model is said to \emph{underfit} the data
 (left-hand side of Fig.~\ref{fig:nsc-bias-variance-dilemma}).
 With increased model complexity,
-the bias (training) error will be reduced, because the model can learn
-subtle differences between different contexts with high accuracy.
+the model can learn subtle differences 
+between different contexts with high accuracy,
+leading to a reduced bias (training) error.
 However, with increased complexity, the model is more likely to learn
 patterns between training contexts that arise either from underlying noise
-or from spurious correlations:
-When a novel context is presented, the model will respond according to
-these learned patterns rather than according to the underlying actual relationships,
-and the model is said to \emph{overfit} the data,
+or from spurious correlations. As a result,
+the model will respond according to
+these learned patterns when a novel context is presented
+(rather than according to the underlying actual relationships), 
+in which case the model is said to \emph{overfit} the data
 (right-hand side of Fig.~\ref{fig:nsc-bias-variance-dilemma}).
 Hence, the goal of a successful model is to find the ideal compromise
 in the bias-variance error trade-off \cite{Beyeler2017}
 (labeled `best model' in Fig.~\ref{fig:nsc-bias-variance-dilemma}).}
 
-\begin{figure}[!t]
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{fig-rev1-bias-variance}
+% 	\includegraphics[width=0.6\textwidth]{fig-rev1-bias-variance}
     \caption{\revise{The bias-variance dilemma.
     With increased model complexity 
     (i.e., with an increased number of basis functions), 
@@ -287,7 +288,7 @@ to an activation function $\Theta$:
 \revise{r_{bs} = \Theta(\vec{w}_b \cdot \vec{v}_s),}
 \label{eqn:nsc-model-response}
 \end{equation}
-where $\cdot$ denotes the dot product.
+\revise{where $\cdot$ denotes the dot product}.
 For example, the linear response of a model neuron
 can be calculated by setting $\Theta$ to the identity function $\Theta(x)=x$.
 Note that the response of the model neuron to different stimuli 
