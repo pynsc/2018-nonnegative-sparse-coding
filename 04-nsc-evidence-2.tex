@@ -1,9 +1,9 @@
-\subsection*{\revise{NSC in the retina and visual cortex}}
+\subsection*{NSC in the retina and visual cortex}
 
-\revise{Due to its roots in efficient-coding theories of natural image processing,
-\ac{NSC} figures prominently in the vision neuroscience literature.}
+Due to its roots in efficient-coding theories of natural image processing,
+\ac{NSC} figures prominently in the vision neuroscience literature.
 
-\revise{For example, \ac{NMF}-based models were able to reconstruct
+For example, \ac{NMF}-based models were able to reconstruct
 \emph{in vitro} neuronal spike trains from the salamander retina 
 \cite{Onken2016,Liu2017}.
 By combining spike-triggered average with \ac{NMF},
@@ -21,13 +21,13 @@ as verified by multielectrode array recordings with simultaneous recordings from
 individual bipolar cells through sharp microelectrodes \cite{Liu2017}.
 This allowed the researchers to improve predictions about how ganglion cells respond
 to natural stimuli, without the need to guess a specific model structure that may be constrained in terms of the size, shape, number, or nonlinearity of 
-ganglion cell subunits.}
+ganglion cell subunits.
 
 \begin{figure}[ht]
 	\centering
-% 	\includegraphics[width=\textwidth]{fig5}
+	\includegraphics[width=\textwidth]{fig-rev1-retina}
     \caption{
-    \revise{Identification of retinal ganglion cell subunits 
+    Identification of retinal ganglion cell subunits 
     with \ac{STNMF} (adapted from \cite{Liu2017}).
     \textbf{\emph{A}},
 	     Samples of a ganglion cell’s effective spike-triggered stimulus ensemble (top),
@@ -47,11 +47,11 @@ ganglion cell subunits.}
          given by the spatial component of the STA, as well as the fitted \ac{RF} outline
          (GC RF, black ellipse), together with outlines of the localized subunits 
          (blue ellipses). Scale bars, 100 µm.
-    }}
+    }
 	\label{fig:NMF|retina}
 \end{figure}
 
-\revise{As mentioned in the previous section,
+As mentioned in the previous section,
 \ac{NSC} has been extensively applied to early visual cortex,
 where it has successfully explained 
 orientation and frequency tuning of simple and complex cells in \ac{V1} \cite{Hoyer2003},
@@ -63,9 +63,9 @@ With the exception of face processing in \ac{IT}
 \ac{NSC} has yet to be applied to higher-order areas in the ventral visual stream.
 The success of \ac{NSC} in explaining V1 and V2 response properties
 suggests that it might be possible to extend the model to texture integration in
-V4.}
+V4.
 
-\revise{In our own work, we found evidence for \ac{NSC} in the dorsal visual stream.
+In our own work, we found evidence for \ac{NSC} in the dorsal visual stream.
 Specifically, we demonstrated that simulated neurons 
 in a \ac{NSC} based model of \ac{MSTd} 
 responded to  large optic flow fields in much the same way as real neurons in macaque \ac{MSTd} \cite{Beyeler2016}.
@@ -76,7 +76,7 @@ for visual translation and rotation.
 Each data point in the scatter plots specifies the preferred 3D direction
 of a single neuron or model unit.
 Histograms along the boundaries show the marginal distributions of azimuth
-and elevation preferences.}
+and elevation preferences.
 Not only did individual units match response properties of individual neurons
 in macaque \ac{MSTd},
 but the model was able to recover statistical properties of the \ac{MSTd}
@@ -85,9 +85,8 @@ headings (Fig.~\ref{fig:NMF|MSTd}C, D).
 
 \begin{figure}[ht]
 	\centering
-% 	\includegraphics[width=0.97\textwidth]{fig6}
+	\includegraphics[width=0.97\textwidth]{fig-rev1-MST}
     \caption{
-    \revise{
     \textbf{\emph{A-D}},
          Distribution of 3D direction preferences of macaque \ac{MSTd} neurons
          (rotation, \textbf{\emph{A}}; translation, \textbf{\emph{B}}; 
@@ -112,11 +111,11 @@ headings (Fig.~\ref{fig:NMF|MSTd}C, D).
          Heading prediction (generalization) error as a function of the
          number of basis functions using 10-fold cross-validation.
          Vertical bars are the SD (reprinted from \cite{Beyeler2016}).
-    }}
+    }
 	\label{fig:NMF|MSTd}
 \end{figure}
 
-\revise{\ac{MSTd} is known to encode a number of perceptual variables,
+\ac{MSTd} is known to encode a number of perceptual variables,
 such as the direction of travel (heading) and eye rotation velocity.
 During forward movement, retinal flow radiates out symmetrically from a single point,
 the focus of expansion (FOE), from which heading can be inferred.
@@ -127,9 +126,9 @@ where a majority of cells were involved in the simultaneous encoding of multiple
 perceptual variables (Fig.~\ref{fig:NMF|MSTd}E).
 A similar picture emerged when we investigated the involvement of \ac{MSTd}-like
 model units in the encoding of both heading and eye rotation velocity
-(Fig.~\ref{fig:NMF|MSTd}E).}
+(Fig.~\ref{fig:NMF|MSTd}E).
 
-\revise{Interestingly, the sparsity regime in which model \ac{MSTd} achieved the
+Interestingly, the sparsity regime in which model \ac{MSTd} achieved the
 lowest heading prediction error (Fig.~\ref{fig:NMF|MSTd}F) was also the
 regime in which \ac{MSTd}-like model units reproduced a variety of known
 \ac{MSTd} visual response properties
@@ -142,12 +141,12 @@ Such an intermediary sparse code might be better suited
 for areas such as \ac{MSTd},
 because the increased memory capacity of such a code might lead to compact
 and multifaceted encodings of various perceptual variables
-\cite{BenHamed2003}.}
+\cite{BenHamed2003}.
 
 
-\subsection*{\revise{NSC in the auditory cortex}}
+\subsection*{NSC in the auditory cortex}
 
-\revise{The auditory cortex is a prime example of efficient coding. The auditory system is believed to decompose auditory signals into
+The auditory cortex is a prime example of efficient coding. The auditory system is believed to decompose auditory signals into
 a set of elementary acoustic features \cite{SmithLewicki2006},
 such that the complete acoustic waveform can be described by a
 sparse population code that operates near an information-theoretic optimum
@@ -159,9 +158,9 @@ Response properties of \ac{A1} neurons are well described by a spectrogram;
 they are often tuned to stimulus frequency but are rarely phase-locked
 to oscillations of the sound waveform \cite{Leaver2010}.
 The cortical representation of auditory signals seems to not only be sparse,
-but also rely on statistically independent acoustic features \cite{Klein2003}.}
+but also rely on statistically independent acoustic features \cite{Klein2003}.
 
-\revise{Similar to visual cortex, auditory cortex is hierarchically organized,
+Similar to visual cortex, auditory cortex is hierarchically organized,
 with neurons in \ac{A1} responding to simple acoustic features of natural sounds,
 and higher-order areas responding to more behaviorally relevant stimuli.
 The anterior superior temporal region of auditory cortex, for example,
@@ -173,12 +172,12 @@ whether \ac{NSC} can be extended to the next level of the auditory hierarchy:
 Would it be possible to construct more complex acoustic objects from a sparse,
 parts-based set of elementary, \ac{A1}-like acoustic features?
 And would the representation of such acoustic objects resemble neuronal responses
-in the anterior superior temporal region of auditory cortex?}
+in the anterior superior temporal region of auditory cortex?
 
 
-\subsection*{\revise{NSC in the olfactory cortex}}
+\subsection*{NSC in the olfactory cortex}
 
-\revise{In contrast to most other sensory modalities, 
+In contrast to most other sensory modalities, 
 the basic perceptual dimensions of olfaction remain unclear.
 Odors evoke complex responses in granule cells (located in the olfactory bulb)
 that evolve over hundreds of milliseconds \cite{Broome2006}.
@@ -193,9 +192,9 @@ which are highly segregated and functionally specific.
 Whereas the anterior piriform cortex is associated with the encoding of 
 odor identity and odor structure, 
 the posterior piriform cortex is involved in associational aspects of odors, 
-such as valence and similarity \cite{chen2014,gottfried2006}.}
+such as valence and similarity \cite{chen2014,gottfried2006}.
 
-\revise{Castro and colleagues \cite{Castro2013} provided 
+Castro and colleagues \cite{Castro2013} provided 
 one of the most compelling pieces of evidence for \ac{NSC}
 in the olfactory system to date:
 In an effort to elucidate the dimensions along which perceptual space might be
@@ -220,12 +219,12 @@ instance of one of several fundamental qualities.
 For the data set investigated, individual odor profiles were well-classified 
 by their proximity to a single one of these dimensions, 
 with all ten dimensions being approximately equally expressed 
-across the set of odors.}
+across the set of odors.
 
 \begin{figure}[ht]
 	\centering
-% 	\includegraphics[width=\textwidth]{fig7}
-    \caption{\revise{\ac{NMF} recovers a sparse and parts-based representation
+	\includegraphics[width=\textwidth]{fig-rev1-olfaction}
+    \caption{\ac{NMF} recovers a sparse and parts-based representation
     of olfactory perceptual space (reprinted from \cite{Castro2013}).
        \textbf{\emph{A}},
           Plot of normalized odor descriptor amplitude vs. odor descriptor number for
@@ -245,11 +244,11 @@ across the set of odors.}
           Plot of all 144 odors in the dataset (each point is a column in \textbf{H})
           in the space spanned by the first three basis functions.
           Black, red, and blue points are those with peak coordinates in dimensions
-          1, 2, and 3, respectively. Gray points are all remaining odors.}}
+          1, 2, and 3, respectively. Gray points are all remaining odors.}
 	\label{fig:evidence-olfaction}
 \end{figure}
 
-\revise{Furthermore, \ac{NMF} recovered basis functions whose descriptors align
+Furthermore, \ac{NMF} recovered basis functions whose descriptors align
 with perceptual dimensions highlighted in several previous analyses of odor space,
 including but not limited to relative pleasantness (e.g., `fragrant`, `sickening`), 
 and potential palatability (`woody, resinous', `chemical', `sweet', and `lemon').
@@ -257,12 +256,12 @@ Odors clustered predominantly along these axes
 (Fig.~\ref{fig:evidence-olfaction}D), 
 motivating the interpretation that odor space is organized 
 by a relatively large number of independent qualities that apply categorically
-\cite{Castro2013}.}
+\cite{Castro2013}.
 
 
-\subsection*{\revise{NSC in the somatosensory cortex}}
+\subsection*{NSC in the somatosensory cortex}
 
-\revise{Of all of the sensory areas,
+Of all of the sensory areas,
 somatosensory cortex is among the best understood in terms of circuitry,
 yet least understood in terms of sensory function
 \cite{Ramirez2014}.
@@ -280,21 +279,21 @@ Similar to the recorded neuronal responses, these basis functions were closely r
 to both the tactile stimulation as well as 
 nonstimulus aspects of the behavioral task.
 Furthermore, \ac{RLVM} achieved a lower reconstruction error than other
-linear dimensionality reduction techniques such as \textbf{\ac{PCA}}.}
+linear dimensionality reduction techniques such as \textbf{\ac{PCA}}.
 
-\revise{Similar to auditory cortex,
+Similar to auditory cortex,
 activity in somatosensory cortex can be extremely sparse
 \cite{Jadhav2009,oconnor2010,Crochet2011},
 and sparse coding models have successfully explained the response properties
 of individual neurons in rat somatosensory cortex (e.g., \cite{Hafner2004}).
 In addition, the presence of a topographically organized sensory `homunculus' 
 in various species \cite{penfield1937,hari1993,petersen2007} 
-suggests a possible parts-based representation scheme.}
+suggests a possible parts-based representation scheme.
 
 
-\subsection*{\revise{NSC in the retrosplenial cortex (RSC)}}
+\subsection*{NSC in the retrosplenial cortex (RSC)}
 
-\revise{In our own work, we found evidence that \ac{NSC} 
+In our own work, we found evidence that \ac{NSC} 
 can explain response properties in \ac{RSC}, 
 an area important for navigation and spatial memory 
 \cite{Miller2014,Nelson2015,VannAggleton2009}.
@@ -309,9 +308,9 @@ and movement direction (Fig.~\ref{fig:NMF|reconstruction}C).
 The basis functions recovered by \ac{NMF} were then used to generate simulated responses
 of model \ac{RSC} neurons according to Eq.~\ref{eqn:nsc-model-response},
 and the simulated responses were compared to neuronal responses 
-from the electrophysiological recordings.}
+from the electrophysiological recordings.
 
-\revise{We found that the population activity of these simulated neurons could be used to predict
+We found that the population activity of these simulated neurons could be used to predict
 the animal's location both with respect to the beginning of the route
 (route-based reference frame)
 and with respect to where the route was located within the room
@@ -321,12 +320,12 @@ with remarkably similar population statistics to rat \ac{RSC}:
 1) responding to left and right turns on a specific position along the route,
 2) responding to left and right turns regardless the position along the route,
 and 3) exhibiting complex and robust firing patterns without turn sensitivity
-(see Supplementary Material; also Fig.~\ref{fig:NMF|RSC}A, B).}
+(see Supplementary Material; also Fig.~\ref{fig:NMF|RSC}A, B).
 
 
-\subsection*{\revise{Reinforcement-driven NSC in the basal ganglia}}
+\subsection*{Reinforcement-driven NSC in the basal ganglia}
 
-\revise{There is computational evidence 
+There is computational evidence 
 for a reward-driven variant of \ac{NSC} in the basal ganglia, 
 a cluster of deep forebrain nuclei that are involved in the 
 processing of motor, associative, and limbic information
@@ -335,9 +334,9 @@ The basal ganglia connect most cortical areas to the frontal cortex through
 a series of convergent and sparsely connected pathways \cite{schwab2015},
 where signals from tens of millions of cortical neurons are projected
 onto a $10 - 10,000$ fold smaller population of neurons in different subnuclei
-of the basal ganglia \cite{BarGad2003_Review}.}
+of the basal ganglia \cite{BarGad2003_Review}.
 
-\revise{The \ac{RDDR} model suggests that dimensionality reduction 
+The \ac{RDDR} model suggests that dimensionality reduction 
 in the cortico-basal ganglia pathway is achieved via
 a combination of Hebbian and anti-Hebbian learning rules
 that are implemented by feedforward excitatory and lateral inhibitory
@@ -351,9 +350,9 @@ Whereas the original \ac{RDDR} model was a neural-network based model
 for performing \ac{PCA} \cite{BarGad2000},
 later iterations incorporated nonnegativity constraints on the
 connection weights that effectively transformed the model 
-into an \ac{NMF} variant \cite{BarGad2003_Review}.}
+into an \ac{NMF} variant \cite{BarGad2003_Review}.
 
-\revise{In addition to suggesting a role for lateral connectivity
+In addition to suggesting a role for lateral connectivity
 in the basal ganglia,
 the \ac{RDDR} model also advanced understanding of basal ganglia dysfunction
 in movement-related disorders such as Parkinon's and Huntington's disease.
@@ -362,17 +361,17 @@ argued that focal lesions should have little effect on behavior,
 because of the network's ability to reorganize connections,
 whereas abnormal dopamine levels should significantly alter 
 the reinforcement signal that controls the model's ability 
-to discriminate behaviorally relevant input signals.}
+to discriminate behaviorally relevant input signals.
 
 
-\subsection*{\revise{Potential for NSC in other regions of the brain}}
+\subsection*{Potential for NSC in other regions of the brain}
 
-\revise{In addition to the areas highlighted above,
+In addition to the areas highlighted above,
 there is increasing evidence that the essential components of \ac{NSC}
 might be present in numerous brain regions 
-not traditionally associated with the efficient encoding of information.}
+not traditionally associated with the efficient encoding of information.
 
-\revise{For example, there is evidence for sparse coding in the
+For example, there is evidence for sparse coding in the
 cerebellum \cite{Marr1969,Schweighofer2001,Brunel2004},
 \ac{PFC} \cite{Abeles1990,Fujisawa2008,Wei2015},
 motor cortex \cite{Beloozerova2003,Kakei2003,BarthPoulet2012,Brecht2004},
@@ -388,9 +387,9 @@ For example, individual \ac{PFC} neurons typically encode multiple task-related 
 at once, including the animal's upcoming choice, the context,
 and the strength of the sensory evidence \cite{Mante2013,Rigotti2013,Kobak2016}.
 Future studies may show that key features of the population response in these regions
-can be recovered by applying \ac{NSC} to their inputs.}
+can be recovered by applying \ac{NSC} to their inputs.
 
-\revise{Analogous to our modeling work in \ac{MSTd} \cite{Beyeler2016},
+Analogous to our modeling work in \ac{MSTd} \cite{Beyeler2016},
 it might be possible to apply \ac{NSC} to other areas of the posterior parietal
 cortex that are involved in multisensory heading perception.
 Areas such as the \ac{VIP} and \ac{VPS} are also known to respond to optic flow,
@@ -399,9 +398,9 @@ but they increasingly respond to inertial vestibular stimulation as well
 Although the degree of sparsity of the population code in \ac{VIP} and \ac{VPS} is not known,
 the fact that neurons in these areas respond to mixtures of visual and vestibular
 heading cues make them prime examples 
-to be examined with an \ac{NSC} based modeling approach.}
+to be examined with an \ac{NSC} based modeling approach.
 
-\revise{Elsewhere in parietal cortex, single neurons act as basis functions 
+Elsewhere in parietal cortex, single neurons act as basis functions 
 to represent the spatial configuration of objects 
 with respect to multiple reference frames
 (e.g., by transforming eye-centered to body-centered coordinates).
@@ -416,4 +415,4 @@ such as with respect to a planned route through an environment \cite{nitz2009par
 From a theoretical standpoint, \ac{NSC} seems a good candidate to find an efficient,
 reference-frame agnostic representation of various behaviorally relevant variables
 \cite{LouieGlimcher2012,louie2015adaptive,andersen1997multimodal,BenHamed2003},
-but future studies will have to address these issues step by step.}
+but future studies will have to address these issues step by step.

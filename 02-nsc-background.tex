@@ -1,17 +1,17 @@
 \section*{Nonnegative sparse coding as a modern variant of the efficient coding hypothesis}
 
-\subsection*{\revise{Efficient coding}}
+\subsection*{Efficient coding}
 
-\revise{The fundamental principle of \textbf{efficient coding}
+The fundamental principle of \textbf{efficient coding}
 is that a sensory system is
 adjusted to the specific statistics of the natural environment from which
 it encodes and transmits information
-\cite{Barlow1961,Attneave1954,Linsker1990,LouieGlimcher2012}.}
+\cite{Barlow1961,Attneave1954,Linsker1990,LouieGlimcher2012}.
 
 Early theories of efficient coding
 \cite{Barlow1961,Attneave1954}
 were developed based on the visual system.
-\revise{Attneave \cite{Attneave1954} pointed out that there is a significant
+Attneave \cite{Attneave1954} pointed out that there is a significant
 degree of redundancy in natural visual images due to correlations in both
 the spatial and temporal domains
 (for a recent review, see \cite{SimoncelliOlshausen2001}).
@@ -22,17 +22,17 @@ are likely to be highly correlated
 These statistical regularities constrain the images a visual system
 is likely to encounter to a tiny fraction of the set of all
 possible images.
-It was therefore argued} that the visual system should not
+It was therefore argued that the visual system should not
 waste resources on processing arbitrary images,
-\revise{but instead} use statistical knowledge
+but instead use statistical knowledge
 about its environment to represent the relevant input space 
 as economically as possible.
 
 
 \begin{figure}[h]
 	\centering
-% 	\includegraphics[width=\textwidth]{fig2}
-    \caption{\revise{Efficient coding hypothesis
+	\includegraphics[width=\textwidth]{fig-rev1-ech}
+    \caption{Efficient coding hypothesis
     	 (reprinted from \cite{LouieGlimcher2012}).
     \textbf{\emph{A}},
          Sensory stimuli in the environment, such as an image of a cat,
@@ -45,16 +45,16 @@ as economically as possible.
          For a given distribution of sensory characteristics in the world (bottom),
          an efficient neural input-output function produces an output (top)
          that equally uses all possible levels of neural activity.
-    }}
+    }
 	\label{fig:ech}
 \end{figure}
 
 
-\revise{Extending this idea to the neural level,
+Extending this idea to the neural level,
 Barlow \cite{Barlow1961} proposed that
 the goal of early neurons in sensory processing is to remove
-the redundancy in the input stimuli.}
-These \revise{ideas} were shaped by two
+the redundancy in the input stimuli.
+These ideas were shaped by two
 fundamental empirical observations
 about early visual cortex:
 1) a neuron's \ac{RF} resembled a decomposition of the visual
@@ -67,7 +67,7 @@ Thus a neuron's \ac{RF} could be understood as a
 sparse, low-dimensional embedding of high-dimensional input stimuli
 \cite{Barbieri2015}.
 
-\revise{At the level of single neurons, efficient coding requires
+At the level of single neurons, efficient coding requires
 that a neuron's input-output function be adjusted so that all
 activity levels are used equally in response to a specific
 stimulus distribution \cite{Simoncelli2003} (see Fig.~\ref{fig:ech}B).
@@ -75,28 +75,28 @@ If the input-output function sensitivity is too low,
 high levels of the stimulus feature will be indistinguishable
 as the response function saturates; if the sensitivity is set too high,
 low levels of the stimulus feature cannot drive responses 
-\cite{LouieGlimcher2012}.}
+\cite{LouieGlimcher2012}.
 
-\revise{At the level of neuronal populations,
+At the level of neuronal populations,
 neural responses should be both \emph{decorrelated}
 (i.e., independent from one another)
 and \emph{sparse}
 (i.e., involve only a small fraction of neurons in the population)
-\cite{LouieGlimcher2012}.}
+\cite{LouieGlimcher2012}.
 
 
-\subsection*{\revise{Sparse coding}}
+\subsection*{Sparse coding}
 
-\revise{Taking these ideas a step further,
+Taking these ideas a step further,
 Olshausen and Field \cite{OlshausenField1996b} 
 noted that natural images contain statistical
 dependencies beyond linear pairwise correlations among image pixels,
 and argued that these higher-order correlations should be taken into
 account when developing an efficient code.
 Their goal was thus to find a linear coding strategy
-capable of reducing these higher-order forms of redundancy.}
+capable of reducing these higher-order forms of redundancy.
 
-\revise{\emph{Linear sparse coding} is one such strategy,
+\emph{Linear sparse coding} is one such strategy,
 where monochromatic images $I(x,y)$
 are described in terms of a linear superposition of
 a number of \textbf{basis functions},
@@ -115,9 +115,9 @@ In this context, $h_b$ was considered sparse if it took very small
 or very large (absolute) values more often than a Gaussian random
 variable would \cite{Hyvarinen2001}.
 This sparsity constraint allowed for basis functions that were not
-needed to describe a given image structure to be weeded out.}
+needed to describe a given image structure to be weeded out.
 
-\revise{When Olshausen and Field applied linear sparse coding 
+When Olshausen and Field applied linear sparse coding 
 to natural images,
 they found that the emerging basis functions 
 were qualitatively similar in form
@@ -134,7 +134,7 @@ Olshausen and Field went on to show that
 the set of basis functions that best described \ac{V1} \acp{RF} 
 was greater in number than the effective
 dimensionality of the input (also known as an \emph{overcomplete}
-basis set) \cite{OlshausenField1997}.}
+basis set) \cite{OlshausenField1997}.
 
 However, as pointed out by Hoyer \cite{Hoyer2003}, 
 linear sparse coding falls short of providing a literal interpretation
@@ -144,10 +144,10 @@ for \ac{V1} simple-cell behavior for two reasons:
 whereas \ac{V1} neurons receive visual input from the \ac{LGN} 
 in the form of separated, nonnegative ON and OFF channels.
 
-\revise{In order to} transform Olshausen and Field's sparse coding
+In order to transform Olshausen and Field's sparse coding
 from a relatively abstract model of image representation 
 into a biologically plausible model of early visual cortex processing,
-\revise{Hoyer \cite{Hoyer2002,Hoyer2003} thus proposed to enforce}
+Hoyer \cite{Hoyer2002,Hoyer2003} thus proposed to enforce
 both input signal and neuronal activation to be nonnegative.
 This seemingly simple change had remarkable consequences 
 on the quality of the sensory representation:
@@ -157,43 +157,42 @@ enforcing nonnegativity ensured that features combined additively,
 much like the intuitive notion of combining parts to form a whole.
 The resulting parts-based representations resembled \acp{RF} in \ac{V1} 
 much more closely than other holistic representations.
-\revise{These considerations led to the formulation of nonnegative sparse coding (\ac{NSC}) in its current form.}
+These considerations led to the formulation of nonnegative sparse coding (\ac{NSC}) in its current form.
 
 
-\subsection*{\revise{Nonnegative sparse coding (NSC)}}
+\subsection*{Nonnegative sparse coding (NSC)}
 
-\revise{As a special case of linear sparse coding,
+As a special case of linear sparse coding,
 \ac{NSC} shares the same goal of accurately describing observed data
 as a superposition of a set of sparsely activated basis functions.
 However, \ac{NSC} additionally requires 
 all basis functions and activation values
 (i.e., $w_b(x,y)$ and $h_b$ in Eq.~\ref{eqn:sparse-coding})
-to be nonnegative.}
+to be nonnegative.
 
-\revise{Consider $S$ observed stimuli or data samples,
+Consider $S$ observed stimuli or data samples,
 each comprised of $F$ observed feature values,
 such as a collection of $S$ images $I(x,y)_s$ ($s \in [1, \ldots, S]$)
 from the example above,
-each consisting of $F$ different grayscale values.}
+each consisting of $F$ different grayscale values.
 If we arrange the observed feature values of the $s$-th observation into
-a vector $\vec{v}_s$ \revise{(i.e., by flattening each observed image)},
+a vector $\vec{v}_s$ (i.e., by flattening each observed image),
 and if we arrange all vectors into the columns 
 of a $F \times S$ data matrix \textbf{V},
 then linear decompositions describe these data as:
-\revise{
 \begin{equation}
 \mathbf{V} \approx \mathbf{WH},
 \label{eqn:linear-decomposition}
 \end{equation}
-where \textbf{W} is a \revise{$F \times B$} matrix that contains as its columns
+where \textbf{W} is a $F \times B$ matrix that contains as its columns
 the $B$ basis functions of the decomposition
 (i.e., the $b$-th column of \textbf{W} corresponding to 
 $w_b(x,y)$ $\forall x,y$ in Eq.~\ref{eqn:sparse-coding}),
-and \textbf{H} \revise{is a $B \times S$ matrix containing} 
+and \textbf{H} is a $B \times S$ matrix containing
 as its columns the activation values 
 of each basis function for a particular input stimulus
 (i.e., the $b$-th column of \textbf{H} corresponding to 
-$h_b$ $\forall b$ in Eq.~\ref{eqn:sparse-coding}).}
+$h_b$ $\forall b$ in Eq.~\ref{eqn:sparse-coding}).
 The difference between \textbf{V} and \textbf{WH} is termed
 the \emph{reconstruction error}.
 
@@ -217,7 +216,7 @@ is controlled by the parameter $\lambda$ ($\lambda \geq 0$), whereas
 the form of $f$ defines how sparsity is measured
 (a typical choice is the L1 norm on \textbf{H}).
 
-\revise{In the case of $\lambda = 0$, Eq.~\ref{eqn:nsc-cost-function}
+In the case of $\lambda = 0$, Eq.~\ref{eqn:nsc-cost-function}
 reduces to the squared-error version of \acf{NMF}.
 Although \ac{NMF} enforces all elements of \textbf{W} and \textbf{H}
 to be nonnegative,
@@ -226,9 +225,9 @@ depending on the number of basis functions $B$.
 In order to emphasize decompositions where \textbf{H} is sparse,
 Eq.~\ref{eqn:nsc-cost-function} should be minimized 
 with $\lambda > 0$;
-for an efficient algorithm see \cite{Hoyer2002}.}
+for an efficient algorithm see \cite{Hoyer2002}.
 
-\revise{Another open parameter is the number of basis functions, $B$, 
+Another open parameter is the number of basis functions, $B$, 
 which controls the predictive power of the model,
 and must be determined empirically.
 With a small number of basis functions,
@@ -252,12 +251,12 @@ in which case the model is said to \emph{overfit} the data
 (right-hand side of Fig.~\ref{fig:nsc-bias-variance-dilemma}).
 Hence, the goal of a successful model is to find the ideal compromise
 in the bias-variance error trade-off \cite{Beyeler2017}
-(labeled `best model' in Fig.~\ref{fig:nsc-bias-variance-dilemma}).}
+(labeled `best model' in Fig.~\ref{fig:nsc-bias-variance-dilemma}).
 
 \begin{figure}[h]
 	\centering
-% 	\includegraphics[width=0.6\textwidth]{fig-rev1-bias-variance}
-    \caption{\revise{The bias-variance dilemma.
+	\includegraphics[width=0.6\textwidth]{fig-rev1-bias-variance}
+    \caption{The bias-variance dilemma.
     With increased model complexity 
     (i.e., with an increased number of basis functions), 
     the reconstruction error on a set
@@ -265,53 +264,53 @@ in the bias-variance error trade-off \cite{Beyeler2017}
     In contrast, the reconstruction error on a set of unfamiliar, held-out
     (test) data typically goes through a minimum as a function of model complexity.
     A successful model chooses the number of basis functions such that the
-    generalization (test) error is minimized (labeled `best model`).}}
+    generalization (test) error is minimized (labeled `best model`).}
 	\label{fig:nsc-bias-variance-dilemma}
 \end{figure}
 
-\revise{Analogously to \cite{OlshausenField1996,OlshausenField1997},
+Analogously to \cite{OlshausenField1996,OlshausenField1997},
 the basis functions obtained in \ac{NSC} can be interpreted as
 the connection weights of a population of simulated neurons
 in an artificial neural network.
-In other words, under \ac{NSC}} the number of basis functions $B$ 
-corresponds to the number of output neurons, \revise{and the}
+In other words, under \ac{NSC} the number of basis functions $B$ 
+corresponds to the number of output neurons, and the
 response of the $b$-th model output neuron
 ($b \in [1, ..., B]$)
-to a particular input stimulus $s$, \revise{termed} $r_{bs}$,
+to a particular input stimulus $s$, termed $r_{bs}$,
 can be computed by feeding the dot product of
-\revise{that neuron's connection weights}
+that neuron's connection weights
 (i.e., the $b$-th column in $\mathbf{W}$, $\vec{w}_b$)
-and a \revise{data vector}
+and a data vector
 (i.e., the $s$-th column in \textbf{V}, $\vec{v}_s$)
 to an activation function $\Theta$:
 \begin{equation}
-\revise{r_{bs} = \Theta(\vec{w}_b \cdot \vec{v}_s),}
+r_{bs} = \Theta(\vec{w}_b \cdot \vec{v}_s),
 \label{eqn:nsc-model-response}
 \end{equation}
-\revise{where $\cdot$ denotes the dot product}.
+where $\cdot$ denotes the dot product.
 For example, the linear response of a model neuron
 can be calculated by setting $\Theta$ to the identity function $\Theta(x)=x$.
 Note that the response of the model neuron to different stimuli 
 $s \in [1, \ldots, S]$
 involves different columns of \textbf{V},
-but always relies on \revise{$\vec{w}_b$}.
+but always relies on $\vec{w}_b$.
 
 Inhibitory connections can be modeled in the same fashion,
-by interpreting inhibitory \revise{connection} weights
+by interpreting inhibitory connection weights
 as nonnegative synaptic conductances.
-\revise{This} not only preserves the parts-based quality of the encoding,
+This not only preserves the parts-based quality of the encoding,
 but also allows for more complicated connection types to be modeled
 (e.g., \ac{V1} neurons receiving input from both excitatory ON
 and inhibitory OFF cells in the \ac{LGN}) \cite{Hoyer2003}.
 However, it is interesting to note that a more recent study has argued
 that the nonnegativity constraint on the
-\revise{connection} weights might not be necessary 
+connection weights might not be necessary 
 to preserve the parts-based quality of the encoding \cite{Liu2017}.
 
 
 Thus, we can utilize \textbf{W} 
 (which must remain fixed once learned)
-\revise{and Eq.~\ref{eqn:nsc-model-response}}
+and Eq.~\ref{eqn:nsc-model-response}
 to simulate a model neuron's response to arbitrary input stimuli
 by replacing the column in \textbf{V} with new input.
 This allows us to investigate the response properties 

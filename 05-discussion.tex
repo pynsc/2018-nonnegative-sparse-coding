@@ -1,12 +1,11 @@
-\section*{\revise{Discussion}}
+\section*{Discussion}
 \label{sec:discussion}
 
 That \ac{NSC} can explain and reproduce response properties observed in biological neurons may be an important clue as to how brains have evolved to parse and store information
-\revise{in order to perceive the world and interact with it.}
+in order to perceive the world and interact with it.
 We offer three testable predictions of this theory:
 
-\revise{First,}
-\revise{we suggest that a variety of neuronal response properties
+First, we suggest that a variety of neuronal response properties
 can be understood as an emergent property of efficient population coding 
 based on dimensionality reduction.
 Depending on input stimulus and task complexity,
@@ -19,9 +18,9 @@ in \ac{V1} \cite{OlshausenField1996},
 but giving rise to mixed selectivity in higher-order brain areas
 such as \ac{MSTd} \cite{Beyeler2016},
 \ac{RSC} \cite{Rounds2016,Rounds2018},
-and \ac{PFC} \cite{Mante2013}.}
+and \ac{PFC} \cite{Mante2013}.
 
-\revise{Second,} we predict that parts-based representations can explain
+Second, we predict that parts-based representations can explain
 \acp{RF} of neurons in a variety of brain regions,
 including but not limited to those brain areas discussed here. 
 In agreement with the literature on basis function representations
@@ -32,24 +31,24 @@ exhibit a range of tuning behaviors \cite{Beyeler2016},
 display mixed selectivity \cite{Fusi2016,Eichenbaum2017},
 or encode information in multiple reference frames \cite{AlexanderNitz2015,Rounds2016,Rounds2018}.
 
-\revise{Third,} where such representations occur, we expect the resulting
-neuronal population activity to be \revise{relatively} sparse,
+Third, where such representations occur, we expect the resulting
+neuronal population activity to be relatively sparse,
 in order to encode information both accurately and efficiently.
-\revise{As noted above,}
+As noted above,
 sparse codes offer a trade-off between 
 dense codes (where every neuron is involved in every context,
 leading to great memory capacity but suffering from cross talk among neurons)
 and local codes (where there is no interference, 
 but also no capacity for generalization).
-\revise{\ac{NSC} explicitly discourages statistically inefficient representations,
+\ac{NSC} explicitly discourages statistically inefficient representations,
 because strongly accounting for a rare observation at the expense of ignoring
 more common input components would result in an increased reconstruction error
-(see Eq.~\ref{eqn:nsc-cost-function}).}
+(see Eq.~\ref{eqn:nsc-cost-function}).
 
 
-\subsection*{\revise{Potential neural mechanisms of NSC}}
+\subsection*{Potential neural mechanisms of NSC}
 
-\revise{As a special case of efficient coding,
+As a special case of efficient coding,
 \ac{NSC} possesses metabolic advantages by employing
 sparse population codes.
 To operate efficiently, it has been suggested that the brain might enforce 
@@ -67,23 +66,23 @@ local in functional space (i.e., parts-based).
 However, wiring cost is likely to be only one of many constraints 
 on the brain connectome, perhaps supplementing competitive pressures
 for hub-mediated information exchange between network modules
-\cite{Rubinov2015}.}
+\cite{Rubinov2015}.
 
-\revise{In addition, evidence suggests that Hebbian-like synaptic plasticity rules
+In addition, evidence suggests that Hebbian-like synaptic plasticity rules
 allow neurons to perform statistical inference on their inputs
 \cite{Nessler2009,Carlson2013,MorenoBoteDrugowitsch2015,Oja1982}.
 One particular study demonstrated through a mathematical proof
 that a certain form of \textbf{\ac{STDP}} in combination with 
 homeostatic synaptic scaling (i.e., \ac{STDPH})
 can approximate the \ac{NMF} algorithm
-\cite{Carlson2013}.}
+\cite{Carlson2013}.
 Similar to Oja's rule \cite{Oja1982}, which was developed to stabilize 
 rate-based Hebbian learning
 (effectively resulting in principal component analysis),
 Carlson and colleagues showed that synaptic scaling acts as a 
 homeostatic mechanism to stabilize \ac{STDP}
 (effectively resulting in \ac{NMF}).
-\revise{Interestingly, we were able to apply these ideas to 
+Interestingly, we were able to apply these ideas to 
 electrophysiologically recorded neuronal activity observed in the \ac{RSC}
 of rats during a spatial navigation task (Fig.~\ref{fig:NMF|RSC}; for experimental details see Supplementary Material). Both \ac{STDPH} and \ac{NMF} were able to recover key  features such as encoding spatial reference frames (i.e., allocentric and route-centric firing patterns) and position discrimination by reducing the dimensionality of behavioral variables (e.g., velocity, head direction, position).
 The neuronal and population responses from NMF and STDPH were comparable to the experimental findings \cite{AlexanderNitz2015}.
@@ -94,12 +93,12 @@ However, more research is needed to elucidate any potential connection
 between \ac{NSC} and the many different synaptic plasticity rules 
 commonly found across brain regions,
 different stages in the life of an animal, and animal species
-(e.g., \cite{Froemke2010,BCM1982}).}
+(e.g., \cite{Froemke2010,BCM1982}).
 
 \begin{figure}[h]
 	\centering
-% 	\includegraphics[width=\textwidth]{fig8}
-    \caption{\revise{
+	\includegraphics[width=\textwidth]{fig-rev1-rsc}
+    \caption{
     	Comparisons between recorded experimental data and two 
         computational models of rat \ac{RSC} suggest a functional 
         similarity between \ac{STDPH} and \ac{NMF} 
@@ -126,20 +125,20 @@ different stages in the life of an animal, and animal species
         \textbf{\emph{C}},
             Simulated by evolving \ac{STDPH} parameters 
             to fit experimental data \cite{BeyelerCarlsonChou2015,Carlson2014}.
-    }}
+    }
 	\label{fig:NMF|RSC}
 \end{figure} 
 
 
-\subsection*{\revise{Model limitations}}
+\subsection*{Model limitations}
 
-\revise{Although \ac{NSC} has proved useful in understanding
+Although \ac{NSC} has proved useful in understanding
 a variety of neuronal responses
 as an emergent property of efficient population
 coding based on dimensionality reduction and sparse coding,
-there are some limitations to this theory.}
+there are some limitations to this theory.
 
-\revise{First, it remains to be demonstrated whether \ac{NSC} in its current form
+First, it remains to be demonstrated whether \ac{NSC} in its current form
 can be extended to brain areas that require a dynamic process of information
 gating, such as \ac{PFC} \cite{Mante2013,Rigotti2013,Kobak2016}
 and motor cortex \cite{Vargas2010decoding,GrazianoAflalo2007}.
@@ -154,9 +153,9 @@ and the size of the loop is related to the odor concentration
 Nevertheless, a recent \ac{NSC} based study was able to elucidate perceptually
 relevant dimensions in odor space \cite{Castro2013}.
 Our hope is that similar studies applied to \ac{PFC} and motor cortex will
-reveal similar insights into their population response properties.}
+reveal similar insights into their population response properties.
 
-\revise{Second, a practical limitation of dimensionality analyses in general
+Second, a practical limitation of dimensionality analyses in general
 is that the apparent dimensionality of the population response changes
 systematically with the complexity of the input stimulus
 \cite{SpanneJorntell2015,Cowley2016,Mazzucato2016}.
@@ -166,9 +165,9 @@ By excluding input dimensions that are present in the brain,
 one will implicitly guide the simulated model away from spurious interactions
 that the real circuitry would have to handle.
 As a result, the simulated model might underestimate 
-the true complexity of the task.}
+the true complexity of the task.
 
-\revise{Third, the role of sparse coding in the brain has been questioned
+Third, the role of sparse coding in the brain has been questioned
 \cite{SpanneJorntell2015,BarthPoulet2012}.
 This is at least partly due to the wide variety of definitions of sparse
 coding used in the literature:
@@ -198,12 +197,12 @@ greater representational capacity in higher-order visual areas
 such as \ac{MSTd}, 
 which could lead to compact and multifaceted encodings
 of various perceptual variables
-(see Discussion in \cite{Beyeler2016}).}
+(see Discussion in \cite{Beyeler2016}).
 
 
-\subsection*{\revise{Model alternatives}}
+\subsection*{Model alternatives}
 
-\revise{Since \ac{NMF} is an integral part 
+Since \ac{NMF} is an integral part 
 of Eq.~\ref{eqn:nsc-cost-function},
 it is interesting to note that \ac{NSC} is tightly connected
 to a number of unsupervised learning techniques,
@@ -216,9 +215,9 @@ sparse, interpretable factors, \ac{NMF} has become a
 widely used tool for the analysis of high-dimensional data,
 with applications reaching far beyond
 the field of computational biology
-(for a recent review see \cite{Gillis2014}).}
+(for a recent review see \cite{Gillis2014}).
 
-\revise{In addition to the tight connection 
+In addition to the tight connection 
 to linear sparse coding and \ac{NMF}
 \cite{EggertKorner2004},
 \ac{NSC} is also intimately related to \textbf{\ac{ICA}},
@@ -233,9 +232,9 @@ in the noisy \ac{ICA} model \cite{HoyerHyvarinen2002}.
 In order for this connection to hold,
 the \ac{ICA} basis functions must be chosen to be nonnegative,
 and the independent components must have 
-exponential distributions \cite{Hoyer2002}.}
+exponential distributions \cite{Hoyer2002}.
 
-\revise{Similarly, \ac{NSC} is closely related to compressed sensing
+Similarly, \ac{NSC} is closely related to compressed sensing
 (for a recent review see \cite{GanguliSompolinsky2012}),
 and a recent study has even suggested to combine the two
 \cite{WangLi2010}.
@@ -255,4 +254,4 @@ of unmixed sources
 and compressed sensing requires basis function to be `maximally incoherent'
 \cite{GanguliSompolinsky2012},
 \ac{NSC} does not make any such assumptions
-as long as the basis functions are nonnegative.}
+as long as the basis functions are nonnegative.

@@ -3,33 +3,33 @@
 Brains face the fundamental challenge of 
 processing, storing, and representing high-dimensional stimuli
 using patterns of neural activity.
-\revise{To support complex patterns of behavior, 
+To support complex patterns of behavior, 
 populations of interconnected neurons implement 
 a rich repertoire of linear and nonlinear operations on their synaptic inputs
 and vary their signaling properties based on context and experience
-\cite{Koch1999}.}
+\cite{Koch1999}.
 
-\revise{However, neuronal information processing} is complicated
-by strict constraints on metabolic cost---\revise{50\% of the 
+However, neuronal information processing is complicated
+by strict constraints on metabolic cost---50\% of the 
 mammalian brain's energy consumption is believed to be associated with 
-neuronal signaling \cite{Laughlin2001, Lennie2003}}---and the 
+neuronal signaling \cite{Laughlin2001, Lennie2003}---and the 
 widespread existence of anatomical bottlenecks 
 \cite{Kempermann2002,BarGad2003_Review,Babinsky1993}.
-\revise{These bottlenecks} often force the information
+These bottlenecks often force the information
 stored in a large number of neurons
 to be compressed into an orders of magnitude smaller population
 of downstream neurons;
 for example, storing information from 100 million photoreceptors 
 in 1 million optic nerve fibers,
 or resulting in a $10 - 10,000$ fold convergence from cortex to the basal ganglia
-\revise{\cite{BarGad2003_Review}}.
-\revise{To operate efficiently within these constraints,
+\cite{BarGad2003_Review}.
+To operate efficiently within these constraints,
 it has been suggested that the nervous system improves 
 efficiency by reducing (and in some cases minimizing) the resources
-required to implement a given task \cite{LaughlinSejnowski2003}.}
+required to implement a given task \cite{LaughlinSejnowski2003}.
 
 One potential approach to addressing this challenge is to
-\revise{reduce the number of signals required to transmit information in the network.
+reduce the number of signals required to transmit information in the network.
 \textbf{Sparse coding} schemes (see Glossary),
 in which information is represented by the activity of a small
 proportion of neurons in a population,
@@ -64,13 +64,13 @@ when signals are relatively expensive, it is best to distribute a few of them
 among a large number of cells (local code); but
 when cells are expensive, it is more efficient to use few cells
 and have all of them participate in the encoding of the signal (dense code)
-\cite{RollsTreves1990,Laughlin2001}.}
+\cite{RollsTreves1990,Laughlin2001}.
 
 
 \begin{figure}[h]
 	\centering
-% 	\includegraphics[width=\textwidth]{fig1}
-    \caption{\revise{\Acf{NSC} promotes population codes that are both sparse and parts-based.
+	\includegraphics[width=\textwidth]{fig-rev1-sparse}
+    \caption{\Acf{NSC} promotes population codes that are both sparse and parts-based.
     \textbf{\emph{A}},
     	   Hypothetical activity in a population of neurons
            during presentation of two different external stimuli (`contexts').
@@ -91,24 +91,24 @@ and have all of them participate in the encoding of the signal (dense code)
            individual neurons explicitly encode individual face components
            \cite{Palmer1977},
            such as the eyes, nose, and mouth
-           (adapted from \cite{LeeSeung1999}).}}
+           (adapted from \cite{LeeSeung1999}).}
 	\label{fig:sparse-parts}
 \end{figure}
 
 
-\revise{Another approach is} to reduce the number of
+Another approach is to reduce the number of
 variables required to represent a particular stimulus space;
 a process known as
-\revise{\textbf{dimensionality reduction}.
+\textbf{dimensionality reduction}.
 Dimensionality reduction methods have proved useful in elucidating neural mechanisms
 that depend on how the responses of multiple neurons covary,
 including odor discrimination in the olfactory system \cite{Broome2006,Koulakov2011},
 the selection and integration of sensory inputs 
 in the prefrontal cortex \cite{Mante2013},
 and the ability of premotor cortex 
-to prepare movements without executing them \cite{Kaufman2014}.}
+to prepare movements without executing them \cite{Kaufman2014}.
 
-\revise{In brain areas far removed from sensory input,
+In brain areas far removed from sensory input,
 neurons typically encode several behaviorally relevant parameters
 simultaneously \cite{Rigotti2013,Park2014,PaganRust2014,PougetSejnowski1997},
 allowing for multifaceted representations of high-dimensional stimulus spaces.
@@ -142,21 +142,22 @@ combinations of stimulus features \cite{Palmer1977}.
 Although the relevant stimulus dimensions are often not known \emph{a priori},
 several sophisticated mathematical techniques exist that
 allow us to discover these representations directly from experimental data
-\cite{Brunton2016,CunninghamYu2014,PillowSimoncelli2006,Sharpee2014,Gao2017}.}
+\cite{Brunton2016,CunninghamYu2014,PillowSimoncelli2006,Sharpee2014,Gao2017}.
 
-\revise{In this article, we demonstrate} that a variety of neuronal responses
+In this article, we demonstrate that a variety of neuronal responses
 can be understood as an emergent property of efficient population coding
 based on dimensionality reduction and sparse coding.
-Specifically, \revise{we review} computational evidence
-from data analyses and computer simulations \revise{arguing} that \ac{NSC}, 
-a combination of \revise{\textbf{\ac{NMF}}} \cite{PaateroTapper1994,LeeSeung1999} 
+Specifically, we review computational evidence
+from data analyses and computer simulations arguing that \ac{NSC}, 
+a combination of \textbf{\ac{NMF}}
+\cite{PaateroTapper1994,LeeSeung1999} 
 and sparse coding,
-\revise{can generate sparse and parts-based} embeddings of
+can generate sparse and parts-based embeddings of
 high-dimensional stimulus spaces
 that resemble neuronal population responses in a 
-\revise{wide} variety of brain regions.
-\revise{This introduces the possibility that \ac{NSC} might
+wide variety of brain regions.
+This introduces the possibility that \ac{NSC} might
 be a general principle to which many neuronal computations adhere.
 Furthermore, \ac{NSC} might provide a useful theoretical framework under which
 to understand the often complex and nonintuitive response properties of neurons
-in brain areas far removed from sensory input.}
+in brain areas far removed from sensory input.
