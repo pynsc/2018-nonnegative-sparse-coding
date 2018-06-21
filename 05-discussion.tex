@@ -58,7 +58,7 @@ In addition to reducing overall wiring length
 \cite{Cherniak1994}, the brain might also aim to minimize local delays
 by favoring a high degree of local connectivity
 \cite{Chklovskii2002}.
-With connectivity reflecting coding \cite{Clopath2010},
+\revise{If connectivity reflects} coding \cite{Clopath2010},
 it would not be surprising to find that such ecological considerations
 carry over into brain function,
 favoring sparse population codes and neuronal representations that are
@@ -94,6 +94,7 @@ between \ac{NSC} and the many different synaptic plasticity rules
 commonly found across brain regions,
 different stages in the life of an animal, and animal species
 (e.g., \cite{Froemke2010,BCM1982}).
+\mikeNote{R1:  Fig 8 is hard to interpret, what is the percent model error? Does this error reflect a ``movement prediction error''?}
 
 \begin{figure}[h]
 	\centering
@@ -144,6 +145,7 @@ gating, such as \ac{PFC} \cite{Mante2013,Rigotti2013,Kobak2016}
 and motor cortex \cite{Vargas2010decoding,GrazianoAflalo2007}.
 In these areas, diverse time courses across neurons have confounded
 attempts to understand the basic encoding of decisions and movements.
+\mikeNote{R1: when the authors mention the different time courses of neural activity across areas, maybe they want to mention that in motor areas activity seems to be well-represented by RNNs, whereas in visual areas feedforward nets seem to be better models?}
 However, the same is true for the olfactory system,
 where population activity traces out loops that are organized by stimulus
 condition. In particular, the orientation of the loop 
@@ -178,6 +180,7 @@ or below 100\% for thresholded,
 rate-based neurons \cite{SpanneJorntell2015}.
 However, it is not surprising that different brain areas might employ
 different degrees of sparsity.
+\mikeNote{R1: These paragraphs are not very clear, starting with the authors’ definition of learning... Please rewrite}
 Whereas learning can be extremely fast in a local code,
 a network of `grandmother' cells suffers from low representational capacity.
 As the degree of sparsity in the network decreases and the code gets denser,
@@ -239,6 +242,7 @@ Similarly, \ac{NSC} is closely related to compressed sensing
 and a recent study has even suggested to combine the two
 \cite{WangLi2010}.
 Compressed sensing posits that neurons might implement 
+\mikeNote{R1: recent paper from the Shenoy and Ganguli labs [13] that shows that this notion applies to M1 data}
 dimensionality reduction by randomly projecting patterns of activity
 into a lower-dimensional space,
 simply by synaptically mapping $N$ upstream neurons to a downstream region

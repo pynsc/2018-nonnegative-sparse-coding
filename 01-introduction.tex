@@ -49,6 +49,7 @@ of all neurons in the population
 Dense codes lead to high representational capacity
 (at $M$ activity levels, allowing for $M^N$ contexts to be encoded),
 but also suffer from neuronal cross talk,
+\mikeNote{R1: Is this a supposition or a fact}
 because every neuron is involved in every context.
 Alternatively, sparse codes
 (Fig.~\ref{fig:sparse-parts}A, center column)
@@ -64,6 +65,7 @@ when signals are relatively expensive, it is best to distribute a few of them
 among a large number of cells (local code); but
 when cells are expensive, it is more efficient to use few cells
 and have all of them participate in the encoding of the signal (dense code)
+\mikeNote{R1: maybe link this to what we know about the connectivity}
 \cite{RollsTreves1990,Laughlin2001}.
 
 
@@ -107,6 +109,7 @@ the selection and integration of sensory inputs
 in the prefrontal cortex \cite{Mante2013},
 and the ability of premotor cortex 
 to prepare movements without executing them \cite{Kaufman2014}.
+\mikeNote{R1: the authors seem to imply that movement preparation in the “null space” is related to a stimulus. I think at this stage it’s probably related to setting up the appropriate dynamical state to cause the movement the subject wants to perform. It’s a subtle distinction, and ties again with the sensory vs. motor “conflict” that I’ve pointed out several times. }
 
 In brain areas far removed from sensory input,
 neurons typically encode several behaviorally relevant parameters
@@ -139,12 +142,13 @@ between positive and negative contributions,
 and thus lack the intuitive meaning of adding parts to form a whole.
 In contrast, a parts-based representation allows for only nonsubtractive
 combinations of stimulus features \cite{Palmer1977}.
+\mikeNote{R1: cite Doris Tsao}
 Although the relevant stimulus dimensions are often not known \emph{a priori},
 several sophisticated mathematical techniques exist that
 allow us to discover these representations directly from experimental data
 \cite{Brunton2016,CunninghamYu2014,PillowSimoncelli2006,Sharpee2014,Gao2017}.
 
-In this article, we demonstrate that a variety of neuronal responses
+In this article, we \revise{suggest} that a variety of neuronal responses
 can be understood as an emergent property of efficient population coding
 based on dimensionality reduction and sparse coding.
 Specifically, we review computational evidence
