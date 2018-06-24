@@ -46,6 +46,62 @@ more common input components would result in an increased reconstruction error
 (see Eq.~\ref{eqn:nsc-cost-function}).
 
 
+\subsection*{\revise{Potential for NSC in nonsensory areas of the brain}}
+
+\mikeNote{R1: In the previous round of reviews, I already suggested that the authors’ model seems more appropriate for sensory areas, and that it may not apply to the motor system. Despite the changes to the paper, I think the paper would be clearer and perhaps more compelling that way. To be clear, I’m not arguing that the authors should complete remove non-sensory areas, but I think it should be a part of the Discussion ``Would these ideas apply to non-sensory areas?'' rather than of the core of the paper.}
+\revise{In addition to the areas highlighted above,
+there is increasing evidence that the essential components of \ac{NSC}
+might be present in numerous brain regions 
+not traditionally associated with the efficient encoding of information.}
+
+\revise{For example, there is evidence for sparse coding in the
+cerebellum \cite{Marr1969,Schweighofer2001,Brunel2004},
+\ac{PFC} \cite{Abeles1990,Fujisawa2008,Wei2015},
+motor cortex \cite{Beloozerova2003,Kakei2003,BarthPoulet2012,Brecht2004},
+hippocampus \cite{rolls2013,ThompsonBest1989,Poli2017,Wixted2014},
+and the amygdala \cite{Bach2011}.
+Similarly, there is evidence for dimensionality reduction in
+\ac{PFC} \cite{Mante2013}
+and motor cortex \cite{Graziano2009,Gallego2017}.
+However, the intrinsically complex response properties of individual neurons
+have defied a deep understanding of how these neurons contribute to behavior
+\cite{churchland2007,Mante2013}.
+For example, individual \ac{PFC} neurons typically encode multiple task-related signals
+at once, including the animal's upcoming choice, the context,
+and the strength of the sensory evidence \cite{Mante2013,Rigotti2013,Kobak2016}.
+Future studies may show that key features of the population response in these regions
+can be recovered by applying \ac{NSC} to their inputs.}
+
+\revise{Analogous to our modeling work in \ac{MSTd} \cite{Beyeler2016},
+it might be possible to apply \ac{NSC} to other areas of the posterior parietal
+cortex that are involved in multisensory heading perception.
+Areas such as the \ac{VIP} and \ac{VPS} are also known to respond to optic flow,
+but they increasingly respond to inertial vestibular stimulation as well
+\cite{Chen2011}.
+Although the degree of sparsity of the population code in \ac{VIP} and \ac{VPS} is not known,
+the fact that neurons in these areas respond to mixtures of visual and vestibular
+heading cues make them prime examples 
+to be examined with an \ac{NSC} based modeling approach.}
+
+\revise{Elsewhere in parietal cortex, single neurons act as basis functions 
+to represent the spatial configuration of objects 
+with respect to multiple reference frames
+(e.g., by transforming eye-centered to body-centered coordinates).
+\cite{Poggio1990,PougetSejnowski1997,PougetSnyder2000}.
+This is similar to the integration of multimodal heading cues mentioned above,
+as well as to other associative areas such as \ac{RSC},
+which demonstrates conjunctive coding of various spatial navigation cues
+\cite{AlexanderNitz2015,Rounds2018}.
+There is further evidence that actions are represented in parietal cortex
+with respect to arbitrary and abstract reference frames, 
+such as with respect to a planned route through an environment \cite{nitz2009parietal}.
+From a theoretical standpoint, \ac{NSC} seems a good candidate to find an efficient,
+reference-frame agnostic representation of various behaviorally relevant variables
+\cite{LouieGlimcher2012,louie2015adaptive,andersen1997multimodal,BenHamed2003},
+but future studies will have to address these issues step by step.}
+
+
+
 \subsection*{Potential neural mechanisms of NSC}
 
 As a special case of efficient coding,
@@ -138,6 +194,7 @@ a variety of neuronal responses
 as an emergent property of efficient population
 coding based on dimensionality reduction and sparse coding,
 there are some limitations to this theory.
+\mikeNote{R1: I think the authors should mention the emerging idea that sensory areas carry a lot of information about the behavior, even visual areas [10, 12]. This information may make the activity of a sensory neuron not be just an efficient code of the stimulus.}
 
 First, it remains to be demonstrated whether \ac{NSC} in its current form
 can be extended to brain areas that require a dynamic process of information
