@@ -19,6 +19,7 @@ For example, the luminance values of a pair of pixels
 separated by a fixed distance in a natural image
 are likely to be highly correlated
 (Fig.~\ref{fig:ech}A).
+\mikeNote{We won't be able to get CC-BY permission from SAGE. Find a different source.}
 These statistical regularities constrain the images a visual system
 is likely to encounter to a tiny fraction of the set of all
 possible images.
@@ -215,17 +216,20 @@ The trade-off between accurate reconstruction and sparsity
 is controlled by the parameter $\lambda$ ($\lambda \geq 0$), whereas
 the form of $f$ defines how sparsity is measured
 (a typical choice is the L1 norm on \textbf{H}).
+\revise{\Ac{NSC} explicitly discourages statistically inefficient representations,
+because strongly accounting for a rare observation 
+at the expense of ignoring a more common one stimulus component
+would result in an increased reconstruction error.}
 
 In the case of $\lambda = 0$, Eq.~\ref{eqn:nsc-cost-function}
-reduces to the squared-error version of \acf{NMF}.
+reduces to the squared-error version of \ac{NMF}.
 Although \ac{NMF} enforces all elements of \textbf{W} and \textbf{H}
 to be nonnegative,
 the resulting decomposition might not be sparse,
 depending on the number of basis functions $B$.
 In order to emphasize decompositions where \textbf{H} is sparse,
 Eq.~\ref{eqn:nsc-cost-function} should be minimized 
-with $\lambda > 0$;
-for an efficient algorithm see \cite{Hoyer2002}.
+with $\lambda > 0$ \cite{Hoyer2002}.
 
 Another open parameter is the number of basis functions, $B$, 
 which controls the predictive power of the model,
@@ -268,8 +272,6 @@ in the bias-variance error trade-off \cite{Beyeler2017}
 	\label{fig:nsc-bias-variance-dilemma}
 \end{figure}
 
-\mikeNote{R1: I liked the point that NSC discourages statistically inefficient representations: maybe bring it up when describing NSC itself?}
-
 Analogously to \cite{OlshausenField1996,OlshausenField1997},
 the basis functions obtained in \ac{NSC} can be interpreted as
 the connection weights of a population of simulated neurons
@@ -299,6 +301,8 @@ but always relies on $\vec{w}_b$.
 
 Inhibitory connections can be modeled in the same fashion,
 \mikeNote{R1: maybe it’d be interesting if the authors could provide more detail into how they’d build this model with E/I neurons}
+\emilyNote{What does R1 mean by "this model?" The RSC model kind of is an E/I implementation of an NMF model, as we show later, so we could just describe a random balanced network with STDP-H}
+\mikeNote{I think they want to see how to build V1 cells from E/I LGN inputs. Would be good to talk about the Hoyer study or show a figure from [42].}
 by interpreting inhibitory connection weights
 as nonnegative synaptic conductances.
 This not only preserves the parts-based quality of the encoding,

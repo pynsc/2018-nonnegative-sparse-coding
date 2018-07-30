@@ -29,7 +29,7 @@ ganglion cell subunits.
 	\includegraphics[width=\textwidth]{fig-rev1-retina}
     \caption{
     Identification of retinal ganglion cell subunits 
-    with \ac{STNMF} (adapted from \cite{Liu2017}).
+    with \ac{STNMF} (adapted \revise{with permission} from \cite{Liu2017}).
     \textbf{\emph{A}},
 	     Samples of a ganglion cell’s effective spike-triggered stimulus ensemble (top),
          whose average corresponds to the cell’s \ac{STA}.
@@ -86,15 +86,15 @@ headings (Fig.~\ref{fig:NMF|MSTd}C, D).
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.97\textwidth]{fig-rev1-MST}
+	\includegraphics[width=0.95\textwidth]{fig-rev1-MST}
     \caption{
     \textbf{\emph{A-D}},
          Distribution of 3D direction preferences of macaque \ac{MSTd} neurons
          (rotation, \textbf{\emph{A}}; translation, \textbf{\emph{B}}; 
-         reprinted from \cite{Takahashi2007})
+         reprinted \revise{with permission} from \cite{Takahashi2007})
          and model units in the \ac{NSC}-based sparse decomposition model
          (rotation, \textbf{\emph{C}}; translation, \textbf{\emph{D}}; 
-         reprinted from \cite{Beyeler2016}).
+         reprinted \revise{with permission} from \cite{Beyeler2016}).
          Each data point in the scatter plots corresponds to the preferred azimuth
          (abscissa) and elevation (ordinate) of a single neuron.
          Histograms along the top and right sides of each scatter plot show the
@@ -105,13 +105,14 @@ headings (Fig.~\ref{fig:NMF|MSTd}C, D).
     \textbf{\emph{E}},
          Distribution of focus of expansion (FOE) and pursuit (P) selectivities
          in macaque \ac{MSTd} (dark gray) and model \ac{MSTd} (light gray;
-         reprinted from \cite{Beyeler2016}).
+         reprinted \revise{with permission} from \cite{Beyeler2016}).
          Neurons or model units were involved in encoding heading (FOE),
          eye velocity (P), both (FOE \& P), or neither (none).
     \textbf{\emph{F}},
          Heading prediction (generalization) error as a function of the
-         number of basis functions using 10-fold cross-validation.
-         Vertical bars are the SD (reprinted from \cite{Beyeler2016}).
+         number of basis functions using cross-validation.
+         Vertical bars are the SD (reprinted \revise{with permission}
+         from \cite{Beyeler2016}).
     }
 	\label{fig:NMF|MSTd}
 \end{figure}
@@ -227,7 +228,8 @@ across the set of odors.
 	\centering
 	\includegraphics[width=\textwidth]{fig-rev1-olfaction}
     \caption{\ac{NMF} recovers a sparse and parts-based representation
-    of olfactory perceptual space (reprinted from \cite{Castro2013}).
+    of olfactory perceptual space (reprinted \revise{with permission} 
+    from \cite{Castro2013}).
        \textbf{\emph{A}},
           Plot of normalized odor descriptor amplitude vs. odor descriptor number for
           the first basis function. Each point along the x-axis corresponds to a single
@@ -344,8 +346,9 @@ The \ac{RDDR} model suggests that dimensionality reduction
 in the cortico-basal ganglia pathway is achieved via
 a combination of Hebbian and anti-Hebbian learning rules
 that are implemented by feedforward excitatory and lateral inhibitory
-connections \cite{BarGad2000,BarGad2003_Review}.
-A reinforcement signal modulates the Hebbian learning rule 
+connections \cite{BarGad2000,BarGad2003_Review}. \revise{These learning rules control the strength of synaptic weights in the network by altering a given weight in proportion to the correlation between the firing rates of the input and output neurons. In Hebbian learning, synaptic weights are strengthened given a positive correlation (a phenomenon referred to as long-term potentiation, or LTP), while synaptic weights are depressed if the firing rate correlation is negative (referred to as long-term depression, or LTD). In order to implement dopamine-modulated Hebbian learning in this model, a reinforcement signal was used to dictate the level of dopamine in the circuit (1 for reward-related events, 0 for background levels of dopamine when reward-related events or information are not present, and negative values to simulate dopamine depeletion \cite{BarGad2000}). The value of the reinforcement signal determined how much learning was allowed to occur.}
+
+In the \ac{RDDR} model, a reinforcement signal corresponding to dopamine modulates the Hebbian learning rule 
 of the feedforward projections,
 allowing the network to learn to extract input dimensions
 that are associated with reward activity
@@ -359,13 +362,15 @@ into an \ac{NMF} variant \cite{BarGad2003_Review}.
 In addition to suggesting a role for lateral connectivity
 in the basal ganglia,
 the \ac{RDDR} model also advanced understanding of basal ganglia dysfunction
-in movement-related disorders such as Parkinon's and Huntington's disease.
-Through a series of simulations, Bar-Gad and colleagues \cite{BarGad2003_Review}
-argued that focal lesions should have little effect on behavior,
-because of the network's ability to reorganize connections,
+in movement-related disorders such as Parkinon's and Huntington's disease. \revise{Previous studies have indicated that when the basal ganglia is functioning normally and is then subjected to focal lesions, these lesions have minimal impact on behavior. Bar-Gad and colleagues \cite{BarGad2000}
+suggested that this is an expected finding because of the network's ability to reorganize connections,
 whereas abnormal dopamine levels should significantly alter 
 the reinforcement signal that controls the model's ability 
-to discriminate behaviorally relevant input signals.
+to discriminate behaviorally relevant input signals (as in Parkinson's disease). Accordingly, restoration of background dopamine levels via dopamine replacement therapy alleviate the symptoms, consistent with results of dopamine depletion and restoration in the model.}
 \mikeNote{R1: cliffhanger: Did Bergman and colleagues test their predictions for focal lesions? What would the authors expect?}
+\emilyNote{clarified that this was a post-hoc explanation of their model and added actual predictions.}
 
+\revise{The RDDR model made two critical predictions, one of which has yet to be tested experimentally. First, this model was initially developed to explain the existence of the extensive inhibitory lateral connectivity found within the basal ganglia, which seem to have no functional purpose based on experimental data\emilyNote{clunky sentence, revise}. The RDDR model predicts that these connections facilitate learning and must thus be studied during the learning phase of a task either in young animals or in animals being exposed to a new environment. At this time, the lateral connections should show increased strength and the firing patterns of the connected neurons should be correlated. After learning, these connections are expected to rapidly lose efficacy. Second, at the time, Hebbian and anti-Hebbian learning modulated by a dopaminergic reinforcement signal had yet to be documented in the basal ganglia. However, since publication this prediction has been confirmed, as studies have revealed dopamine-modulated LTP and LTD as mechanisms that facilitate learning in corticostriatal synapses \cite{calabresi2007dopamine}.}
+
+\emilyNote{While working on this, I found another Bar-Gad article that talks about somatotopic organization in the BG corresponding to face, arms, legs, etc, which may or may not be useful to bring up re: parts-based coding. https://www.frontiersin.org/articles/10.3389/fnsys.2011.00038/full}
 

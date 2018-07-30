@@ -48,12 +48,12 @@ that each respond to a certain set of physical facial features
              A facial image can be reconstructed from a sparse activation
              of simulated \acs{IT} neurons that
              preferentially respond to parts of faces
-             (adapted from \cite{LeeSeung1999}).
+             (adapted \revise{with permission} from \cite{LeeSeung1999}).
          \textbf{\emph{B}},
              An optic flow field can be reconstructed from a sparse
              activation of model \acs{MSTd} neurons that prefer various
              directions of 3D self-translation and self-rotation
-             (adapted from \cite{Beyeler2016}).
+             (adapted \revise{with permission} from \cite{Beyeler2016}).
          \textbf{\emph{C}},
              A rat's 2D allocentric position and route-based direction of
              motion can be reconstructed from a sparse activation of
@@ -152,55 +152,82 @@ in retrosplenial cortex \cite{Rounds2018}.
 The success of these models suggests that \ac{NSC}
 might apply elsewhere in the brain, 
 thus warranting further investigation.
-In fact, sparse (and potentially parts-based) representations have been observed
-in a wide variety of brain areas
-(see Table~\ref{table:listEvidence}).
-This introduces the \revise{intriguing} possibility that \ac{NSC} might
-be a general principle to which \revise{many} neuronal computations adhere.
-In the future, \ac{NSC} might provide a useful theoretical framework
-under which to understand the often complex and nonintuitive response properties
-of neurons in brain areas far removed from sensory inputs,
-including the selection and integration of various task-related variables
-in prefrontal cortex
-\cite{Mante2013}
-and the ability of premotor cortex to prepare movements without executing them
-\cite{Kaufman2014}.
+
+\revise{In the following subsections,
+% we review existing experimental evidence
+% for sparse and parts-based representations,
+%in various brain areas highlighted in Table~\ref{table:listEvidence}.
+we review \ac{NSC}-like computational models
+that successfully explain response properties of individual neurons
+in these areas
+or have been instrumental in elucidating the dynamics at the population level.}
 
 
+% In fact, sparse (and potentially parts-based) representations have been observed
+% in a wide variety of brain areas.
+% % (see Table~\ref{table:listEvidence}).
+% This introduces the \revise{intriguing} possibility that \ac{NSC} might
+% be a general principle to which \revise{many} neuronal computations adhere.
+% In the future, \ac{NSC} might provide a useful theoretical framework
+% under which to understand the often complex and nonintuitive response properties
+% of neurons in brain areas far removed from sensory inputs,
+% including the selection and integration of various task-related variables
+% in prefrontal cortex
+% \cite{Mante2013}
+% and the ability of premotor cortex to prepare movements without executing them
+% \cite{Kaufman2014}.
 
-\begin{table}[ht]
-\begin{adjustwidth}{-2.25in}{0in}
-	\centering
-	\caption{Nonnegative sparse coding in the brain.
-    We list a group of brain regions for which there is experimental evidence of certain features associated with NSC (`X': evidence exists, `?': has yet to be investigated).
-   For each brain region, the left-hand side of the table lists experimental evidence for sparse population codes and/or parts-based representations, whereas the right-hand side lists computational support that \ac{NSC}-like models can describe receptive fields or response properties within that region.}
-    \def\arraystretch{1.1}
-    {\setlength{\tabcolsep}{1em}
-    \begin{tabular}{r|rrr|rr}
-	\textbf{Brain} & \textbf{Sparse} &  \textbf{Parts-} & \textbf{Experimental} & \textbf{Modeled} & \textbf{Computational} \\
-	\textbf{Area} & \textbf{code} & \textbf{based} & \textbf{evidence} & \textbf{by NSC} & \textbf{ support} \\ \hline
-    Retina & X & X & \cite{Onken2016,Liu2017} & X & \cite{Onken2016,Liu2017} \\
-    Visual cortex & X & X & \pbox{5cm}{\cite{OlshausenField1996,HoyerHyvarinen2002,vanHateren1998,Wachsmuth1994,FreiwaldTsao2010,ChangTsao2017,BenHamed2003}} & X & \pbox{5cm}{\cite{OlshausenField1996,Hoyer2003,Carlson2013,Hyvarinen2001,LeeSeung1999,Hosoda2009,Beyeler2016}} \\
-    Auditory cortex & X & \revise{X} & \cite{Hromadka2008,rokem2006,bendor2008,Leaver2010,Terashima2013,SmithLewicki2006} & X & \cite{Martinez2015,David2007} \\
- 	Olfactory cortex & X & \revise{X} & \cite{Koulakov2011,poo2009,rinberg2006,Broome2006,Castro2013} & \revise{X} & \cite{MorenoBoteDrugowitsch2015,Castro2013}  \\
- 	Somatosensory cortex & X  & X & 			   \cite{Jadhav2009,oconnor2010,Crochet2011,Ramirez2014,penfield1937,hari1993,petersen2007} & X & \cite{WhitewayButts2017,Hafner2004}  \\
-    Parietal cortex & ? & X & \cite{Poggio1990,PougetSejnowski1997,andersen1997multimodal,PougetSnyder2000,louie2015adaptive} & ? & ?  \\
-    Retrosplenial cortex & ? & X & \cite{AlexanderNitz2015,vedder2016,mao2017} & X & \cite{Rounds2018} \\
-    Prefrontal cortex & ? & ? & \cite{Mante2013,Rigotti2013,Fujisawa2008,Wei2015} & ? & ?  \\    
-    Motor cortex & ? & ? & \cite{Beloozerova2003,penfield1937,GrazianoAflalo2007,Brecht2004}
-    & ? & ? \\
-    Hippocampus & X & ? & \cite{ThompsonBest1989,Bakker2008,myers2011pattern,rolls2013,Wixted2014,Poli2017} & ? & ? \\        
-    Basal ganglia & X & ? & \cite{BarGad2003_Review,Turner2000,schwab2015} & X & \pbox{5cm}{\cite{BarGad2000,BarGad2003_Review}} \\  
-	\end{tabular}}
-    \label{table:listEvidence}
-\end{adjustwidth}
-\end{table}
+% \revise{It is perhaps not surprising that sensory areas 
+% would use an efficient coding scheme, especially early on,
+% as they need to balance lossiness of coding with activity.
+% However, nonsensory areas presumably are doing some form of computation,
+% not just remapping.
+% All of this may still be under sparsity constraints (fewer neurons the better!)
+% but not have anything to do with efficiently transforming information from one
+% basis to another.
+% It is therefore not obvious that the bulk of the brain is
+% trying to preserve reconstruction ability.
+% However, when people applied NSC to MST, RSC, basal ganglia, they found that many
+% well-known response properties of these neurons could be explained for free
+% when trying to preserve reconstruction ability.
+% This is somewhat puzzling, and requires further investigation.
+% In the following subsections, we will detail how NSC applies in all these different brain regions.
+% }
 
-In the following subsections,
-we review existing experimental evidence
-for sparse and parts-based representations 
-in various brain areas highlighted in Table~\ref{table:listEvidence}.
-Where available, we highlight \ac{NSC}-like computational models
-that  successfully explain response properties of individual neurons
-or have been instrumental in elucidating the dynamics at the population level.
+
+% \begin{table}[ht]
+% \begin{adjustwidth}{-2.25in}{0in}
+% 	\centering
+% 	\caption{Nonnegative sparse coding in the brain.
+%     We list a group of brain regions for which there is experimental evidence of certain features associated with NSC (`X': evidence exists, `?': has yet to be investigated).
+%    For each brain region, the left-hand side of the table lists experimental evidence for sparse population codes and/or parts-based representations, whereas the right-hand side lists computational support that \ac{NSC}-like models can describe receptive fields or response properties within that region.}
+%     \def\arraystretch{1.1}
+%     {\setlength{\tabcolsep}{1em}
+%     \begin{tabular}{r|rrr|rr}
+% 	\textbf{Brain} & \textbf{Sparse} &  \textbf{Parts-} & \textbf{Experimental} & \textbf{Modeled} & \textbf{Computational} \\
+% 	\textbf{Area} & \textbf{code} & \textbf{based} & \textbf{evidence} & \textbf{by NSC} & \textbf{ support} \\ \hline
+%     Retina & X & X & \cite{Onken2016,Liu2017} & X & \cite{Onken2016,Liu2017} \\
+%     Visual cortex & X & X & \pbox{5cm}{\cite{OlshausenField1996,HoyerHyvarinen2002,vanHateren1998,Wachsmuth1994,FreiwaldTsao2010,ChangTsao2017,BenHamed2003}} & X & \pbox{5cm}{\cite{OlshausenField1996,Hoyer2003,Carlson2013,Hyvarinen2001,LeeSeung1999,Hosoda2009,Beyeler2016}} \\
+%     Auditory cortex & X & \revise{X} & \cite{Hromadka2008,rokem2006,bendor2008,Leaver2010,Terashima2013,SmithLewicki2006} & X & \cite{Martinez2015,David2007} \\
+%  	Olfactory cortex & X & \revise{X} & \cite{Koulakov2011,poo2009,rinberg2006,Broome2006,Castro2013} & \revise{X} & \cite{MorenoBoteDrugowitsch2015,Castro2013}  \\
+%  	Somatosensory cortex & X  & X & 			   \cite{Jadhav2009,oconnor2010,Crochet2011,Ramirez2014,penfield1937,hari1993,petersen2007} & X & \cite{WhitewayButts2017,Hafner2004}  \\
+%     Parietal cortex & ? & X & \cite{Poggio1990,PougetSejnowski1997,andersen1997multimodal,PougetSnyder2000,louie2015adaptive} & ? & ?  \\
+%     Retrosplenial cortex & ? & X & \cite{AlexanderNitz2015,vedder2016,mao2017} & X & \cite{Rounds2018} \\
+%     Prefrontal cortex & ? & ? & \cite{Mante2013,Rigotti2013,Fujisawa2008,Wei2015} & ? & ?  \\    
+%     Motor cortex & ? & ? & \cite{Beloozerova2003,penfield1937,GrazianoAflalo2007,Brecht2004}
+%     & ? & ? \\
+%     Hippocampus & X & ? & \cite{ThompsonBest1989,Bakker2008,myers2011pattern,rolls2013,Wixted2014,Poli2017} & ? & ? \\        
+%     Basal ganglia & X & ? & \cite{BarGad2003_Review,Turner2000,schwab2015} & X & \pbox{5cm}{\cite{BarGad2000,BarGad2003_Review}} \\  
+% 	\end{tabular}}
+%     \label{table:listEvidence}
+% \end{adjustwidth}
+% \end{table}
+
+% \revise{In the following subsections,
+% we review existing experimental evidence
+% for sparse and parts-based representations.}
+% %in various brain areas highlighted in Table~\ref{table:listEvidence}.
+% Where available, we highlight \ac{NSC}-like computational models
+% that  successfully explain response properties of individual neurons
+% or have been instrumental in elucidating the dynamics at the population level.
 

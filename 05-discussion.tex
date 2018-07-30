@@ -1,8 +1,13 @@
 \section*{Discussion}
 \label{sec:discussion}
 
-That \ac{NSC} can explain and reproduce response properties observed in biological neurons may be an important clue as to how brains have evolved to parse and store information
+That \ac{NSC} can explain and reproduce response properties 
+observed in biological neurons 
+may be an important clue as to how 
+\revise{sensory and associative brain areas}
+have evolved to parse and store information
 in order to perceive the world and interact with it.
+\mikeNote{This is indeed written in a very sensory-centric manner}
 We offer three testable predictions of this theory:
 
 First, we suggest that a variety of neuronal response properties
@@ -16,9 +21,9 @@ This point of operation might differ across brain areas---for example,
 favoring neurons that respond to a small number of stimulus dimensions
 in \ac{V1} \cite{OlshausenField1996},
 but giving rise to mixed selectivity in higher-order brain areas
-such as \ac{MSTd} \cite{Beyeler2016},
-\ac{RSC} \cite{Rounds2016,Rounds2018},
-and \ac{PFC} \cite{Mante2013}.
+such as \ac{MSTd} \cite{Beyeler2016} and
+\ac{RSC} \cite{Rounds2016,Rounds2018}.
+% and \ac{PFC} \cite{Mante2013}.
 
 Second, we predict that parts-based representations can explain
 \acp{RF} of neurons in a variety of brain regions,
@@ -29,30 +34,36 @@ we expect parts-based representations
 to be prevalent in regions where neurons
 exhibit a range of tuning behaviors \cite{Beyeler2016},
 display mixed selectivity \cite{Fusi2016,Eichenbaum2017},
-or encode information in multiple reference frames \cite{AlexanderNitz2015,Rounds2016,Rounds2018}.
+or encode information in multiple reference frames 
+\cite{AlexanderNitz2015,Rounds2016,Rounds2018}.
 
 Third, where such representations occur, we expect the resulting
 neuronal population activity to be relatively sparse,
 in order to encode information both accurately and efficiently.
-As noted above,
-sparse codes offer a trade-off between 
+As noted above, sparse codes offer a trade-off between 
 dense codes (where every neuron is involved in every context,
 leading to great memory capacity but suffering from cross talk among neurons)
 and local codes (where there is no interference, 
 but also no capacity for generalization).
-\ac{NSC} explicitly discourages statistically inefficient representations,
-because strongly accounting for a rare observation at the expense of ignoring
-more common input components would result in an increased reconstruction error
-(see Eq.~\ref{eqn:nsc-cost-function}).
+% \ac{NSC} explicitly discourages statistically inefficient representations,
+% because strongly accounting for a rare observation at the expense of ignoring
+% more common input components would result in an increased reconstruction error
+% (see Eq.~\ref{eqn:nsc-cost-function}).
 
 
 \subsection*{\revise{Potential for NSC in nonsensory areas of the brain}}
 
+% \revise{Complex behaviors are accompanied by dynamic responses across cortical circuits.
+% During decision-making, cortical activity reflects multiple processes including sensory inputs (Freedman and Assad, 2006; Meister et al., 2013), selection and integration of behaviorally-relevant information (Roitman and Shadlen, 2002), estimation and anticipation of reward (Bouret and Sara, 2004; Pratt and Mizumori, 2001), choice confidence (Kepecs et al., 2008) and recent trial history (Abrahamyan et al., 2016; Bichot and Schall, 1999; Manoach et al., 2007; Morcos and Harvey, 2016).} 
+
+\mikeNote{Maybe fuse with model limitations?}
 \mikeNote{R1: In the previous round of reviews, I already suggested that the authors’ model seems more appropriate for sensory areas, and that it may not apply to the motor system. Despite the changes to the paper, I think the paper would be clearer and perhaps more compelling that way. To be clear, I’m not arguing that the authors should complete remove non-sensory areas, but I think it should be a part of the Discussion ``Would these ideas apply to non-sensory areas?'' rather than of the core of the paper.}
 \revise{In addition to the areas highlighted above,
 there is increasing evidence that the essential components of \ac{NSC}
 might be present in numerous brain regions 
 not traditionally associated with the efficient encoding of information.}
+
+\emilyNote{Should discussion of hippocampus go here?}
 
 \revise{For example, there is evidence for sparse coding in the
 cerebellum \cite{Marr1969,Schweighofer2001,Brunel2004},
@@ -100,11 +111,20 @@ reference-frame agnostic representation of various behaviorally relevant variabl
 \cite{LouieGlimcher2012,louie2015adaptive,andersen1997multimodal,BenHamed2003},
 but future studies will have to address these issues step by step.}
 
+\revise{Some studies indicate that the population code in \ac{PFC} and \ac{M1} may be
+quite dense (as in Fig.~1A).
+Dimensionality reduction studies suggest that in these areas population-wide features
+are encoded by most neurons in the population \cite{Gallego2017,CunninghamYu2014,Kobak2016,Mante2013}.
+Furthermore, \ac{M1} neurons tend to be active during most movements,
+which argues against a very sparse activation.}
+\mikeNote{This is word for word from R1. Need to revise.}
+
 
 
 \subsection*{Potential neural mechanisms of NSC}
 
 As a special case of efficient coding,
+\mikeNote{R1: minimizing energy expenditure is not a clear requirement for the NSC model to be useful; maybe some areas try to maximize robustness or adaptability instead of miniziming energy expenditure. maybe that's why some areas are less sparse than others.}
 \ac{NSC} possesses metabolic advantages by employing
 sparse population codes.
 To operate efficiently, it has been suggested that the brain might enforce 
@@ -151,18 +171,20 @@ commonly found across brain regions,
 different stages in the life of an animal, and animal species
 (e.g., \cite{Froemke2010,BCM1982}).
 \mikeNote{R1:  Fig 8 is hard to interpret, what is the percent model error? Does this error reflect a ``movement prediction error''?}
-
+\emilyNote{I think the reviewer doesn't realize it says "Pred. error" and not "P
+ct. error"...}
+\mikeNote{In that case, it would be good to spell it out in the figure}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{fig-rev1-rsc}
+	\includegraphics[width=0.95\textwidth]{fig-rev1-rsc}
     \caption{
     	Comparisons between recorded experimental data and two 
         computational models of rat \ac{RSC} suggest a functional 
-        similarity between \ac{STDPH} and \ac{NMF} 
-        (adapted from \cite{Rounds2018}). 
+        similarity between \ac{STDPH} and \ac{NMF}.
+%         (adapted \revise{with permission} from \cite{Rounds2018}). 
         Using methods described in \cite{AlexanderNitz2015}, 
         we compared functional neuron type distributions (left column)
-        and average prediction errors (right column)
+        and average \revise{movement} prediction errors (right column)
         observed \emph{in vitro} (\textbf{\emph{A}}) with those
         produced by each model (\textbf{\emph{B, C}}).
         Average error corresponded to correlation matrices 
@@ -189,14 +211,16 @@ different stages in the life of an animal, and animal species
 
 \subsection*{Model limitations}
 
+% sparse single-neuron responses underlying dense population codes are a common feature of cortical representations at the level of firing rates
+
 Although \ac{NSC} has proved useful in understanding
 a variety of neuronal responses
 as an emergent property of efficient population
 coding based on dimensionality reduction and sparse coding,
 there are some limitations to this theory.
-\mikeNote{R1: I think the authors should mention the emerging idea that sensory areas carry a lot of information about the behavior, even visual areas [10, 12]. This information may make the activity of a sensory neuron not be just an efficient code of the stimulus.}
 
 First, it remains to be demonstrated whether \ac{NSC} in its current form
+\mikeNote{This reads a bit like the new `will this apply everywhere' section}
 can be extended to brain areas that require a dynamic process of information
 gating, such as \ac{PFC} \cite{Mante2013,Rigotti2013,Kobak2016}
 and motor cortex \cite{Vargas2010decoding,GrazianoAflalo2007}.
@@ -214,7 +238,27 @@ relevant dimensions in odor space \cite{Castro2013}.
 Our hope is that similar studies applied to \ac{PFC} and motor cortex will
 reveal similar insights into their population response properties.
 
-Second, a practical limitation of dimensionality analyses in general
+\revise{Second, there is increasing evidence that several motor variables are encoded
+throughout the brain, including early sensory areas 
+\cite{CrochetPetersen2006,Pachitariu2015,Musall2018,Stringer2018}.
+For example in the mouse, running modulates the gain of visual inputs 
+\cite{Mineault2016,NiellStryker2010} 
+and is critical for integration of visual motion \cite{Ayaz2013,Saleem2013}.
+A potential explanation for these widespread effects is that 
+certain movements reflect changes in the animal's internal state,
+such as increased arousal during running \cite{NiellStryker2010}.
+Another study found that stimuli and behavior 
+were represented together in mouse \ac{V1} as a
+mixed representation: there were not separate sets of neurons
+encoding stimuli and behavioral variables, but each
+neuron multiplexed a unique combination of sensory and
+behavioral information \cite{Stringer2018}.
+Interestingly, these results were not specific to visual cortex, but were seen across
+wide regions of the mouse forebrain,
+suggesting that neuronal activity in these areas is more than just an efficient
+encoding of sensory stimuli.}
+
+\revise{Third}, a practical limitation of dimensionality analyses in general
 is that the apparent dimensionality of the population response changes
 systematically with the complexity of the input stimulus
 \cite{SpanneJorntell2015,Cowley2016,Mazzucato2016}.
@@ -226,10 +270,10 @@ that the real circuitry would have to handle.
 As a result, the simulated model might underestimate 
 the true complexity of the task.
 
-Third, the role of sparse coding in the brain has been questioned
+\revise{Fourth}, the role of sparse coding in the brain has been questioned
 \cite{SpanneJorntell2015,BarthPoulet2012}.
-This is at least partly due to the wide variety of definitions of sparse
-coding used in the literature:
+This is at least partly due to the wide variety of definitions of \revise{sparsity}
+used in the literature:
 In its widest possible theoretical sense,
 a neuron population exhibits sparse activity if the average activation ratio
 remains below 50\% for binary neurons 
@@ -303,7 +347,8 @@ Compressed sensing posits that neurons might implement
 dimensionality reduction by randomly projecting patterns of activity
 into a lower-dimensional space,
 simply by synaptically mapping $N$ upstream neurons to a downstream region
-containing $M < N$ neurons.
+containing $M < N$ neurons. 
+\revise{There is some evidence that this idea applies in some areas of the brain. For example, Trautmann et al. \cite{trautmann2017} applied random projection theory to data from three previous studies of motor area M1 and found that the reconstructed neural dynamics using this method yielded results quite similar to those derived from spike sorting.}
 The theory of compressed sensing then provides the mathematical tools
 to reconstruct the original space from the random projections.
 \ac{NSC}, \ac{ICA}, and compressed sensing often make similar predictions

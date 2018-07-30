@@ -4,11 +4,11 @@ Brains face the fundamental challenge of
 processing, storing, and representing high-dimensional stimuli
 using patterns of neural activity.
 \mikeNote{R1: The authors seem to subconsciously imply that they see their model as more relevant for the sensory system, based on a number of statements they make in parts of the paper that are supposed to be more general. For example: 1) Lines 2-3: The sentence that sets up the paper already takes a sensory view; the authors don’t say anything about interacting with the world; 2) Lines 73-4; 3) Lines 290-91; 4) Lines 525-6; 5) Lines 588-590.}
-To support complex patterns of behavior, 
+\textcolor{blue}{To support complex patterns of behavior, 
 populations of interconnected neurons implement 
 a rich repertoire of linear and nonlinear operations on their synaptic inputs
 and vary their signaling properties based on context and experience
-\cite{Koch1999}.
+\cite{Koch1999}.}
 
 However, neuronal information processing is complicated
 by strict constraints on metabolic cost---50\% of the 
@@ -26,7 +26,7 @@ or resulting in a $10 - 10,000$ fold convergence from cortex to the basal gangli
 \cite{BarGad2003_Review}.
 To operate efficiently within these constraints,
 it has been suggested that the nervous system improves 
-efficiency by reducing (and in some cases minimizing) the resources
+efficiency by reducing the resources
 required to implement a given task \cite{LaughlinSejnowski2003}.
 
 One potential approach to addressing this challenge is to
@@ -47,13 +47,13 @@ On the other hand, a \emph{dense code}
 represents each context by the combined activity
 of all neurons in the population
 (Fig.~\ref{fig:sparse-parts}A, right column).
-Dense codes lead to high representational capacity
+\revise{In theory, }dense codes lead to high representational capacity
 (at $M$ activity levels, allowing for $M^N$ contexts to be encoded),
 but also suffer from neuronal cross talk,
-\mikeNote{R1: Is this a supposition or a fact}
 because every neuron is involved in every context.
 Alternatively, sparse codes
 (Fig.~\ref{fig:sparse-parts}A, center column)
+\mikeNote{We won't be able to get CC-BY permissions from Cell/Elsevier. Need a Plan B.}
 can be described as a trade-off between the benefits and
 drawbacks of dense and local codes 
 \cite{SpanneJorntell2015,Foldiak1990},
@@ -67,6 +67,7 @@ among a large number of cells (local code); but
 when cells are expensive, it is more efficient to use few cells
 and have all of them participate in the encoding of the signal (dense code)
 \mikeNote{R1: maybe link this to what we know about the connectivity}
+\mikeNote{Not sure what R1 is talking about here...}
 \cite{RollsTreves1990,Laughlin2001}.
 
 
@@ -94,23 +95,22 @@ and have all of them participate in the encoding of the signal (dense code)
            individual neurons explicitly encode individual face components
            \cite{Palmer1977},
            such as the eyes, nose, and mouth
-           (adapted from \cite{LeeSeung1999}).}
+           (adapted from \cite{LeeSeung1999} \revise{with permission}).}
 	\label{fig:sparse-parts}
 \end{figure}
 
 
 Another approach is to reduce the number of
-variables required to represent a particular stimulus space;
+variables required to represent a particular \revise{input} space;
 a process known as
 \textbf{dimensionality reduction}.
 Dimensionality reduction methods have proved useful in elucidating neural mechanisms
 that depend on how the responses of multiple neurons covary,
-including odor discrimination in the olfactory system \cite{Broome2006,Koulakov2011},
-the selection and integration of sensory inputs 
-in the prefrontal cortex \cite{Mante2013},
-and the ability of premotor cortex 
-to prepare movements without executing them \cite{Kaufman2014}.
-\mikeNote{R1: the authors seem to imply that movement preparation in the “null space” is related to a stimulus. I think at this stage it’s probably related to setting up the appropriate dynamical state to cause the movement the subject wants to perform. It’s a subtle distinction, and ties again with the sensory vs. motor “conflict” that I’ve pointed out several times. }
+including odor discrimination in the olfactory system \cite{Broome2006,Koulakov2011}
+as well as the selection and integration of sensory inputs 
+in the prefrontal cortex \cite{Mante2013}.
+% and the ability of premotor cortex 
+% to prepare movements without executing them \cite{Kaufman2014}.
 
 In brain areas far removed from sensory input,
 neurons typically encode several behaviorally relevant parameters
@@ -143,12 +143,10 @@ between positive and negative contributions,
 and thus lack the intuitive meaning of adding parts to form a whole.
 In contrast, a parts-based representation allows for only nonsubtractive
 combinations of stimulus features \cite{Palmer1977}.
-\mikeNote{R1: cite Doris Tsao}
 Although the relevant stimulus dimensions are often not known \emph{a priori},
 several sophisticated mathematical techniques exist that
 allow us to discover these representations directly from experimental data
-\cite{Brunton2016,CunninghamYu2014,PillowSimoncelli2006,Sharpee2014,Gao2017}.
-
+\cite{Brunton2016,CunninghamYu2014,PillowSimoncelli2006,Sharpee2014,Gao2017,ChangTsao2017}.
 In this article, we \revise{suggest} that a variety of neuronal responses
 can be understood as an emergent property of efficient population coding
 based on dimensionality reduction and sparse coding.
@@ -159,10 +157,12 @@ a combination of \textbf{\ac{NMF}}
 and sparse coding,
 can generate sparse and parts-based embeddings of
 high-dimensional stimulus spaces
+\mikeNote{`stimulus spaces' \ldots}
 that resemble neuronal population responses in a 
 wide variety of brain regions.
 This introduces the possibility that \ac{NSC} might
 be a general principle to which many neuronal computations adhere.
+\mikeNote{`general principle' \ldots}
 Furthermore, \ac{NSC} might provide a useful theoretical framework under which
 to understand the often complex and nonintuitive response properties of neurons
 in brain areas far removed from sensory input.
