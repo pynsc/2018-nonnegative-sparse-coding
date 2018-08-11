@@ -1,14 +1,27 @@
 \section*{Introduction}
 \label{sec:introduction}
-Brains face the fundamental challenge of 
-processing, storing, and representing high-dimensional stimuli
-using patterns of neural activity.
-\mikeNote{R1: The authors seem to subconsciously imply that they see their model as more relevant for the sensory system, based on a number of statements they make in parts of the paper that are supposed to be more general. For example: 1) Lines 2-3: The sentence that sets up the paper already takes a sensory view; the authors don’t say anything about interacting with the world; 2) Lines 73-4; 3) Lines 290-91; 4) Lines 525-6; 5) Lines 588-590.}
-\textcolor{blue}{To support complex patterns of behavior, 
+
+\revise{A fundamental challenge that brains face is to extract relevant information
+from high-dimensional external stimuli
+that forms the neural basis of an organism's decision making
+and interaction with the world.}
+
+Brains face the fundamental challenge of
+\revise{extracting relevant information from high-dimensional external stimuli
+in order to form the neural basis 
+that guides an organism's behavior and interaction with the world.
+
+using patterns of neural activity
+in order to allow an organism to interact with the world.}
+% Brains face the fundamental challenge of 
+% processing, storing, and representing high-dimensional stimuli
+% using patterns of neural activity \revise{that propagate behaviorally relevant information about the environment across regions}.
+% \mikeNote{R1: The authors seem to subconsciously imply that they see their model as more relevant for the sensory system, based on a number of statements they make in parts of the paper that are supposed to be more general. For example: 1) Lines 2-3: The sentence that sets up the paper already takes a sensory view; the authors don’t say anything about interacting with the world; 2) Lines 73-4; 3) Lines 290-91; 4) Lines 525-6; 5) Lines 588-590.}
+To support complex patterns of behavior, 
 populations of interconnected neurons implement 
 a rich repertoire of linear and nonlinear operations on their synaptic inputs
 and vary their signaling properties based on context and experience
-\cite{Koch1999}.}
+\cite{Koch1999}.
 
 However, neuronal information processing is complicated
 by strict constraints on metabolic cost---50\% of the 
@@ -36,6 +49,7 @@ in which information is represented by the activity of a small
 proportion of neurons in a population,
 have been shown to greatly increase energy efficiency 
 \cite{Foldiak1990,Field1994,LevyBaxter1996}.
+\mikeNote{maybe: have several computational advantages \ldots (don't focus on energy/metabolic efficiency)}
 An extreme example is the so-called \emph{local code}
 where each unique event or `context' is encoded by a single active neuron
 or `grandmother cell' \cite{RollsTreves1990}
@@ -53,12 +67,13 @@ but also suffer from neuronal cross talk,
 because every neuron is involved in every context.
 Alternatively, sparse codes
 (Fig.~\ref{fig:sparse-parts}A, center column)
-\mikeNote{We won't be able to get CC-BY permissions from Cell/Elsevier. Need a Plan B.}
 can be described as a trade-off between the benefits and
 drawbacks of dense and local codes 
 \cite{SpanneJorntell2015,Foldiak1990},
 leading to relatively low energy expenditure while maintaining a 
 relatively high representational capacity.
+\emilyNote{lots of discussion about energy efficiency here, maybe we are setting up the potential for confusion about metabolic vs statistical efficiency by discussing this so early...}
+\mikeNote{I agree, will revise}
 The level of sparsity required to minimize energy expenditure can be determined
 by weighing the cost of maintaining a neuron at rest against the extra cost
 of sending a signal:
@@ -68,6 +83,8 @@ when cells are expensive, it is more efficient to use few cells
 and have all of them participate in the encoding of the signal (dense code)
 \mikeNote{R1: maybe link this to what we know about the connectivity}
 \mikeNote{Not sure what R1 is talking about here...}
+\emilyNote{Me either.}
+
 \cite{RollsTreves1990,Laughlin2001}.
 
 
@@ -156,13 +173,12 @@ a combination of \textbf{\ac{NMF}}
 \cite{PaateroTapper1994,LeeSeung1999} 
 and sparse coding,
 can generate sparse and parts-based embeddings of
-high-dimensional stimulus spaces
-\mikeNote{`stimulus spaces' \ldots}
-that resemble neuronal population responses in a 
+high-dimensional stimulus \revise{and synaptic input} spaces
+that resemble \revise{downstream} neuronal population responses in a 
 wide variety of brain regions.
-This introduces the possibility that \ac{NSC} might
-be a general principle to which many neuronal computations adhere.
-\mikeNote{`general principle' \ldots}
-Furthermore, \ac{NSC} might provide a useful theoretical framework under which
+This introduces the possibility that \ac{NSC} might be 
+\revise{a principle of organization to which many neuronal computations adhere, 
+particularly in sensory and association cortices.}
+\revise{We furthermore speculate that} \ac{NSC} \revise{may} provide a useful theoretical framework \revise{by} which
 to understand the often complex and nonintuitive response properties of neurons
 in brain areas far removed from sensory input.

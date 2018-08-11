@@ -45,85 +45,73 @@ dense codes (where every neuron is involved in every context,
 leading to great memory capacity but suffering from cross talk among neurons)
 and local codes (where there is no interference, 
 but also no capacity for generalization).
-% \ac{NSC} explicitly discourages statistically inefficient representations,
-% because strongly accounting for a rare observation at the expense of ignoring
-% more common input components would result in an increased reconstruction error
-% (see Eq.~\ref{eqn:nsc-cost-function}).
 
 
-\subsection*{\revise{Potential for NSC in nonsensory areas of the brain}}
+% \subsection*{\revise{Potential for NSC in nonsensory areas of the brain}}
 
-% \revise{Complex behaviors are accompanied by dynamic responses across cortical circuits.
-% During decision-making, cortical activity reflects multiple processes including sensory inputs (Freedman and Assad, 2006; Meister et al., 2013), selection and integration of behaviorally-relevant information (Roitman and Shadlen, 2002), estimation and anticipation of reward (Bouret and Sara, 2004; Pratt and Mizumori, 2001), choice confidence (Kepecs et al., 2008) and recent trial history (Abrahamyan et al., 2016; Bichot and Schall, 1999; Manoach et al., 2007; Morcos and Harvey, 2016).} 
+% % \revise{Complex behaviors are accompanied by dynamic responses across cortical circuits.
+% % During decision-making, cortical activity reflects multiple processes including sensory inputs (Freedman and Assad, 2006; Meister et al., 2013), selection and integration of behaviorally-relevant information (Roitman and Shadlen, 2002), estimation and anticipation of reward (Bouret and Sara, 2004; Pratt and Mizumori, 2001), choice confidence (Kepecs et al., 2008) and recent trial history (Abrahamyan et al., 2016; Bichot and Schall, 1999; Manoach et al., 2007; Morcos and Harvey, 2016).} 
 
-\mikeNote{Maybe fuse with model limitations?}
-\mikeNote{R1: In the previous round of reviews, I already suggested that the authors’ model seems more appropriate for sensory areas, and that it may not apply to the motor system. Despite the changes to the paper, I think the paper would be clearer and perhaps more compelling that way. To be clear, I’m not arguing that the authors should complete remove non-sensory areas, but I think it should be a part of the Discussion ``Would these ideas apply to non-sensory areas?'' rather than of the core of the paper.}
-\revise{In addition to the areas highlighted above,
-there is increasing evidence that the essential components of \ac{NSC}
-might be present in numerous brain regions 
-not traditionally associated with the efficient encoding of information.}
+% \mikeNote{Maybe fuse with model limitations?}
+% \mikeNote{R1: In the previous round of reviews, I already suggested that the authors’ model seems more appropriate for sensory areas, and that it may not apply to the motor system. Despite the changes to the paper, I think the paper would be clearer and perhaps more compelling that way. To be clear, I’m not arguing that the authors should complete remove non-sensory areas, but I think it should be a part of the Discussion ``Would these ideas apply to non-sensory areas?'' rather than of the core of the paper.}
+% \revise{In addition to the areas highlighted above,
+% there is increasing evidence that the essential components of \ac{NSC}
+% might be present in numerous brain regions 
+% not traditionally associated with the efficient encoding of information.}
 
-\emilyNote{Should discussion of hippocampus go here?}
+% \emilyNote{Should discussion of hippocampus go here?}
 
-\revise{For example, there is evidence for sparse coding in the
-cerebellum \cite{Marr1969,Schweighofer2001,Brunel2004},
-\ac{PFC} \cite{Abeles1990,Fujisawa2008,Wei2015},
-motor cortex \cite{Beloozerova2003,Kakei2003,BarthPoulet2012,Brecht2004},
-hippocampus \cite{rolls2013,ThompsonBest1989,Poli2017,Wixted2014},
-and the amygdala \cite{Bach2011}.
-Similarly, there is evidence for dimensionality reduction in
-\ac{PFC} \cite{Mante2013}
-and motor cortex \cite{Graziano2009,Gallego2017}.
-However, the intrinsically complex response properties of individual neurons
-have defied a deep understanding of how these neurons contribute to behavior
-\cite{churchland2007,Mante2013}.
-For example, individual \ac{PFC} neurons typically encode multiple task-related signals
-at once, including the animal's upcoming choice, the context,
-and the strength of the sensory evidence \cite{Mante2013,Rigotti2013,Kobak2016}.
-Future studies may show that key features of the population response in these regions
-can be recovered by applying \ac{NSC} to their inputs.}
+% \revise{For example, there is evidence for sparse coding in the
+% cerebellum \cite{Marr1969,Schweighofer2001,Brunel2004},
+% \ac{PFC} \cite{Abeles1990,Fujisawa2008,Wei2015},
+% motor cortex \cite{Beloozerova2003,Kakei2003,BarthPoulet2012,Brecht2004},
+% hippocampus \cite{rolls2013,ThompsonBest1989,Poli2017,Wixted2014},
+% and the amygdala \cite{Bach2011}.
+% Similarly, there is evidence for dimensionality reduction in
+% \ac{PFC} \cite{Mante2013}
+% and motor cortex \cite{Graziano2009,Gallego2017}.
+% However, the intrinsically complex response properties of individual neurons
+% have defied a deep understanding of how these neurons contribute to behavior
+% \cite{churchland2007,Mante2013}.
+% For example, individual \ac{PFC} neurons typically encode multiple task-related signals
+% at once, including the animal's upcoming choice, the context,
+% and the strength of the sensory evidence \cite{Mante2013,Rigotti2013,Kobak2016}.
+% Future studies may show that key features of the population response in these regions
+% can be recovered by applying \ac{NSC} to their inputs.}
 
-\revise{Analogous to our modeling work in \ac{MSTd} \cite{Beyeler2016},
-it might be possible to apply \ac{NSC} to other areas of the posterior parietal
-cortex that are involved in multisensory heading perception.
-Areas such as the \ac{VIP} and \ac{VPS} are also known to respond to optic flow,
-but they increasingly respond to inertial vestibular stimulation as well
-\cite{Chen2011}.
-Although the degree of sparsity of the population code in \ac{VIP} and \ac{VPS} is not known,
-the fact that neurons in these areas respond to mixtures of visual and vestibular
-heading cues make them prime examples 
-to be examined with an \ac{NSC} based modeling approach.}
+% \revise{Analogous to our modeling work in \ac{MSTd} \cite{Beyeler2016},
+% it might be possible to apply \ac{NSC} to other areas of the posterior parietal
+% cortex that are involved in multisensory heading perception.
+% Areas such as the \ac{VIP} and \ac{VPS} are also known to respond to optic flow,
+% but they increasingly respond to inertial vestibular stimulation as well
+% \cite{Chen2011}.
+% Although the degree of sparsity of the population code in \ac{VIP} and \ac{VPS} is not known,
+% the fact that neurons in these areas respond to mixtures of visual and vestibular
+% heading cues make them prime examples 
+% to be examined with an \ac{NSC} based modeling approach.}
 
-\revise{Elsewhere in parietal cortex, single neurons act as basis functions 
-to represent the spatial configuration of objects 
-with respect to multiple reference frames
-(e.g., by transforming eye-centered to body-centered coordinates).
-\cite{Poggio1990,PougetSejnowski1997,PougetSnyder2000}.
-This is similar to the integration of multimodal heading cues mentioned above,
-as well as to other associative areas such as \ac{RSC},
-which demonstrates conjunctive coding of various spatial navigation cues
-\cite{AlexanderNitz2015,Rounds2018}.
-There is further evidence that actions are represented in parietal cortex
-with respect to arbitrary and abstract reference frames, 
-such as with respect to a planned route through an environment \cite{nitz2009parietal}.
-From a theoretical standpoint, \ac{NSC} seems a good candidate to find an efficient,
-reference-frame agnostic representation of various behaviorally relevant variables
-\cite{LouieGlimcher2012,louie2015adaptive,andersen1997multimodal,BenHamed2003},
-but future studies will have to address these issues step by step.}
-
-\revise{Some studies indicate that the population code in \ac{PFC} and \ac{M1} may be
-quite dense (as in Fig.~1A).
-Dimensionality reduction studies suggest that in these areas population-wide features
-are encoded by most neurons in the population \cite{Gallego2017,CunninghamYu2014,Kobak2016,Mante2013}.
-Furthermore, \ac{M1} neurons tend to be active during most movements,
-which argues against a very sparse activation.}
-\mikeNote{This is word for word from R1. Need to revise.}
-
+% \revise{Elsewhere in parietal cortex, single neurons act as basis functions 
+% to represent the spatial configuration of objects 
+% with respect to multiple reference frames
+% (e.g., by transforming eye-centered to body-centered coordinates).
+% \cite{Poggio1990,PougetSejnowski1997,PougetSnyder2000}.
+% This is similar to the integration of multimodal heading cues mentioned above,
+% as well as to other associative areas such as \ac{RSC},
+% which demonstrates conjunctive coding of various spatial navigation cues
+% \cite{AlexanderNitz2015,Rounds2018}.
+% There is further evidence that actions are represented in parietal cortex
+% with respect to arbitrary and abstract reference frames, 
+% such as with respect to a planned route through an environment \cite{nitz2009parietal}.
+% From a theoretical standpoint, \ac{NSC} seems a good candidate to find an efficient,
+% reference-frame agnostic representation of various behaviorally relevant variables
+% \cite{LouieGlimcher2012,louie2015adaptive,andersen1997multimodal,BenHamed2003},
+% but future studies will have to address these issues step by step.}
 
 
 \subsection*{Potential neural mechanisms of NSC}
 
 As a special case of efficient coding,
+\mikeNote{I'm not really sure what to do with this section. If we remove the energy efficiency stuff here, there's only one paragraph left, and it kinda sticks out. Plus it offers just one potential neural mechanism.}
 \mikeNote{R1: minimizing energy expenditure is not a clear requirement for the NSC model to be useful; maybe some areas try to maximize robustness or adaptability instead of miniziming energy expenditure. maybe that's why some areas are less sparse than others.}
 \ac{NSC} possesses metabolic advantages by employing
 sparse population codes.
@@ -165,18 +153,17 @@ The neuronal and population responses from NMF and STDPH were comparable to the 
 Furthermore, the \ac{STDPH} model contained a highly flexible and generalizable code
 that could automatically encode new routes through the same environment
 without retraining \cite{Rounds2018}.
+
 However, more research is needed to elucidate any potential connection 
 between \ac{NSC} and the many different synaptic plasticity rules 
 commonly found across brain regions,
 different stages in the life of an animal, and animal species
 (e.g., \cite{Froemke2010,BCM1982}).
 \mikeNote{R1:  Fig 8 is hard to interpret, what is the percent model error? Does this error reflect a ``movement prediction error''?}
-\emilyNote{I think the reviewer doesn't realize it says "Pred. error" and not "P
-ct. error"...}
-\mikeNote{In that case, it would be good to spell it out in the figure}
+\mikeNote{For R1: Fig.8 caption needs a sentence about what the error bars mean. Why are alphas and betas low in prediction error? Why are alphabetas not?}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.95\textwidth]{fig-rev1-rsc}
+	\includegraphics[width=0.95\textwidth]{fig-rev2-rsc}
     \caption{
     	Comparisons between recorded experimental data and two 
         computational models of rat \ac{RSC} suggest a functional 
@@ -209,6 +196,85 @@ ct. error"...}
 \end{figure} 
 
 
+
+\subsection*{\revise{Would these ideas apply to nonsensory brain areas?}}
+
+\mikeNote{R1 specifically asked for this section. I think it makes sense here - could we extend the theory to other brain areas? Then limitations talks about all the drawbacks or shortcomings of NSC. Sound good?}
+\revise{NSC is clearly better suited for sensory and associative areas, where there's a clear definition of the input or stimulus space a neuronal population might be encoding. It is difficult to think about what parts-based means for more complicated regions.}
+\mikeNote{informal intro but summing up reviewers rant, revise}
+
+\revise{For example, studies indicate that the population code in \ac{PFC} and \ac{M1} 
+may be quite dense (as in Fig.~\ref{fig:sparse-parts}A).
+Moreover, dimensionality reduction studies in these regions suggest that 
+features are encoded by most neurons in the population, 
+rather than a sparse parts-based representation 
+\cite{Gallego2017,CunninghamYu2014,Kobak2016,Mante2013}. 
+Furthermore, \ac{M1} neurons tend to be active during most movements, 
+which argues against a sparse activation. 
+This may be due to the role of the motor system, which is to cause behavior, 
+rather than represent features.}
+
+\revise{There are aspects of the hippocampus that are comparable to the ideas 
+of \ac{NSC} proposed here.
+For example, the dentate gyrus is often associated with sparse activity
+\cite{GoodSmith2017,JungMcNaughton1993,SenzaiBuzsaki2017}.
+The expansion from a dense, enthorhinal cortex coding to sparse dentate gyrus 
+activity suggested a mechanism of pattern separation
+\cite{Marr1971,TrevesRolls1994}.
+Since these early theories, accumulating evidence has supported 
+the role of the dentate gyrus in pattern separation 
+\cite{GoodSmith2017,SenzaiBuzsaki2017,YassaStark2011}.
+However, the dentate gyrus projects to a highly recurrent CA3 region, 
+which does not appear to be sparse or reduce dimensionality. 
+Rather, the CA3 region has a role in pattern completion through auto-association 
+\cite{KnierimNeunuebel2016,Marr1971,TrevesRolls1994}.
+Another feature of hippocampal processing that is related to \ac{NSC} 
+may be the place cell itself.
+Sparsity has long been used as a metric for place cell quality \cite{Skaggs1996}.
+A place cell is said to be sparse if it fires in a small region of the environment, 
+and this is related to how much spatial information that cell encodes. 
+In a sense, each place cell can be thought of as a ``part'' of the environment 
+and these parts cover the entire environment. 
+Although this evidence points to sparse, parts-based, 
+and reduced coding in some hippocampal regions, 
+it does differ from the \ac{NSC} representations in sensory areas.
+That is, sparse coding as defined above for sensory areas is not necessarily the same 
+as sparsity or as sparse activity leading to pattern separation. 
+Still, it would be of interest to apply \ac{NSC} to the hippocampal inputs, 
+similar to the methods applied to \ac{RSC} 
+during a spatial navigation task \cite{Rounds2018},
+to see if sparse, reduced basis functions emerge in other regions.}
+
+Analogous to our modeling work in \ac{MSTd} \cite{Beyeler2016},
+it might be possible to apply \ac{NSC} to other areas of the posterior parietal
+cortex that are involved in multisensory heading perception.
+Areas such as the \ac{VIP} and \ac{VPS} are also known to respond to optic flow,
+but they increasingly respond to inertial vestibular stimulation as well
+\cite{Chen2011}.
+Although the degree of sparsity of the population code in \ac{VIP} and \ac{VPS} is not known,
+the fact that neurons in these areas respond to mixtures of visual and vestibular
+heading cues make them prime examples 
+to be examined with an \ac{NSC} based modeling approach.
+
+Elsewhere in parietal cortex, single neurons act as basis functions 
+to represent the spatial configuration of objects 
+with respect to multiple reference frames
+(e.g., by transforming eye-centered to body-centered coordinates).
+\cite{Poggio1990,PougetSejnowski1997,PougetSnyder2000}.
+This is similar to the integration of multimodal heading cues mentioned above,
+as well as to other associative areas such as \ac{RSC},
+which demonstrates conjunctive coding of various spatial navigation cues
+\cite{AlexanderNitz2015,Rounds2018}.
+There is further evidence that actions are represented in parietal cortex
+with respect to arbitrary and abstract reference frames, 
+such as with respect to a planned route through an environment \cite{nitz2009parietal}.
+From a theoretical standpoint, \ac{NSC} seems a good candidate to find an efficient,
+reference-frame agnostic representation of various behaviorally relevant variables
+\cite{LouieGlimcher2012,louie2015adaptive,andersen1997multimodal,BenHamed2003},
+but future studies will have to address these issues step by step.
+
+
+
 \subsection*{Model limitations}
 
 % sparse single-neuron responses underlying dense population codes are a common feature of cortical representations at the level of firing rates
@@ -219,26 +285,7 @@ as an emergent property of efficient population
 coding based on dimensionality reduction and sparse coding,
 there are some limitations to this theory.
 
-First, it remains to be demonstrated whether \ac{NSC} in its current form
-\mikeNote{This reads a bit like the new `will this apply everywhere' section}
-can be extended to brain areas that require a dynamic process of information
-gating, such as \ac{PFC} \cite{Mante2013,Rigotti2013,Kobak2016}
-and motor cortex \cite{Vargas2010decoding,GrazianoAflalo2007}.
-In these areas, diverse time courses across neurons have confounded
-attempts to understand the basic encoding of decisions and movements.
-\mikeNote{R1: when the authors mention the different time courses of neural activity across areas, maybe they want to mention that in motor areas activity seems to be well-represented by RNNs, whereas in visual areas feedforward nets seem to be better models?}
-However, the same is true for the olfactory system,
-where population activity traces out loops that are organized by stimulus
-condition. In particular, the orientation of the loop 
-is related to the odor identity,
-and the size of the loop is related to the odor concentration
-\cite{Broome2006}.
-Nevertheless, a recent \ac{NSC} based study was able to elucidate perceptually
-relevant dimensions in odor space \cite{Castro2013}.
-Our hope is that similar studies applied to \ac{PFC} and motor cortex will
-reveal similar insights into their population response properties.
-
-\revise{Second, there is increasing evidence that several motor variables are encoded
+\revise{First, there is increasing evidence that several motor variables are encoded
 throughout the brain, including early sensory areas 
 \cite{CrochetPetersen2006,Pachitariu2015,Musall2018,Stringer2018}.
 For example in the mouse, running modulates the gain of visual inputs 
@@ -258,7 +305,7 @@ wide regions of the mouse forebrain,
 suggesting that neuronal activity in these areas is more than just an efficient
 encoding of sensory stimuli.}
 
-\revise{Third}, a practical limitation of dimensionality analyses in general
+Second, a practical limitation of dimensionality analyses in general
 is that the apparent dimensionality of the population response changes
 systematically with the complexity of the input stimulus
 \cite{SpanneJorntell2015,Cowley2016,Mazzucato2016}.
@@ -270,7 +317,7 @@ that the real circuitry would have to handle.
 As a result, the simulated model might underestimate 
 the true complexity of the task.
 
-\revise{Fourth}, the role of sparse coding in the brain has been questioned
+Third, the role of sparse coding in the brain has been questioned
 \cite{SpanneJorntell2015,BarthPoulet2012}.
 This is at least partly due to the wide variety of definitions of \revise{sparsity}
 used in the literature:
@@ -343,14 +390,14 @@ Similarly, \ac{NSC} is closely related to compressed sensing
 and a recent study has even suggested to combine the two
 \cite{WangLi2010}.
 Compressed sensing posits that neurons might implement 
-\mikeNote{R1: recent paper from the Shenoy and Ganguli labs [13] that shows that this notion applies to M1 data}
 dimensionality reduction by randomly projecting patterns of activity
 into a lower-dimensional space,
 simply by synaptically mapping $N$ upstream neurons to a downstream region
 containing $M < N$ neurons. 
-\revise{There is some evidence that this idea applies in some areas of the brain. For example, Trautmann et al. \cite{trautmann2017} applied random projection theory to data from three previous studies of motor area M1 and found that the reconstructed neural dynamics using this method yielded results quite similar to those derived from spike sorting.}
 The theory of compressed sensing then provides the mathematical tools
 to reconstruct the original space from the random projections.
+\revise{Trautmann and colleagues \cite{trautmann2017} showed that this idea might apply to the motor system: When they applied random projection theory to data from three previous studies of motor area \ac{M1}, they found that the reconstructed neural dynamics yielded results quite similar to those derived from spike sorting.}
+
 \ac{NSC}, \ac{ICA}, and compressed sensing often make similar predictions
 that only slightly differ in the nature of the basis function representation
 necessary to achieve optimal reconstruction
@@ -361,3 +408,6 @@ and compressed sensing requires basis function to be `maximally incoherent'
 \cite{GanguliSompolinsky2012},
 \ac{NSC} does not make any such assumptions
 as long as the basis functions are nonnegative.
+
+
+
