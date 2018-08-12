@@ -9,7 +9,9 @@ For example, \ac{NMF}-based models were able to reconstruct
 By combining spike-triggered average with \ac{NMF},
 Liu and colleagues \cite{Liu2017} were able to identify the subunit layout
 of retinal ganglion cells
-(Fig.~\ref{fig:NMF|retina}).
+(Fig.~\ref{fig:NMF|retina}). \revise{This technique, termed \ac{STNMF}, is simply the application of NMF to the activity patterns or stimuli that cause a given neuron to spike. The method was developed by analyzing the spikes produced by retinal ganglion cells when subjected to white noise stimulation, and applying \ac{NMF} to the white noise sequences by which the responses were produced \cite{Liu2017}.}
+\emilyNote{summary of STNMF for R1. A schematic of it would probably just confuse them more.}
+\mikeNote{Cool!}
 Whereas modules were constrained to have nonnegative elements,
 stimuli were represented by their contrast values (i.e., their relative deviation from mean light intensity, which could be positive or negative).
 The goal of their \ac{NMF} variant was then to seek weights and nonnegative modules
@@ -23,6 +25,7 @@ This allowed the researchers to improve predictions about how ganglion cells res
 to natural stimuli, without the need to guess a specific model structure that may be constrained in terms of the size, shape, number, or nonlinearity of 
 ganglion cell subunits.
 \mikeNote{R1: Fig.5, provide a succinct summary or schematic of STNMF. Also, panel A is not very clear to me (although I haven’t looked at the source paper). Panel B: are the subunits and the modules the same?}
+\emilyNote{addressed part 1 of this comment above. for part 2, they are meant to be the same, right? I understood the modules to be 'neurons' (subunits) in that receptive field - but that must mean the red boxes are subunits too, or that makes no sense. I edited the caption, but please correct if I am wrong.}
 
 \begin{figure}[ht]
 	\centering
@@ -43,7 +46,7 @@ ganglion cell subunits.
     \textbf{\emph{B}},
          Modules obtained for another sample ganglion cell by applying \ac{STNMF}
          with 20 modules (bottom 2 rows). Some modules have a strongly localized structure 
-         (blue frames), others are more noise-like (red frames).
+         (blue frames), others are more noise-like (red frames). \revise{These modules make up the subunits within a ganglion cell receptive field.}
          The top row shows the cell’s receptive field,
          given by the spatial component of the STA, as well as the fitted \ac{RF} outline
          (GC RF, black ellipse), together with outlines of the localized subunits 
@@ -224,6 +227,7 @@ by their proximity to a single one of these dimensions,
 with all ten dimensions being approximately equally expressed 
 across the set of odors.
 \mikeNote{R1: Fig 7: I’m a bit confused about the nomenclature in the figure, its caption and the text. Please revise}
+\emilyNote{I will take a stab at this if you don't have time, but I think you can explain it better.}
 
 \begin{figure}[ht]
 	\centering

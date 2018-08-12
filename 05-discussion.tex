@@ -112,7 +112,9 @@ but also no capacity for generalization).
 
 As a special case of efficient coding,
 \mikeNote{I'm not really sure what to do with this section. If we remove the energy efficiency stuff here, there's only one paragraph left, and it kinda sticks out. Plus it offers just one potential neural mechanism.}
+\emilyNote{as mentioned in the intro, I think we should just discuss the whole energy expenditure idea here on its own. move stuff from intro here and it won't be just a random paragraph.}
 \mikeNote{R1: minimizing energy expenditure is not a clear requirement for the NSC model to be useful; maybe some areas try to maximize robustness or adaptability instead of miniziming energy expenditure. maybe that's why some areas are less sparse than others.}
+\emilyNote{I suppose I agree it isn't necessarily a requirement.}
 \ac{NSC} possesses metabolic advantages by employing
 sparse population codes.
 To operate efficiently, it has been suggested that the brain might enforce 
@@ -161,6 +163,7 @@ different stages in the life of an animal, and animal species
 (e.g., \cite{Froemke2010,BCM1982}).
 \mikeNote{R1:  Fig 8 is hard to interpret, what is the percent model error? Does this error reflect a ``movement prediction error''?}
 \mikeNote{For R1: Fig.8 caption needs a sentence about what the error bars mean. Why are alphas and betas low in prediction error? Why are alphabetas not?}
+\emilyNote{Tricky without making the caption way too long. Edited, and seems much clearer to me, but I'm biased - please tell me if this makes sense to someone naive to the RSC studies.}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.95\textwidth]{fig-rev2-rsc}
@@ -177,13 +180,13 @@ different stages in the life of an animal, and animal species
         Average error corresponded to correlation matrices 
         representing reconstructed position within a route. 
         For details, see Supplementary Materials.
-        Separate positions of the W-shaped track are represented 
+        Separate \revise{allocentric} positions of the W-shaped track are represented 
         by the symbols $\alpha$ and $\beta$. 
         Outbound and inbound runs were made up of 
         opposite turn sequences (left-right-left (LRL) 
         and right-left-right (RLR), respectively.
-        Reconstructions between the track positions are represented by
-        $\alpha \beta$.
+        Reconstructions between \revise{trials occurring on the same track position are represented by that position (e.g., $\alpha$ or $\beta$), and are low since the neural activity represents the same movements and positions. Alternately, reconstructions of position between the (two \revise{different} track positions, which could also occupy different orientations,} are represented by
+        $\alpha \beta$. \revise{Reconstruction errors in this case are high since neural activity representing dissimilar actions and locations are compared.}
 	    \textbf{\emph{A}},
     		Experimental data from \cite{AlexanderNitz2015}.
         \textbf{\emph{B}},
@@ -199,7 +202,10 @@ different stages in the life of an animal, and animal species
 
 \subsection*{\revise{Would these ideas apply to nonsensory brain areas?}}
 
+\revise{There is evidence that \ac{NSC} might be employed by sensory areas to efficiently encode external stimulus spaces, by retrosplenial cortex to conjunctively represent multiple behaviorally relevant variables, }
+
 \mikeNote{R1 specifically asked for this section. I think it makes sense here - could we extend the theory to other brain areas? Then limitations talks about all the drawbacks or shortcomings of NSC. Sound good?}
+\emilyNote{I like it, it reads well to me.}
 \revise{NSC is clearly better suited for sensory and associative areas, where there's a clear definition of the input or stimulus space a neuronal population might be encoding. It is difficult to think about what parts-based means for more complicated regions.}
 \mikeNote{informal intro but summing up reviewers rant, revise}
 

@@ -1,46 +1,39 @@
 \section*{Introduction}
 \label{sec:introduction}
 
-\revise{A fundamental challenge that brains face is to extract relevant information
-from high-dimensional external stimuli
-that forms the neural basis of an organism's decision making
-and interaction with the world.}
-
-Brains face the fundamental challenge of
-\revise{extracting relevant information from high-dimensional external stimuli
-in order to form the neural basis 
-that guides an organism's behavior and interaction with the world.
-
-using patterns of neural activity
-in order to allow an organism to interact with the world.}
 % Brains face the fundamental challenge of 
 % processing, storing, and representing high-dimensional stimuli
 % using patterns of neural activity \revise{that propagate behaviorally relevant information about the environment across regions}.
 % \mikeNote{R1: The authors seem to subconsciously imply that they see their model as more relevant for the sensory system, based on a number of statements they make in parts of the paper that are supposed to be more general. For example: 1) Lines 2-3: The sentence that sets up the paper already takes a sensory view; the authors don’t say anything about interacting with the world; 2) Lines 73-4; 3) Lines 290-91; 4) Lines 525-6; 5) Lines 588-590.}
+\revise{One of the fundamental challenges that brains face 
+is to extract relevant information from high-dimensional external stimuli
+in order to form the neural basis that can guide an organism's behavior
+and its interaction with the world.}
 To support complex patterns of behavior, 
-populations of interconnected neurons implement 
+populations of interconnected neurons must implement 
 a rich repertoire of linear and nonlinear operations on their synaptic inputs
-and vary their signaling properties based on context and experience
+\revise{that take into account context, experience, and anatomical constraints}
 \cite{Koch1999}.
-
-However, neuronal information processing is complicated
-by strict constraints on metabolic cost---50\% of the 
-mammalian brain's energy consumption is believed to be associated with 
-neuronal signaling \cite{Laughlin2001, Lennie2003}---and the 
-widespread existence of anatomical bottlenecks 
-\cite{Kempermann2002,BarGad2003_Review,Babinsky1993}.
-These bottlenecks often force the information
-stored in a large number of neurons
+\revise{For example, anatomical bottlenecks}
+% However, neuronal information processing is complicated
+% by strict constraints on metabolic cost---50\% of the 
+% mammalian brain's energy consumption is believed to be associated with 
+% neuronal signaling \cite{Laughlin2001, Lennie2003}---and the 
+% widespread existence of anatomical bottlenecks 
+% \cite{Kempermann2002,BarGad2003_Review,Babinsky1993}.
+% These bottlenecks 
+often force the information stored in a large number of neurons
 to be compressed into an orders of magnitude smaller population
-of downstream neurons;
-for example, storing information from 100 million photoreceptors 
+of downstream neurons
+\cite{Kempermann2002,BarGad2003_Review,Babinsky1993};
+such as storing information from 100 million photoreceptors 
 in 1 million optic nerve fibers,
 or resulting in a $10 - 10,000$ fold convergence from cortex to the basal ganglia
 \cite{BarGad2003_Review}.
-To operate efficiently within these constraints,
-it has been suggested that the nervous system improves 
-efficiency by reducing the resources
-required to implement a given task \cite{LaughlinSejnowski2003}.
+% To operate efficiently within these constraints,
+% it has been suggested that the nervous system improves 
+% efficiency by reducing the resources
+% required to implement a given task \cite{LaughlinSejnowski2003}.
 
 One potential approach to addressing this challenge is to
 reduce the number of signals required to transmit information in the network.
@@ -73,7 +66,8 @@ drawbacks of dense and local codes
 leading to relatively low energy expenditure while maintaining a 
 relatively high representational capacity.
 \emilyNote{lots of discussion about energy efficiency here, maybe we are setting up the potential for confusion about metabolic vs statistical efficiency by discussing this so early...}
-\mikeNote{I agree, will revise}
+\mikeNote{I agree, will revise. This para already confuses sparse activity (few neurons active) with sparse coding.}
+\emilyNote{Can we move the bulk of this to the 'Potential mechanisms' section? That seems to resolve your issue of having just one paragraph about it, to me. We can introduce it and justify it there.}
 The level of sparsity required to minimize energy expenditure can be determined
 by weighing the cost of maintaining a neuron at rest against the extra cost
 of sending a signal:
@@ -84,7 +78,6 @@ and have all of them participate in the encoding of the signal (dense code)
 \mikeNote{R1: maybe link this to what we know about the connectivity}
 \mikeNote{Not sure what R1 is talking about here...}
 \emilyNote{Me either.}
-
 \cite{RollsTreves1990,Laughlin2001}.
 
 
@@ -119,6 +112,8 @@ and have all of them participate in the encoding of the signal (dense code)
 
 Another approach is to reduce the number of
 variables required to represent a particular \revise{input} space;
+\mikeNote{I feel like R1 will not get the subtle difference between stimulus space and input space. Stimuli are inputs. Plus the rant was on representations, which is still in there... Need some good terminology here...}
+\emilyNote{It seems impossible to not talk about representations, but also, couldn't you still need to represent stuff about the world in order to act on it? I think we just need to do a better job of tying representations to actions...}
 a process known as
 \textbf{dimensionality reduction}.
 Dimensionality reduction methods have proved useful in elucidating neural mechanisms
