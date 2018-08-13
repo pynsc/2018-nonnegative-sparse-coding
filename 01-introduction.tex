@@ -1,12 +1,11 @@
 \section*{Introduction}
 \label{sec:introduction}
 
-% Brains face the fundamental challenge of 
+Brains face the fundamental challenge of 
 % processing, storing, and representing high-dimensional stimuli
 % using patterns of neural activity \revise{that propagate behaviorally relevant information about the environment across regions}.
 % \mikeNote{R1: The authors seem to subconsciously imply that they see their model as more relevant for the sensory system, based on a number of statements they make in parts of the paper that are supposed to be more general. For example: 1) Lines 2-3: The sentence that sets up the paper already takes a sensory view; the authors don’t say anything about interacting with the world; 2) Lines 73-4; 3) Lines 290-91; 4) Lines 525-6; 5) Lines 588-590.}
-\revise{One of the fundamental challenges that brains face 
-is to extract relevant information from high-dimensional external stimuli
+\revise{extracting relevant information from high-dimensional external stimuli
 in order to form the neural basis that can guide an organism's behavior
 and its interaction with the world.}
 To support complex patterns of behavior, 
@@ -35,53 +34,7 @@ or resulting in a $10 - 10,000$ fold convergence from cortex to the basal gangli
 % efficiency by reducing the resources
 % required to implement a given task \cite{LaughlinSejnowski2003}.
 
-One potential approach to addressing this challenge is to
-reduce the number of signals required to transmit information in the network.
-\textbf{Sparse coding} schemes (see Glossary),
-in which information is represented by the activity of a small
-proportion of neurons in a population,
-have been shown to greatly increase energy efficiency 
-\cite{Foldiak1990,Field1994,LevyBaxter1996}.
-\mikeNote{maybe: have several computational advantages \ldots (don't focus on energy/metabolic efficiency)}
-An extreme example is the so-called \emph{local code}
-where each unique event or `context' is encoded by a single active neuron
-or `grandmother cell' \cite{RollsTreves1990}
-(illustrated in the left column of Fig.~\ref{fig:sparse-parts}A).
-Although local codes lead to low energy expenditure, 
-they also suffer from low \textbf{representational capacity},
-because they allow a population of $N$ neurons to encode at most $N$ contexts.
-On the other hand, a \emph{dense code}
-represents each context by the combined activity
-of all neurons in the population
-(Fig.~\ref{fig:sparse-parts}A, right column).
-\revise{In theory, }dense codes lead to high representational capacity
-(at $M$ activity levels, allowing for $M^N$ contexts to be encoded),
-but also suffer from neuronal cross talk,
-because every neuron is involved in every context.
-Alternatively, sparse codes
-(Fig.~\ref{fig:sparse-parts}A, center column)
-can be described as a trade-off between the benefits and
-drawbacks of dense and local codes 
-\cite{SpanneJorntell2015,Foldiak1990},
-leading to relatively low energy expenditure while maintaining a 
-relatively high representational capacity.
-\emilyNote{lots of discussion about energy efficiency here, maybe we are setting up the potential for confusion about metabolic vs statistical efficiency by discussing this so early...}
-\mikeNote{I agree, will revise. This para already confuses sparse activity (few neurons active) with sparse coding.}
-\emilyNote{Can we move the bulk of this to the 'Potential mechanisms' section? That seems to resolve your issue of having just one paragraph about it, to me. We can introduce it and justify it there.}
-The level of sparsity required to minimize energy expenditure can be determined
-by weighing the cost of maintaining a neuron at rest against the extra cost
-of sending a signal:
-when signals are relatively expensive, it is best to distribute a few of them
-among a large number of cells (local code); but
-when cells are expensive, it is more efficient to use few cells
-and have all of them participate in the encoding of the signal (dense code)
-\mikeNote{R1: maybe link this to what we know about the connectivity}
-\mikeNote{Not sure what R1 is talking about here...}
-\emilyNote{Me either.}
-\cite{RollsTreves1990,Laughlin2001}.
-
-
-\begin{figure}[h]
+\begin{figure}[b!]
 	\centering
 	\includegraphics[width=\textwidth]{fig-rev1-sparse}
     \caption{\Acf{NSC} promotes population codes that are both sparse and parts-based.
@@ -109,18 +62,60 @@ and have all of them participate in the encoding of the signal (dense code)
 	\label{fig:sparse-parts}
 \end{figure}
 
+One potential approach to addressing this challenge is to
+reduce the number of signals required to transmit information in the network;
+\revise{for example through} \textbf{sparse coding} schemes (see Glossary),
+where information is represented by the activity of a small
+proportion of neurons in a population
+\cite{Foldiak1990,Field1994,LevyBaxter1996}.
+An extreme example is the so-called \emph{local code}
+where each unique event or `context' is encoded by a single active neuron
+or `grandmother cell' \cite{RollsTreves1990}
+(illustrated in the left column of Fig.~\ref{fig:sparse-parts}A).
+\revise{Local codes not only} suffer from low \textbf{representational capacity},
+because they allow a population of $N$ neurons to encode at most $N$ contexts,
+\revise{but they also require a large number of neurons to cover the space of possible contexts}.
+On the other hand, a \emph{dense code}
+represents each context by the combined activity
+of all neurons in the population
+(Fig.~\ref{fig:sparse-parts}A, right column).
+\revise{In theory, }dense codes lead to high representational capacity
+(at $M$ activity levels, allowing for $M^N$ contexts to be encoded),
+but also suffer from neuronal cross talk,
+because every neuron is involved in every context.
+Alternatively, sparse codes
+(Fig.~\ref{fig:sparse-parts}A, center column)
+can be described as a trade-off between the benefits and
+drawbacks of dense and local codes 
+\cite{SpanneJorntell2015,Foldiak1990},
+\revise{where each context is encoded by a different subset of neurons in the population.
+A popular example is that sparse coding of natural images
+produces oriented filters that resemble receptive fields of
+simple cells in visual cortex \cite{OlshausenField1996}
+(although this notion has been questioned; see Section ``Model limitation'').}
+
+
+% The level of sparsity required to minimize energy expenditure can be determined
+% by weighing the cost of maintaining a neuron at rest against the extra cost
+% of sending a signal:
+% when signals are relatively expensive, it is best to distribute a few of them
+% among a large number of cells (local code); but
+% when cells are expensive, it is more efficient to use few cells
+% and have all of them participate in the encoding of the signal (dense code)
+% \cite{RollsTreves1990,Laughlin2001}.
+
+
+
 
 Another approach is to reduce the number of
-variables required to represent a particular \revise{input} space;
-\mikeNote{I feel like R1 will not get the subtle difference between stimulus space and input space. Stimuli are inputs. Plus the rant was on representations, which is still in there... Need some good terminology here...}
-\emilyNote{It seems impossible to not talk about representations, but also, couldn't you still need to represent stuff about the world in order to act on it? I think we just need to do a better job of tying representations to actions...}
+variables required to represent a particular \revise{input, stimulus, or task} space;
 a process known as
 \textbf{dimensionality reduction}.
 Dimensionality reduction methods have proved useful in elucidating neural mechanisms
 that depend on how the responses of multiple neurons covary,
 including odor discrimination in the olfactory system \cite{Broome2006,Koulakov2011}
 as well as the selection and integration of sensory inputs 
-in the prefrontal cortex \cite{Mante2013}.
+in the prefrontal cortex \cite{Mante2013,CunninghamYu2014}.
 % and the ability of premotor cortex 
 % to prepare movements without executing them \cite{Kaufman2014}.
 
@@ -142,7 +137,7 @@ and subtracting 30\% of template 3).
 On the other hand, faces can also be represented as a combination
 of individual face components, such as eyes, noses, and mouth,
 in what is known as a \textbf{parts-based representation}
-(Fig.~\ref{fig:sparse-parts}B, right column) \cite{Palmer1977}.
+(Fig.~\ref{fig:sparse-parts}B, right column) \revise{\cite{Palmer1977,ChangTsao2017}}.
 Both approaches allow for representing arbitrary faces as a combination of
 neural activity, but have drastically different consequences on the
 set of stimulus features each neuron responds to.
@@ -159,21 +154,30 @@ Although the relevant stimulus dimensions are often not known \emph{a priori},
 several sophisticated mathematical techniques exist that
 allow us to discover these representations directly from experimental data
 \cite{Brunton2016,CunninghamYu2014,PillowSimoncelli2006,Sharpee2014,Gao2017,ChangTsao2017}.
-In this article, we \revise{suggest} that a variety of neuronal responses
-can be understood as an emergent property of efficient population coding
-based on dimensionality reduction and sparse coding.
-Specifically, we review computational evidence
-from data analyses and computer simulations arguing that \ac{NSC}, 
-a combination of \textbf{\ac{NMF}}
-\cite{PaateroTapper1994,LeeSeung1999} 
-and sparse coding,
-can generate sparse and parts-based embeddings of
-high-dimensional stimulus \revise{and synaptic input} spaces
-that resemble \revise{downstream} neuronal population responses in a 
-wide variety of brain regions.
-This introduces the possibility that \ac{NSC} might be 
-\revise{a principle of organization to which many neuronal computations adhere, 
-particularly in sensory and association cortices.}
-\revise{We furthermore speculate that} \ac{NSC} \revise{may} provide a useful theoretical framework \revise{by} which
-to understand the often complex and nonintuitive response properties of neurons
-in brain areas far removed from sensory input.
+
+In this article, we \revise{review evidence from experimental and theoretical
+studies arguing that a variety of neuronal responses
+can be understood as an emergent property of \textbf{\ac{NSC}},
+an efficient population coding scheme
+based on dimensionality reduction and \revise{sparsity constraints}.
+In particular, \ac{NSC} might be employed
+by sensory areas to efficiently encode external stimulus spaces,
+by associative areas to conjunctively represent multiple behaviorally
+relevant variables,
+and by the basal ganglia to coordinate movement.}
+% Specifically, we review computational evidence
+% from data analyses and computer simulations arguing that \ac{NSC}, 
+% a combination of \textbf{\ac{NMF}}
+% \cite{PaateroTapper1994,LeeSeung1999} 
+% and sparse coding,
+% can generate sparse and parts-based embeddings of
+% high-dimensional stimulus \revise{and synaptic input} spaces
+% that resemble \revise{downstream} neuronal population responses in a 
+% wide variety of brain regions.
+This introduces the possibility that \ac{NSC} might \revise{apply elsewhere in the brain}.
+% be 
+% \revise{a principle of organization to which many neuronal computations adhere, 
+% particularly in sensory and association cortices.}
+% \revise{We furthermore speculate that} \ac{NSC} \revise{may} provide a useful theoretical framework \revise{by} which
+% to understand the often complex and nonintuitive response properties of neurons
+% in brain areas far removed from sensory input.

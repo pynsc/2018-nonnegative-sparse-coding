@@ -9,27 +9,35 @@ For example, \ac{NMF}-based models were able to reconstruct
 By combining spike-triggered average with \ac{NMF},
 Liu and colleagues \cite{Liu2017} were able to identify the subunit layout
 of retinal ganglion cells
-(Fig.~\ref{fig:NMF|retina}). \revise{This technique, termed \ac{STNMF}, is simply the application of NMF to the activity patterns or stimuli that cause a given neuron to spike. The method was developed by analyzing the spikes produced by retinal ganglion cells when subjected to white noise stimulation, and applying \ac{NMF} to the white noise sequences by which the responses were produced \cite{Liu2017}.}
-\emilyNote{summary of STNMF for R1. A schematic of it would probably just confuse them more.}
-\mikeNote{Cool!}
-Whereas modules were constrained to have nonnegative elements,
-stimuli were represented by their contrast values (i.e., their relative deviation from mean light intensity, which could be positive or negative).
-The goal of their \ac{NMF} variant was then to seek weights and nonnegative modules
-that minimize the difference, in a least-squares sense, between the spike-triggered
-stimuli and the reconstruction.
-Interestingly, the identified subunits corresponded to 
+(Fig.~\ref{fig:NMF|retina}).
+\revise{This technique, termed \ac{STNMF},
+involved applying \ac{NMF} to the collection of those stimulus patterns 
+contained in a spatiotemporal white-noise sequence 
+that caused a given neuron to spike.
+Akin to common reverse-correlation analysis,
+the researchers averaged the collection of spike-eliciting stimulus segments 
+to form the spike-triggered stimulus ensemble (STA; Fig.~\ref{fig:NMF|retina}A).
+\Ac{STNMF} then decomposed the ensemble of effective spike-triggered stimuli into
+a matrix \textbf{V} containing a set of modules
+and a matrix \textbf{H} containing a set of hidden coefficients.
+% Whereas modules were constrained to have nonnegative elements,
+% stimuli were represented by their contrast values (i.e., their relative deviation from mean light intensity, which could be positive or negative).
+Intuitively, the modules derived by \ac{STNMF}
+should capture the subunit decomposition of the cell's receptive field,
+because the spike-eliciting stimuli will have essential statistical
+structure imprinted on them by the subunits, such as correlations
+between pixel values.}
+And indeed, the identified \revise{modules} corresponded to 
 individual presynaptic bipolar cells,
 as verified by multielectrode array recordings with simultaneous recordings from
 individual bipolar cells through sharp microelectrodes \cite{Liu2017}.
 This allowed the researchers to improve predictions about how ganglion cells respond
 to natural stimuli, without the need to guess a specific model structure that may be constrained in terms of the size, shape, number, or nonlinearity of 
 ganglion cell subunits.
-\mikeNote{R1: Fig.5, provide a succinct summary or schematic of STNMF. Also, panel A is not very clear to me (although I haven’t looked at the source paper). Panel B: are the subunits and the modules the same?}
-\emilyNote{addressed part 1 of this comment above. for part 2, they are meant to be the same, right? I understood the modules to be 'neurons' (subunits) in that receptive field - but that must mean the red boxes are subunits too, or that makes no sense. I edited the caption, but please correct if I am wrong.}
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=\textwidth]{fig-rev1-retina}
+	\includegraphics[width=\textwidth]{fig-rev2-retina}
     \caption{
     Identification of retinal ganglion cell subunits 
     with \ac{STNMF} (adapted \revise{with permission} from \cite{Liu2017}).
@@ -40,15 +48,16 @@ ganglion cell subunits.
          \acp{STA} are displayed with negative pixel values set to zero and
          with zero corresponding to white in the grayscale image.
          \ac{STNMF} decomposes this ensemble into a set of modules and 
-         a weight matrix (bottom).
+         \revise{hidden coefficients} (bottom).
          The example here shows four modules that were identified for
          a sample ganglion cell.
     \textbf{\emph{B}},
          Modules obtained for another sample ganglion cell by applying \ac{STNMF}
          with 20 modules (bottom 2 rows). Some modules have a strongly localized structure 
-         (blue frames), others are more noise-like (red frames). \revise{These modules make up the subunits within a ganglion cell receptive field.}
+         (blue frames), others are more noise-like (red frames).
+         \revise{These modules make up the subunits within a ganglion cell receptive field.}
          The top row shows the cell’s receptive field,
-         given by the spatial component of the STA, as well as the fitted \ac{RF} outline
+         given by the spatial component of the \ac{STA}, as well as the fitted \ac{RF} outline
          (GC RF, black ellipse), together with outlines of the localized subunits 
          (blue ellipses). Scale bars, 100 µm.
     }
@@ -134,20 +143,21 @@ model units in the encoding of both heading and eye rotation velocity
 (Fig.~\ref{fig:NMF|MSTd}E).
 
 Interestingly, the sparsity regime in which model \ac{MSTd} achieved the
-\mikeNote{One reason why remapping into a different basis makes sense is that it might be easier to read out certain variables. For example, reading out heading in the MSTd basis is supposedly easier than in the MT basis. A similar thing might be true for RSC. Need to make this point stronger for R2 - possibly in the Discussion, too.}
 lowest heading prediction error (Fig.~\ref{fig:NMF|MSTd}F) was also the
 regime in which \ac{MSTd}-like model units reproduced a variety of known
 \ac{MSTd} visual response properties
 (for experimental details refer to \cite{Beyeler2016}).
-In contrast to findings about early visual cortex,
+\revise{In contrast to findings about early visual cortex,
 this regime does not use an overcomplete basis set \cite{OlshausenField1996},
-yet can still be considered a sparse coding regime \cite{SpanneJorntell2015}.
+yet can still be considered a sparse coding regime \cite{SpanneJorntell2015},
+since only a few \ac{MSTd}-like model units were needed to recover the stimulus,
+and each model unit responded to a subset of stimuli (see Fig.~8C in \cite{Beyeler2016}).
 Such an intermediary sparse code might be better suited
 (as opposed to an overcomplete basis set)
 for areas such as \ac{MSTd},
 because the increased memory capacity of such a code might lead to compact
 and multifaceted encodings of various perceptual variables
-\cite{BenHamed2003}.
+(see Section ``Model limitations'').}
 
 
 \subsection*{NSC in the auditory cortex}
@@ -335,7 +345,6 @@ and 3) exhibiting complex and robust firing patterns without turn sensitivity
 
 \subsection*{Reinforcement-driven NSC in the basal ganglia}
 
-\mikeNote{R1: To reach a broader audience, the authors should describe better the mechanisms of Hebbian and Anti-Hebbian plasticity in the Basal ganglia section.}
 There is computational evidence 
 for a reward-driven variant of \ac{NSC} in the basal ganglia, 
 a cluster of deep forebrain nuclei that are involved in the 
@@ -351,10 +360,23 @@ The \ac{RDDR} model suggests that dimensionality reduction
 in the cortico-basal ganglia pathway is achieved via
 a combination of Hebbian and anti-Hebbian learning rules
 that are implemented by feedforward excitatory and lateral inhibitory
-connections \cite{BarGad2000,BarGad2003_Review}. \revise{These learning rules control the strength of synaptic weights in the network by altering a given weight in proportion to the correlation between the firing rates of the input and output neurons. In Hebbian learning, synaptic weights are strengthened given a positive correlation (a phenomenon referred to as long-term potentiation, or LTP), while synaptic weights are depressed if the firing rate correlation is negative (referred to as long-term depression, or LTD). In order to implement dopamine-modulated Hebbian learning in this model, a reinforcement signal was used to dictate the level of dopamine in the circuit (1 for reward-related events, 0 for background levels of dopamine when reward-related events or information are not present, and negative values to simulate dopamine depeletion \cite{BarGad2000}). The value of the reinforcement signal determined how much learning was allowed to occur.}
+connections \cite{BarGad2000,BarGad2003_Review}.
+\revise{These learning rules control the strength of synaptic weights in the network 
+by altering the weight of a given synapse in proportion to
+the correlation between the firing rates of its presynaptic and postsynaptic neurons.
+In Hebbian learning, synaptic weights are strengthened given a positive correlation 
+(leading to a phenomenon referred to as long-term potentiation, or LTP),
+while synaptic weights are depressed if the firing rate correlation is negative
+(leading to as long-term depression, or LTD).
+In order to implement dopamine-modulated Hebbian learning in this model,
+a reinforcement signal was used to dictate the level of dopamine in the circuit 
+(1 for reward-related events, 0 for the absence of reward-related events, 
+and negative values to simulate dopamine depletion) \cite{BarGad2000}.
+The value of the reinforcement signal then determined the sign and magnitude
+of each synaptic weight change.}
 
-In the \ac{RDDR} model, a reinforcement signal corresponding to dopamine modulates the Hebbian learning rule 
-of the feedforward projections,
+In the \ac{RDDR} model, a reinforcement signal corresponding to dopamine 
+modulates the Hebbian learning rule of the feedforward projections,
 allowing the network to learn to extract input dimensions
 that are associated with reward activity
 while suppressing behaviorally irrelevant input dimensions.
@@ -363,19 +385,30 @@ for performing \ac{PCA} \cite{BarGad2000},
 later iterations incorporated nonnegativity constraints on the
 connection weights that effectively transformed the model 
 into an \ac{NMF} variant \cite{BarGad2003_Review}.
+\revise{The model predicted that these lateral connections facilitated learning
+by shaping correlations between neurons in the corticostriatal projections
+using dopamine-modulated LTP and LTD, which was later experimentally validated
+\cite{calabresi2007dopamine}.}
+
+% \revise{The ac{RDDR} model made two critical predictions, 
+% one of which has yet to be tested experimentally. 
+% First, this model was initially developed to explain the existence of the extensive inhibitory lateral connectivity found within the basal ganglia, which seem to have no functional purpose based on experimental data\emilyNote{clunky sentence, revise}. The RDDR model predicts that these connections facilitate learning and must thus be studied during the learning phase of a task either in young animals or in animals being exposed to a new environment. At this time, the lateral connections should show increased strength and the firing patterns of the connected neurons should be correlated. After learning, these connections are expected to rapidly lose efficacy. Second, at the time, Hebbian and anti-Hebbian learning modulated by a dopaminergic reinforcement signal had yet to be documented in the basal ganglia. However, since publication this prediction has been confirmed, as studies have revealed dopamine-modulated LTP and LTD as mechanisms that facilitate learning in corticostriatal synapses \cite{calabresi2007dopamine}.}
+% \mikeNote{Compressed this paragraph into the above sentence.}
 
 In addition to suggesting a role for lateral connectivity
 in the basal ganglia,
 the \ac{RDDR} model also advanced understanding of basal ganglia dysfunction
-in movement-related disorders such as Parkinon's and Huntington's disease. \revise{Previous studies have indicated that when the basal ganglia is functioning normally and is then subjected to focal lesions, these lesions have minimal impact on behavior. Bar-Gad and colleagues \cite{BarGad2000}
-suggested that this is an expected finding because of the network's ability to reorganize connections,
+in movement-related disorders such as Parkinon's and Huntington's disease.
+\revise{Previous studies had indicated that lesions to functionally healthy basal ganglia
+had minimal impact on behavior. Bar-Gad and colleagues \cite{BarGad2000} then
+suggested that this was an expected finding 
+because of the network's ability to reorganize connections,
 whereas abnormal dopamine levels should significantly alter 
 the reinforcement signal that controls the model's ability 
-to discriminate behaviorally relevant input signals (as in Parkinson's disease). Accordingly, restoration of background dopamine levels via dopamine replacement therapy alleviate the symptoms, consistent with results of dopamine depletion and restoration in the model.}
-\mikeNote{R1: cliffhanger: Did Bergman and colleagues test their predictions for focal lesions? What would the authors expect?}
-\emilyNote{clarified that this was a post-hoc explanation of their model and added actual predictions.}
+to discriminate behaviorally relevant input signals (as in Parkinson's disease).
+Accordingly, restoration of background dopamine levels via dopamine replacement therapy 
+alleviate the symptoms, consistent with results of dopamine depletion and restoration 
+in the model.}
 
-\revise{The RDDR model made two critical predictions, one of which has yet to be tested experimentally. First, this model was initially developed to explain the existence of the extensive inhibitory lateral connectivity found within the basal ganglia, which seem to have no functional purpose based on experimental data\emilyNote{clunky sentence, revise}. The RDDR model predicts that these connections facilitate learning and must thus be studied during the learning phase of a task either in young animals or in animals being exposed to a new environment. At this time, the lateral connections should show increased strength and the firing patterns of the connected neurons should be correlated. After learning, these connections are expected to rapidly lose efficacy. Second, at the time, Hebbian and anti-Hebbian learning modulated by a dopaminergic reinforcement signal had yet to be documented in the basal ganglia. However, since publication this prediction has been confirmed, as studies have revealed dopamine-modulated LTP and LTD as mechanisms that facilitate learning in corticostriatal synapses \cite{calabresi2007dopamine}.}
-
-\emilyNote{While working on this, I found another Bar-Gad article that talks about somatotopic organization in the BG corresponding to face, arms, legs, etc, which may or may not be useful to bring up re: parts-based coding. https://www.frontiersin.org/articles/10.3389/fnsys.2011.00038/full}
-
+% \emilyNote{While working on this, I found another Bar-Gad article that talks about somatotopic organization in the BG corresponding to face, arms, legs, etc, which may or may not be useful to bring up re: parts-based coding. https://www.frontiersin.org/articles/10.3389/fnsys.2011.00038/full}
+% \mikeNote{Let's leave it here for the next round of revisions ^^ but so far the reviewers didn't have a problem with this section}

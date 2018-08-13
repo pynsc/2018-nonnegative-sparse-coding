@@ -1,4 +1,4 @@
-\section*{Nonnegative sparse coding as a modern variant of the efficient coding hypothesis}
+\section*{Nonnegative sparse coding (NSC) as a modern variant of the efficient coding hypothesis}
 
 \subsection*{Efficient coding}
 
@@ -74,6 +74,8 @@ stimulus features (e.g., orientation or color at a particular spatial location).
 Thus a neuron's \ac{RF} could be understood as a
 sparse, low-dimensional embedding of high-dimensional input stimuli
 \cite{Barbieri2015}.
+\revise{However, please note that this apparent sparsity might have simply been caused
+by presenting a limited set of stimuli (see Section ``Model limitations'').}
 
 At the level of single neurons, efficient coding requires
 that a neuron's input-output function be adjusted so that all
@@ -141,8 +143,9 @@ that were closely related to that neuron's \ac{RF}.
 Olshausen and Field went on to show that 
 the set of basis functions that best described \ac{V1} \acp{RF} 
 was greater in number than the effective
-dimensionality of the input (also known as an \emph{overcomplete}
-basis set) \cite{OlshausenField1997}.
+dimensionality of the input
+(\revise{which they termed} an \emph{overcomplete} basis set) 
+\cite{OlshausenField1997}.
 
 However, as pointed out by Hoyer \cite{Hoyer2003}, 
 linear sparse coding falls short of providing a literal interpretation
@@ -229,7 +232,7 @@ at the expense of ignoring a more common one stimulus component
 would result in an increased reconstruction error.}
 
 In the case of $\lambda = 0$, Eq.~\ref{eqn:nsc-cost-function}
-reduces to the squared-error version of \ac{NMF}.
+reduces to the squared-error version of \textbf{\ac{NMF}}.
 Although \ac{NMF} enforces all elements of \textbf{W} and \textbf{H}
 to be nonnegative,
 the resulting decomposition might not be sparse,
@@ -307,20 +310,22 @@ involves different columns of \textbf{V},
 but always relies on $\vec{w}_b$.
 
 Inhibitory connections can be modeled in the same fashion,
-\mikeNote{R1: maybe it’d be interesting if the authors could provide more detail into how they’d build this model with E/I neurons}
-\emilyNote{What does R1 mean by "this model?" The RSC model kind of is an E/I implementation of an NMF model, as we show later, so we could just describe a random balanced network with STDP-H}
-\mikeNote{I think they want to see how to build V1 cells from E/I LGN inputs. Would be good to talk about the Hoyer study or show a figure from [42].}
 by interpreting inhibitory connection weights
 as nonnegative synaptic conductances.
-This not only preserves the parts-based quality of the encoding,
-but also allows for more complicated connection types to be modeled
-(e.g., \ac{V1} neurons receiving input from both excitatory ON
-and inhibitory OFF cells in the \ac{LGN}) \cite{Hoyer2003}.
+\revise{For example, Hoyer \cite{Hoyer2003} used \ac{NSC} to model \ac{V1} neurons
+as receiving input from both excitatory ON and inhibitory OFF cells in the \ac{LGN}.
+Using pre-whitened natural images, Hoyer sampled $12 \times 12$ pixel patches from
+the images, and then separated positive and negative values into separate channels.
+Each image patch was thus represented by a $2 \times 12 \times 12 = 288$ dimensional vector,
+each element of which mimicked the activity of an ON or OFF cell
+in response to the image patch.
+These vectors were then arranged into the columns of \textbf{V}.}
+This procedure not only preserved the parts-based quality of the encoding,
+but also allowed for more complicated connection types to be modeled.
 However, it is interesting to note that a more recent study has argued
 that the nonnegativity constraint on the
 connection weights might not be necessary 
-to preserve the parts-based quality of the encoding \cite{Liu2017}.
-
+to preserve the parts-based quality of the encoding (see \cite{Liu2017}).
 
 Thus, we can utilize \textbf{W} 
 (which must remain fixed once learned)
