@@ -44,6 +44,8 @@ dimensionality reduction by randomly projecting patterns of activity
 into a lower-dimensional space,
 namely by synaptically mapping $N$ upstream neurons to a downstream region
 containing $M < N$ neurons. 
+\revise{Analogously, compressed sensing supports dimensionality expansion
+by projecting into a larger downstream area \cite{GanguliSompolinsky2012}.}
 The theory of compressed sensing then provides the mathematical tools
 to reconstruct the original space from the random projections.
 
@@ -128,19 +130,20 @@ different stages in the life of an animal, and animal species
             Simulated by evolving \ac{STDPH} parameters 
             to fit experimental data \cite{BeyelerCarlsonChou2015,Carlson2014}.
         \revise{\emph{Left column}: Functional neuron type distributions.
-        \emph{Right column}: Movement prediction errors (arbitrary units)
+        \emph{Right column}: Movement prediction errors
         based on correlation matrices from population responses
         \cite{AlexanderNitz2015,Rounds2018}.
         Prediction error between even and odd trials
         for the same position and route (prefix $\alpha$ or $\beta$) 
         was much smaller than across tracks (prefix $\alpha\beta$;
-        Kruskal-Wallis and Tukey's range test, ***$= p < 0.001$).
+        Kruskal-Wallis and Tukey's range test, ***$= p < 0.001$),
+        demonstrating that the network can distinguish similar routes
+        that occur in different allocentric positions.
         For details see Supplemental Material.}
 	}
  	\label{fig:NMF|RSC}
 \end{figure}
             
-%         (adapted \revise{with permission} from \cite{Rounds2018}). 
 %         Using methods described in \cite{AlexanderNitz2015}, 
 %         we compared functional neuron type distributions (left column)
 %         and average \revise{movement} prediction errors (right column)
@@ -206,13 +209,14 @@ small sets of stimuli.
 Indeed, one study that applied \ac{PCA} to monkey \ac{V1} 
 showed that one needs to look at many principal components to decode natural images,
 and that these principal components reflect contributions 
-from most of the recorded neurons \cite{Cowley2017}.
+from most of the recorded neurons \cite{Cowley2017},
+which argues against a sparse parts-based representation.
 Similar results have been reported for a large number of stimuli and neurons
 in mice \cite{Stringer2018}.}
 
 \revise{Part of the confusion about the role of sparse coding in the brain
 may arise} from the wide variety of definitions of sparsity
-used in the literature:
+used in the literature \cite{SpanneJorntell2015,BarthPoulet2012}:
 In its widest possible theoretical sense,
 a neuron population exhibits sparse activity if the average activation ratio
 remains below 50\% for binary neurons 
@@ -287,7 +291,7 @@ but also no capacity for generalization).
 \subsubsection*{\revise{Evidence against NSC in prefrontal and motor cortices}}
 
 \revise{Two prominent examples where \ac{NSC} might not apply
-are \ac{PFC} and \ac{M1}.
+are \ac{PFC} and \ac{M1}.).
 For one, studies indicate that the population code in these regions
 may be quite dense (as in Fig.~\ref{fig:sparse-parts}A).
 For another, dimensionality reduction studies in these regions suggest that 

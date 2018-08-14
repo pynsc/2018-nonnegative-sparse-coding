@@ -127,6 +127,17 @@ variable would \cite{Hyvarinen2001}.
 This sparsity constraint allowed for basis functions that were not
 needed to describe a given image structure to be weeded out.
 
+\revise{Sparsity, in this context, is an information-theoretic concept
+related to how efficiently and completely information is encoded with
+the basis functions described above.
+Please note that this is different from empirical observations
+of brain areas being `sparsely' activated; that is,
+sparse population activity does not necessarily imply that a brain areas
+implements a sparse coding scheme.
+This confusion is fueled in part by the wide variety of definitions of sparsity
+used in the literature \cite{SpanneJorntell2015,BarthPoulet2012}
+(see Section ``Model limitations'').}
+
 When Olshausen and Field applied linear sparse coding 
 to natural images,
 they found that the emerging basis functions 
@@ -146,6 +157,12 @@ was greater in number than the effective
 dimensionality of the input
 (\revise{which they termed} an \emph{overcomplete} basis set) 
 \cite{OlshausenField1997}.
+\revise{It is worth noting that sparse coding with an overcomplete basis set
+is typically associated with an anatomical fan-out motif,
+such as expanding 1 million optic nerve fibers 
+into more than 100 million \ac{V1} neurons,
+or from a small number of mossy fibers to a 100-fold larger number of
+granule cells in the cerebellum.}
 
 However, as pointed out by Hoyer \cite{Hoyer2003}, 
 linear sparse coding falls short of providing a literal interpretation

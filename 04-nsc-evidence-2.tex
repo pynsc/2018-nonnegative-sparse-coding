@@ -18,15 +18,15 @@ Akin to common reverse-correlation analysis,
 the researchers averaged the collection of spike-eliciting stimulus segments 
 to form the spike-triggered stimulus ensemble (STA; Fig.~\ref{fig:NMF|retina}A).
 \Ac{STNMF} then decomposed the ensemble of effective spike-triggered stimuli into
-a matrix \textbf{V} containing a set of modules
+a matrix \textbf{W} containing a set of modules (or basis functions)
 and a matrix \textbf{H} containing a set of hidden coefficients.
 % Whereas modules were constrained to have nonnegative elements,
 % stimuli were represented by their contrast values (i.e., their relative deviation from mean light intensity, which could be positive or negative).
 Intuitively, the modules derived by \ac{STNMF}
 should capture the subunit decomposition of the cell's receptive field,
-because the spike-eliciting stimuli will have essential statistical
+because the spike-eliciting stimuli should have essential statistical
 structure imprinted on them by the subunits, such as correlations
-between pixel values.}
+between pixel values \cite{Liu2017}.}
 And indeed, the identified \revise{modules} corresponded to 
 individual presynaptic bipolar cells,
 as verified by multielectrode array recordings with simultaneous recordings from
@@ -210,83 +210,89 @@ odor identity and odor structure,
 the posterior piriform cortex is involved in associational aspects of odors, 
 such as valence and similarity \cite{chen2014,gottfried2006}.
 
+\begin{figure}[b!]
+	\centering
+	\includegraphics[width=0.95\textwidth]{fig-rev2-olfaction}
+    \caption{\ac{NMF} recovers a sparse and parts-based representation
+    of olfactory perceptual space (adapted \revise{with permission} 
+    from \cite{Castro2013}).
+       \textbf{\emph{A}},
+          Waterfall plot of the 10 basis functions constituting \textbf{W}
+          \revise{(same nomenclature as in Fig.~\ref{fig:NMF|reconstruction}).}
+       \textbf{\emph{C}},
+          Heat map of the \revise{hidden} coefficient matrix, \textbf{H},
+          where each column of \textbf{H} corresponds to a different odor.
+          Columns of \textbf{H} are normalized and sorted.
+       \textbf{\emph{D}},
+          Plot of all 144 odors in the dataset (each point is a column in \textbf{H})
+          in the space spanned by the first three basis functions,
+          \revise{$\vec{w_1}$ (`fragrant'/`floral'), 
+          $\vec{w_2}$ (`woody, resinous'/`musty,earthy'), 
+          and $\vec{w_3}$ (`fruity, other than citrus'/`sweet')}.
+          Black, red, and blue points are those with 
+          \revise{their largest hidden coefficient corresponding to the first,
+          second, and third basis function}, respectively. 
+          Gray points are all remaining odors.}
+	\label{fig:evidence-olfaction}
+\end{figure}
+
 Castro and colleagues \cite{Castro2013} provided 
 one of the most compelling pieces of evidence for \ac{NSC}
 in the olfactory system to date:
 In an effort to elucidate the dimensions along which perceptual space might be
 organized in the olfactory system,
 they applied \ac{NMF} to a dataset of 144 monomolecular odors,
-each represented by a 146-dimensional odor profile.
+each represented by a 146-dimensional \revise{vector (an `odor profile')}.
 Each dimension in the odor profile corresponded to the rated applicability of
-a number of semantic labels, such as `sweet', `floral', and `heavy'
-(Fig.~\ref{fig:evidence-olfaction}A).
-By applying \ac{NMF} to the odor profile, they showed that a small, sparsely active set of basis functions could accurately describe any odor in the dataset
-(Fig.~\ref{fig:evidence-olfaction}C).
+a number of semantic labels, such as `sweet', `floral', and `heavy'.
+By applying \ac{NMF} to the odor profile, they showed that 
+\revise{a total of 10} sparsely active set of basis functions 
+could accurately describe any odor in the dataset
+\revise{(Fig.~\ref{fig:evidence-olfaction}A)}.
 Interestingly, \ac{NMF} revealed a prominent block
 diagonal structure to the full matrix \textbf{H}
-(Fig.~\ref{fig:evidence-olfaction}B), indicating that:
-1) a given odor tended to be characterized by a single prominent dimension,
+\revise{(Fig.~\ref{fig:evidence-olfaction}B)}, indicating that:
+1) a given odor tended to be characterized by a single prominent \revise{basis function},
 implying that the basis functions recovered by \ac{NMF} were perceptually meaningful,
-and 2) all 10 dimensions were occupied,
+and 2) all ten \revise{basis functions were being used approximately with equal frequency},
 implying that the basis functions recovered by \ac{NMF} could span the space of
 behaviorally relevant odors.
 This suggests that a given odor percept may be considered an 
 instance of one of several fundamental qualities.
-For the data set investigated, individual odor profiles were well-classified 
-by their proximity to a single one of these dimensions, 
-with all ten dimensions being approximately equally expressed 
-across the set of odors.
-\mikeNote{R1: Fig 7: I’m a bit confused about the nomenclature in the figure, its caption and the text. Please revise}
-\emilyNote{I will take a stab at this if you don't have time, but I think you can explain it better.}
+% For the data set investigated, individual odor profiles were well-classified 
+% by their proximity to a single one of these \revise{basis functions}, 
+% with all ten \revise{basis functions} being approximately equally expressed 
+% across the set of odors.
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=\textwidth]{fig-rev1-olfaction}
-    \caption{\ac{NMF} recovers a sparse and parts-based representation
-    of olfactory perceptual space (reprinted \revise{with permission} 
-    from \cite{Castro2013}).
-       \textbf{\emph{A}},
-          Plot of normalized odor descriptor amplitude vs. odor descriptor number for
-          the first basis function. Each point along the x-axis corresponds to a single
-          odor descriptor, and the amplitude of each descriptor indicates the
-          descriptor's relevance to the shown perceptual basis function.
-          Colored circles show the 7 largest elements, with corresponding descriptors
-          listed on the right.
-       \textbf{\emph{B}},
-          Waterfall plot of the 10 basis functions constituting \textbf{W}.
-       \textbf{\emph{C}},
-          Heat map of the coefficient matrix, \textbf{H},
-          where each column of \textbf{H} corresponds to a different odor.
-          Columns of \textbf{H} are normalized and sorted into groups defined by
-          peak coordinate (1-10).
-       \textbf{\emph{D}},
-          Plot of all 144 odors in the dataset (each point is a column in \textbf{H})
-          in the space spanned by the first three basis functions.
-          Black, red, and blue points are those with peak coordinates in dimensions
-          1, 2, and 3, respectively. Gray points are all remaining odors.}
-	\label{fig:evidence-olfaction}
-\end{figure}
-
-Furthermore, \ac{NMF} recovered basis functions whose descriptors align
+Furthermore, \ac{NMF} recovered basis functions whose descriptors aligned
 with perceptual dimensions highlighted in several previous analyses of odor space,
 including but not limited to relative pleasantness (e.g., `fragrant`, `sickening`), 
 and potential palatability (`woody, resinous', `chemical', `sweet', and `lemon').
-Odors clustered predominantly along these axes
-(Fig.~\ref{fig:evidence-olfaction}D), 
-motivating the interpretation that odor space is organized 
-by a relatively large number of independent qualities that apply categorically
-\cite{Castro2013}.
+Odors clustered predominantly along these axes,
+\revise{as illustrated in Fig.~\ref{fig:evidence-olfaction}C) for three
+specific basis functions} \cite{Castro2013}.
 
 
 \subsection*{NSC in the somatosensory cortex}
-
 Of all of the sensory areas,
-\mikeNote{R1: Most of the studies that the authors discuss are from the mouse barrel. However, these results may not generalize to primates: for example, London \& Miller showed that neurons in the proprioceptive arm area of S1 respond to movements in many directions [11], which seems at odds with the results for the barrel cortex. Also, my concerns about the homunculus in M1 also apply to S1. I’d also suggest the authors to revise some primate studies in touch, e.g., by the Bensmaia lab, to expand this section.}
 somatosensory cortex is among the best understood in terms of circuitry,
 yet least understood in terms of sensory function
 \cite{Ramirez2014}.
-Spatiotemporal receptive fields indicate that individual neurons respond to a small number of stimulus dimensions, suggesting a role for dimensionality reduction in primary somatosensory cortex \cite{Ramirez2014}.
-In an effort to elucidate the stimulus dimensions that individual neurons respond to,
+Spatiotemporal receptive fields indicate that 
+\revise{some neurons respond to a small number of stimulus dimensions
+(not unlike to sensory neurons in the visual system
+\cite{Pei2008,Pei2011,DiCarlo1998}),
+suggesting a possible role for dimensionality reduction
+in \ac{S1} \cite{Ramirez2014}.}
+\revise{However, tactile information from various submodalities converges
+at the level of \ac{S1} \cite{HyvarinenPoranen1978,Pei2009}
+and is multiplexed across different time scales 
+using both rate and spike timing codes \cite{Harvey2013},
+thus complicating any interpretation of the neural representation of touch
+in these areas.}
+
+In an effort to elucidate the stimulus dimensions that 
+individual \revise{\ac{S1}} neurons respond to,
 Whiteway and Butts \cite{WhitewayButts2017} devised the \ac{RLVM},
 a combination of nonlinear dimensionality reduction with nonnegativity constraints
 that is closely related to \ac{NSC}.
@@ -302,13 +308,18 @@ Furthermore, \ac{RLVM} achieved a lower reconstruction error than other
 linear dimensionality reduction techniques such as \textbf{\ac{PCA}}.
 
 Similar to auditory cortex,
-activity in somatosensory cortex can be extremely sparse
+activity in \revise{rodent} somatosensory cortex can be extremely sparse
 \cite{Jadhav2009,oconnor2010,Crochet2011},
 and sparse coding models have successfully explained the response properties
 of individual neurons in rat somatosensory cortex (e.g., \cite{Hafner2004}).
-In addition, the presence of a topographically organized sensory `homunculus' 
-in various species \cite{penfield1937,hari1993,petersen2007} 
-suggests a possible parts-based representation scheme.
+% In addition, the presence of a topographically organized sensory `homunculus' 
+% in various species \cite{penfield1937,hari1993,petersen2007} 
+% suggests a possible parts-based representation scheme.
+\revise{However, this finding might not generalize across species.
+For example, London and Miller \cite{LondonMiller2013} found that
+neurons in the proprioceptive arm area of macaque \ac{S1}
+respond to movements in many directions,
+which argues against sparse activity in this area.}
 
 
 \subsection*{NSC in the retrosplenial cortex (RSC)}
