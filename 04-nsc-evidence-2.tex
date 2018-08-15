@@ -16,7 +16,7 @@ contained in a spatiotemporal white-noise sequence
 that caused a given neuron to spike.
 Akin to common reverse-correlation analysis,
 the researchers averaged the collection of spike-eliciting stimulus segments 
-to form the spike-triggered stimulus ensemble (STA; Fig.~\ref{fig:NMF|retina}A).
+to form the spike-triggered stimulus ensemble (Fig.~\ref{fig:NMF|retina}A).
 \Ac{STNMF} then decomposed the ensemble of effective spike-triggered stimuli into
 a matrix \textbf{W} containing a set of modules (or basis functions)
 and a matrix \textbf{H} containing a set of hidden coefficients.
@@ -156,8 +156,7 @@ Such an intermediary sparse code might be better suited
 (as opposed to an overcomplete basis set)
 for areas such as \ac{MSTd},
 because the increased memory capacity of such a code might lead to compact
-and multifaceted encodings of various perceptual variables
-(see Section ``Model limitations'').}
+and multifaceted encodings of various perceptual variables.}
 
 
 \subsection*{NSC in the auditory cortex}
@@ -219,11 +218,11 @@ such as valence and similarity \cite{chen2014,gottfried2006}.
        \textbf{\emph{A}},
           Waterfall plot of the 10 basis functions constituting \textbf{W}
           \revise{(same nomenclature as in Fig.~\ref{fig:NMF|reconstruction}).}
-       \textbf{\emph{C}},
+       \textbf{\emph{B}},
           Heat map of the \revise{hidden} coefficient matrix, \textbf{H},
           where each column of \textbf{H} corresponds to a different odor.
           Columns of \textbf{H} are normalized and sorted.
-       \textbf{\emph{D}},
+       \textbf{\emph{C}},
           Plot of all 144 odors in the dataset (each point is a column in \textbf{H})
           in the space spanned by the first three basis functions,
           \revise{$\vec{w_1}$ (`fragrant'/`floral'), 
@@ -378,7 +377,8 @@ the correlation between the firing rates of its presynaptic and postsynaptic neu
 In Hebbian learning, synaptic weights are strengthened given a positive correlation 
 (leading to a phenomenon referred to as long-term potentiation, or LTP),
 while synaptic weights are depressed if the firing rate correlation is negative
-(leading to as long-term depression, or LTD).
+(leading to as long-term depression, or LTD). On the other hand, in anti-Hebbian learning, which is typically applied to inhibitory connections, correlated activities are subjected to LTD and uncorrelated activities are subjected to LTP.
+\jeffNote{This is my understanding of anti-Hebb. Make sure it applies to their model.}
 In order to implement dopamine-modulated Hebbian learning in this model,
 a reinforcement signal was used to dictate the level of dopamine in the circuit 
 (1 for reward-related events, 0 for the absence of reward-related events, 
