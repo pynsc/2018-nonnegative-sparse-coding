@@ -35,9 +35,9 @@ This allowed the researchers to improve predictions about how ganglion cells res
 to natural stimuli, without the need to guess a specific model structure that may be constrained in terms of the size, shape, number, or nonlinearity of 
 ganglion cell subunits.
 
-\begin{figure}[ht]
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{fig-rev2-retina}
+% 	\includegraphics[width=\textwidth]{fig-rev2-retina}
     \caption{
     Identification of retinal ganglion cell subunits 
     with \ac{STNMF} (adapted \revise{with permission} from \cite{Liu2017}).
@@ -96,9 +96,9 @@ but the model was able to recover statistical properties of the \ac{MSTd}
 population as a whole, such as a relative overrepresentation of lateral
 headings (Fig.~\ref{fig:NMF|MSTd}C, D).
 
-\begin{figure}[ht]
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.95\textwidth]{fig-rev1-MST}
+% 	\includegraphics[width=0.95\textwidth]{fig-rev1-MST}
     \caption{
     \textbf{\emph{A-D}},
          Distribution of 3D direction preferences of macaque \ac{MSTd} neurons
@@ -209,32 +209,6 @@ odor identity and odor structure,
 the posterior piriform cortex is involved in associational aspects of odors, 
 such as valence and similarity \cite{chen2014,gottfried2006}.
 
-\begin{figure}[b!]
-	\centering
-	\includegraphics[width=0.95\textwidth]{fig-rev2-olfaction}
-    \caption{\ac{NMF} recovers a sparse and parts-based representation
-    of olfactory perceptual space (adapted \revise{with permission} 
-    from \cite{Castro2013}).
-       \textbf{\emph{A}},
-          Waterfall plot of the 10 basis functions constituting \textbf{W}
-          \revise{(same nomenclature as in Fig.~\ref{fig:NMF|reconstruction}).}
-       \textbf{\emph{B}},
-          Heat map of the \revise{hidden} coefficient matrix, \textbf{H},
-          where each column of \textbf{H} corresponds to a different odor.
-          Columns of \textbf{H} are normalized and sorted.
-       \textbf{\emph{C}},
-          Plot of all 144 odors in the dataset (each point is a column in \textbf{H})
-          in the space spanned by the first three basis functions,
-          \revise{$\vec{w_1}$ (`fragrant'/`floral'), 
-          $\vec{w_2}$ (`woody, resinous'/`musty,earthy'), 
-          and $\vec{w_3}$ (`fruity, other than citrus'/`sweet')}.
-          Black, red, and blue points are those with 
-          \revise{their largest hidden coefficient corresponding to the first,
-          second, and third basis function}, respectively. 
-          Gray points are all remaining odors.}
-	\label{fig:evidence-olfaction}
-\end{figure}
-
 Castro and colleagues \cite{Castro2013} provided 
 one of the most compelling pieces of evidence for \ac{NSC}
 in the olfactory system to date:
@@ -258,10 +232,34 @@ implying that the basis functions recovered by \ac{NMF} could span the space of
 behaviorally relevant odors.
 This suggests that a given odor percept may be considered an 
 instance of one of several fundamental qualities.
-% For the data set investigated, individual odor profiles were well-classified 
-% by their proximity to a single one of these \revise{basis functions}, 
-% with all ten \revise{basis functions} being approximately equally expressed 
-% across the set of odors.
+
+
+\begin{figure}[h]
+	\centering
+% 	\includegraphics[width=0.95\textwidth]{fig-rev2-olfaction}
+    \caption{\ac{NMF} recovers a sparse and parts-based representation
+    of olfactory perceptual space (adapted \revise{with permission} 
+    from \cite{Castro2013}).
+       \textbf{\emph{A}},
+          Waterfall plot of the 10 basis functions constituting \textbf{W}
+          \revise{(same nomenclature as in Fig.~\ref{fig:NMF|reconstruction}).}
+       \textbf{\emph{B}},
+          Heat map of the \revise{hidden} coefficient matrix, \textbf{H},
+          where each column of \textbf{H} corresponds to a different odor.
+          Columns of \textbf{H} are normalized and sorted.
+       \textbf{\emph{C}},
+          Plot of all 144 odors in the dataset (each point is a column in \textbf{H})
+          in the space spanned by the first three basis functions,
+          \revise{$\vec{w_1}$ (`fragrant'/`floral'), 
+          $\vec{w_2}$ (`woody, resinous'/`musty,earthy'), 
+          and $\vec{w_3}$ (`fruity, other than citrus'/`sweet')}.
+          Black, red, and blue points are those with 
+          \revise{their largest hidden coefficient corresponding to the first,
+          second, and third basis function}, respectively. 
+          Gray points are all remaining odors.}
+	\label{fig:evidence-olfaction}
+\end{figure}
+
 
 Furthermore, \ac{NMF} recovered basis functions whose descriptors aligned
 with perceptual dimensions highlighted in several previous analyses of odor space,
@@ -378,7 +376,6 @@ In Hebbian learning, synaptic weights are strengthened given a positive correlat
 (leading to a phenomenon referred to as long-term potentiation, or LTP),
 while synaptic weights are depressed if the firing rate correlation is negative
 (leading to as long-term depression, or LTD). On the other hand, in anti-Hebbian learning, which is typically applied to inhibitory connections, correlated activities are subjected to LTD and uncorrelated activities are subjected to LTP.
-\jeffNote{This is my understanding of anti-Hebb. Make sure it applies to their model.}
 In order to implement dopamine-modulated Hebbian learning in this model,
 a reinforcement signal was used to dictate the level of dopamine in the circuit 
 (1 for reward-related events, 0 for the absence of reward-related events, 

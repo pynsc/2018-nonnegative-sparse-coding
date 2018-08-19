@@ -2,9 +2,6 @@
 \label{sec:introduction}
 
 Brains face the fundamental challenge of 
-% processing, storing, and representing high-dimensional stimuli
-% using patterns of neural activity \revise{that propagate behaviorally relevant information about the environment across regions}.
-% \mikeNote{R1: The authors seem to subconsciously imply that they see their model as more relevant for the sensory system, based on a number of statements they make in parts of the paper that are supposed to be more general. For example: 1) Lines 2-3: The sentence that sets up the paper already takes a sensory view; the authors don’t say anything about interacting with the world; 2) Lines 73-4; 3) Lines 290-91; 4) Lines 525-6; 5) Lines 588-590.}
 \revise{extracting relevant information from high-dimensional external stimuli
 in order to form the neural basis that can guide an organism's behavior
 and its interaction with the world.}
@@ -14,13 +11,6 @@ a rich repertoire of linear and nonlinear operations on their synaptic inputs
 \revise{that take into account context, experience, and anatomical constraints}
 \cite{Koch1999}.
 \revise{For example, anatomical bottlenecks}
-% However, neuronal information processing is complicated
-% by strict constraints on metabolic cost---50\% of the 
-% mammalian brain's energy consumption is believed to be associated with 
-% neuronal signaling \cite{Laughlin2001, Lennie2003}---and the 
-% widespread existence of anatomical bottlenecks 
-% \cite{Kempermann2002,BarGad2003_Review,Babinsky1993}.
-% These bottlenecks 
 often force the information stored in a large number of neurons
 to be compressed into an orders of magnitude smaller population
 of downstream neurons
@@ -29,38 +19,6 @@ such as storing information from 100 million photoreceptors
 in 1 million optic nerve fibers,
 or resulting in a $10 - 10,000$ fold convergence from cortex to the basal ganglia
 \cite{BarGad2003_Review}.
-% To operate efficiently within these constraints,
-% it has been suggested that the nervous system improves 
-% efficiency by reducing the resources
-% required to implement a given task \cite{LaughlinSejnowski2003}.
-
-\begin{figure}[b!]
-	\centering
-	\includegraphics[width=\textwidth]{fig-rev1-sparse}
-    \caption{\Acf{NSC} promotes population codes that are both sparse and parts-based.
-    \textbf{\emph{A}},
-    	   Hypothetical activity in a population of neurons
-           during presentation of two different external stimuli (`contexts').
-           A sparse code is a trade-off between a local code
-           (where a context is represented by the activity of a single neuron,
-           and different contexts are represented by different neurons), and a
-           dense code (where all neurons are active and their combined activity is
-           used to encode each context).
-           Dense codes possess great memory capacity, but suffer from cross talk
-           among neurons, whereas local codes do not suffer from interference
-           but also have no capacity for generalization
-           \revise{(inspired by \cite{SpanneJorntell2015})}.
-     \textbf{\emph{B}},
-           In a holistic representation of faces, 
-           individual neurons in the population
-           respond themselves to faces as a whole \cite{TanakaFarah1993},
-           whereas in a parts-based representation
-           individual neurons explicitly encode individual face components
-           \cite{Palmer1977},
-           such as the eyes, nose, and mouth
-           (adapted from \cite{LeeSeung1999} \revise{with permission}).}
-	\label{fig:sparse-parts}
-\end{figure}
 
 One potential approach to addressing this challenge is to
 reduce the number of signals required to transmit information in the network;
@@ -95,16 +53,33 @@ simple cells in visual cortex \cite{OlshausenField1996}
 (although there are cases where sparsity may be influenced by the size of the stimulus set).}
 
 
-% The level of sparsity required to minimize energy expenditure can be determined
-% by weighing the cost of maintaining a neuron at rest against the extra cost
-% of sending a signal:
-% when signals are relatively expensive, it is best to distribute a few of them
-% among a large number of cells (local code); but
-% when cells are expensive, it is more efficient to use few cells
-% and have all of them participate in the encoding of the signal (dense code)
-% \cite{RollsTreves1990,Laughlin2001}.
-
-
+\begin{figure}[h]
+	\centering
+% 	\includegraphics[width=\textwidth]{fig-rev1-sparse}
+    \caption{\Acf{NSC} promotes population codes that are both sparse and parts-based.
+    \textbf{\emph{A}},
+    	   Hypothetical activity in a population of neurons
+           during presentation of two different external stimuli (`contexts').
+           A sparse code is a trade-off between a local code
+           (where a context is represented by the activity of a single neuron,
+           and different contexts are represented by different neurons), and a
+           dense code (where all neurons are active and their combined activity is
+           used to encode each context).
+           Dense codes possess great memory capacity, but suffer from cross talk
+           among neurons, whereas local codes do not suffer from interference
+           but also have no capacity for generalization
+           \revise{(inspired by \cite{SpanneJorntell2015})}.
+     \textbf{\emph{B}},
+           In a holistic representation of faces, 
+           individual neurons in the population
+           respond themselves to faces as a whole \cite{TanakaFarah1993},
+           whereas in a parts-based representation
+           individual neurons explicitly encode individual face components
+           \cite{Palmer1977},
+           such as the eyes, nose, and mouth
+           (adapted from \cite{LeeSeung1999} \revise{with permission}).}
+	\label{fig:sparse-parts}
+\end{figure}
 
 
 Another approach is to reduce the number of
@@ -116,8 +91,6 @@ that depend on how the responses of multiple neurons covary,
 including odor discrimination in the olfactory system \cite{Broome2006,Koulakov2011}
 as well as the selection and integration of sensory inputs 
 in the prefrontal cortex \cite{Mante2013,CunninghamYu2014}.
-% and the ability of premotor cortex 
-% to prepare movements without executing them \cite{Kaufman2014}.
 
 In brain areas far removed from sensory input,
 neurons typically encode several behaviorally relevant parameters
@@ -165,21 +138,3 @@ by sensory areas to efficiently encode external stimulus spaces,
 by some associative areas to conjunctively represent multiple behaviorally
 relevant variables,
 and possibly by the basal ganglia to coordinate movement.}
-% Specifically, we review computational evidence
-% from data analyses and computer simulations arguing that \ac{NSC}, 
-% a combination of \textbf{\ac{NMF}}
-% \cite{PaateroTapper1994,LeeSeung1999} 
-% and sparse coding,
-% can generate sparse and parts-based embeddings of
-% high-dimensional stimulus \revise{and synaptic input} spaces
-% that resemble \revise{downstream} neuronal population responses in a 
-% wide variety of brain regions.
-This introduces the possibility that \ac{NSC} might \revise{be applied to other brain regions}.
-\krisNote{To me, it doesn't make sense when taken with the previous sentence; particularly the word 'other' in the last sentence.}
-\mikeNote{Should we just cut it?}
-% be 
-% \revise{a principle of organization to which many neuronal computations adhere, 
-% particularly in sensory and association cortices.}
-% \revise{We furthermore speculate that} \ac{NSC} \revise{may} provide a useful theoretical framework \revise{by} which
-% to understand the often complex and nonintuitive response properties of neurons
-% in brain areas far removed from sensory input.
